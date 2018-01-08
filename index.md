@@ -18,7 +18,7 @@ I have a dream of one day possessing a set of devices that together I will call 
 
 I will be able to continue working on the same task as I switch devices and if I want use multiple devices at the same time. When consuming content, the text, figures, and images will all be presented in a way to optimize comprehension -- There will be no place for navigation chrome, share buttons, or advertisements. Updating software will *never* make the computer feel slower. Caching will happen aggresively to minimize the latency of the network, entire websites will be slurped down opportunistically -- Often used references like wikipedia will be kept locally.
 
-It will be trivially easy to write simple applications. I will be able to assign many shades of trust to others' applications -- Trying something out shouldn't be scary or permanent in any way. I shouldn't have to rely on a single third-party to xxxx, all code should be open for inspection, modification, and research. Commercial interests should be xxxx by providing services or assets rather than obsured code.
+It will be trivially easy to write simple applications. I will be able to assign many shades of trust to others' applications -- Trying something out shouldn't be scary or permanent in any way. I shouldn't have to rely on a single third-party providing the hardware or code to declare the trustworthiness (.... better wording) , all code should be open for inspection, modification, and research. Commercial interests should be xxxx by providing services or assets rather than obsured code.
 
 ### Existing research and ideas
 
