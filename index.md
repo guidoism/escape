@@ -24,10 +24,10 @@ Important systems, such as cryptography and data integrity, should be formally v
 
 ### Existing research and ideas
 
-* [*Project Oberon*](http://www.projectoberon.com) -- Book about a CPU, Compiler, and OS written from scratch. Wirth demonstrates that it's entirely possible to design an entire system from the ground up without relying on legacy code.
+* [*Project Oberon*](http://www.projectoberon.com) -- Wirth's book about a CPU, Compiler, and OS written from scratch. Demonstrates that it's entirely possible to design an entire system from the ground up without relying on legacy code.
 * [*Seven Laws of Sane Personal Computing*](http://www.loper-os.org/?p=284) -- From Loper OS
-* [*Stack Computers: the new wave*](https://users.ece.cmu.edu/~koopman/stack_computers/index.html) -- Book about an alternative way to design cpus.
-* [*The Architecture of Symbolic Computers*](https://www.amazon.com/Architecture-Computers-Mcgraw-Hill-Supercomputing-Processing/dp/0070355967/) -- Book about computers that don't focus so much on raw arithmatic throughput -- Lots of information on designing a LISP or Prolog cpu.
+* [*Stack Computers: the new wave*](https://users.ece.cmu.edu/~koopman/stack_computers/index.html) -- Koopman's book about an alternative way to design cpus -- Lots about stacks and Forth.
+* [*The Architecture of Symbolic Computers*](https://www.amazon.com/Architecture-Computers-Mcgraw-Hill-Supercomputing-Processing/dp/0070355967/) -- Kogge's book about computers that don't focus so much on raw arithmatic throughput -- Lots of information on designing a LISP or Prolog cpu.
 * [*Notation as a Tool of Thought*](http://www.eecg.toronto.edu/~jzhu/csc326/readings/iverson.pdf) -- Iverson's 1979 Turing Award lecture -- An example of succinctness and operating on entire data structures rather than manually looping. Also an example of how we might break free of the chains of ASCII.
 * [*A Programming Language*](http://www.softwarepreservation.org/projects/apl/Books/APROGRAMMING%20LANGUAGE) -- Iverson's 1962 book about APL.
 
