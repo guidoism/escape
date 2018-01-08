@@ -24,8 +24,9 @@ Important systems, such as cryptography and data integrity, should be formally v
 
 ### Existing research and ideas
 
-* [Project Oberon](http://www.projectoberon.com) -- CPU, Compiler, and OS written from scratch. Wirth demonstrates that it's entirely possible to design an entire system from the ground up -- Without relying on legacy code.
+* [Project Oberon](http://www.projectoberon.com) -- Book about a CPU, Compiler, and OS written from scratch. Wirth demonstrates that it's entirely possible to design an entire system from the ground up -- Without relying on legacy code.
 * [*Seven Laws of Sane Personal Computing*](http://www.loper-os.org/?p=284) -- From Loper OS
+* [*Stack Computers: the new wave*](https://users.ece.cmu.edu/~koopman/stack_computers/index.html) -- Book about an alternative way to design cpus. 
 
 ### Areas of new research
 
