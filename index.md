@@ -20,6 +20,8 @@ I will be able to continue working on the same task as I switch devices and if I
 
 It will be trivially easy to write simple applications. I will be able to assign many shades of trust to others' applications -- Trying something out shouldn't be scary or permanent in any way. I shouldn't have to rely on the manufacturer's reputation, all code should be open for inspection, modification, and research. Payment for the development of applications and profit should be obtained by providing services or non-executable digital assets rather than obscured code.
 
+Important systems, such as cryptography and data integrity, should be formally verified.
+
 ### Existing research and ideas
 
 * [Project Oberon](http://www.projectoberon.com) -- CPU, Compiler, and OS written from scratch
