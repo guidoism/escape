@@ -14,6 +14,8 @@ The current *state of the art* in computing with our superscaler pipelined, spec
 * A computer should be programmable -- Everything should be available for hacking (with appropriate warnings and guards and training wheels)
 * A computer shouldn't lose data
 
+I have a dream of one day possessing a set of devices that together I will call "my computer". This computer will consist of 1. An earpiece that's always with me, 2. A pocketable all-screen multi-touch device that's with me most of the tie, 3. A novel-sized all-screen multi-touch device, 4. A 
+
 ### Existing research and ideas
 
 * [Seven Laws of Sane Personal Computing - Loper OS](http://www.loper-os.org/?p=284)
