@@ -28,6 +28,7 @@ Important systems, such as cryptography and data integrity, should be formally v
 * [*Seven Laws of Sane Personal Computing*](http://www.loper-os.org/?p=284) -- From Loper OS
 * [*Stack Computers: the new wave*](https://users.ece.cmu.edu/~koopman/stack_computers/index.html) -- Book about an alternative way to design cpus.
 * [*The Architecture of Symbolic Computers*](https://www.amazon.com/Architecture-Computers-Mcgraw-Hill-Supercomputing-Processing/dp/0070355967/) -- Book about computers that don't focus so much on raw arithmatic throughput -- Lots of information on designing a LISP or Prolog cpu.
+* [*Notation as a Tool of Thought*](http://www.eecg.toronto.edu/~jzhu/csc326/readings/iverson.pdf) -- Iverson's 1979 Turing Award lecture -- An example of succinctness and operating on entire data structures rather than manually looping. Also an example of how we might break free of the chains of ASCII.
 
 ### Areas of new research
 
