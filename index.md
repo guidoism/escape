@@ -22,6 +22,7 @@ It will be trivially easy to write simple applications. I will be able to assign
 
 ### Existing research and ideas
 
+* [Project Oberon](http://www.projectoberon.com) -- CPU, Compiler, and OS written from scratch
 * [Seven Laws of Sane Personal Computing - Loper OS](http://www.loper-os.org/?p=284)
 
 ### Areas of new research
