@@ -12,6 +12,7 @@ The current *state of the art* in computing with our superscaler pipelined, spec
 * A computer should be provide the world's best form of reading
 * A computer should be understandable -- Any normal curious person should be able to start with the highest level abstractions and figure out how it works on their own
 * A computer should be programmable -- Everything should be available for hacking (with appropriate warnings and guards and training wheels)
+* A computer shouldn't lose data
 
 ### Existing research
 
