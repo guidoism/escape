@@ -10,7 +10,11 @@ The current *state of the art* in computing with our superscaler pipelined, spec
 * A computer should never prioritize novelty over usabilty or stability
 * A computer should be trusted
 * A computer should be provide the world's best form of reading
+* A computer should be understandable -- Any normal curious person should be able to start with the highest level abstractions and figure out how it works on their own
+* A computer should be programmable -- Everything should be available for hacking (with appropriate warnings and guards and training wheels)
 
 ### Existing research
 
 ### Areas of new research
+
+* Quit doing stuff over and over again on battery constrained devices. How many cpu cycles are wasted, how many pounds of CO2 are emitted, in order to display static text on a phone? The website is probably generating html over and over again. The phone is parsing that html over and over again and converting it to glyphs positioned in the same place on the same device type over and over again. And all of this shitty typography!
