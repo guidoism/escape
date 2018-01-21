@@ -37,3 +37,4 @@
 
 * Mapping
 * Widgets (Flight Info, Weather)
+* Calendar
