@@ -4,3 +4,5 @@
 
 * Login (PIN, password, RFID in hand ¯\\_(ツ)_/¯)
 * Encryption
+* Password storage
+* Contact List
