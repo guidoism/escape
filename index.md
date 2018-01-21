@@ -23,6 +23,8 @@ It will be trivially easy to write simple applications. I will be able to assign
 
 Important systems, such as cryptography and data integrity, should be formally verified.
 
+Here is [A Manifesto](day_two_manifesto).
+
 ### Existing research and ideas
 
 * [*Project Oberon*](http://www.projectoberon.com) -- Wirth's book about a CPU, Compiler, and OS written from scratch. Demonstrates that it's entirely possible to design an entire system from the ground up without relying on legacy code.
