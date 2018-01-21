@@ -25,3 +25,9 @@
 * Photography
 * Videoing, editing, and watching videos (YouTube)
 
+### Programming
+
+* Checking for and applying updates, and rollback
+* Extending system with user programming
+* AppStore-like interface for finding, installing other people's software
+* Source Control
