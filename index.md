@@ -44,5 +44,5 @@ Important systems, such as cryptography and data integrity, should be formally v
 * Quit doing work on battery-constrained devices that could be safely done on an non-mobile device. Under normal circumstances battery-constrained devices should do as little computation as possible. If latency requirements can be satisfied we should move the work onto a server, whether owned by the user or not.
 * Offload the work of scrolling a page of text onto a dedicated processor -- Nothing the main processors is doing should ever make scrolling janky.
 * Do we really need a plethora of cryptographic algorithms *a la* OpenSSL or can we get away with one each of asymmetric encryption, symmetric encryption, and cryptographic hashing well-written and formally verified?
-
+* Data should be specified using relational algebra for the whole system and how they relate to each other
 
