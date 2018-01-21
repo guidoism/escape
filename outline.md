@@ -2,7 +2,7 @@
 
 ### Identity
 
-* Access Control (PIN, password, RFID in hand ¯\\_(ツ)_/¯)
+* Access Control (PIN, password, RFID in hand ```¯\\_(ツ)_/¯```)
 * Encryption
 * Password storage
 * Contact List
