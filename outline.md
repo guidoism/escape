@@ -2,5 +2,5 @@
 
 ### Identity
 
-* Login (PIN, password, RFID in hand ¯\_(ツ)_/¯)
+* Login (PIN, password, RFID in hand ¯\\_(ツ)_/¯)
 * Encryption
