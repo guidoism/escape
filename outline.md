@@ -4,5 +4,17 @@
 
 * Access Control (PIN, password, RFID in hand ```¯\_(ツ)_/¯```)
 * Encryption
-* Password storage
+* Password and key storage (for me and my contacts)
 * Contact List
+
+### Messaging
+
+* Short: SMS/Instant Messaging, Twitter
+* Long: Email
+
+### Documents
+
+* Wikipedia, news sites, blogs
+* PDFs, manuals, papers, books
+* Word Processing, journaling, drafts for emails and texts, typesetting
+
