@@ -31,3 +31,9 @@
 * Extending system with user programming
 * AppStore-like interface for finding, installing other people's software
 * Source Control
+* Spreadsheets
+
+### Misc
+
+* Mapping
+* Widgets (Flight Info, Weather)
