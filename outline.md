@@ -18,3 +18,10 @@
 * PDFs, manuals, papers, books
 * Word Processing, journaling, drafts for emails and texts, typesetting
 
+### Video and Audio
+
+* Audiobooks, music
+* Dictation
+* Photography
+* Videoing, editing, and watching videos (YouTube)
+
