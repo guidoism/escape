@@ -23,7 +23,9 @@ It will be trivially easy to write simple applications. I will be able to assign
 
 Important systems, such as cryptography and data integrity, should be formally verified.
 
-Here is [A Manifesto](day_two_manifesto).
+[A Manifesto](day_two_manifesto)
+
+[An outline of features and applications](outline)
 
 ### Existing research and ideas
 
