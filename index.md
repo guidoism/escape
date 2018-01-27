@@ -38,6 +38,14 @@ Important systems, such as cryptography and data integrity, should be formally v
 * [*Reconfigurable Computing*](https://www.amazon.com/Reconfigurable-Computing-Practice-FPGA-Based-Computation/dp/0123705223) -- Book about changing the layout of your cpu on-the-fly rather than just the software. 
 * [*Category Theory for Programmers*](https://github.com/hmemcpy/milewski-ctfp-pdf) -- Book about programming in a more formal way -- Haskell used for examples.
 
+### Programming Language Inspiration
+
+* APL
+* Forth
+* REBOL/RED
+* Smalltalk
+* Hypercard
+
 ### Areas of new research
 
 * Quit doing stuff over and over again on battery-constrained devices. How many cpu cycles are wasted, how many pounds of CO2 are emitted, in order to display static text on a phone? The website is probably generating html over and over again. The phone is parsing that html over and over again and converting it to glyphs positioned in the same place on the same device type over and over again. And all of this shitty typography!
