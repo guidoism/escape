@@ -13,3 +13,5 @@ We don't need variables because we have context and pronouns.
 * TODO: define show as vertical list
 * TODO: define tap
 * TODO: more specific layout for message summary (maybe using unicde control characters)
+
+[Unicode Symbol Charts](http://unicode.org/charts/
