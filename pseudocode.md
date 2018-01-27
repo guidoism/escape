@@ -1,5 +1,5 @@
 We write this with the aid of context to subsume excrutiating detail.
-We don't need variables because we have context
+We don't need variables because we have context and pronouns.
 
     show message summaries as vertical list, reverse chronological
     a message summary shows from name, date sent, one line summary
