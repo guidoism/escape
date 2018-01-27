@@ -7,6 +7,8 @@ We don't need variables because we have context
     the conversation is between me and 1 or more other people
     it's shows a vertical list of messages between me and all of those other people
     messages from me are blue and those from others are gray
+    
+    ▤↧
 
 * TODO: define show as vertical list
 * TODO: define tap
