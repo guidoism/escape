@@ -18,4 +18,4 @@ We don't need variables because we have context and pronouns.
     spreadsheet is a matrix of cells
     cells are numbers with or without types, strings, or formulas
 
-[Unicode Symbol Charts](http://unicode.org/charts/
+[Unicode Symbol Charts](http://unicode.org/charts/)
