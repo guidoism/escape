@@ -15,6 +15,8 @@ We don't need variables because we have context and pronouns.
 * TODO: define tap
 * TODO: more specific layout for message summary (maybe using unicode control characters)
 
+Spreadsheets
+
     spreadsheet is a matrix of cells
     cells are numbers with or without types, strings, or formulas
 
