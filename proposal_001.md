@@ -21,3 +21,6 @@ it will be denser than the equivilent amount of **RAM** and consume
 less power. We will prepopulate it with a plethora of algorithms
 from computer science.
 
+The assembly langauge, while similar to Forth, uses special Unicode
+characters to represent its words instead of multi-character strings.
+
