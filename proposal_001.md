@@ -36,7 +36,7 @@ and typeset with **TeX**. The display is updated with Postscript,
 which fits in naturally with our Forth-like assembly language.
 
 The natural document type is Tome, which is an isomorphic-to-**PDF**
-format that uses the binary Cap'n Proto serialization format and
+format that uses the binary Cap'N Proto serialization format and
 includes pre-typeset text for several popular screen sizes.
 
 We will move the processing of **HTML**, **CSS**, and Javascript for
