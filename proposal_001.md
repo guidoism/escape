@@ -32,4 +32,9 @@ always possible to see what has changed and to be able to revert to
 a previous version using a special debug mode.
 
 Documentation for everything comes with the system and is marked up
-and typeset with **TeX**.
+and typeset with **TeX**. The display is updated with Postscript,
+which fits in naturally with our Forth-like assembly language.
+
+The natural document type is Tome, which is an isomorphic-to-**PDF**
+format that uses the binary Cap'n Proto serialization format and
+includes pre-typeset text for several popular screen sizes.
