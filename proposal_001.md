@@ -47,7 +47,7 @@ our agent will also aggressively prefetch and cache documents.
 
 ## (Local) Latency
 
-The latency of local effects such as scrolling, tapping, and swipping
+The latency of local effects such as scrolling, tapping, and swiping
 are prioritized over everything else.
 
 ## Power Efficiency
