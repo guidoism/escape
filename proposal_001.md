@@ -26,3 +26,7 @@ characters to represent its words instead of multi-character strings.
 We take inspiration from **APL** for doing calculations and **SQL**
 for manipulating table data. What is particularly nice is that all
 assembly language can be read and understood by any normal programmer.
+
+The entire operating system is stored as a **GIT** respository so it's
+always possible to see what has changed and to be able to revert to
+a previous version using a special debug mode.
