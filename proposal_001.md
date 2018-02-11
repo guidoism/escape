@@ -51,9 +51,9 @@ The latency of local effects such as scrolling, tapping, and swiping
 are prioritized over everything else. Therefore we have a completely
 seperate **CPU**, **RAM**, and bus for the **UI**. We will determine
 the required **CPU** speed based on the ability to complete tasks
-before human's can perceive them. Honestly, if we are going
+before human's can perceive them. Honestly, if we are doing
 disgustingly-parallel work like we should be then we shouldn't need
-anything faster than 1 **Mh**z.
+anything faster than 1 **Mhz**.
 
 ## Power Efficiency
 
