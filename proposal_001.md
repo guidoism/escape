@@ -48,7 +48,8 @@ our agent will also aggressively prefetch and cache documents.
 ## (Local) Latency
 
 The latency of local effects such as scrolling, tapping, and swiping
-are prioritized over everything else.
+are prioritized over everything else. Therefore we have a completely
+seperate **CPU**, **RAM**, and bus for the **UI**.
 
 ## Power Efficiency
 
