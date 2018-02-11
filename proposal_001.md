@@ -35,13 +35,13 @@ Documentation for everything comes with the system and is marked-up
 and typeset with **TeX**. The display is updated with Postscript,
 which fits in naturally with our Forth-like assembly language.
 
-The natural document type is Tome, which is an isomorphic-to-**PDF**
+The natural document type is **Tome**, which is an isomorphic-to-**PDF**
 format that uses the binary Cap'N Proto serialization format and
 includes pre-typeset text for several popular screen sizes.
 
 We will move the processing of **HTML**, **CSS**, and Javascript for
 what are essentially static webpages to an agent running in *The
-Cloud*. Our computer's agent will transform documents into the Tome
+Cloud*. Our computer's agent will transform documents into the **TOME**
 format and while in some cases it will introduce latency to a lookup,
 our agent will also aggressively prefetch and cache documents.
 
