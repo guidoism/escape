@@ -40,4 +40,8 @@ format that uses the binary Cap'n Proto serialization format and
 includes pre-typeset text for several popular screen sizes.
 
 We will move the processing of **HTML**, **CSS**, and Javascript for
-what are essentially static webpages to an Agent running in *The Cloud*.
+what are essentially static webpages to an Agent running in *The
+Cloud*. Our computer's agent will transform documents into the Tome
+format and while in some cases it will introduce latency to a lookup,
+our agent will also aggressively prefetch and cache documents.
+
