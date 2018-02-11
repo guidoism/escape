@@ -30,3 +30,6 @@ assembly language can be read and understood by any normal programmer.
 The entire operating system is stored as a **GIT** respository so it's
 always possible to see what has changed and to be able to revert to
 a previous version using a special debug mode.
+
+Documentation for everything comes with the system and is marked up
+and typeset with **TeX**.
