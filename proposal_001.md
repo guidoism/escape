@@ -53,7 +53,7 @@ seperate **CPU**, **RAM**, and bus for the **UI**. We will determine
 the required **CPU** speed based on the ability to complete tasks
 before human's can perceive them. Honestly, if we are going
 disgustingly-parallel work like we should be then we shouldn't need
-anything faster than 1 **Mhz**.
+anything faster than 1 **Mh**z.
 
 ## Power Efficiency
 
