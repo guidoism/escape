@@ -24,4 +24,5 @@ from computer science.
 The assembly langauge, while similar to Forth, uses special Unicode
 characters to represent its words instead of multi-character strings.
 We take inspiration from **APL** for doing calculations and **SQL**
-for manipulating table data.
+for manipulating table data. What is particularly nice is that all
+assembly language can be read and understood by any normal programmer.
