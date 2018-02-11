@@ -31,7 +31,7 @@ The entire operating system is stored as a **GIT** respository so it's
 always possible to see what has changed and to be able to revert to
 a previous version using a special debug mode.
 
-Documentation for everything comes with the system and is marked up
+Documentation for everything comes with the system and is marked-up
 and typeset with **TeX**. The display is updated with Postscript,
 which fits in naturally with our Forth-like assembly language.
 
