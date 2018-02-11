@@ -45,3 +45,11 @@ Cloud*. Our computer's agent will transform documents into the **TOME**
 format and while in some cases it will introduce latency to a lookup,
 our agent will also aggressively prefetch and cache documents.
 
+## (Local) Latency
+
+The latency of local effects such as scrolling, tapping, and swipping
+are prioritized over everything else.
+
+## Power Efficiency
+
+The second priority is power efficiency.
