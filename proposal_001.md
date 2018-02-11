@@ -12,4 +12,12 @@ assembly language, and want the **CPU** to use as few transistors as
 possible. We choose a 32 bit word length because we want our computer
 to use less than 4 billion words of **RAM**.
 
-We also choose to index **RAM** by words rather than bytes.
+We also choose to index **RAM** by words rather than bytes since we
+will generally operate on entire words.
+
+The computer also makes heavy use of **ROM** to store library
+functions. This **ROM** will be accessed just like **RAM** but
+it will be denser than the equivilent amount of **RAM** and consume
+less power. We will prepopulate it with a plethora of algorithms
+from computer science.
+
