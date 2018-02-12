@@ -110,9 +110,9 @@ apps, and minimal code for making a graphical app.
 
 We also need to look at [Flutter](https://flutter.io).
 
-## PlotDevice
+## Plot Device
 
-[PlotDevice](https://plotdevice.io) is a library/app written in
+[Plot Device](https://plotdevice.io) is a library/app written in
 Python. I like how it shows the editor and output all on one screen.
 It's very easy to make some beautiful graphical output. And one
 pattern I like is the grid function that allows us to define an x×y
