@@ -10,6 +10,22 @@ to. I don't care that I'm not adding anything original to this
 language. I'm going to steal steal steal good ideas from others as
 much as possible.
 
+## The Spreadsheet
+
+The humble spreadsheet is first not because it's a normal programming
+language but because it's an example of where we want to end up.
+
+I really like the way the process starts out. I import some data and
+incrementally tell the program the semantics: I tell it to interpret
+tabs as column delimeters and that while it got the type of the first
+column correct the second column is supposed to be a currency. I like
+being able to build up the **DAG** of equations and see how the data
+change as I tweak it. I like the ability to experiment.
+
+What I don't like is that I don't get the benefits of source control
+and that some types of calculations don't work well in the
+dataflow-like langauge.
+
 ## Forth
 
 Forth is an interesting language because it's both low level and high
@@ -121,3 +137,7 @@ Python. I like how it shows the editor and output all on one screen.
 It's very easy to make some beautiful graphical output. And one
 pattern I like is the grid function that allows us to define an x×y
 grid and then iterate through it as if it were a single list.
+
+Plot Device is also beautiful by default, which I think is important.
+
+
