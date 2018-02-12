@@ -105,8 +105,7 @@ written in only 80 lines of Rebol. I think that the test for my new
 language is that one should be able to write a spreadsheet or
 similarly complex program in less than a hundred lines of code.
 
-
-
-...
+What I want to steel from Rebol is the tiny runtime, tiny apps, and
+minimal code for making a graphical app.
 
 We also need to look at [Flutter](https://flutter.io).
