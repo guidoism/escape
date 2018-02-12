@@ -36,7 +36,7 @@ The language essentially just starts out with a linked list used
 as the dictionary and a few built-in words. Everything else can be
 built from that. Using the wonderful
 [jonesforth](https://github.com/nornagon/jonesforth/blob/master/jonesforth.S)
-as a starting place, let's describe the build-in words.
+as a starting place, let's describe some build-in words.
 
 - **DROP** -- Drop the top of the stack
 - **SWAP** -- Swap the top two elements on the stack
@@ -48,6 +48,9 @@ as a starting place, let's describe the build-in words.
 - **FETCH** and **STORE** -- Fetch and store from/to memory
 - Math and comparison words
 
+What I want from Forth isn't necessarily the exact language and
+syntax, but the simple runtime: A linked list and a stupidly simple
+interpreter.
 
 
 
