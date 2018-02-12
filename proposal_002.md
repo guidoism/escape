@@ -88,6 +88,9 @@ but Rebol goes much further than most and includes type inference for
 date/times, currency, tags, email addresses, urls, filenames, pairs,
 and ids (what they call issues).
 
+Blocks are values enclosed in square brackets.
+
+
 ...
 
 We also need to look at [Flutter](https://flutter.io).
