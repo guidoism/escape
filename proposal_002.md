@@ -20,7 +20,7 @@ a usable system from it.
 I'm also sure that nostalgia has something to do with my interest in
 it. I started programming in the 1980s and Forth, as far as I
 remember, had a reputation of being the hacker's language. When I
-think of Forth I think of a Black/Green **CRT** with a blicking cursor
+think of Forth I think of a black/green **CRT** with a blinking cursor
 in a dark room. 
 
 I think also the whole `nip/tuck` constrained puzzle nature of the
