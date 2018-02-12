@@ -23,4 +23,7 @@ remember, had a reputation of being the hacker's language. When I
 think of Forth I think of a Black/Green **CRT** with a blicking cursor
 in a dark room. 
 
+I think also the whole `nip/tuck` constrained puzzle nature of the
+language is intriguing to me.
+
 
