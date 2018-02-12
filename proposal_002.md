@@ -69,4 +69,7 @@ If you somehow get past the name and find a screenshot of an
 application written in Rebol then you shutter and say "Oh my god it
 looks like an application written in 1995."
 
+We've now filtered out like 99.99999% of the programmers in the world
+and if you've made it this far then you'll find a kernel of beauty.
+
 
