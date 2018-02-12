@@ -141,4 +141,8 @@ grid and then iterate through it as if it were a single list.
 
 Plot Device is also beautiful by default, which I think is important.
 
+## Eve
 
+The structure of [Eve](http://eve-lang.com) is probably the closest
+of any of these languages to what I want. The editor is more like
+a word processor with runable blocks of code. 
