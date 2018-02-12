@@ -17,6 +17,10 @@ seeing examples of people starting off with a Forth prompt on a
 computer with nothing else, not even an operating system, and building
 a usable system from it.
 
-
+I'm also sure that nostalgia has something to do with my interest in
+it. I started programming in the 1980s and Forth, as far as I
+remember, had a reputation of being the hacker's language. When I
+think of Forth I think of a Black/Green **CRT** with a blicking cursor
+in a dark room. 
 
 
