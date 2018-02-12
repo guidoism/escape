@@ -46,7 +46,7 @@ as a starting place, let's describe the build-in words.
 - **ROT** and **-ROT** -- Rotate the top three values of the stack
 - **INCR** and **DECR** -- Increment or decrement the top of the stack
 - Math and comparison words
-
+- **FETCH** and **STORE** -- Fetch and store from/to memory
 
 
 
