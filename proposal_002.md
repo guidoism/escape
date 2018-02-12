@@ -45,7 +45,8 @@ as a starting place, let's describe the build-in words.
 - **OVER** -- Push a copy of the second element onto the stack
 - **ROT** and **-ROT** -- Rotate the top three values of the stack
 - **INCR** and **DECR** -- Increment or decrement the top of the stack
-- **+**, **-**, *****, **/MOD** -- 
+- Math and comparison words
+
 
 
 
