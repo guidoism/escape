@@ -39,6 +39,6 @@ built from that. Using the wonderful
 as a starting place, let's describe the build-in words.
 
 - **DROP** -- Drop the top of the stack
-- **SWAP** -- Swap top two elements on stack
-
+- **SWAP** -- Swap the top two elements on the stack
+- **DUP**  -- Duplicate the top of the stack
 
