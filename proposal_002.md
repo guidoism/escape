@@ -41,4 +41,4 @@ as a starting place, let's describe the build-in words.
 - **DROP** -- Drop the top of the stack
 - **SWAP** -- Swap the top two elements on the stack
 - **DUP**  -- Duplicate the top of the stack
-
+- **OVER** -- Push a copy of the second element onto the stack
