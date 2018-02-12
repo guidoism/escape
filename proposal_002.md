@@ -84,7 +84,7 @@ tiny, the runtime for the GUI is only a megabyte and full applications
 written in Rebol are on the order of 10s of kilobytes at the most.
 
 Like many languages types can be inferred from the syntax of values,
-but Rebol goes much further than most and includes inference for
+but Rebol goes much further than most and includes type inference for
 date/times, currency, tags, email addresses, urls, filenames, pairs,
 and ids (what they call issues).
 
