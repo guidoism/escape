@@ -52,6 +52,11 @@ What I want from Forth isn't necessarily the exact language and
 syntax, but the simple runtime: A linked list and a stupidly simple
 interpreter.
 
+We also need to look at
+[Joy](https://en.wikipedia.org/wiki/Joy_(programming_language)).
+
+
+
 
 
 
