@@ -100,7 +100,10 @@ function.
 Because Rebol has a very simple syntax that's homoiconic it should be
 relatively easy to create a nicer syntax that's isomorphic to it.
 
-
+What really blows my mind is seeing something like a spreadsheet
+written in only 80 lines of Rebol. I think that the test for my new
+language is that one should be able to write a spreadsheet or
+similarly complex program in less than a hundred lines of code.
 
 
 
