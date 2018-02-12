@@ -38,4 +38,7 @@ built from that. Using the wonderful
 [jonesforth](https://github.com/nornagon/jonesforth/blob/master/jonesforth.S)
 as a starting place, let's describe the build-in words.
 
+- **DROP** -- Drop the top of the stack
+- **SWAP** -- Swap top two elements on stack
+
 
