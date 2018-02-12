@@ -20,7 +20,8 @@ incrementally tell the program the semantics: I tell it to interpret
 tabs as column delimeters and that while it got the type of the first
 column correct the second column is supposed to be a currency. I like
 being able to build up the **DAG** of equations and see how the data
-change as I tweak it. I like the ability to experiment.
+change as I tweak it. I like the ability to experiment and make
+something before I know exactly what the model is going to be.
 
 What I don't like is that I don't get the benefits of source control
 and that some types of calculations don't work well in the
