@@ -105,7 +105,15 @@ written in only 80 lines of Rebol. I think that the test for my new
 language is that one should be able to write a spreadsheet or
 similarly complex program in less than a hundred lines of code.
 
-What I want to steel from Rebol is the tiny complete library, tiny apps, and
-minimal code for making a graphical app.
+What I want to steel from Rebol is the tiny complete library, tiny
+apps, and minimal code for making a graphical app.
 
 We also need to look at [Flutter](https://flutter.io).
+
+## PlotDevice
+
+[PlotDevice](https://plotdevice.io) is a library/app written in
+Python. I like how it shows the editor and output all on one screen.
+It's very easy to make some beautiful graphical output. And one
+pattern I like is the grid function that allows us to define an x×y
+grid and then iterate through it as if it were a single list.
