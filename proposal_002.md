@@ -65,4 +65,8 @@ we know about the language is that it's supposed to be simple to
 program in (ummmm... like **COBOL**) makes it a language that I want
 to maintain a large distance from.
 
+If you somehow get past the name and find a screenshot of an
+application written in Rebol then you shutter and say "Oh my god it
+looks like an application written in 1995."
+
 
