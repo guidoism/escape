@@ -74,6 +74,6 @@ and if you've made it this far then you'll find a kernel of beauty.
 
 Rebol satisfies a bunch of the requirements for my computer. It's
 tiny, the runtime for the GUI is only a megabyte and full applications
-written in Rebol are on the order of 10s of kilobytes.
+written in Rebol are on the order of 10s of kilobytes at the most.
 
 
