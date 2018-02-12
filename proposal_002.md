@@ -90,7 +90,13 @@ and ids (what they call issues).
 
 All code and data are defined within blocks (enclosed in square
 brackets). Variables are defined with the colon and functions wih the
-func or function words. Subblocks can be accessed with the `/`.
+func or function words. A particularly interesting feature is that
+one can *refine* blocks, strings, and functions with a slash. You can
+use this to pull a value from a dictionary or select an option on a
+function.
+
+
+
 
 
 ...
