@@ -145,4 +145,7 @@ Plot Device is also beautiful by default, which I think is important.
 
 The structure of [Eve](http://eve-lang.com) is probably the closest
 of any of these languages to what I want. The editor is more like
-a word processor with runable blocks of code. 
+a word processor with runable blocks of code. I like good typography
+so while I'm coding I want to see my text beautifully drawn on the
+screen. I really dislike the way TeX and "modern" Markdown editors
+show the markup in my main view. 
