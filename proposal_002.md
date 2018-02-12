@@ -38,7 +38,7 @@ built from that. Using the wonderful
 [jonesforth](https://github.com/nornagon/jonesforth/blob/master/jonesforth.S)
 as a starting place, let's describe the build-in words.
 
-- **DROP** -- Drop the top of the stack, also **2DROP**
+- **DROP** (and **2DROP**) -- Drop the top of the stack (top two elements)
 - **SWAP** -- Swap the top two elements on the stack
 - **DUP**  -- Duplicate the top of the stack
 - **OVER** -- Push a copy of the second element onto the stack
