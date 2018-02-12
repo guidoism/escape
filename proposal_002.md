@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Proposal 2 -- A Language
+title: Proposal 2 — A Language
 ---
 
 Here I propose a language by way of a garden path by describing Forth
