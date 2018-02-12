@@ -88,7 +88,9 @@ but Rebol goes much further than most and includes type inference for
 date/times, currency, tags, email addresses, urls, filenames, pairs,
 and ids (what they call issues).
 
-Blocks are values enclosed in square brackets.
+All code and data are defined within blocks (enclosed in square
+brackets). Variables are defined with the colon and functions wih the
+func or function words. Subblocks can be accessed with the `/`.
 
 
 ...
