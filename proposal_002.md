@@ -55,8 +55,14 @@ interpreter.
 We also need to look at
 [Joy](https://en.wikipedia.org/wiki/Joy_(programming_language)).
 
+## Rebol
 
-
-
+Rebol has a naming problem. Up until just recently it was spelled 
+**REBOL** like languages from the 1950s and even though it's supposed
+to be pronounced like *rebel* it looks like it rhymes with **COBOL**.
+Now you take that naming problem and combine it with the fact that all
+we know about the language is that it's supposed to be simple to
+program in (ummmm... like **COBOL**) makes it a language that I want
+to maintain a large distance from.
 
 
