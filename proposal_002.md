@@ -6,7 +6,9 @@ title: Proposal 2 — A Language
 Here I propose a language by way of a garden path by describing Forth
 (as I learn it for real), and **APL**, **LISP**, **REBOL**, Smalltalk,
 and other cool languages that aren't quite as mainstream as I'm used
-to.
+to. I don't care that I'm not adding anything original to this
+language. I'm going to steal steal steal good ideas from others as
+much as possible.
 
 ## Forth
 
@@ -94,6 +96,9 @@ func or function words. A particularly interesting feature is that
 one can *refine* blocks, strings, and functions with a slash. You can
 use this to pull a value from a dictionary or select an option on a
 function.
+
+Because Rebol has a very simple syntax that's homoiconic it should be
+relatively easy to create a nicer syntax that's isomorphic to it.
 
 
 
