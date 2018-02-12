@@ -106,7 +106,11 @@ language is that one should be able to write a spreadsheet or
 similarly complex program in less than a hundred lines of code.
 
 What I want to steel from Rebol is the tiny complete library, tiny
-apps, and minimal code for making a graphical app.
+apps, and minimal code for making a graphical app. What I like about
+this form of creating an application over using an IDE like XCode to
+create an iOS app is that it's much easier to communicate text than
+option-clicking on one part and then dragging it to another part and
+then releasing it.
 
 We also need to look at [Flutter](https://flutter.io).
 
