@@ -26,4 +26,16 @@ in a dark room.
 I think also the whole nip/tuck constrained puzzle nature of the
 language is intriguing to me.
 
+And one doesn't start off by talking about Forth's grammar, as there
+really isn't one. The interpreter essentially just handles each
+whitespace-delimited token individually, executing the token if it's
+defined in the *word dictionary*, and pushing it onto the stack if
+it's not.
+
+The language essentially just starts out with a linked list used
+as the dictionary and a few built-in words. Everything else can be
+built from that. Using the wonderful
+[jonesforth](https://github.com/nornagon/jonesforth/blob/master/jonesforth.S)
+as a starting place, let's describe the build-in words.
+
 
