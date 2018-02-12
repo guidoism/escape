@@ -72,4 +72,8 @@ looks like an application written in 1995."
 We've now filtered out like 99.99999% of the programmers in the world
 and if you've made it this far then you'll find a kernel of beauty.
 
+Rebol satisfies a bunch of the requirements for my computer. It's
+tiny, the runtime for the GUI is only a megabyte and full applications
+written in Rebol are on the order of 10s of kilobytes.
+
 
