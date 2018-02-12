@@ -149,3 +149,7 @@ a word processor with runable blocks of code. I like good typography
 so while I'm coding I want to see my text beautifully drawn on the
 screen. I really dislike the way TeX and "modern" Markdown editors
 show the markup in my main view. 
+
+What I don't like about Eve is that it's web-focused and I want to
+disassociate myself from that world. That doesn't mean I can't steal
+a *lot* of good ideas from it.
