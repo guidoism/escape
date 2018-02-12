@@ -42,7 +42,6 @@ as a starting place, let's describe the build-in words.
 - **SWAP** -- Swap the top two elements on the stack
 - **DUP** and **?DUP** -- Duplicate the top of the stack and do it
   only if it's not empty
--  -- Duplicate the top of the stack only if it's not empty
 - **OVER** -- Push a copy of the second element onto the stack
 - **ROT** and **-ROT** -- Rotate the top three values of the stack
 - **INCR** and **DECR** -- Increment or decrement the top of the stack
