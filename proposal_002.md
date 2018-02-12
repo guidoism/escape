@@ -8,3 +8,8 @@ Here I propose a language by way of a garden path by describing Forth
 and other cool languages that aren't quite as mainstream as I'm used
 to.
 
+## Forth
+
+Forth is an interesting language because it's both low level and high
+level at the same time. It's mind bending that a system that can serve
+as an assembly language can also be used for **AI** research. 
