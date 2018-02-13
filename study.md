@@ -54,3 +54,5 @@ look at.
   **PDF** lecture slides are really good. Worth reading through them.
   Also worth looking around his site to see if there's anything else
   similar for other classes he's done.
+* [freecomputerbooks.com Architecture books](http://freecomputerbooks.com/compscArchitectureBooks.html)
+* 
