@@ -4,6 +4,8 @@ title: Plan of Study
 ---
 
 I'm am ignorant of a lot of the issues. This is my plan of study.
+Well... It's more of a dumping ground for stuff I'd like to eventually
+look at.
 
 ## Math
 
