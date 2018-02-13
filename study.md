@@ -32,4 +32,7 @@ look at.
 * [OpenSCAD](http://www.openscad.org/documentation.html) - *The
   Programmers Solid 3D CAD Modeller* written by the same guy who
   reverse-engineered an FPGA format and wrote the only full-stack of
-  open source FPGA development tools.
+  open source FPGA development tools. The method of input is code
+  rather than clicking on buttons so I should be able to learn
+  something about how to do something similar on a 2D surface. Also,
+  it just looks really cool.
