@@ -45,6 +45,8 @@ look at.
   them.
 * [Almost Perfect Artifacts Improve only in Small Ways: APL is more French than English](http://www.jsoftware.com/papers/perlis78.htm) - Perlis paper
 * [In Praise of APL: A Language for Lyrical Programming](http://www.jsoftware.com/papers/perlis77.htm) - Another Perlis paper
+* [Montalbano's Personal History of Apl](http://ed-thelen.org/comp-hist/APL-hist.html) 
+
 
 ## Graphic Design
 
