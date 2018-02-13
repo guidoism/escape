@@ -22,6 +22,8 @@ look at.
   He works at GreenArrays so he probably knows what he's talking about.
 * [Marcel Hendrix's Forth Links](http://home.vianetworks.nl/users/mhx/) -
   A bunch of links to Forth and stack computer websites and papers.
+* [The Most Beautiful Program Ever Written](http://paperswelove.org/2017/video/will-byrd-most-beautiful-program/) - 
+  Talk about meta-circular interpreters.
 
 ## Graphic Design
 
@@ -55,4 +57,4 @@ look at.
   Also worth looking around his site to see if there's anything else
   similar for other classes he's done.
 * [freecomputerbooks.com Architecture books](http://freecomputerbooks.com/compscArchitectureBooks.html)
-* 
+
