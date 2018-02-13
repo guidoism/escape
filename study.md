@@ -13,6 +13,10 @@ look at.
   academic computer science papers and a community who loves reading
   them.* There are a bazzilion papers I need to look at from here and
   this is a place I should check back regularly.
+* [Shtetl-Optimized](https://www.scottaaronson.com/blog/) - Found this
+  because of his review of *Gödel, Escher, Bach*. A whole lot of great
+  articles about computer science, science, etc going back to 2005.
+  His blogroll is great (I miss blogrolls).
 
 ## Math
 
