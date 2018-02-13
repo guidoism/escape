@@ -42,7 +42,8 @@ look at.
 * [pyglet](https://pyglet.readthedocs.io/en/pyglet-1.3-maintenance/programming_guide/quickstart.html#hello-world) - 
   Python toolkit for drawing stuff on the screen and handling keyboard
   events, looks pretty easy to use. The nice thing about it which
-  seperates it from the others is that it requires no external dependenies.
+  seperates it from the others is that it requires no external
+  dependenies. Might be a good place to start experimenting.
 
 
 
