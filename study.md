@@ -60,6 +60,8 @@ look at.
   *The Ghost in the Machine* and refers to having stable intermediate
   forms that can be used to build larger forms. I need to read all of
   the pages on that website.
+* [Nim](https://nim-lang.org) - Newish small language similar to
+  Python and Pascal.
 
 ## Graphic Design
 
@@ -93,4 +95,3 @@ look at.
   Also worth looking around his site to see if there's anything else
   similar for other classes he's done.
 * [freecomputerbooks.com Architecture books](http://freecomputerbooks.com/compscArchitectureBooks.html)
-
