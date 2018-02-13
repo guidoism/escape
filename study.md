@@ -23,7 +23,8 @@ look at.
 * [Marcel Hendrix's Forth Links](http://home.vianetworks.nl/users/mhx/) -
   A bunch of links to Forth and stack computer websites and papers.
 * [The Most Beautiful Program Ever Written](http://paperswelove.org/2017/video/will-byrd-most-beautiful-program/) - 
-  Talk about meta-circular interpreters.
+  Talk about meta-circular interpreters. Link includes a bunch of
+  links to interesting references from the talk.
 
 ## Graphic Design
 
