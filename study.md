@@ -50,4 +50,7 @@ look at.
 * [Chatchawit Aportenwan's Stack **CPU** Simulator](http://pioneer.netserv.chula.ac.th/~achatcha/2301274/Simulator_Orig.html) - 
   4 bit, works in a webpage, easy to use and understand. Worth using
   this as a model for my own simulator.
-
+* [Ricardo Gutierrez-Osuna's Microprocessor-based system design class notes](http://courses.cs.tamu.edu/rgutier/ceg411_f01/) - 
+  **PDF** lecture slides are really good. Worth reading through them.
+  Also worth looking around his site to see if there's anything else
+  similar for other classes he's done.
