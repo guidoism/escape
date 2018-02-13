@@ -41,7 +41,11 @@ look at.
   Wikipedia page about a programming paradigm where end-users are able
   to write their own programs (for example with spreadsheets). The
   side link box on the pages has a bunch of links to other programmig
-  paradigms that are worth looking at. I hadn't heard of a bunch of them.
+  paradigms that are worth looking at. I hadn't heard of a bunch of
+  them.
+* [Almost Perfect Artifacts Improve only in Small Ways:
+APL is more French than English](http://www.jsoftware.com/papers/perlis78.htm)
+  - Perlis paper
 
 ## Graphic Design
 
