@@ -14,9 +14,6 @@ I'm am ignorant of a lot of the issues. This is my plan of study.
 
 ## Programming Languages
 
-*
-  [Stack Quarks](http://clubweb.interbaun.com/%7Erc/Timbre/ContentPages/Timbre/SQP/StackQuarksPaper.html) -
-  The fundamental operations on a stack are like quarks in physics in
-  that there's nothing smaller. This paper describes those stack operations.
-
+* [Stack Quarks](http://clubweb.interbaun.com/%7Erc/Timbre/ContentPages/Timbre/SQP/StackQuarksPaper.html) - The fundamental operations on a stack are like quarks in physics in that there's nothing smaller. This paper describes those stack operations.
+* 
 
