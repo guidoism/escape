@@ -153,3 +153,7 @@ show the markup in my main view.
 What I don't like about Eve is that it's web-focused and I want to
 disassociate myself from that world. That doesn't mean I can't steal
 a *lot* of good ideas from it.
+
+## Python
+
+Batteries Included, Batteries Included, Batteries Included!!!
