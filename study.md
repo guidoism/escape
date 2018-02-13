@@ -29,3 +29,7 @@ look at.
   A Math Stack Exchange question with a bunch of crowd-sourced
   notations. Better than anything Knuth has done. Can use the
   [MathJax Demo](https://www.mathjax.org/#demo) to try stuff out quickly.
+* [OpenSCAD](http://www.openscad.org/documentation.html) - *The
+  Programmers Solid 3D CAD Modeller* written by the same guy who
+  reverse-engineered an FPGA format and wrote the only full-stack of
+  open source FPGA development tools.
