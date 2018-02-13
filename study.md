@@ -17,6 +17,9 @@ look at.
   because of his review of *Gödel, Escher, Bach*. A whole lot of great
   articles about computer science, science, etc going back to 2005.
   His blogroll is great (I miss blogrolls).
+* [ASPLOS Procedings](https://dl.acm.org/event.cfm?id=RE178) - Lots of
+  papers focusing on the interaction between architecture, programming
+  langauges, and operating systems.
 
 ## Math
 
