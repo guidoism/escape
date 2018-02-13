@@ -7,6 +7,13 @@ I'm am ignorant of a lot of the issues. This is my plan of study.
 Well... It's more of a dumping ground for stuff I'd like to eventually
 look at.
 
+## General
+
+* [Papers we Love](http://paperswelove.org) - *a repository of
+  academic computer science papers and a community who loves reading
+  them.* There are a bazzilion papers I need to look at from here and
+  this is a place I should check back regularly.
+
 ## Math
 
 * [Graphical Lineral Algebra](https://graphicallinearalgebra.net) -
