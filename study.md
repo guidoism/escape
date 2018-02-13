@@ -34,6 +34,9 @@ look at.
   links to interesting references from the talk.
 * [5 - A Stack-based Array Langauge](http://archive.vector.org.uk/art10500710) -
   Sort of a mix between Forth and **APL**.
+* [William Byrd's website](http://webyrd.net) - Guy who wrote The
+  Reasoned Schemer, lots of links to papers and research in
+  programming languages and logic theory.
 
 ## Graphic Design
 
