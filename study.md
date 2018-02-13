@@ -39,7 +39,9 @@ look at.
   programming languages and logic theory.
 * [End-user Development](https://en.wikipedia.org/wiki/End-user_development) -
   Wikipedia page about a programming paradigm where end-users are able
-  to write their own programs (for example with spreadsheets).
+  to write their own programs (for example with spreadsheets). The
+  side link box on the pages has a bunch of links to other programmig
+  paradigms that are worth looking at. I hadn't heard of a bunch of them.
 
 ## Graphic Design
 
