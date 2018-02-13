@@ -54,7 +54,8 @@ look at.
   than files. He has several papers about this form of programming on
   this website. The term *holon* comes from Arthur Koestler's book
   *The Ghost in the Machine* and refers to having stable intermediate
-  forms that can be used to build larger forms.
+  forms that can be used to build larger forms. I need to read all of
+  the pages on that website.
 
 ## Graphic Design
 
