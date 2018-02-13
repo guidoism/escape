@@ -43,9 +43,8 @@ look at.
   side link box on the pages has a bunch of links to other programmig
   paradigms that are worth looking at. I hadn't heard of a bunch of
   them.
-* [Almost Perfect Artifacts Improve only in Small Ways:
-APL is more French than English](http://www.jsoftware.com/papers/perlis78.htm)
-  - Perlis paper
+* [Almost Perfect Artifacts Improve only in Small Ways: APL is more French than English](http://www.jsoftware.com/papers/perlis78.htm) - Perlis paper
+* [In Praise of APL: A Language for Lyrical Programming](http://www.jsoftware.com/papers/perlis77.htm) - Another Perlis paper
 
 ## Graphic Design
 
