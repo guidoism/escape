@@ -45,6 +45,9 @@ look at.
   seperates it from the others is that it requires no external
   dependenies. Might be a good place to start experimenting.
 
+## CPUs
 
-
+* [Chatchawit Aportenwan's Stack **CPU** Simulator](http://pioneer.netserv.chula.ac.th/~achatcha/2301274/Simulator_Orig.html) - 
+  4 bit, works in a webpage, easy to use and understand. Worth using
+  this as a model for my own simulator.
 
