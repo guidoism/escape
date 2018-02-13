@@ -32,6 +32,7 @@ look at.
 * [The Most Beautiful Program Ever Written](http://paperswelove.org/2017/video/will-byrd-most-beautiful-program/) - 
   Talk about meta-circular interpreters. Link includes a bunch of
   links to interesting references from the talk.
+* [5 - A Stack-based Array Langauge](http://archive.vector.org.uk/art10500710)
 
 ## Graphic Design
 
