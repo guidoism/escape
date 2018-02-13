@@ -36,3 +36,10 @@ look at.
   rather than clicking on buttons so I should be able to learn
   something about how to do something similar on a **2D** surface. Also,
   it just looks really cool.
+
+## Existing UI Toolkits
+
+* [pyglet](https://pyglet.readthedocs.io/en/pyglet-1.3-maintenance/programming_guide/quickstart.html#hello-world) - 
+  Python toolkit for drawing stuff on the screen and handling keyboard
+  events, looks pretty easy to use. The nice thing about it which
+  seperates it from the others is that it requires no external dependenies.
