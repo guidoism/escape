@@ -20,7 +20,7 @@ look at.
 * [ASPLOS Procedings](https://dl.acm.org/event.cfm?id=RE178) - Lots of
   papers focusing on the interaction between architecture, programming
   langauges, and operating systems.
-* [Min-Move 2017](http://insight-archlab.github.io/minmove17.html) - =
+* [Min-Move 2017](http://insight-archlab.github.io/minmove17.html) -
   Workshoping focusing on the minimization of data movement.
 
 ## Math
