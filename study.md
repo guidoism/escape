@@ -49,6 +49,12 @@ look at.
 * [Perlis's Epigrams in Programming](http://www.cs.yale.edu/homes/perlis-alan/quotes.html) -
    A bunch of quotes we may have heard before but didn't know where
    they came from.
+* [HolonForth](http://www.holonforth.com/index.html) - Wolf Wejgaard's
+  Forth editor that acts as a browser for parts of the program rather
+  than files. He has several papers about this form of programming on
+  this website. The term *holon* comes from Arthur Koestler's book
+  *The Ghost in the Machine* and refers to having stable intermediate
+  forms that can be used to build larger forms.
 
 ## Graphic Design
 
