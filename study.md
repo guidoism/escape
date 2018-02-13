@@ -37,6 +37,9 @@ look at.
 * [William Byrd's website](http://webyrd.net) - Guy who wrote The
   Reasoned Schemer, lots of links to papers and research in
   programming languages and logic theory.
+* [End-user Development](https://en.wikipedia.org/wiki/End-user_development) -
+  Wikipedia page about a programming paradigm where end-users are able
+  to write their own programs (for example with spreadsheets).
 
 ## Graphic Design
 
