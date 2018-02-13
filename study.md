@@ -22,3 +22,10 @@ look at.
   He works at GreenArrays so he probably knows what he's talking about.
 * [Marcel Hendrix's Forth Links](http://home.vianetworks.nl/users/mhx/) -
   A bunch of links to Forth and stack computer websites and papers.
+
+## Graphic Design
+
+* [Math markup in TeX Quick Reference](https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference) - 
+  A Math Stack Exchange question with a bunch of crowd-sourced
+  notations. Better than anything Knuth has done. Can use the
+  [MathJax Demo](https://www.mathjax.org/#demo) to try stuff out quickly.
