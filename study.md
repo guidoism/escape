@@ -18,4 +18,5 @@ I'm am ignorant of a lot of the issues. This is my plan of study.
 * [Rob Chapman's papers](http://clubweb.interbaun.com/~rc/Papers/) -
   The rest of the papers by the guy who wrote the Stack Quarks papers.
   He works at GreenArrays so he probably knows what he's talking about.
-
+* [Marcel Hendrix's Forth Links](http://home.vianetworks.nl/users/mhx/) -
+  A bunch of links to Forth and stack computer websites and papers.
