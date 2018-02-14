@@ -100,3 +100,5 @@ look at.
   Also worth looking around his site to see if there's anything else
   similar for other classes he's done.
 * [freecomputerbooks.com Architecture books](http://freecomputerbooks.com/compscArchitectureBooks.html)
+* [H2 Stack CPU + Graphical Simulator](https://github.com/howerj/forth-cpu)
+  Very nicely done simulator. Need to play with this more.
