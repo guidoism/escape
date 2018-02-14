@@ -102,3 +102,10 @@ look at.
 * [freecomputerbooks.com Architecture books](http://freecomputerbooks.com/compscArchitectureBooks.html)
 * [H2 Stack CPU + Graphical Simulator](https://github.com/howerj/forth-cpu) -
   Very nicely done simulator. Need to play with this more.
+
+## Displays
+
+* [Review of Display Technologies Focusing on Power Consumption](http://www.mdpi.com/2071-1050/7/8/10854/htm)
+
+
+
