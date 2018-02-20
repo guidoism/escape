@@ -18,3 +18,10 @@ are a great place to start.
 * [bztsrc/raspi3-tutorial](https://github.com/bztsrc/raspi3-tutorial) -
   Good notes with pointers to other tutorials for learning other stuff
   like USB and OpenGL.
+* [Ultibo](https://ultibo.org/make/) - Unikernel written is Pascal
+  with a lot of good stuff. Maybe the start of Project Oberon for the
+  Pi? Hmm... Lots of good docs on how stuff was done and links to
+  hardware docs.
+* [rsta2/circle](https://github.com/rsta2/circle) - A C++ bare metal
+  environment with USB.
+
