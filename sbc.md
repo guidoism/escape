@@ -15,4 +15,6 @@ and the associated
 [bare metal resources topic](https://www.raspberrypi.org/forums/viewtopic.php?f=72&t=72260)
 are a great place to start.
 
-
+* [bztsrc/raspi3-tutorial](https://github.com/bztsrc/raspi3-tutorial) -
+  Good notes with pointers to other tutorials for learning other stuff
+  like USB and OpenGL.
