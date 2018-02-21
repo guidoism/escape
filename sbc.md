@@ -27,6 +27,7 @@ are a great place to start.
 * [VisUAL](https://salmanarif.bitbucket.io/visual/index.html) - Nice
   looking stepping emulator for ARM.
 * [Baking Pi - Lesson 6 Screen 01](http://www.cl.cam.ac.uk/projects/raspberrypi/tutorials/os/screen01.html) - How to draw pixels on the screen, though apparently this doesn't work on the Pi 3.
+* [Peter Lemon's Raspberry Pi Code](https://github.com/PeterLemon/RaspberryPi) - * Is a treasure trove of examples.
 
 It would be interesting to write this bare metal program as a literate
 program that includes the different languages and then create a script
