@@ -26,5 +26,6 @@ are a great place to start.
   environment with USB.
 * [VisUAL](https://salmanarif.bitbucket.io/visual/index.html) - Nice
   looking stepping emulator for ARM.
+* [Lesson 6 Screen01](http://www.cl.cam.ac.uk/projects/raspberrypi/tutorials/os/screen01.html) - How to draw pixels on the screen
 
 *(read back to 2/4/17)*
