@@ -11,7 +11,7 @@ one doesn't need the latest fasted CPUs to make a snappy UI.
 
 The
 [Raspberry Pi Bare Metal Forum](https://www.raspberrypi.org/forums/viewforum.php?f=72)
-and the associated
+*(read back to 2/4/17)* and the associated
 [bare metal resources topic](https://www.raspberrypi.org/forums/viewtopic.php?f=72&t=72260)
 are a great place to start.
 
@@ -28,4 +28,6 @@ are a great place to start.
   looking stepping emulator for ARM.
 * [Baking Pi - Lesson 6 Screen 01](http://www.cl.cam.ac.uk/projects/raspberrypi/tutorials/os/screen01.html) - How to draw pixels on the screen, though apparently this doesn't work on the Pi 3.
 
-*(read back to 2/4/17)*
+It would be interesting to write this bare metal program as a literate
+program that includes the different languages and then create a script
+to tangle the code and compile it.
