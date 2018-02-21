@@ -24,5 +24,7 @@ are a great place to start.
   hardware docs.
 * [rsta2/circle](https://github.com/rsta2/circle) - A C++ bare metal
   environment with USB.
+* [VisUAL](https://salmanarif.bitbucket.io/visual/index.html) - Nice
+  looking stepping emulator for ARM.
 
 *(read back to 2/4/17)*
