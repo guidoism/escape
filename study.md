@@ -107,5 +107,9 @@ look at.
 
 * [Review of Display Technologies Focusing on Power Consumption](http://www.mdpi.com/2071-1050/7/8/10854/htm)
 
+## Similar Projects
 
+* [Interim OS](http://interim.mntmn.com) - Lisp OS written for the
+  Raspberry Pi in a super bare metal fashion. Requires a custom
+  keyboard since it doesn't have USB drivers!
 
