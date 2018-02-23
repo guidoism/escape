@@ -109,7 +109,7 @@ look at.
 
 ## Similar Projects
 
-* [Interim OS](http://interim.mntmn.com) - Lisp OS written for the
+* [Interim OS](http://interim.mntmn.com) and [Paper](http://dump.mntmn.com/interim-paper/) - Lisp OS written for the
   Raspberry Pi in a super bare metal fashion. Requires a custom
-  keyboard since it doesn't have USB drivers!
+  keyboard since it doesn't have USB drivers! 
 
