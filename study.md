@@ -81,6 +81,8 @@ look at.
   rather than clicking on buttons so I should be able to learn
   something about how to do something similar on a **2D** surface. Also,
   it just looks really cool.
+* [Metapost](http://tug.org/metapost.html) looks like a better tool than raw Postscript for doing display figures.
+  [Lots of examples](http://tex.loria.fr/prod-graph/zoonekynd/metapost/metapost.html)
 
 ## Existing UI Toolkits
 
