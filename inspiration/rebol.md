@@ -11,6 +11,6 @@ subdirectories:
 * core
 * include
 * mezz
-* os
-* tools
+* os - Includes host-main.c is where the environment starts.
+* tools - A dozen rebol files for compiling
 

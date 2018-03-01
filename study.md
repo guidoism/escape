@@ -104,6 +104,10 @@ look at.
 * [freecomputerbooks.com Architecture books](http://freecomputerbooks.com/compscArchitectureBooks.html)
 * [H2 Stack CPU + Graphical Simulator](https://github.com/howerj/forth-cpu) -
   Very nicely done simulator. Need to play with this more.
+*
+  [Koopman's RTX2000 Simulator](https://github.com/mschuldt/rtx2000_simulator) -
+  Ported to Linux and running AppForth.
+* [GA144 Simulator](https://github.com/mschuldt/ga144) - and [tools](https://github.com/jamesbowman/ga144tools)
 
 ## Displays
 
