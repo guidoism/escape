@@ -85,8 +85,8 @@ look at.
   it just looks really cool.
 * [Metapost](http://tug.org/metapost.html) looks like a better tool than raw Postscript for doing display figures.
   [Lots of examples](http://tex.loria.fr/prod-graph/zoonekynd/metapost/metapost.html)
-* [Scholarly Markdown on HN](https://news.ycombinator.com/item?id=9204352) - Also [https://www.peterkrautzberger.org/0172/]
-  and [http://aig.cs.man.ac.uk/people/srp/]
+* [Scholarly Markdown on HN](https://news.ycombinator.com/item?id=9204352) - Also https://www.peterkrautzberger.org/0172/
+  and http://aig.cs.man.ac.uk/people/srp/
 
 ## Existing UI Toolkits
 
