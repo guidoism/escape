@@ -13,3 +13,5 @@ title: Python
 * [PyToolz](http://toolz.readthedocs.io/en/latest/index.html) - More
   tools to extend functools, itertools, and dictionaries. I need to
   read the docs as they provide context and explanations. 
+* [Working with Binary Data in Python](https://www.devdungeon.com/content/working-binary-data-python) - 
+  Shows how Python 3 makes it easier to work with binary data.
