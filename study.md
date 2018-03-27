@@ -67,6 +67,8 @@ look at.
   the pages on that website.
 * [Nim](https://nim-lang.org) - Newish small language similar to
   Python and Pascal.
+* [Pixie](https://github.com/pixie-lang/pixie) - Lisp written in
+  rpython with jit and stuff written in pixie itself.
 
 ## Graphic Design
 
@@ -107,7 +109,9 @@ look at.
 *
   [Koopman's RTX2000 Simulator](https://github.com/mschuldt/rtx2000_simulator) -
   Ported to Linux and running AppForth.
-* [GA144 Simulator](https://github.com/mschuldt/ga144) - and [tools](https://github.com/jamesbowman/ga144tools)
+* [GA144 Simulator](https://github.com/mschuldt/ga144) - and
+  [tools](https://github.com/jamesbowman/ga144tools)
+  
 
 ## Displays
 
