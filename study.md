@@ -113,7 +113,7 @@ look at.
   Ported to Linux and running AppForth.
 * [GA144 Simulator](https://github.com/mschuldt/ga144) - and
   [tools](https://github.com/jamesbowman/ga144tools)
-  
+* [SECD: A high level description](https://dmytrish.wordpress.com/2013/08/09/secd-part-i/) - Nice and simple description
 
 ## Displays
 
