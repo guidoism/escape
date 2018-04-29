@@ -41,3 +41,8 @@ service that fetches the page with Headless Chrome and then converts it to Markd
 and then converts that to a DVI which is sent back to the client. All of this should be cached for
 each device screen width. It might also make sense to run this automatically on website that I
 goto regularly so it's already cached for me in the morning. 
+
+I will be able to start using this as a proxy for the web immediately. I also want a trail for web
+pages that I want to remember. The proxy should insert a quick tap save. It should save it on the
+device immediately in the local storage, in a queue, and in the background should send it up to the
+server. 
