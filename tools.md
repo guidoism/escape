@@ -21,5 +21,7 @@ Ideally here too we'd use the GPU with webgl. This too seems a bit complex to st
 with do we might just start with the HTML Canvas.
 
 There are existing examples of Postscript being translated to Canvas commands:
-[WPS (Postscript for the Web)](http://logand.com/sw/wps/index.html) and [PostscriptJS](https://github.com/zaphod42/PostscriptJS).
+[WPS (Postscript for the Web)](http://logand.com/sw/wps/index.html) and [PostscriptJS](https://github.com/zaphod42/PostscriptJS). There are also 
+[examples](http://www.williammalone.com/articles/create-html5-canvas-javascript-sprite-animation/) of making
+sprites for use on the Canvas.
 
