@@ -23,7 +23,8 @@ with do we might just start with the HTML Canvas.
 There are existing examples of Postscript being translated to Canvas commands:
 [WPS (Postscript for the Web)](http://logand.com/sw/wps/index.html) and [PostscriptJS](https://github.com/zaphod42/PostscriptJS). There are also 
 [examples](http://www.williammalone.com/articles/create-html5-canvas-javascript-sprite-animation/) of making
-sprites for use on the Canvas. While Postscript isn't really were I want to end up
+sprites for use on the Canvas. I'd use the sprite technique for pulling glyphs out of the font map image.
+While Postscript isn't really were I want to end up
 it will be useful because MetaPost generates Postscript as the output, which means
 that I should be able to compile MetaPost to WASM and run it directly in the browser.
 
