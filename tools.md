@@ -31,3 +31,13 @@ that I should be able to compile MetaPost to WASM and run it directly in the bro
 What I'd like is to be able to experiment with the display by typing in MetaPost and TeX
 and compiling it in the browser to a little screen. Asymtopte is also something to look
 at since it's similar to MetaPost but also does animations... I think.
+
+## Move Web Complexity to Server
+
+I want to move the computationaly intensive task of rendering a web page to a server. There's
+no need to do all of this work over and over again on a battery-constrained device. Chrome now
+allows you to run headless. I would like to be able to glue this all together into an AWS Lambda
+service that fetches the page with Headless Chrome and then converts it to Markdown with html2text
+and then converts that to a DVI which is sent back to the client. All of this should be cached for
+each device screen width. It might also make sense to run this automatically on website that I
+goto regularly so it's already cached for me in the morning. 
