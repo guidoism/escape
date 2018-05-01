@@ -63,20 +63,16 @@ endgenerate
 assign PCinc =  PC + 1;
  assign PCinc2 = PC + 2;
  assign PCmux = Jump ? ALU[9:0] : doSkip ? PCinc2 : PCinc;
-//instantiate the IM. Read during Ph0, written (if needed) at the beginning of the next
-Ph0
+ //instantiate the IM. Read during Ph0, written (if needed) at the beginning of the next Ph0
  ramx im(
    .clkb(Ph0 ), .addrb(PCmux[9:0]),                .doutb(IM),     //the read port
    .clka(Ph0), .addra(RFBout[9:0]), .wea(WriteIM), .dina(RFAout)); //the write port
-//instantiate the DM. Read during Ph1, written (if needed) at the beginning of the next
-Ph0
+ //instantiate the DM. Read during Ph1, written (if needed) at the beginning of the next Ph0
  ramx dm(
    .clkb(Ph1), .addrb(RFBout[9:0]),                .doutb(DM),  //the read port
    .clka(Ph0), .addra(RFBout[9:0]), .wea(WriteDM), .dina(RFAout)); //the write port
-//instantiate the register file.  This has three independent addresses, so two BRAMs are
-needed.
-// read after the read and write addresses are stable (rise of Ph1) written at the end of
-the
+//instantiate the register file.  This has three independent addresses, so two BRAMs are needed.
+// read after the read and write addresses are stable (rise of Ph1) written at the end of the
 // instruction (rise of Ph0).
  ramx rfA(.addra({3'b0, IM[31:25]}), .clka(Ph0), .wea(1'b0), .dina(WD), //write port
    .clkb(Ph1), .addrb({3'b0, IM[23:17]}), .doutb(RFAout));              //read port
