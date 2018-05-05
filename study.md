@@ -119,6 +119,7 @@ look at.
 * [AnyCPU](http://anycpu.org/forum/index.php) - Forums where people discuss designs of various CPUs.
 * [ZipCPU](http://zipcpu.com) - Blog about designing CPUs for FPGAs.
 * [CPUSim](http://www.cs.colby.edu/djskrien/CPUSim/) - 
+* [Wireworld](https://en.wikipedia.org/wiki/Wireworld) - Kind of game of life but which can be used to do calculations.
   
 
 ## Displays
