@@ -113,7 +113,8 @@ look at.
   Ported to Linux and running AppForth.
 * [GA144 Simulator](https://github.com/mschuldt/ga144) - and
   [tools](https://github.com/jamesbowman/ga144tools)
-* [One-Page CPUs](https://revaldinho.github.io/opc/) - Several cpu designs that all fit on a page. They build upon each other. 
+* [One-Page CPUs](https://revaldinho.github.io/opc/) - Several cpu designs that all fit on a page. They build upon each other.
+* [AnyCPU](http://anycpu.org/forum/index.php) - Forums where people discuss designs of various CPUs.
   
 
 ## Displays
