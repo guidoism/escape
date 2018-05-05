@@ -116,6 +116,7 @@ look at.
   [tools](https://github.com/jamesbowman/ga144tools)
 * [One-Page CPUs](https://revaldinho.github.io/opc/) - Several cpu designs that all fit on a page. They build upon each other.
 * [AnyCPU](http://anycpu.org/forum/index.php) - Forums where people discuss designs of various CPUs.
+* [ZipCPU](http://zipcpu.com) - Blog about designing CPUs for FPGAs.
   
 
 ## Displays
