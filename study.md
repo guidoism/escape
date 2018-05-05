@@ -69,6 +69,7 @@ look at.
   Python and Pascal.
 * [Pixie](https://github.com/pixie-lang/pixie) - Lisp written in
   rpython with jit and stuff written in pixie itself.
+* [Practical Foundations for Programming Languages](http://www.cs.cmu.edu/~rwh/pfpl/2nded.pdf) - Similar to SICP
 
 ## Graphic Design
 
