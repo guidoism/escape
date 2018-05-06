@@ -6,4 +6,4 @@ operand_size = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
                 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
                 1,2,3,4,5,2,3,4,5,16,17,18,19,15,29,10]
 commands = consume(open('foo.dvi'), operand_size)
-# Now we have an iterable of DVI commands, which are each a stream of bytes.
+# Now we have an iterable of DVI commands, which are each a iterable of bytes.
