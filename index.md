@@ -53,6 +53,10 @@ Important systems, such as cryptography and data integrity, should be formally v
 * Smalltalk
 * Hypercard
 
+### Observations
+
+* It seems to be easier to communicate with symbols than a sequence of actions. For example, it's difficult to learn that you are supposed to press option and the less mouse button on one part of the program and drag the cursor over to another part of the program to connect them. Code on a page is easier for the learning process.
+
 ### Areas of new research
 
 * Quit doing stuff over and over again on battery-constrained devices. How many cpu cycles are wasted, how many pounds of CO2 are emitted, in order to display static text on a phone? The website is probably generating html over and over again. The phone is parsing that html over and over again and converting it to glyphs positioned in the same place on the same device type over and over again. And all of this shitty typography!
