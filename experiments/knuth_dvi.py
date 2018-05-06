@@ -13,3 +13,5 @@ commands = consume(open('foo.dvi'), operand_size)
 # Now we have an iterable of DVI commands, which are each an iterable of bytes.
 
 # 2. Add the state of the h, v, w, x, y, z variables at the end of each command
+
+# 3. Remove the commands that just change the state of the h, v, w, x, y, z variables
