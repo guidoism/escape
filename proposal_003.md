@@ -32,4 +32,5 @@ One should be able to easily discover what can be done in the soft gooey center.
 and here's what I can do with it. Oh I have a page of content and here's what I can do with it. Oh
 I have a table within the content and here's what I can do with it. Oh I have table in a spreadsheet
 and here's what I can do with it. Oh did this thing and I want it repeated every day and here's how
-I can do that." 
+I can do that." I should get that similar feeling that I get when browsing Python's Standard Library,
+of "Oh wow, I have magical powers available to me." 
