@@ -7,3 +7,5 @@ operand_size = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
                 1,2,3,4,5,2,3,4,5,16,17,18,19,15,29,10]
 commands = consume(open('foo.dvi'), operand_size)
 # Now we have an iterable of DVI commands, which are each a iterable of bytes.
+
+# 2. Add the state of the h, v, w, x, y, z variables at the end of each command
