@@ -5,6 +5,10 @@ title: Escape the Local Maxima
 
 The current *state of the art* in computing with our superscalar-pipelined, speculatively-executed, multi-level cached, multi-core cpus using closed-source BIOS running operating systems built upon layers and layers of ancient buggy code written in ancient programmer-hostle languages with its model based on physical desk and its fetish-like desire to be general purpose while focusing on the the performance of arithmetic rather than human interaction is a local maximum. Indeed, many local maxima. Let us work together to break free of these and invent the future of computing.
 
+* [A Manifesto](day_two_manifesto)
+* [Study Guide](study)
+* [Tools](tools)
+
 ### Wishes and dreams
 
 * A computer should be personal but not scary to share
@@ -27,10 +31,6 @@ I will be able to continue working on the same task as I switch devices and if I
 It will be trivially easy to write simple applications. I will be able to assign many shades of trust to others' applications -- Trying something out shouldn't be scary or permanent in any way. I shouldn't have to rely on the manufacturer's reputation, all code should be open for inspection, modification, and research. Payment for the development of applications and profit should be obtained by providing services or non-executable digital assets rather than obscured code.
 
 Important systems, such as cryptography and data integrity, should be formally verified.
-
-* [A Manifesto](day_two_manifesto)
-* [Study Guide](study)
-* [Tools](tools)
 
 ### Existing research and ideas
 
@@ -66,4 +66,8 @@ Important systems, such as cryptography and data integrity, should be formally v
 * Do we really need a plethora of cryptographic algorithms *a la* OpenSSL or can we get away with one each of asymmetric encryption, symmetric encryption, and cryptographic hashing well-written and formally verified?
 * Data should be specified using relational algebra for the whole system.
 
+### Proposals
 
+* [Proposal 1](proposal_001)
+* [Proposal 2](proposal_002)
+* [Proposal 3](proposal_003)
