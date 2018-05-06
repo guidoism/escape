@@ -27,3 +27,9 @@ and will be part of the stack of known good state that I can escape to.
 We will take advantage of the brain's natural ability to remember the location of stuff by using an
 infinitely zoomable two-dimensional space to keep our working state. We take inspiration from Project
 Oberon's UI and John Siracusa's [Spatial Finder](https://arstechnica.com/gadgets/2003/04/finder/3/).
+
+One should be able to easily discover what can be done in the soft gooey center. "Oh I have a URL
+and here's what I can do with it. Oh I have a page of content and here's what I can do with it. Oh
+I have a table within the content and here's what I can do with it. Oh I have table in a spreadsheet
+and here's what I can do with it. Oh did this thing and I want it repeated every day and here's how
+I can do that." 
