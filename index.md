@@ -56,6 +56,7 @@ Important systems, such as cryptography and data integrity, should be formally v
 ### Observations
 
 * It seems to be easier to communicate with symbols than a sequence of actions. For example, it's difficult to learn that you are supposed to press option and the less mouse button on one part of the program and drag the cursor over to another part of the program to connect them. Code on a page is easier for the learning process.
+* Laptops have stunted the experimentation with keyboard layouts and therefore reduced the comfort of using non-ASCII characters in programming languages. 
 
 ### Areas of new research
 
