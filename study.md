@@ -91,6 +91,7 @@ look at.
 * [Scholarly Markdown on HN](https://news.ycombinator.com/item?id=9204352) - Also https://www.peterkrautzberger.org/0172/
   and http://aig.cs.man.ac.uk/people/srp/
 * [ΕΥΚΛΕΙΔΗΣ](http://www.eukleides.org) - A Geometry Drawing Language
+* [Visual History of EVE](http://futureofcoding.org/essays/eve/)
 
 ## Existing UI Toolkits
 
