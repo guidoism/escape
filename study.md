@@ -23,6 +23,7 @@ look at.
 * [Min-Move 2017](http://insight-archlab.github.io/minmove17.html) -
   Workshoping focusing on the minimization of data movement.
 * [Computational Thinking Papers](http://people.cs.vt.edu/~kafura/CS6604/Papers.html)
+* [Programming, Made Complicated](https://programmingmadecomplicated.wordpress.com)
 
 ## Math
 
