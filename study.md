@@ -135,4 +135,4 @@ look at.
 * [Interim OS](http://interim.mntmn.com) and [Paper](http://dump.mntmn.com/interim-paper/) - Lisp OS written for the
   Raspberry Pi in a super bare metal fashion. Requires a custom
   keyboard since it doesn't have USB drivers! 
-
+* [SomethingNew](https://github.com/d-cook/SomethingNew) - A group of random people who want to change computing
