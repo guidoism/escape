@@ -1,3 +1,4 @@
+
 ## The Day Two Computer Manifesto
 
 (Or: Let’s stop pretending it’s still day one)
@@ -12,7 +13,9 @@ In the spirit of Project Oberon, design and build a “phone”-like computer th
 * The executable size for simple programs (like text messaging) should be measured in kilobytes, not megabytes, and certainly never hundreds of megabytes.
 * Background computations should never affect scrolling or user interaction. If they do then it’s a problem with the design of the computer.
 * The size of a nicely typeset document shouldn’t be much more than a small multiple of the number of characters in bytes, excluding images.
-* ROM is cheap and should be used more often, especially with density increases causing the need for dark silicon.
+* ROM is cheap and should be used more often, especially with density
+  increases causing the need for dark silicon.
+* 0.1 + 0.2 should be always equal to 0.3
 * If you dispense with the need to run legacy software the system becomes simpler, easier to write, less buggy, and more performant. A phone shouldn’t need to run software designed for a mini-computer.
 * A whole (usable) system can be written from scratch by a few people with a good programming language. There is no need for legacy libraries and decades of cruft.
 * Normal people should be able to write applications for the computer and they should be able to do it without hours, days, (or years!) of preparation. (See HyperCard, REBOL, and RED)
