@@ -22,6 +22,8 @@ look at.
   langauges, and operating systems.
 * [Min-Move 2017](http://insight-archlab.github.io/minmove17.html) -
   Workshoping focusing on the minimization of data movement.
+* [Computational Thinking Papers](http://people.cs.vt.edu/~kafura/CS6604/Papers.html)
+* [Programming, Made Complicated](https://programmingmadecomplicated.wordpress.com)
 
 ## Math
 
@@ -69,6 +71,7 @@ look at.
   Python and Pascal.
 * [Pixie](https://github.com/pixie-lang/pixie) - Lisp written in
   rpython with jit and stuff written in pixie itself.
+* [Practical Foundations for Programming Languages](http://www.cs.cmu.edu/~rwh/pfpl/2nded.pdf) - Similar to SICP. The [author's blog](https://existentialtype.wordpress.com) and [discussion about the book](http://blog.ezyang.com/2012/08/practical-foundations-for-programming-languages/)
 
 ## Graphic Design
 
@@ -87,6 +90,8 @@ look at.
   [Lots of examples](http://tex.loria.fr/prod-graph/zoonekynd/metapost/metapost.html)
 * [Scholarly Markdown on HN](https://news.ycombinator.com/item?id=9204352) - Also https://www.peterkrautzberger.org/0172/
   and http://aig.cs.man.ac.uk/people/srp/
+* [ΕΥΚΛΕΙΔΗΣ](http://www.eukleides.org) - A Geometry Drawing Language
+* [Visual History of EVE](http://futureofcoding.org/essays/eve/)
 
 ## Existing UI Toolkits
 
@@ -113,15 +118,25 @@ look at.
   Ported to Linux and running AppForth.
 * [GA144 Simulator](https://github.com/mschuldt/ga144) - and
   [tools](https://github.com/jamesbowman/ga144tools)
+<<<<<<< HEAD
 * [SECD: A high level description](https://dmytrish.wordpress.com/2013/08/09/secd-part-i/) - Nice and simple description
+=======
+* [One-Page CPUs](https://revaldinho.github.io/opc/) - Several cpu designs that all fit on a page. They build upon each other.
+* [AnyCPU](http://anycpu.org/forum/index.php) - Forums where people discuss designs of various CPUs.
+* [ZipCPU](http://zipcpu.com) - Blog about designing CPUs for FPGAs.
+* [CPUSim](http://www.cs.colby.edu/djskrien/CPUSim/) - 
+* [Wireworld](https://en.wikipedia.org/wiki/Wireworld) - Kind of game of life but which can be used to do calculations.
+  
+>>>>>>> 2a0ef1139d57d0697a0441ef934c6d2ccf67bdba
 
 ## Displays
 
 * [Review of Display Technologies Focusing on Power Consumption](http://www.mdpi.com/2071-1050/7/8/10854/htm)
+* [ShaderToy](https://www.shadertoy.com/new) - Browser-based OpenGL interpreter
 
 ## Similar Projects
 
 * [Interim OS](http://interim.mntmn.com) and [Paper](http://dump.mntmn.com/interim-paper/) - Lisp OS written for the
   Raspberry Pi in a super bare metal fashion. Requires a custom
   keyboard since it doesn't have USB drivers! 
-
+* [SomethingNew](https://github.com/d-cook/SomethingNew) - A group of random people who want to change computing

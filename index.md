@@ -5,6 +5,10 @@ title: Escape the Local Maxima
 
 The current *state of the art* in computing with our superscalar-pipelined, speculatively-executed, multi-level cached, multi-core cpus using closed-source BIOS running operating systems built upon layers and layers of ancient buggy code written in ancient programmer-hostle languages with its model based on physical desk and its fetish-like desire to be general purpose while focusing on the the performance of arithmetic rather than human interaction is a local maximum. Indeed, many local maxima. Let us work together to break free of these and invent the future of computing.
 
+* [A Manifesto](day_two_manifesto)
+* [Study Guide](study)
+* [Tools](tools)
+
 ### Wishes and dreams
 
 * A computer should be personal but not scary to share
@@ -31,10 +35,6 @@ It will be trivially easy to write simple applications. I will be able to assign
 
 Important systems, such as cryptography and data integrity, should be formally verified.
 
-[A Manifesto](day_two_manifesto)
-
-[An outline of features and applications](outline)
-
 ### Existing research and ideas
 
 * [*Project Oberon*](http://www.projectoberon.com) -- Wirth's book about a CPU, Compiler, and OS written from scratch. Demonstrates that it's entirely possible to design an entire system from the ground up without relying on legacy code.
@@ -42,7 +42,7 @@ Important systems, such as cryptography and data integrity, should be formally v
 * [*Stack Computers: the new wave*](https://users.ece.cmu.edu/~koopman/stack_computers/index.html) -- Koopman's book about an alternative way to design cpus -- Lots about stacks and Forth.
 *
   [*The Architecture of Symbolic Computers*](https://www.amazon.com/Architecture-Computers-Mcgraw-Hill-Supercomputing-Processing/dp/0070355967/) -- Kogge's book about computers that don't focus so much on raw arithmatic throughput -- Lots of information on designing a LISP or Prolog cpu.
-* [*Genera Concepts*](http://bitsavers.trailing-edge.com/pdf/symbolics/software/genera_8/Genera_Concepts.pdf) -- Good intro to list computers
+* [*Genera Concepts*](http://bitsavers.trailing-edge.com/pdf/symbolics/software/genera_8/Genera_Concepts.pdf) -- Good intro to Lisp computers
 * [*Notation as a Tool of Thought*](http://www.eecg.toronto.edu/~jzhu/csc326/readings/iverson.pdf) -- Iverson's 1979 Turing Award lecture -- An example of succinctness and operating on entire data structures rather than manually looping. Also an example of how we might break free of the chains of ASCII.
 * [*A Programming Language*](http://www.softwarepreservation.org/projects/apl/Books/APROGRAMMING%20LANGUAGE) -- Iverson's 1962 book about APL.
 * [*Reconfigurable Computing*](https://www.amazon.com/Reconfigurable-Computing-Practice-FPGA-Based-Computation/dp/0123705223) -- Book about changing the layout of your cpu on-the-fly rather than just the software. 
@@ -56,6 +56,11 @@ Important systems, such as cryptography and data integrity, should be formally v
 * Smalltalk
 * Hypercard
 
+### Observations
+
+* It seems to be easier to communicate with symbols than a sequence of actions. For example, it's difficult to learn that you are supposed to press option and the less mouse button on one part of the program and drag the cursor over to another part of the program to connect them. Code on a page is easier for the learning process.
+* Laptops have stunted the experimentation with keyboard layouts and therefore reduced the comfort of using non-ASCII characters in programming languages. 
+
 ### Areas of new research
 
 * Quit doing stuff over and over again on battery-constrained devices. How many cpu cycles are wasted, how many pounds of CO2 are emitted, in order to display static text on a phone? The website is probably generating html over and over again. The phone is parsing that html over and over again and converting it to glyphs positioned in the same place on the same device type over and over again. And all of this shitty typography!
@@ -64,4 +69,8 @@ Important systems, such as cryptography and data integrity, should be formally v
 * Do we really need a plethora of cryptographic algorithms *a la* OpenSSL or can we get away with one each of asymmetric encryption, symmetric encryption, and cryptographic hashing well-written and formally verified?
 * Data should be specified using relational algebra for the whole system.
 
+### Proposals
 
+* [Proposal 1](proposal_001)
+* [Proposal 2](proposal_002)
+* [Proposal 3](proposal_003)
