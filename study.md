@@ -118,16 +118,13 @@ look at.
   Ported to Linux and running AppForth.
 * [GA144 Simulator](https://github.com/mschuldt/ga144) - and
   [tools](https://github.com/jamesbowman/ga144tools)
-<<<<<<< HEAD
 * [SECD: A high level description](https://dmytrish.wordpress.com/2013/08/09/secd-part-i/) - Nice and simple description
-=======
 * [One-Page CPUs](https://revaldinho.github.io/opc/) - Several cpu designs that all fit on a page. They build upon each other.
 * [AnyCPU](http://anycpu.org/forum/index.php) - Forums where people discuss designs of various CPUs.
 * [ZipCPU](http://zipcpu.com) - Blog about designing CPUs for FPGAs.
 * [CPUSim](http://www.cs.colby.edu/djskrien/CPUSim/) - 
 * [Wireworld](https://en.wikipedia.org/wiki/Wireworld) - Kind of game of life but which can be used to do calculations.
-  
->>>>>>> 2a0ef1139d57d0697a0441ef934c6d2ccf67bdba
+* [Reverse engineering the ARM1](http://www.righto.com/2015/12/reverse-engineering-arm1-ancestor-of.html) - Very good description of the [amazing animation](http://visual6502.org/sim/varm/armgl.html) of a working ARM1 CPU. Worth studying.
 
 ## Displays
 
