@@ -124,7 +124,7 @@ look at.
 * [ZipCPU](http://zipcpu.com) - Blog about designing CPUs for FPGAs.
 * [CPUSim](http://www.cs.colby.edu/djskrien/CPUSim/) - 
 * [Wireworld](https://en.wikipedia.org/wiki/Wireworld) - Kind of game of life but which can be used to do calculations.
-* [Reverse engineering the ARM1](http://www.righto.com/2015/12/reverse-engineering-arm1-ancestor-of.html) - Very good description of the [amazing animation](http://visual6502.org/sim/varm/armgl.html) of a working ARM1 CPU. Worth studying.
+* [Reverse engineering the ARM1](http://www.righto.com/2015/12/reverse-engineering-arm1-ancestor-of.html) - Very good description of the [amazing animation](http://visual6502.org/sim/varm/armgl.html) of a working ARM1 CPU. Worth studying. Also, the simulation uses the [ChipSim Javascript Simulator](http://visual6502.org/wiki/index.php?title=The_ChipSim_Simulator) which should be relatively easy to use to visualize our own designs and should be especially interesting during our education.
 
 ## Displays
 
