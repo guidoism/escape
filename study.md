@@ -72,6 +72,7 @@ look at.
 * [Pixie](https://github.com/pixie-lang/pixie) - Lisp written in
   rpython with jit and stuff written in pixie itself.
 * [Practical Foundations for Programming Languages](http://www.cs.cmu.edu/~rwh/pfpl/2nded.pdf) - Similar to SICP. The [author's blog](https://existentialtype.wordpress.com) and [discussion about the book](http://blog.ezyang.com/2012/08/practical-foundations-for-programming-languages/)
+* [The memory models that underlie programming languages](http://canonical.org/~kragen/memory-models/) - Describes different ways of thinking about memory and the benefits of each
 
 ## Graphic Design
 
