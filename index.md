@@ -47,6 +47,7 @@ Important systems, such as cryptography and data integrity, should be formally v
 * [*A Programming Language*](http://www.softwarepreservation.org/projects/apl/Books/APROGRAMMING%20LANGUAGE) -- Iverson's 1962 book about APL.
 * [*Reconfigurable Computing*](https://www.amazon.com/Reconfigurable-Computing-Practice-FPGA-Based-Computation/dp/0123705223) -- Book about changing the layout of your cpu on-the-fly rather than just the software. 
 * [*Category Theory for Programmers*](https://github.com/hmemcpy/milewski-ctfp-pdf) -- Book about programming in a more formal way -- Haskell used for examples.
+* [*Microprocessor Architectures: From VLIW to TTA*](https://www.wiley.com/en-us/Microprocessor+Architectures%3A+From+VLIW+to+TTA-p-9780471971573) -- Henk Corporaal's book about transport triggered architectures, where the only cpu instruction is move and you specify which function unit data moves to next instead of the higher-level instruction. Somewhat in between FPGA and standard CPUs.
 
 ### Programming Language Inspiration
 
