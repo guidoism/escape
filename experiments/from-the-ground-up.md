@@ -31,3 +31,8 @@ about a thousand transistors for the matrix scanner.
 The matrix scanner is the only thing for the keyboard that really could be fixed. The interpretation
 of the keys should be dynamic, therefore we should allow the user to define a state machine
 to translate key sequences into characters or commands. And then these can be put into a queue.
+
+I can prototype this on an FPGA and have it show the character code on the two 7-segment displays.
+It's apparently easy to add VGA IP to the FPGA so the next step would be to output pre-defined
+fixed characters to the screen, and then change it to move the cursor for each letter and then scroll
+and then allow to movement of the cursor with the arrow keys.
