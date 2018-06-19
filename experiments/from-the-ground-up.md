@@ -30,4 +30,4 @@ about a thousand transistors for the matrix scanner.
 
 The matrix scanner is the only thing for the keyboard that really could be fixed. The interpretation
 of the keys should be dynamic, therefore we should allow the user to define a state machine
-to translate key sequences into characters or commands.
+to translate key sequences into characters or commands. And then these can be put into a queue.
