@@ -23,3 +23,6 @@ There's also the question of cycling around and around at full speed forever. I 
 use electricity and generate heat, so how slow do we want this? According to
 [the answers to my question on geekhack](https://geekhack.org/index.php?topic=96205.msg2625241#msg2625241)
 once a millisecond for the whole matrix should be enough.
+
+Assuming 20 transistors per flip-flop and 12 columns and 4 columns then we will need
+about a thousand transistors for the matrix scanner.
