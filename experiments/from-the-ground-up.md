@@ -36,6 +36,12 @@ It's apparently easy to add VGA IP to the FPGA so the next step would be to outp
 fixed characters to the screen, and then change it to move the cursor for each letter and then scroll
 and then allow to movement of the cursor with the arrow keys.
 
+Another option is to use the schematic from inside the TI 4017 Decade Counter
+
+https://i.imgur.com/DddhpeB.png
+
+I believe the Flip Flops in the schematic are [Gated SR Latches](https://en.wikipedia.org/wiki/Flip-flop_(electronics)#Gated_SR_latch), but I'm not quite sure.
+
 ## Output
 
 I don't want a screen that scans acros the screen and updates one pixel at a time. I instead want
