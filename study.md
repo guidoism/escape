@@ -145,4 +145,6 @@ look at.
 
 ## shrug
 * robin milner relational semantics
+https://www.scratchapixel.com
+
 
