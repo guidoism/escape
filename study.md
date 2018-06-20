@@ -140,3 +140,4 @@ look at.
   keyboard since it doesn't have USB drivers! 
 * [SomethingNew](https://github.com/d-cook/SomethingNew) - A group of random people who want to change computing
 * [Stefan Lesser's List of Problems](https://gist.github.com/stefanlesser/44bea0bd888f82b4ad79fbacea1e21d4)
+* [Future of Programming Slack](https://futureprogramming.slack.com/)
