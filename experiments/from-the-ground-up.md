@@ -5,9 +5,8 @@ title: Building a computer from the ground up
 
 ## Keyboard Matrix
 
-http://blog.komar.be/how-to-make-a-keyboard-the-matrix/
-
-https://deskthority.net/workshop-f7/brownfox-step-by-step-t6050.html
+[Hand-wiring a keyboard](https://deskthority.net/workshop-f7/brownfox-step-by-step-t6050.html) and
+[Writing the matrix scanner](http://blog.komar.be/how-to-make-a-keyboard-the-matrix/)
 
 Instead of using a microcontroller like existing keyboards I want to cycle through the matrix
 manually. I can do this by making a self-starting straight ring counter. A straight ring counter
