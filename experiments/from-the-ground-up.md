@@ -35,3 +35,9 @@ I can prototype this on an FPGA and have it show the character code on the two 7
 It's apparently easy to add VGA IP to the FPGA so the next step would be to output pre-defined
 fixed characters to the screen, and then change it to move the cursor for each letter and then scroll
 and then allow to movement of the cursor with the arrow keys.
+
+## Output
+
+I don't want a screen that scans acros the screen and updates one pixel at a time. I instead want
+something more like cellular automata where you poke one at the bottom and they all move up, pushing
+each other, and agreeing on a clock cycle to make their update show.
