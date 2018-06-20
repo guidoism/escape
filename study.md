@@ -24,6 +24,7 @@ look at.
   Workshoping focusing on the minimization of data movement.
 * [Computational Thinking Papers](http://people.cs.vt.edu/~kafura/CS6604/Papers.html)
 * [Programming, Made Complicated](https://programmingmadecomplicated.wordpress.com)
+* [ACM Microarchitecture Conference](https://dl.acm.org/event.cfm?id=RE203)
 
 ## Math
 
