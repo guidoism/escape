@@ -42,8 +42,11 @@ https://i.imgur.com/DddhpeB.png
 
 I believe the Flip Flops in the schematic are [Gated SR Latches](https://en.wikipedia.org/wiki/Flip-flop_(electronics)#Gated_SR_latch), but I'm not quite sure.
 
+We can describe and test this hypothesis by creating a gate-level model of the circuit in Verilog
+using nands, nors, etc.
+
 ## Output
 
-I don't want a screen that scans acros the screen and updates one pixel at a time. I instead want
+I don't want a screen that scans across the screen and updates one pixel at a time. I instead want
 something more like cellular automata where you poke one at the bottom and they all move up, pushing
 each other, and agreeing on a clock cycle to make their update show.
