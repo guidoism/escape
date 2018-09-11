@@ -76,6 +76,7 @@ look at.
 * [The memory models that underlie programming languages](http://canonical.org/~kragen/memory-models/) - Describes different ways of thinking about memory and the benefits of each
 * [Constraint Logic Propagation Conflict Spreadsheets](https://www.youtube.com/watch?v=voG5-15aDu4) - Video, need to watch
 * [To Dissect a Mockingbird](http://dkeenan.com/Lambda/index.htm) - A Graphical Notation for the Lambda Calculus with Animated Reduction
+* [Notes on notation and thought](https://github.com/hypotext/notation/blob/master/README.md)
 
 ## Graphic Design
 
