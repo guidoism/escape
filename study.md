@@ -147,7 +147,7 @@ look at.
 
 ## shrug
 * robin milner relational semantics
-https://www.scratchapixel.com
-https://john.cs.olemiss.edu/~hcc/csci658/notes/Free_Prog_Lang_Textbooks.html
+* https://www.scratchapixel.com
+* https://john.cs.olemiss.edu/~hcc/csci658/notes/Free_Prog_Lang_Textbooks.html
 
 
