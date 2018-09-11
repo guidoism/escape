@@ -75,6 +75,7 @@ look at.
 * [Practical Foundations for Programming Languages](http://www.cs.cmu.edu/~rwh/pfpl/2nded.pdf) - Similar to SICP. The [author's blog](https://existentialtype.wordpress.com) and [discussion about the book](http://blog.ezyang.com/2012/08/practical-foundations-for-programming-languages/)
 * [The memory models that underlie programming languages](http://canonical.org/~kragen/memory-models/) - Describes different ways of thinking about memory and the benefits of each
 * [Constraint Logic Propagation Conflict Spreadsheets](https://www.youtube.com/watch?v=voG5-15aDu4) - Video, need to watch
+* [To Dissect a Mockingbird](http://dkeenan.com/Lambda/index.htm) - A Graphical Notation for the Lambda Calculus with Animated Reduction
 
 ## Graphic Design
 
