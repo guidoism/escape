@@ -79,6 +79,7 @@ look at.
 * [To Dissect a Mockingbird](http://dkeenan.com/Lambda/index.htm) - A Graphical Notation for the Lambda Calculus with Animated Reduction
 * [Notes on notation and thought](https://github.com/hypotext/notation/blob/master/README.md)
 * [The Theory of Concatenative Combinators](http://tunes.org/~iepos/joy.html) - The eight combinators swap, dup, zap, cat, cons, unit, i, and dip can be used to construct all others. Good article describing theory from Joy
+* [Linear Logic and Permutation Stacks--The Forth Shall Be First](http://home.pipeline.com/~hbaker1/ForthStack.html) - THE "FORTRAN FALLACY" and "pseudo-mathematical notation and a von Neumann-style random access memory"
 
 ## Graphic Design
 
