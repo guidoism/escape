@@ -10,6 +10,10 @@ I want to be able to experiment with different computer architectures. Any chang
 
 - Hill and Peterson's *Digital Systems: Hardware Organiztion and Design* is a great way to understand how to formally description the architecture of computers with APL, specifically AHPL.
 
+- I can learn APL by implmenting it in terms of other languages. Python is good because I know it best and itertools is awesome and Javascript is good because I can use it on a no-install simulator. Javascript's typed arrays are of particular interest to me for learning how to represent the arrays as a stream of bits.
+
+- Eli Bendersky's *[Memory layout of multi-dimensional arrays](https://eli.thegreenplace.net/2015/memory-layout-of-multi-dimensional-arrays/)* is a good start for my lower level implementations.
+
 
 
 
