@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Plan of Study
+published: true
 ---
 
 I'm am ignorant of a lot of the issues. This is my plan of study.
@@ -24,6 +25,7 @@ look at.
   Workshoping focusing on the minimization of data movement.
 * [Computational Thinking Papers](http://people.cs.vt.edu/~kafura/CS6604/Papers.html)
 * [Programming, Made Complicated](https://programmingmadecomplicated.wordpress.com)
+* [ACM Microarchitecture Conference](https://dl.acm.org/event.cfm?id=RE203)
 
 ## Math
 
@@ -73,6 +75,11 @@ look at.
   rpython with jit and stuff written in pixie itself.
 * [Practical Foundations for Programming Languages](http://www.cs.cmu.edu/~rwh/pfpl/2nded.pdf) - Similar to SICP. The [author's blog](https://existentialtype.wordpress.com) and [discussion about the book](http://blog.ezyang.com/2012/08/practical-foundations-for-programming-languages/)
 * [The memory models that underlie programming languages](http://canonical.org/~kragen/memory-models/) - Describes different ways of thinking about memory and the benefits of each
+* [Constraint Logic Propagation Conflict Spreadsheets](https://www.youtube.com/watch?v=voG5-15aDu4) - Video, need to watch
+* [To Dissect a Mockingbird](http://dkeenan.com/Lambda/index.htm) - A Graphical Notation for the Lambda Calculus with Animated Reduction
+* [Notes on notation and thought](https://github.com/hypotext/notation/blob/master/README.md)
+* [The Theory of Concatenative Combinators](http://tunes.org/~iepos/joy.html) - The eight combinators swap, dup, zap, cat, cons, unit, i, and dip can be used to construct all others. Good article describing theory from Joy
+* [Linear Logic and Permutation Stacks--The Forth Shall Be First](http://home.pipeline.com/~hbaker1/ForthStack.html) - THE "FORTRAN FALLACY" and "pseudo-mathematical notation and a von Neumann-style random access memory"
 
 ## Graphic Design
 
@@ -123,10 +130,12 @@ look at.
 * [One-Page CPUs](https://revaldinho.github.io/opc/) - Several cpu designs that all fit on a page. They build upon each other.
 * [AnyCPU](http://anycpu.org/forum/index.php) - Forums where people discuss designs of various CPUs.
 * [ZipCPU](http://zipcpu.com) - Blog about designing CPUs for FPGAs.
-* [CPUSim](http://www.cs.colby.edu/djskrien/CPUSim/) - 
+* [CPUSim](http://www.cs.colby.edu/djskrien/CPUSim/) - Microcode level simulator written in Java for classroom instruction.
 * [Wireworld](https://en.wikipedia.org/wiki/Wireworld) - Kind of game of life but which can be used to do calculations.
 * [Reverse engineering the ARM1](http://www.righto.com/2015/12/reverse-engineering-arm1-ancestor-of.html) - Very good description of the [amazing animation](http://visual6502.org/sim/varm/armgl.html) of a working ARM1 CPU. Worth studying. Also, the simulation uses the [ChipSim Javascript Simulator](http://visual6502.org/wiki/index.php?title=The_ChipSim_Simulator) which should be relatively easy to use to visualize our own designs and should be especially interesting during our education.
-* [Conway's VLSI Archive](http://ai.eecs.umich.edu/people/conway/VLSI/VLSIarchive.mainlinks.html) - Lot's of documents from the VSLI revolution of the late 70's
+* [Conway's VLSI Archive](http://ai.eecs.umich.edu/people/conway/VLSI/VLSIarchive.mainlinks.html) - Lots of documents from the VSLI revolution of the late 70's
+* [CMOS VLSI Design](https://www.amazon.com/CMOS-VLSI-Design-Circuits-Perspective/dp/0321547748) - Excellent book for the software engineer trying to understand the way computers work at the transistor level.
+* [Tiny Lisp Computer](http://www.technoblogy.com/show?1INT=) - Runs on an AVR cpu with a tiny OLED screen
 
 ## Displays
 
@@ -139,3 +148,11 @@ look at.
   Raspberry Pi in a super bare metal fashion. Requires a custom
   keyboard since it doesn't have USB drivers! 
 * [SomethingNew](https://github.com/d-cook/SomethingNew) - A group of random people who want to change computing
+* [Stefan Lesser's List of Problems](https://gist.github.com/stefanlesser/44bea0bd888f82b4ad79fbacea1e21d4)
+* [Future of Programming Slack](https://futureprogramming.slack.com/)
+
+## shrug
+* robin milner relational semantics
+* https://www.scratchapixel.com
+* https://john.cs.olemiss.edu/~hcc/csci658/notes/Free_Prog_Lang_Textbooks.html
+* http://worrydream.com/dbx/
