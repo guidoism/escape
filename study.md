@@ -160,3 +160,4 @@ look at.
 * http://worrydream.com/dbx/
 - https://ivorylang.org/ivory-introduction.html Ivory is an embedded domain-specific language for safer systems programming.
 - [insect](https://github.com/sharkdp/insect) - High precision scientific calculator with support for physical units
+- [Chuck Moore’s Creations](https://blogs.msdn.microsoft.com/ashleyf/2013/09/21/chuck-moores-creations/)
