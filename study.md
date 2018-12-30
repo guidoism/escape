@@ -159,5 +159,6 @@ look at.
 * https://john.cs.olemiss.edu/~hcc/csci658/notes/Free_Prog_Lang_Textbooks.html
 * http://worrydream.com/dbx/
 - https://ivorylang.org/ivory-introduction.html Ivory is an embedded domain-specific language for safer systems programming.
-- [insect](https://github.com/sharkdp/insect) - High precision scientific calculator with support for physical units
+- [insect lang](https://github.com/sharkdp/insect) - High precision scientific calculator with support for physical units
 - [Chuck Moore’s Creations](https://blogs.msdn.microsoft.com/ashleyf/2013/09/21/chuck-moores-creations/) and a [talk by chuck more](https://www.infoq.com/presentations/power-144-chip)
+- [terra lang](http://terralang.org/index.html) - Terra is a low-level system programming language that is embedded in and meta-programmed by the Lua programming language
