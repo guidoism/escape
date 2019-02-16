@@ -77,3 +77,4 @@ Important systems, such as cryptography and data integrity, should be formally v
 * [Proposal 3](proposal_003)
 * [Proposal 4](proposal_004)
 * [Proposal 5](proposal_005)
+* [Proposal 6](proposal_006)
