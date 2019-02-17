@@ -37,16 +37,16 @@ Important systems, such as cryptography and data integrity, should be formally v
 
 ### Existing research and ideas
 
-* [*Project Oberon*](http://www.projectoberon.com) -- Wirth's book about a **cpu**, Compiler, and OS written from scratch. Demonstrates that it's entirely possible to design an entire system from the ground up without relying on legacy code.
+* [*Project Oberon*](http://www.projectoberon.com) -- Wirth's book about a **cpu**, compiler, and OS written from scratch. Demonstrates that it's entirely possible to design an entire system from the ground up without relying on legacy code.
 * [*Seven Laws of Sane Personal Computing*](http://www.loper-os.org/?p=284) -- From Loper OS
 * [*Stack Computers: the new wave*](https://users.ece.cmu.edu/~koopman/stack_computers/index.html) -- Koopman's book about an alternative way to design cpus -- Lots about stacks and Forth.
-* [*The Architecture of Symbolic Computers*](https://www.amazon.com/Architecture-Computers-Mcgraw-Hill-Supercomputing-Processing/dp/0070355967/) -- Kogge's book about computers that don't focus so much on raw arithmatic throughput -- Lots of information on designing a LISP or Prolog **cpu**.
+* [*The Architecture of Symbolic Computers*](https://www.amazon.com/Architecture-Computers-Mcgraw-Hill-Supercomputing-Processing/dp/0070355967/) -- Kogge's book about computers that don't focus so much on raw arithmatic throughput -- Lots of information on designing a **lisp** or Prolog **cpu**.
 * [*Genera Concepts*](http://bitsavers.trailing-edge.com/pdf/symbolics/software/genera_8/Genera_Concepts.pdf) -- Good intro to Lisp computers
-* [*Notation as a Tool of Thought*](http://www.eecg.toronto.edu/~jzhu/csc326/readings/iverson.pdf) -- Iverson's 1979 Turing Award lecture -- An example of succinctness and operating on entire data structures rather than manually looping. Also an example of how we might break free of the chains of ASCII.
-* [*A Programming Language*](http://www.softwarepreservation.org/projects/apl/Books/APROGRAMMING%20LANGUAGE) -- Iverson's 1962 book about APL.
+* [*Notation as a Tool of Thought*](http://www.eecg.toronto.edu/~jzhu/csc326/readings/iverson.pdf) -- Iverson's 1979 Turing Award lecture -- An example of succinctness and operating on entire data structures rather than manually looping. Also an example of how we might break free of the chains of **ascii**.
+* [*A Programming Language*](http://www.softwarepreservation.org/projects/apl/Books/APROGRAMMING%20LANGUAGE) -- Iverson's 1962 book about **apl**.
 * [*Reconfigurable Computing*](https://www.amazon.com/Reconfigurable-Computing-Practice-FPGA-Based-Computation/dp/0123705223) -- Book about changing the layout of your **cpu** on-the-fly rather than just the software. 
 * [*Category Theory for Programmers*](https://github.com/hmemcpy/milewski-ctfp-pdf) -- Book about programming in a more formal way -- Haskell used for examples.
-* [*Microprocessor Architectures: From VLIW to TTA*](https://www.wiley.com/en-us/Microprocessor+Architectures%3A+From+VLIW+to+TTA-p-9780471971573) -- Henk Corporaal's book about transport triggered architectures, where the only cpu instruction is move and you specify which function unit data moves to next instead of the higher-level instruction. Somewhat in between **fpga** and standard **cpu**s.
+* [*Microprocessor Architectures: From VLIW to TTA*](https://www.wiley.com/en-us/Microprocessor+Architectures%3A+From+VLIW+to+TTA-p-9780471971573) -- Henk Corporaal's book about transport triggered architectures, where the only **cpu** instruction is move and you specify which function unit data moves to next instead of the higher-level instruction. Somewhat in between **fpga** and standard **cpu**s.
 
 ### Programming Language Inspiration
 
