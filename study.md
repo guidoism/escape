@@ -137,6 +137,10 @@ look at.
 * [CMOS VLSI Design](https://www.amazon.com/CMOS-VLSI-Design-Circuits-Perspective/dp/0321547748) - Excellent book for the software engineer trying to understand the way computers work at the transistor level.
 * [Tiny Lisp Computer](http://www.technoblogy.com/show?1INT=) - Runs on an AVR cpu with a tiny OLED screen
 
+### Assembly Language
+
+- [Strata](https://stefanheule.com/s/projects/strata/) - Automatically Learning the x86-64 Instruction Set 
+
 ## Displays
 
 * [Review of Display Technologies Focusing on Power Consumption](http://www.mdpi.com/2071-1050/7/8/10854/htm)
