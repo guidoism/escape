@@ -82,6 +82,7 @@ look at.
 * [Linear Logic and Permutation Stacks--The Forth Shall Be First](http://home.pipeline.com/~hbaker1/ForthStack.html) - THE "FORTRAN FALLACY" and "pseudo-mathematical notation and a von Neumann-style random access memory"
 * [K/Kona Resources](http://www.hakank.org/k/)
 * [Notation and Design](https://rjlipton.wordpress.com/2010/11/30/notation-and-thinking/)
+* [John's Lambda Calculus and Combinatory Logic Playground](https://tromp.github.io/cl/cl.html)
 
 ## Graphic Design
 
