@@ -169,3 +169,4 @@ look at.
 - [insect lang](https://github.com/sharkdp/insect) - High precision scientific calculator with support for physical units
 - [Chuck Moore’s Creations](https://blogs.msdn.microsoft.com/ashleyf/2013/09/21/chuck-moores-creations/) and a [talk by chuck more](https://www.infoq.com/presentations/power-144-chip)
 - [terra lang](http://terralang.org/index.html) - Terra is a low-level system programming language that is embedded in and meta-programmed by the Lua programming language
+- [Stepanov's Notes on Programming](http://stepanovpapers.com/notes.pdf) and a bunch of other stuff at [his website](http://stepanovpapers.com)
