@@ -24,7 +24,7 @@ I will design a computer from the ground up.
 - Favor snappiness over computational throughput
 
 ## Existing Solutions
-- Wirth’s [Project Oberon](http://www.projectoberon.com) is the canonical example of a project like this, particularly the 2013 Edition which includes a custom CPU.
+- Wirth’s [Project Oberon](http://www.projectoberon.com) is the canonical example of a project like this, particularly the 2013 Edition which includes a custom **CPU**.
 - Kay and Ingalls’ [**STEPS**](http://www.vpri.org/pdf/tr2012001_steps.pdf) project is the model of revolutionary change that I want to emulate. I particularly like OMeta and their **TCP** from **ASCII** art. 
 
 ## Exploration Projects
