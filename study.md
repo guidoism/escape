@@ -159,6 +159,7 @@ look at.
 * [Future of Programming Slack](https://futureprogramming.slack.com/)
 * [Ideal OS](https://joshondesign.com/2017/08/18/idealos_essay) - Not a project but a very good essay on what an OS
   should be.
+* [Bootstrappable](http://bootstrappable.org) - Build a full gcc/linux system from a tiny amount of bootstraping code that can be entered in with a hex editor. They maintain a [wiki](https://bootstrapping.miraheze.org/wiki/Main_Page) of their ideas and progress. 
 
 ## shrug
 * robin milner relational semantics
