@@ -80,6 +80,9 @@ look at.
 * [Notes on notation and thought](https://github.com/hypotext/notation/blob/master/README.md)
 * [The Theory of Concatenative Combinators](http://tunes.org/~iepos/joy.html) - The eight combinators swap, dup, zap, cat, cons, unit, i, and dip can be used to construct all others. Good article describing theory from Joy
 * [Linear Logic and Permutation Stacks--The Forth Shall Be First](http://home.pipeline.com/~hbaker1/ForthStack.html) - THE "FORTRAN FALLACY" and "pseudo-mathematical notation and a von Neumann-style random access memory"
+* [K/Kona Resources](http://www.hakank.org/k/)
+* [Notation and Design](https://rjlipton.wordpress.com/2010/11/30/notation-and-thinking/)
+* [John's Lambda Calculus and Combinatory Logic Playground](https://tromp.github.io/cl/cl.html)
 
 ## Graphic Design
 
@@ -137,6 +140,10 @@ look at.
 * [CMOS VLSI Design](https://www.amazon.com/CMOS-VLSI-Design-Circuits-Perspective/dp/0321547748) - Excellent book for the software engineer trying to understand the way computers work at the transistor level.
 * [Tiny Lisp Computer](http://www.technoblogy.com/show?1INT=) - Runs on an AVR cpu with a tiny OLED screen
 
+### Assembly Language
+
+- [Strata](https://stefanheule.com/s/projects/strata/) - Automatically Learning the x86-64 Instruction Set 
+
 ## Displays
 
 * [Review of Display Technologies Focusing on Power Consumption](http://www.mdpi.com/2071-1050/7/8/10854/htm)
@@ -150,9 +157,17 @@ look at.
 * [SomethingNew](https://github.com/d-cook/SomethingNew) - A group of random people who want to change computing
 * [Stefan Lesser's List of Problems](https://gist.github.com/stefanlesser/44bea0bd888f82b4ad79fbacea1e21d4)
 * [Future of Programming Slack](https://futureprogramming.slack.com/)
+* [Ideal OS](https://joshondesign.com/2017/08/18/idealos_essay) - Not a project but a very good essay on what an OS
+  should be.
+* [Bootstrappable](http://bootstrappable.org) - Build a full gcc/linux system from a tiny amount of bootstraping code that can be entered in with a hex editor. They maintain a [wiki](https://bootstrapping.miraheze.org/wiki/Main_Page) of their ideas and progress. 
 
 ## shrug
 * robin milner relational semantics
 * https://www.scratchapixel.com
 * https://john.cs.olemiss.edu/~hcc/csci658/notes/Free_Prog_Lang_Textbooks.html
 * http://worrydream.com/dbx/
+- https://ivorylang.org/ivory-introduction.html Ivory is an embedded domain-specific language for safer systems programming.
+- [insect lang](https://github.com/sharkdp/insect) - High precision scientific calculator with support for physical units
+- [Chuck Moore’s Creations](https://blogs.msdn.microsoft.com/ashleyf/2013/09/21/chuck-moores-creations/) and a [talk by chuck more](https://www.infoq.com/presentations/power-144-chip)
+- [terra lang](http://terralang.org/index.html) - Terra is a low-level system programming language that is embedded in and meta-programmed by the Lua programming language
+- [Stepanov's Notes on Programming](http://stepanovpapers.com/notes.pdf) and a bunch of other stuff at [his website](http://stepanovpapers.com)
