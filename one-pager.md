@@ -22,6 +22,7 @@ I will design a computer from the ground up.
 - Consider the use of non-volatile memory
 - Avoid preemptive multitasking
 - Favor snappiness over computational throughput
+- [C Is Not a Low-level Language -- Your computer is not a fast PDP-11](https://queue.acm.org/detail.cfm?id=3212479)
 
 ## Existing Solutions
 - Wirth’s [Project Oberon](http://www.projectoberon.com) is the canonical example of a project like this, particularly the 2013 Edition which includes a custom **CPU**.
