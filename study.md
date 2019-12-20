@@ -139,6 +139,7 @@ look at.
 * [Conway's VLSI Archive](http://ai.eecs.umich.edu/people/conway/VLSI/VLSIarchive.mainlinks.html) - Lots of documents from the VSLI revolution of the late 70's
 * [CMOS VLSI Design](https://www.amazon.com/CMOS-VLSI-Design-Circuits-Perspective/dp/0321547748) - Excellent book for the software engineer trying to understand the way computers work at the transistor level.
 * [Tiny Lisp Computer](http://www.technoblogy.com/show?1INT=) - Runs on an AVR cpu with a tiny OLED screen
+* [WepSim](https://wepsim.github.io) - Microprogramming simulator
 
 ### Assembly Language
 
