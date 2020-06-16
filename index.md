@@ -51,9 +51,9 @@ Important systems, such as cryptography and data integrity, should be formally v
 
 ### Programming Language Inspiration
 
-* APL
+* **APL**
 * Forth
-* REBOL/RED
+* **REBOL/RED**
 * Smalltalk
 * Hypercard
 
