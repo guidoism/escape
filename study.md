@@ -152,6 +152,7 @@ look at.
 
 ## Similar Projects
 
+* [CollapseOS](https://collapseos.org) - Collapse OS is a Forth operating system and a collection of tools and documentation with a single purpose: preserve the ability to program microcontrollers through civilizational collapse.
 * [Interim OS](http://interim.mntmn.com) and [Paper](http://dump.mntmn.com/interim-paper/) - Lisp OS written for the
   Raspberry Pi in a super bare metal fashion. Requires a custom
   keyboard since it doesn't have USB drivers! 
