@@ -187,21 +187,7 @@ other words, the head of this linked list.
 
 	DOUBLE and QUADRUPLE might look like this:
 
-	  pointer to previous word
-	   ^
-	   |
-	+--|------|---|---|---|---|---|---|---|---|------------- - - - -
-	| LINK    | 6 | D | O | U | B | L | E | 0 | (definition ...)
-	+---------|---|---|---|---|---|---|---|---|------------- - - - -
-           ^       len                         padding
-	   |
-	+--|------|---|---|---|---|---|---|---|---|---|---|---|---|------------- - - - -
-	| LINK    | 9 | Q | U | A | D | R | U | P | L | E | 0 | 0 | (definition ...)
-	+---------|---|---|---|---|---|---|---|---|---|---|---|---|------------- - - - -
-           ^       len                                     padding
-           |
-           |
-	  LATEST
+<svg height="256" width="648" xmlns="http://www.w3.org/2000/svg"><style>circle,line,polygon{stroke:#000;stroke-width:2;stroke-opacity:1;fill-opacity:1;stroke-linecap:round;stroke-linejoin:miter}.filled,text{fill:#000}.bg_filled{fill:#fff}text{font-family:monospace;font-size:14px}</style><defs><marker id="arrow" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 0v4l4-2-4-2z"/></marker><marker id="diamond" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 2l2-2 2 2-2 2-2-2z"/></marker><marker id="circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="filled" cx="4" cy="4" r="2"/></marker><marker id="open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="2"/></marker><marker id="big_open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="3"/></marker></defs><path class="backdrop" fill="#fff" stroke-width="2" stroke-linecap="round" d="M0 0h648v256H0z"/><text x="18" y="12">pointer</text><path class="filled" d="M24 28l4-12 4 12z"/><path class="solid" d="M28 32v32M84 48v48M116 48v48M148 48v48M180 48v48M212 48v48M244 48v48M276 48v48M308 48v48M340 48v48M456 56h8"/><text x="18" y="76">LINK</text><text x="98" y="76">6</text><text x="130" y="76">D</text><text x="162" y="76">O</text><text x="194" y="76">U</text><text x="226" y="76">B</text><text x="258" y="76">L</text><text x="290" y="76">E</text><text x="322" y="76">0</text><text x="354" y="76">definition</text><text x="442" y="76">...</text><path class="solid" d="M456 88h8"/><path class="filled" d="M24 108l4-12 4 12z"/><text x="90" y="108">len</text><text x="314" y="108">padding</text><path class="solid" d="M28 112v32M84 128v48M116 128v48M148 128v48M180 128v48M212 128v48M244 128v48M276 128v48M308 128v48M340 128v48M372 128v48M404 128v48M436 128v48M468 128v48M584 136h8"/><text x="18" y="156">LINK</text><text x="98" y="156">9</text><text x="130" y="156">Q</text><text x="162" y="156">U</text><text x="194" y="156">A</text><text x="226" y="156">D</text><text x="258" y="156">R</text><text x="290" y="156">U</text><text x="322" y="156">P</text><text x="354" y="156">L</text><text x="386" y="156">E</text><text x="418" y="156">0</text><text x="450" y="156">0</text><text x="482" y="156">definition</text><text x="570" y="156">...</text><path class="solid" d="M584 168h8"/><path class="filled" d="M24 188l4-12 4 12z"/><text x="90" y="188">len</text><text x="410" y="188">padding</text><path class="solid" d="M28 192v32"/><text x="18" y="236">LATEST</text><text x="82" y="12">to</text><text x="106" y="12">previous</text><text x="178" y="12">word</text><path class="solid" d="M472 56h8M488 56h8M504 56h8M472 88h8M488 88h8M504 88h8M600 136h8M616 136h8M632 136h8M600 168h8M616 168h8M632 168h8M4 56h444M4 56v32M4 88h444"/><g><path class="solid" d="M4 136h572M4 136v32M4 168h572"/></g></svg>
 
 	You should be able to see from this how you might implement functions to find a word in
 	the dictionary (just walk along the dictionary entries starting at LATEST and matching
