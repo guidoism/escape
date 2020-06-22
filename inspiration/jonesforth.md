@@ -423,18 +423,17 @@ the address of this codeword, so just by adding 4 to it we get the address of th
 data word.  Finally after setting up %esi, it just does NEXT which causes that first word
 to run.
 
-/* DOCOL - the interpreter! */
-        .text
-        .align 4
-DOCOL:
+    /* DOCOL - the interpreter! */
+    .text
+    .align 4
+    DOCOL:
         PUSHRSP %esi            // push %esi on to the return stack
         addl $4,%eax            // %eax points to codeword, so make
         movl %eax,%esi          // %esi point to first data word
         NEXT
 
-/*
-        Just to make this absolutely clear, let's see how DOCOL works when jumping from QUADRUPLE
-        into DOUBLE:
+Just to make this absolutely clear, let's see how DOCOL works when jumping from QUADRUPLE
+into DOUBLE:
 
                 QUADRUPLE:
                 +------------------+
