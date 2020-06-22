@@ -353,48 +353,24 @@ The assembly code for DUP eventually does a NEXT.  That:
 (3) jumps to the indirect %eax                  jumps to the address in the codeword of +,
                                                 ie. the assembly code to implement +
 
-                +------------------+
-                | codeword         |
-                +------------------+
-                | addr of DOUBLE  ---------------> +------------------+
-                +------------------+               | codeword         |
-                | addr of DOUBLE   |               +------------------+
-                +------------------+               | addr of DUP   --------------> +------------------+
-                | addr of EXIT     |               +------------------+            | codeword      -------+
-                +------------------+               | addr of +     --------+       +------------------+   |
-                                                   +------------------+    |       | assembly to    <-----+
-                                           %esi -> | addr of EXIT     |    |       | implement DUP    |
-                                                   +------------------+    |       |    ..            |
-                                                                           |       |    ..            |
-                                                                           |       | NEXT             |
-                                                                           |       +------------------+
-                                                                           |
-                                                                           +-----> +------------------+
-                                                                                   | codeword      -------+
-                                                                                   +------------------+   |
-                                                                        now we're  | assembly to    <-----+
-                                                                        executing  | implement +      |
-                                                                        this       |    ..            |
-                                                                        function   |    ..            |
-                                                                                   | NEXT             |
-                                                                                   +------------------+
+<svg height="416" width="736" xmlns="http://www.w3.org/2000/svg"><style>circle,line,polygon{stroke:#000;stroke-width:2;stroke-opacity:1;fill-opacity:1;stroke-linecap:round;stroke-linejoin:miter}.filled,text{fill:#000}.bg_filled{fill:#fff}text{font-family:monospace;font-size:14px}.end_marked_arrow{marker-end:url(#arrow)}</style><defs><marker id="arrow" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 0v4l4-2-4-2z"/></marker><marker id="diamond" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 2l2-2 2 2-2 2-2-2z"/></marker><marker id="circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="filled" cx="4" cy="4" r="2"/></marker><marker id="open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="2"/></marker><marker id="big_open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="3"/></marker></defs><path class="backdrop" fill="#fff" stroke-width="2" stroke-linecap="round" d="M0 0h736v416H0z"/><text x="18" y="28">codeword</text><text x="18" y="60">addr</text><text x="58" y="60">of</text><text x="82" y="60">DOUBLE</text><path class="solid end_marked_arrow" d="M144 56h128"/><text x="18" y="92">addr</text><text x="58" y="92">of</text><text x="82" y="92">DOUBLE</text><text x="18" y="124">addr</text><text x="58" y="124">of</text><text x="82" y="124">EXIT</text><text x="298" y="76">codeword</text><text x="298" y="108">addr</text><text x="338" y="108">of</text><text x="362" y="108">DUP</text><path class="solid end_marked_arrow" d="M408 104h120"/><text x="298" y="140">addr</text><text x="338" y="140">of</text><text x="362" y="140">+</text><text x="298" y="172">addr</text><text x="338" y="172">of</text><text x="362" y="172">EXIT</text><path class="solid end_marked_arrow" d="M476 264h52"/><text x="554" y="124">codeword</text><text x="554" y="156">assembly</text><text x="626" y="156">to</text><path class="filled" d="M680 148l-8 4 8 4z"/><text x="554" y="172">implement</text><text x="634" y="172">DUP</text><text x="586" y="188">..</text><text x="586" y="204">..</text><text x="554" y="220">NEXT</text><text x="218" y="172">%esi</text><path class="solid end_marked_arrow" d="M256 168h16"/><text x="554" y="284">codeword</text><text x="554" y="316">assembly</text><text x="626" y="316">to</text><path class="filled" d="M680 308l-8 4 8 4z"/><text x="554" y="332">implement</text><text x="634" y="332">+</text><text x="586" y="348">..</text><text x="586" y="364">..</text><text x="554" y="380">NEXT</text><text x="450" y="316">now</text><text x="482" y="316">we&apos;re</text><text x="450" y="332">executing</text><text x="450" y="348">this</text><text x="450" y="364">function</text><path class="solid" d="M4 8h152M4 8v128M156 8v128M4 40h152M4 72h152M4 104h152M4 136h152"/><g><path class="solid" d="M284 56h152M284 56v128M436 56v128M284 88h152M284 120h152M284 152h152M284 184h152"/></g><g><path class="solid" d="M408 136h68M476 136v128"/></g><g><path class="solid" d="M540 104h152M540 104v128M692 104v32M540 136h152M692 160v72M540 232h152"/></g><g><path class="solid" d="M664 120h60M724 120v32M680 152h44"/></g><g><path class="solid" d="M540 264h152M540 264v128M692 264v32M540 296h152M692 320v72M540 392h152"/></g><g><path class="solid" d="M664 280h60M724 280v32M680 312h44"/></g></svg>
 
-        So I hope that I've convinced you that NEXT does roughly what you'd expect.  This is
-        indirect threaded code.
+So I hope that I've convinced you that NEXT does roughly what you'd expect.  This is
+indirect threaded code.
 
-        I've glossed over four things.  I wonder if you can guess without reading on what they are?
+I've glossed over four things.  I wonder if you can guess without reading on what they are?
 
-        .
-        .
-        .
+.
+.
+.
 
-        My list of four things are: (1) What does "EXIT" do?  (2) which is related to (1) is how do
-        you call into a function, ie. how does %esi start off pointing at part of QUADRUPLE, but
-        then point at part of DOUBLE.  (3) What goes in the codeword for the words which are written
-        in FORTH?  (4) How do you compile a function which does anything except call other functions
-        ie. a function which contains a number like : DOUBLE 2 * ; ?
+My list of four things are: (1) What does "EXIT" do?  (2) which is related to (1) is how do
+you call into a function, ie. how does %esi start off pointing at part of QUADRUPLE, but
+then point at part of DOUBLE.  (3) What goes in the codeword for the words which are written
+in FORTH?  (4) How do you compile a function which does anything except call other functions
+ie. a function which contains a number like : DOUBLE 2 * ; ?
 
-        THE INTERPRETER AND RETURN STACK ------------------------------------------------------------
+## THE INTERPRETER AND RETURN STACK
 
         Going at these in no particular order, let's talk about issues (3) and (2), the interpreter
         and the return stack.
