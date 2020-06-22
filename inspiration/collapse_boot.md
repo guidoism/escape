@@ -25,3 +25,34 @@ few things:
 In RAM-only environment, we will typically have a
 "`CURRENT @ HERE !`" line during init to have HERE begin at the
 end of the binary instead of RAMEND.
+
+## Block 280
+Z80 boot code
+
+This assembles the boot binary. It requires the Z80 assembler
+(B200) and cross compilation setup (B260). It also requires
+these constants to be set:
+
+RAMSTART: beginning address of RAM. This is where system
+variables are placed. HERE is then placed at RAM+80 (ref B80).
+
+RS_ADDR: to be set to the bottom address of the Return Stack.
+
+PS_ADDR: top address of the Parameter stack (PS grows down-
+wards). Allow space for stack underflow protection (B76).
+
+RESERVED REGISTERS: At all times, IX points to RSP TOS and IY
+is IP. SP points to PSP TOS, but you can still use the stack\
+in native code. you just have to make sure you've restored it
+before "next".
+
+STABLE ABI: The boot binary starts with a list of references.
+The address of these references have to stay to those addr-
+esses. The rest of the Collapse OS code depend on it. In fact,
+up until 0x67, the (?br) wordref, pretty much everything has
+to stay put.
+
+To assemble, run "282 LOAD".
+
+## Block 282
+1 53 LOADR+
