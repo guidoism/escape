@@ -281,9 +281,8 @@ To make this work, each subroutine is followed by the two instructions 'LODSL;
 JMP *(%eax)' which literally make the jump to the next subroutine.
 
 And that brings us to our first piece of actual code!  Well, it's a macro.
-*/
 
-/* NEXT macro. */
+    /* NEXT macro. */
         .macro NEXT
         lodsl
         jmp *(%eax)
