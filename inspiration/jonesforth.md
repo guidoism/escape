@@ -372,59 +372,56 @@ ie. a function which contains a number like : DOUBLE 2 * ; ?
 
 ## THE INTERPRETER AND RETURN STACK
 
-        Going at these in no particular order, let's talk about issues (3) and (2), the interpreter
-        and the return stack.
+Going at these in no particular order, let's talk about issues (3) and (2), the interpreter
+and the return stack.
 
-        Words which are defined in FORTH need a codeword which points to a little bit of code to
-        give them a "helping hand" in life.  They don't need much, but they do need what is known
-        as an "interpreter", although it doesn't really "interpret" in the same way that, say,
-        Java bytecode used to be interpreted (ie. slowly).  This interpreter just sets up a few
-        machine registers so that the word can then execute at full speed using the indirect
-        threaded model above.
+Words which are defined in FORTH need a codeword which points to a little bit of code to
+give them a "helping hand" in life.  They don't need much, but they do need what is known
+as an "interpreter", although it doesn't really "interpret" in the same way that, say,
+Java bytecode used to be interpreted (ie. slowly).  This interpreter just sets up a few
+machine registers so that the word can then execute at full speed using the indirect
+threaded model above.
 
-        One of the things that needs to happen when QUADRUPLE calls DOUBLE is that we save the old
-        %esi ("instruction pointer") and create a new one pointing to the first word in DOUBLE.
-        Because we will need to restore the old %esi at the end of DOUBLE (this is, after all, like
-        a function call), we will need a stack to store these "return addresses" (old values of %esi).
+One of the things that needs to happen when QUADRUPLE calls DOUBLE is that we save the old
+%esi ("instruction pointer") and create a new one pointing to the first word in DOUBLE.
+Because we will need to restore the old %esi at the end of DOUBLE (this is, after all, like
+a function call), we will need a stack to store these "return addresses" (old values of %esi).
 
-        As you will have seen in the background documentation, FORTH has two stacks, an ordinary
-        stack for parameters, and a return stack which is a bit more mysterious.  But our return
-        stack is just the stack I talked about in the previous paragraph, used to save %esi when
-        calling from a FORTH word into another FORTH word.
+As you will have seen in the background documentation, FORTH has two stacks, an ordinary
+stack for parameters, and a return stack which is a bit more mysterious.  But our return
+stack is just the stack I talked about in the previous paragraph, used to save %esi when
+calling from a FORTH word into another FORTH word.
 
-        In this FORTH, we are using the normal stack pointer (%esp) for the parameter stack.
-        We will use the i386's "other" stack pointer (%ebp, usually called the "frame pointer")
-        for our return stack.
+In this FORTH, we are using the normal stack pointer (%esp) for the parameter stack.
+We will use the i386's "other" stack pointer (%ebp, usually called the "frame pointer")
+for our return stack.
 
-        I've got two macros which just wrap up the details of using %ebp for the return stack.
-        You use them as for example "PUSHRSP %eax" (push %eax on the return stack) or "POPRSP %ebx"
-        (pop top of return stack into %ebx).
-*/
+I've got two macros which just wrap up the details of using %ebp for the return stack.
+You use them as for example "PUSHRSP %eax" (push %eax on the return stack) or "POPRSP %ebx"
+(pop top of return stack into %ebx).
 
-/* Macros to deal with the return stack. */
-        .macro PUSHRSP reg
-        lea -4(%ebp),%ebp       // push reg on to return stack
-        movl \reg,(%ebp)
-        .endm
+    /* Macros to deal with the return stack. */
+    .macro PUSHRSP reg
+    lea -4(%ebp),%ebp       // push reg on to return stack
+    movl \reg,(%ebp)
+    .endm
+    
+    .macro POPRSP reg
+    mov (%ebp),\reg         // pop top of return stack to reg
+    lea 4(%ebp),%ebp
+    .endm
 
-        .macro POPRSP reg
-        mov (%ebp),\reg         // pop top of return stack to reg
-        lea 4(%ebp),%ebp
-        .endm
+And with that we can now talk about the interpreter.
 
-/*
-        And with that we can now talk about the interpreter.
+In FORTH the interpreter function is often called DOCOL (I think it means "DO COLON" because
+all FORTH definitions start with a colon, as in : DOUBLE DUP + ;
 
-        In FORTH the interpreter function is often called DOCOL (I think it means "DO COLON" because
-        all FORTH definitions start with a colon, as in : DOUBLE DUP + ;
-
-        The "interpreter" (it's not really "interpreting") just needs to push the old %esi on the
-        stack and set %esi to the first word in the definition.  Remember that we jumped to the
-        function using JMP *(%eax)?  Well a consequence of that is that conveniently %eax contains
-        the address of this codeword, so just by adding 4 to it we get the address of the first
-        data word.  Finally after setting up %esi, it just does NEXT which causes that first word
-        to run.
-*/
+The "interpreter" (it's not really "interpreting") just needs to push the old %esi on the
+stack and set %esi to the first word in the definition.  Remember that we jumped to the
+function using JMP *(%eax)?  Well a consequence of that is that conveniently %eax contains
+the address of this codeword, so just by adding 4 to it we get the address of the first
+data word.  Finally after setting up %esi, it just does NEXT which causes that first word
+to run.
 
 /* DOCOL - the interpreter! */
         .text
