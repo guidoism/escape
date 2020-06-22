@@ -288,33 +288,33 @@ And that brings us to our first piece of actual code!  Well, it's a macro.
         jmp *(%eax)
         .endm
 
-/*      The macro is called NEXT.  That's a FORTH-ism.  It expands to those two instructions.
+The macro is called NEXT.  That's a FORTH-ism.  It expands to those two instructions.
 
-        Every FORTH primitive that we write has to be ended by NEXT.  Think of it kind of like
-        a return.
+Every FORTH primitive that we write has to be ended by NEXT.  Think of it kind of like
+a return.
 
-        The above describes what is known as direct threaded code.
+The above describes what is known as direct threaded code.
 
-        To sum up: We compress our function calls down to a list of addresses and use a somewhat
-        magical macro to act as a "jump to next function in the list".  We also use one register (%esi)
-        to act as a kind of instruction pointer, pointing to the next function in the list.
+To sum up: We compress our function calls down to a list of addresses and use a somewhat
+magical macro to act as a "jump to next function in the list".  We also use one register (%esi)
+to act as a kind of instruction pointer, pointing to the next function in the list.
 
-        I'll just give you a hint of what is to come by saying that a FORTH definition such as:
+I'll just give you a hint of what is to come by saying that a FORTH definition such as:
 
         : QUADRUPLE DOUBLE DOUBLE ;
 
-        actually compiles (almost, not precisely but we'll see why in a moment) to a list of
-        function addresses for DOUBLE, DOUBLE and a special function called EXIT to finish off.
+actually compiles (almost, not precisely but we'll see why in a moment) to a list of
+function addresses for DOUBLE, DOUBLE and a special function called EXIT to finish off.
 
-        At this point, REALLY EAGLE-EYED ASSEMBLY EXPERTS are saying "JONES, YOU'VE MADE A MISTAKE!".
+At this point, REALLY EAGLE-EYED ASSEMBLY EXPERTS are saying "JONES, YOU'VE MADE A MISTAKE!".
 
-        I lied about JMP *(%eax).  
+I lied about JMP *(%eax).
 
-        INDIRECT THREADED CODE ----------------------------------------------------------------------
+## INDIRECT THREADED CODE
 
-        It turns out that direct threaded code is interesting but only if you want to just execute
-        a list of functions written in assembly language.  So QUADRUPLE would work only if DOUBLE
-        was an assembly language function.  In the direct threaded code, QUADRUPLE would look like:
+It turns out that direct threaded code is interesting but only if you want to just execute
+a list of functions written in assembly language.  So QUADRUPLE would work only if DOUBLE
+was an assembly language function.  In the direct threaded code, QUADRUPLE would look like:
 
                 +------------------+
                 | addr of DOUBLE  --------------------> (assembly code to do the double)
@@ -322,12 +322,12 @@ And that brings us to our first piece of actual code!  Well, it's a macro.
         %esi -> | addr of DOUBLE   |
                 +------------------+
 
-        We can add an extra indirection to allow us to run both words written in assembly language
-        (primitives written for speed) and words written in FORTH themselves as lists of addresses.
+We can add an extra indirection to allow us to run both words written in assembly language
+(primitives written for speed) and words written in FORTH themselves as lists of addresses.
 
-        The extra indirection is the reason for the brackets in JMP *(%eax).
+The extra indirection is the reason for the brackets in JMP *(%eax).
 
-        Let's have a look at how QUADRUPLE and DOUBLE really look in FORTH:
+Let's have a look at how QUADRUPLE and DOUBLE really look in FORTH:
 
                 : QUADRUPLE DOUBLE DOUBLE ;
 
@@ -357,26 +357,26 @@ And that brings us to our first piece of actual code!  Well, it's a macro.
                                                                                    | NEXT             |
                                                                                    +------------------+
 
-        This is the part where you may need an extra cup of tea/coffee/favourite caffeinated
-        beverage.  What has changed is that I've added an extra pointer to the beginning of
-        the definitions.  In FORTH this is sometimes called the "codeword".  The codeword is
-        a pointer to the interpreter to run the function.  For primitives written in
-        assembly language, the "interpreter" just points to the actual assembly code itself.
-        They don't need interpreting, they just run.
+This is the part where you may need an extra cup of tea/coffee/favourite caffeinated
+beverage.  What has changed is that I've added an extra pointer to the beginning of
+the definitions.  In FORTH this is sometimes called the "codeword".  The codeword is
+a pointer to the interpreter to run the function.  For primitives written in
+assembly language, the "interpreter" just points to the actual assembly code itself.
+They don't need interpreting, they just run.
 
-        In words written in FORTH (like QUADRUPLE and DOUBLE), the codeword points to an interpreter
-        function.
+In words written in FORTH (like QUADRUPLE and DOUBLE), the codeword points to an interpreter
+function.
 
-        I'll show you the interpreter function shortly, but let's recall our indirect
-        JMP *(%eax) with the "extra" brackets.  Take the case where we're executing DOUBLE
-        as shown, and DUP has been called.  Note that %esi is pointing to the address of +
+I'll show you the interpreter function shortly, but let's recall our indirect
+JMP *(%eax) with the "extra" brackets.  Take the case where we're executing DOUBLE
+as shown, and DUP has been called.  Note that %esi is pointing to the address of +
 
-        The assembly code for DUP eventually does a NEXT.  That:
+The assembly code for DUP eventually does a NEXT.  That:
 
-        (1) reads the address of + into %eax            %eax points to the codeword of +
-        (2) increments %esi by 4
-        (3) jumps to the indirect %eax                  jumps to the address in the codeword of +,
-                                                        ie. the assembly code to implement +
+(1) reads the address of + into %eax            %eax points to the codeword of +
+(2) increments %esi by 4
+(3) jumps to the indirect %eax                  jumps to the address in the codeword of +,
+                                                ie. the assembly code to implement +
 
                 +------------------+
                 | codeword         |
