@@ -315,61 +315,6 @@ At this point, REALLY EAGLE-EYED ASSEMBLY EXPERTS are saying "JONES, YOU'VE MADE
 
 I lied about JMP *(%eax).
 
-## INDIRECT THREADED CODE
-
-It turns out that direct threaded code is interesting but only if you want to just execute
-a list of functions written in assembly language.  So QUADRUPLE would work only if DOUBLE
-was an assembly language function.  In the direct threaded code, QUADRUPLE would look like:
-
-<svg height="96" width="544" xmlns="http://www.w3.org/2000/svg"><style>circle,line,path,polygon{stroke:#000;stroke-width:2;stroke-opacity:1;fill-opacity:1;stroke-linecap:round;stroke-linejoin:miter}text{fill:#000;font-family:monospace;font-size:14px}.bg_filled,.nofill{fill:#fff}.end_marked_arrow{marker-end:url(#arrow)}</style><defs><marker id="arrow" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 0v4l4-2-4-2z"/></marker><marker id="diamond" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 2l2-2 2 2-2 2-2-2z"/></marker><marker id="circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle cx="4" cy="4" r="2"/></marker><marker id="open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="2"/></marker><marker id="big_open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="3"/></marker></defs><path class="backdrop" fill="#fff" stroke-width="2" stroke-linecap="round" d="M0 0h544v96H0z"/><text x="82" y="28">addr</text><text x="122" y="28">of</text><text x="146" y="28">DOUBLE</text><path class="solid end_marked_arrow" d="M208 24h48"/><text x="82" y="60">addr</text><text x="122" y="60">of</text><text x="146" y="60">DOUBLE</text><path class="nofill" d="M272 16a16 16 0 000 16"/><text x="282" y="28">assembly</text><text x="314" y="44">NEXT</text><text x="354" y="28">code</text><text x="394" y="28">to</text><text x="418" y="28">do</text><text x="442" y="28">the</text><text x="474" y="28">double</text><path class="nofill" d="M528 16a16 16 0 010 16"/><text x="2" y="60">%esi</text><path class="solid end_marked_arrow" d="M40 56h16"/><path class="solid" d="M68 8h152M68 8v64M220 8v64M68 40h152M68 72h152"/></svg>
-
-We can add an extra indirection to allow us to run both words written in assembly language
-(primitives written for speed) and words written in FORTH themselves as lists of addresses.
-
-The extra indirection is the reason for the brackets in JMP *(%eax).
-
-Let's have a look at how QUADRUPLE and DOUBLE really look in FORTH:
-
-<svg height="448" width="736" xmlns="http://www.w3.org/2000/svg"><style>circle,line,polygon{stroke:#000;stroke-width:2;stroke-opacity:1;fill-opacity:1;stroke-linecap:round;stroke-linejoin:miter}.filled,text{fill:#000}.bg_filled{fill:#fff}text{font-family:monospace;font-size:14px}.end_marked_arrow{marker-end:url(#arrow)}</style><defs><marker id="arrow" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 0v4l4-2-4-2z"/></marker><marker id="diamond" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 2l2-2 2 2-2 2-2-2z"/></marker><marker id="circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="filled" cx="4" cy="4" r="2"/></marker><marker id="open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="2"/></marker><marker id="big_open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="3"/></marker></defs><path class="backdrop" fill="#fff" stroke-width="2" stroke-linecap="round" d="M0 0h736v448H0z"/><text x="2" y="12">:</text><text x="18" y="12">QUADRUPLE</text><text x="98" y="12">DOUBLE</text><text x="154" y="12">DOUBLE</text><text x="210" y="12">;</text><text x="18" y="60">codeword</text><text x="18" y="92">addr</text><text x="58" y="92">of</text><text x="82" y="92">DOUBLE</text><path class="solid end_marked_arrow" d="M144 88h128"/><text x="18" y="124">addr</text><text x="58" y="124">of</text><text x="82" y="124">DOUBLE</text><text x="18" y="156">addr</text><text x="58" y="156">of</text><text x="82" y="156">EXIT</text><text x="282" y="60">:</text><text x="298" y="60">DOUBLE</text><text x="354" y="60">DUP</text><text x="386" y="60">+</text><text x="402" y="60">;</text><text x="298" y="108">codeword</text><text x="298" y="140">addr</text><text x="338" y="140">of</text><text x="362" y="140">DUP</text><path class="solid end_marked_arrow" d="M408 136h120"/><text x="298" y="172">addr</text><text x="338" y="172">of</text><text x="362" y="172">+</text><text x="298" y="204">addr</text><text x="338" y="204">of</text><text x="362" y="204">EXIT</text><path class="solid end_marked_arrow" d="M476 296h52"/><text x="554" y="156">codeword</text><text x="554" y="188">assembly</text><text x="626" y="188">to</text><path class="filled" d="M680 180l-8 4 8 4z"/><text x="554" y="204">implement</text><text x="634" y="204">DUP</text><text x="586" y="220">..</text><text x="586" y="236">..</text><text x="554" y="252">NEXT</text><text x="218" y="172">%esi</text><path class="solid end_marked_arrow" d="M256 168h16"/><text x="554" y="316">codeword</text><text x="554" y="348">assembly</text><text x="626" y="348">to</text><path class="filled" d="M672 340l-8 4 8 4z"/><text x="554" y="364">implement</text><text x="634" y="364">+</text><text x="586" y="380">..</text><text x="586" y="396">..</text><text x="554" y="412">NEXT</text><path class="solid" d="M4 40h152M4 40v128M156 40v128M4 72h152M4 104h152M4 136h152M4 168h152"/><g><path class="solid" d="M284 88h152M284 88v128M436 88v128M284 120h152M284 152h152M284 184h152M284 216h152"/></g><g><path class="solid" d="M408 168h68M476 168v128"/></g><g><path class="solid" d="M540 136h152M540 136v128M692 136v128M540 168h152M540 264h152"/></g><g><path class="solid" d="M664 152h60M724 152v32M680 184h44"/></g><g><path class="solid" d="M540 296h152M540 296v128M692 296v128M540 328h152M540 424h152"/></g><g><path class="solid" d="M664 312h60M724 312v32M672 344h52"/></g></svg>
-
-This is the part where you may need an extra cup of tea/coffee/favourite caffeinated
-beverage.  What has changed is that I've added an extra pointer to the beginning of
-the definitions.  In FORTH this is sometimes called the "codeword".  The codeword is
-a pointer to the interpreter to run the function.  For primitives written in
-assembly language, the "interpreter" just points to the actual assembly code itself.
-They don't need interpreting, they just run.
-
-In words written in FORTH (like QUADRUPLE and DOUBLE), the codeword points to an interpreter
-function.
-
-I'll show you the interpreter function shortly, but let's recall our indirect
-JMP *(%eax) with the "extra" brackets.  Take the case where we're executing DOUBLE
-as shown, and DUP has been called.  Note that %esi is pointing to the address of +
-
-The assembly code for DUP eventually does a NEXT.  That:
-
-(1) reads the address of + into %eax            %eax points to the codeword of +
-(2) increments %esi by 4
-(3) jumps to the indirect %eax                  jumps to the address in the codeword of +,
-                                                ie. the assembly code to implement +
-
-<svg height="416" width="736" xmlns="http://www.w3.org/2000/svg"><style>circle,line,polygon{stroke:#000;stroke-width:2;stroke-opacity:1;fill-opacity:1;stroke-linecap:round;stroke-linejoin:miter}.filled,text{fill:#000}.bg_filled{fill:#fff}text{font-family:monospace;font-size:14px}.end_marked_arrow{marker-end:url(#arrow)}</style><defs><marker id="arrow" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 0v4l4-2-4-2z"/></marker><marker id="diamond" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 2l2-2 2 2-2 2-2-2z"/></marker><marker id="circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="filled" cx="4" cy="4" r="2"/></marker><marker id="open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="2"/></marker><marker id="big_open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="3"/></marker></defs><path class="backdrop" fill="#fff" stroke-width="2" stroke-linecap="round" d="M0 0h736v416H0z"/><text x="18" y="28">codeword</text><text x="18" y="60">addr</text><text x="58" y="60">of</text><text x="82" y="60">DOUBLE</text><path class="solid end_marked_arrow" d="M144 56h128"/><text x="18" y="92">addr</text><text x="58" y="92">of</text><text x="82" y="92">DOUBLE</text><text x="18" y="124">addr</text><text x="58" y="124">of</text><text x="82" y="124">EXIT</text><text x="298" y="76">codeword</text><text x="298" y="108">addr</text><text x="338" y="108">of</text><text x="362" y="108">DUP</text><path class="solid end_marked_arrow" d="M408 104h120"/><text x="298" y="140">addr</text><text x="338" y="140">of</text><text x="362" y="140">+</text><text x="298" y="172">addr</text><text x="338" y="172">of</text><text x="362" y="172">EXIT</text><path class="solid end_marked_arrow" d="M476 264h52"/><text x="554" y="124">codeword</text><text x="554" y="156">assembly</text><text x="626" y="156">to</text><path class="filled" d="M680 148l-8 4 8 4z"/><text x="554" y="172">implement</text><text x="634" y="172">DUP</text><text x="586" y="188">..</text><text x="586" y="204">..</text><text x="554" y="220">NEXT</text><text x="218" y="172">%esi</text><path class="solid end_marked_arrow" d="M256 168h16"/><text x="554" y="284">codeword</text><text x="554" y="316">assembly</text><text x="626" y="316">to</text><path class="filled" d="M680 308l-8 4 8 4z"/><text x="554" y="332">implement</text><text x="634" y="332">+</text><text x="586" y="348">..</text><text x="586" y="364">..</text><text x="554" y="380">NEXT</text><text x="450" y="316">now</text><text x="482" y="316">we&apos;re</text><text x="450" y="332">executing</text><text x="450" y="348">this</text><text x="450" y="364">function</text><path class="solid" d="M4 8h152M4 8v128M156 8v128M4 40h152M4 72h152M4 104h152M4 136h152"/><g><path class="solid" d="M284 56h152M284 56v128M436 56v128M284 88h152M284 120h152M284 152h152M284 184h152"/></g><g><path class="solid" d="M408 136h68M476 136v128"/></g><g><path class="solid" d="M540 104h152M540 104v128M692 104v32M540 136h152M692 160v72M540 232h152"/></g><g><path class="solid" d="M664 120h60M724 120v32M680 152h44"/></g><g><path class="solid" d="M540 264h152M540 264v128M692 264v32M540 296h152M692 320v72M540 392h152"/></g><g><path class="solid" d="M664 280h60M724 280v32M680 312h44"/></g></svg>
-
-So I hope that I've convinced you that NEXT does roughly what you'd expect.  This is
-indirect threaded code.
-
-I've glossed over four things.  I wonder if you can guess without reading on what they are?
-
-.
-.
-.
-
-My list of four things are: (1) What does "EXIT" do?  (2) which is related to (1) is how do
-you call into a function, ie. how does %esi start off pointing at part of QUADRUPLE, but
-then point at part of DOUBLE.  (3) What goes in the codeword for the words which are written
-in FORTH?  (4) How do you compile a function which does anything except call other functions
-ie. a function which contains a number like : DOUBLE 2 * ; ?
-
 ## THE INTERPRETER AND RETURN STACK
 
 Going at these in no particular order, let's talk about issues (3) and (2), the interpreter
@@ -435,57 +380,38 @@ to run.
 Just to make this absolutely clear, let's see how DOCOL works when jumping from QUADRUPLE
 into DOUBLE:
 
-                QUADRUPLE:
-                +------------------+
-                | codeword         |
-                +------------------+               DOUBLE:
-                | addr of DOUBLE  -|-------------> +------------------+
-                +------------------+       %eax -> | addr of DOCOL    |
-        %esi -> | addr of DOUBLE   |               +------------------+
-                +------------------+               | addr of DUP      |
-                | addr of EXIT     |               +------------------+
-                +------------------+               | etc.             |
+<svg height="176" width="512" xmlns="http://www.w3.org/2000/svg"><style>circle,line,polygon{stroke:#000;stroke-width:2;stroke-opacity:1;fill-opacity:1;stroke-linecap:round;stroke-linejoin:miter}text{fill:#000;font-family:monospace;font-size:14px}.bg_filled{fill:#fff}.end_marked_arrow{marker-end:url(#arrow)}</style><defs><marker id="arrow" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 0v4l4-2-4-2z"/></marker><marker id="diamond" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 2l2-2 2 2-2 2-2-2z"/></marker><marker id="circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle cx="4" cy="4" r="2"/></marker><marker id="open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="2"/></marker><marker id="big_open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="3"/></marker></defs><path class="backdrop" fill="#fff" stroke-width="2" stroke-linecap="round" d="M0 0h512v176H0z"/><text x="66" y="12">QUADRUPLE:</text><text x="82" y="44">codeword</text><text x="82" y="76">addr</text><text x="122" y="76">of</text><text x="146" y="76">DOUBLE</text><path class="solid end_marked_arrow" d="M208 72h128"/><text x="282" y="92">%eax</text><path class="solid end_marked_arrow" d="M320 88h16"/><text x="82" y="108">addr</text><text x="122" y="108">of</text><text x="146" y="108">DOUBLE</text><text x="82" y="140">addr</text><text x="122" y="140">of</text><text x="146" y="140">EXIT</text><text x="346" y="60">DOUBLE:</text><text x="362" y="92">addr</text><text x="402" y="92">of</text><text x="426" y="92">DOCOL</text><text x="362" y="124">addr</text><text x="402" y="124">of</text><text x="426" y="124">DUP</text><text x="362" y="156">etc.</text><text x="2" y="108">%esi</text><path class="solid end_marked_arrow" d="M40 104h16"/><path class="solid" d="M68 24h152M68 24v128M220 24v128M68 56h152M68 88h152M68 120h152M68 152h152"/><g><path class="solid" d="M348 72h152M348 72v88M500 72v88M348 104h152M348 136h152"/></g></svg>
 
-        First, the call to DOUBLE calls DOCOL (the codeword of DOUBLE).  DOCOL does this:  It
-        pushes the old %esi on the return stack.  %eax points to the codeword of DOUBLE, so we
-        just add 4 on to it to get our new %esi:
+First, the call to DOUBLE calls DOCOL (the codeword of DOUBLE).  DOCOL does this:  It
+pushes the old %esi on the return stack.  %eax points to the codeword of DOUBLE, so we
+just add 4 on to it to get our new %esi:
 
-                QUADRUPLE:
-                +------------------+
-                | codeword         |
-                +------------------+               DOUBLE:
-                | addr of DOUBLE  ---------------> +------------------+
-top of return   +------------------+       %eax -> | addr of DOCOL    |
-stack points -> | addr of DOUBLE   |       + 4 =   +------------------+
-                +------------------+       %esi -> | addr of DUP      |
-                | addr of EXIT     |               +------------------+
-                +------------------+               | etc.             |
+<svg height="176" width="576" xmlns="http://www.w3.org/2000/svg"><style>circle,line,polygon{stroke:#000;stroke-width:2;stroke-opacity:1;fill-opacity:1;stroke-linecap:round;stroke-linejoin:miter}text{fill:#000;font-family:monospace;font-size:14px}.bg_filled{fill:#fff}.end_marked_arrow{marker-end:url(#arrow)}</style><defs><marker id="arrow" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 0v4l4-2-4-2z"/></marker><marker id="diamond" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 2l2-2 2 2-2 2-2-2z"/></marker><marker id="circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle cx="4" cy="4" r="2"/></marker><marker id="open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="2"/></marker><marker id="big_open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="3"/></marker></defs><path class="backdrop" fill="#fff" stroke-width="2" stroke-linecap="round" d="M0 0h576v176H0z"/><text x="130" y="12">QUADRUPLE:</text><text x="146" y="44">codeword</text><text x="146" y="76">addr</text><text x="186" y="76">of</text><text x="210" y="76">DOUBLE</text><path class="solid end_marked_arrow" d="M272 72h128"/><text x="346" y="92">%eax</text><path class="solid end_marked_arrow" d="M384 88h16"/><text x="146" y="108">addr</text><text x="186" y="108">of</text><text x="210" y="108">DOUBLE</text><text x="346" y="108">+</text><text x="362" y="108">4</text><path class="solid" d="M376 102h8M376 106h8"/><text x="346" y="124">%esi</text><path class="solid end_marked_arrow" d="M384 120h16"/><text x="146" y="140">addr</text><text x="186" y="140">of</text><text x="210" y="140">EXIT</text><text x="410" y="60">DOUBLE:</text><text x="426" y="92">addr</text><text x="466" y="92">of</text><text x="490" y="92">DOCOL</text><text x="426" y="124">addr</text><text x="466" y="124">of</text><text x="490" y="124">DUP</text><text x="426" y="156">etc.</text><text x="2" y="92">top</text><text x="34" y="92">of</text><text x="58" y="92">return</text><text x="2" y="108">stack</text><text x="50" y="108">points</text><path class="solid end_marked_arrow" d="M104 104h16"/><path class="solid" d="M132 24h152M132 24v128M284 24v128M132 56h152M132 88h152M132 120h152M132 152h152"/><g><path class="solid" d="M412 72h152M412 72v88M564 72v88M412 104h152M412 136h152"/></g></svg>
 
-        Then we do NEXT, and because of the magic of threaded code that increments %esi again
-        and calls DUP.
+Then we do NEXT, and because of the magic of threaded code that increments %esi again
+and calls DUP.
 
-        Well, it seems to work.
+Well, it seems to work.
 
-        One minor point here.  Because DOCOL is the first bit of assembly actually to be defined
-        in this file (the others were just macros), and because I usually compile this code with the
-        text segment starting at address 0, DOCOL has address 0.  So if you are disassembling the
-        code and see a word with a codeword of 0, you will immediately know that the word is
-        written in FORTH (it's not an assembler primitive) and so uses DOCOL as the interpreter.
+One minor point here.  Because DOCOL is the first bit of assembly actually to be defined
+in this file (the others were just macros), and because I usually compile this code with the
+text segment starting at address 0, DOCOL has address 0.  So if you are disassembling the
+code and see a word with a codeword of 0, you will immediately know that the word is
+written in FORTH (it's not an assembler primitive) and so uses DOCOL as the interpreter.
 
-        STARTING UP ----------------------------------------------------------------------
+## STARTING UP
 
-        Now let's get down to nuts and bolts.  When we start the program we need to set up
-        a few things like the return stack.  But as soon as we can, we want to jump into FORTH
-        code (albeit much of the "early" FORTH code will still need to be written as
-        assembly language primitives).
+Now let's get down to nuts and bolts.  When we start the program we need to set up
+a few things like the return stack.  But as soon as we can, we want to jump into FORTH
+code (albeit much of the "early" FORTH code will still need to be written as
+assembly language primitives).
 
-        This is what the set up code does.  Does a tiny bit of house-keeping, sets up the
-        separate return stack (NB: Linux gives us the ordinary parameter stack already), then
-        immediately jumps to a FORTH word called QUIT.  Despite its name, QUIT doesn't quit
-        anything.  It resets some internal state and starts reading and interpreting commands.
-        (The reason it is called QUIT is because you can call QUIT from your own FORTH code
-        to "quit" your program and go back to interpreting).
-*/
+This is what the set up code does.  Does a tiny bit of house-keeping, sets up the
+separate return stack (NB: Linux gives us the ordinary parameter stack already), then
+immediately jumps to a FORTH word called QUIT.  Despite its name, QUIT doesn't quit
+anything.  It resets some internal state and starts reading and interpreting commands.
+(The reason it is called QUIT is because you can call QUIT from your own FORTH code
+to "quit" your program and go back to interpreting).
 
 /* Assembler entry point. */
         .text
@@ -4027,3 +3953,58 @@ HIDE =NEXT
 
 WELCOME
 HIDE WELCOME
+## INDIRECT THREADED CODE
+
+It turns out that direct threaded code is interesting but only if you want to just execute
+a list of functions written in assembly language.  So QUADRUPLE would work only if DOUBLE
+was an assembly language function.  In the direct threaded code, QUADRUPLE would look like:
+
+<svg height="96" width="544" xmlns="http://www.w3.org/2000/svg"><style>circle,line,path,polygon{stroke:#000;stroke-width:2;stroke-opacity:1;fill-opacity:1;stroke-linecap:round;stroke-linejoin:miter}text{fill:#000;font-family:monospace;font-size:14px}.bg_filled,.nofill{fill:#fff}.end_marked_arrow{marker-end:url(#arrow)}</style><defs><marker id="arrow" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 0v4l4-2-4-2z"/></marker><marker id="diamond" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 2l2-2 2 2-2 2-2-2z"/></marker><marker id="circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle cx="4" cy="4" r="2"/></marker><marker id="open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="2"/></marker><marker id="big_open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="3"/></marker></defs><path class="backdrop" fill="#fff" stroke-width="2" stroke-linecap="round" d="M0 0h544v96H0z"/><text x="82" y="28">addr</text><text x="122" y="28">of</text><text x="146" y="28">DOUBLE</text><path class="solid end_marked_arrow" d="M208 24h48"/><text x="82" y="60">addr</text><text x="122" y="60">of</text><text x="146" y="60">DOUBLE</text><path class="nofill" d="M272 16a16 16 0 000 16"/><text x="282" y="28">assembly</text><text x="314" y="44">NEXT</text><text x="354" y="28">code</text><text x="394" y="28">to</text><text x="418" y="28">do</text><text x="442" y="28">the</text><text x="474" y="28">double</text><path class="nofill" d="M528 16a16 16 0 010 16"/><text x="2" y="60">%esi</text><path class="solid end_marked_arrow" d="M40 56h16"/><path class="solid" d="M68 8h152M68 8v64M220 8v64M68 40h152M68 72h152"/></svg>
+
+We can add an extra indirection to allow us to run both words written in assembly language
+(primitives written for speed) and words written in FORTH themselves as lists of addresses.
+
+The extra indirection is the reason for the brackets in JMP *(%eax).
+
+Let's have a look at how QUADRUPLE and DOUBLE really look in FORTH:
+
+<svg height="448" width="736" xmlns="http://www.w3.org/2000/svg"><style>circle,line,polygon{stroke:#000;stroke-width:2;stroke-opacity:1;fill-opacity:1;stroke-linecap:round;stroke-linejoin:miter}.filled,text{fill:#000}.bg_filled{fill:#fff}text{font-family:monospace;font-size:14px}.end_marked_arrow{marker-end:url(#arrow)}</style><defs><marker id="arrow" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 0v4l4-2-4-2z"/></marker><marker id="diamond" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 2l2-2 2 2-2 2-2-2z"/></marker><marker id="circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="filled" cx="4" cy="4" r="2"/></marker><marker id="open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="2"/></marker><marker id="big_open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="3"/></marker></defs><path class="backdrop" fill="#fff" stroke-width="2" stroke-linecap="round" d="M0 0h736v448H0z"/><text x="2" y="12">:</text><text x="18" y="12">QUADRUPLE</text><text x="98" y="12">DOUBLE</text><text x="154" y="12">DOUBLE</text><text x="210" y="12">;</text><text x="18" y="60">codeword</text><text x="18" y="92">addr</text><text x="58" y="92">of</text><text x="82" y="92">DOUBLE</text><path class="solid end_marked_arrow" d="M144 88h128"/><text x="18" y="124">addr</text><text x="58" y="124">of</text><text x="82" y="124">DOUBLE</text><text x="18" y="156">addr</text><text x="58" y="156">of</text><text x="82" y="156">EXIT</text><text x="282" y="60">:</text><text x="298" y="60">DOUBLE</text><text x="354" y="60">DUP</text><text x="386" y="60">+</text><text x="402" y="60">;</text><text x="298" y="108">codeword</text><text x="298" y="140">addr</text><text x="338" y="140">of</text><text x="362" y="140">DUP</text><path class="solid end_marked_arrow" d="M408 136h120"/><text x="298" y="172">addr</text><text x="338" y="172">of</text><text x="362" y="172">+</text><text x="298" y="204">addr</text><text x="338" y="204">of</text><text x="362" y="204">EXIT</text><path class="solid end_marked_arrow" d="M476 296h52"/><text x="554" y="156">codeword</text><text x="554" y="188">assembly</text><text x="626" y="188">to</text><path class="filled" d="M680 180l-8 4 8 4z"/><text x="554" y="204">implement</text><text x="634" y="204">DUP</text><text x="586" y="220">..</text><text x="586" y="236">..</text><text x="554" y="252">NEXT</text><text x="218" y="172">%esi</text><path class="solid end_marked_arrow" d="M256 168h16"/><text x="554" y="316">codeword</text><text x="554" y="348">assembly</text><text x="626" y="348">to</text><path class="filled" d="M672 340l-8 4 8 4z"/><text x="554" y="364">implement</text><text x="634" y="364">+</text><text x="586" y="380">..</text><text x="586" y="396">..</text><text x="554" y="412">NEXT</text><path class="solid" d="M4 40h152M4 40v128M156 40v128M4 72h152M4 104h152M4 136h152M4 168h152"/><g><path class="solid" d="M284 88h152M284 88v128M436 88v128M284 120h152M284 152h152M284 184h152M284 216h152"/></g><g><path class="solid" d="M408 168h68M476 168v128"/></g><g><path class="solid" d="M540 136h152M540 136v128M692 136v128M540 168h152M540 264h152"/></g><g><path class="solid" d="M664 152h60M724 152v32M680 184h44"/></g><g><path class="solid" d="M540 296h152M540 296v128M692 296v128M540 328h152M540 424h152"/></g><g><path class="solid" d="M664 312h60M724 312v32M672 344h52"/></g></svg>
+
+This is the part where you may need an extra cup of tea/coffee/favourite caffeinated
+beverage.  What has changed is that I've added an extra pointer to the beginning of
+the definitions.  In FORTH this is sometimes called the "codeword".  The codeword is
+a pointer to the interpreter to run the function.  For primitives written in
+assembly language, the "interpreter" just points to the actual assembly code itself.
+They don't need interpreting, they just run.
+
+In words written in FORTH (like QUADRUPLE and DOUBLE), the codeword points to an interpreter
+function.
+
+I'll show you the interpreter function shortly, but let's recall our indirect
+JMP *(%eax) with the "extra" brackets.  Take the case where we're executing DOUBLE
+as shown, and DUP has been called.  Note that %esi is pointing to the address of +
+
+The assembly code for DUP eventually does a NEXT.  That:
+
+(1) reads the address of + into %eax            %eax points to the codeword of +
+(2) increments %esi by 4
+(3) jumps to the indirect %eax                  jumps to the address in the codeword of +,
+                                                ie. the assembly code to implement +
+
+<svg height="416" width="736" xmlns="http://www.w3.org/2000/svg"><style>circle,line,polygon{stroke:#000;stroke-width:2;stroke-opacity:1;fill-opacity:1;stroke-linecap:round;stroke-linejoin:miter}.filled,text{fill:#000}.bg_filled{fill:#fff}text{font-family:monospace;font-size:14px}.end_marked_arrow{marker-end:url(#arrow)}</style><defs><marker id="arrow" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 0v4l4-2-4-2z"/></marker><marker id="diamond" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 2l2-2 2 2-2 2-2-2z"/></marker><marker id="circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="filled" cx="4" cy="4" r="2"/></marker><marker id="open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="2"/></marker><marker id="big_open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="3"/></marker></defs><path class="backdrop" fill="#fff" stroke-width="2" stroke-linecap="round" d="M0 0h736v416H0z"/><text x="18" y="28">codeword</text><text x="18" y="60">addr</text><text x="58" y="60">of</text><text x="82" y="60">DOUBLE</text><path class="solid end_marked_arrow" d="M144 56h128"/><text x="18" y="92">addr</text><text x="58" y="92">of</text><text x="82" y="92">DOUBLE</text><text x="18" y="124">addr</text><text x="58" y="124">of</text><text x="82" y="124">EXIT</text><text x="298" y="76">codeword</text><text x="298" y="108">addr</text><text x="338" y="108">of</text><text x="362" y="108">DUP</text><path class="solid end_marked_arrow" d="M408 104h120"/><text x="298" y="140">addr</text><text x="338" y="140">of</text><text x="362" y="140">+</text><text x="298" y="172">addr</text><text x="338" y="172">of</text><text x="362" y="172">EXIT</text><path class="solid end_marked_arrow" d="M476 264h52"/><text x="554" y="124">codeword</text><text x="554" y="156">assembly</text><text x="626" y="156">to</text><path class="filled" d="M680 148l-8 4 8 4z"/><text x="554" y="172">implement</text><text x="634" y="172">DUP</text><text x="586" y="188">..</text><text x="586" y="204">..</text><text x="554" y="220">NEXT</text><text x="218" y="172">%esi</text><path class="solid end_marked_arrow" d="M256 168h16"/><text x="554" y="284">codeword</text><text x="554" y="316">assembly</text><text x="626" y="316">to</text><path class="filled" d="M680 308l-8 4 8 4z"/><text x="554" y="332">implement</text><text x="634" y="332">+</text><text x="586" y="348">..</text><text x="586" y="364">..</text><text x="554" y="380">NEXT</text><text x="450" y="316">now</text><text x="482" y="316">we&apos;re</text><text x="450" y="332">executing</text><text x="450" y="348">this</text><text x="450" y="364">function</text><path class="solid" d="M4 8h152M4 8v128M156 8v128M4 40h152M4 72h152M4 104h152M4 136h152"/><g><path class="solid" d="M284 56h152M284 56v128M436 56v128M284 88h152M284 120h152M284 152h152M284 184h152"/></g><g><path class="solid" d="M408 136h68M476 136v128"/></g><g><path class="solid" d="M540 104h152M540 104v128M692 104v32M540 136h152M692 160v72M540 232h152"/></g><g><path class="solid" d="M664 120h60M724 120v32M680 152h44"/></g><g><path class="solid" d="M540 264h152M540 264v128M692 264v32M540 296h152M692 320v72M540 392h152"/></g><g><path class="solid" d="M664 280h60M724 280v32M680 312h44"/></g></svg>
+
+So I hope that I've convinced you that NEXT does roughly what you'd expect.  This is
+indirect threaded code.
+
+I've glossed over four things.  I wonder if you can guess without reading on what they are?
+
+.
+.
+.
+
+My list of four things are: (1) What does "EXIT" do?  (2) which is related to (1) is how do
+you call into a function, ie. how does %esi start off pointing at part of QUADRUPLE, but
+then point at part of DOUBLE.  (3) What goes in the codeword for the words which are written
+in FORTH?  (4) How do you compile a function which does anything except call other functions
+ie. a function which contains a number like : DOUBLE 2 * ; ?
+
