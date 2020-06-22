@@ -83,6 +83,7 @@ look at.
 * [K/Kona Resources](http://www.hakank.org/k/)
 * [Notation and Design](https://rjlipton.wordpress.com/2010/11/30/notation-and-thinking/)
 * [John's Lambda Calculus and Combinatory Logic Playground](https://tromp.github.io/cl/cl.html)
+* [JonesForth ARM64 using APL character set](https://github.com/narenratan/jonesforth_arm64_apl)
 
 ## Graphic Design
 
@@ -139,6 +140,7 @@ look at.
 * [Conway's VLSI Archive](http://ai.eecs.umich.edu/people/conway/VLSI/VLSIarchive.mainlinks.html) - Lots of documents from the VSLI revolution of the late 70's
 * [CMOS VLSI Design](https://www.amazon.com/CMOS-VLSI-Design-Circuits-Perspective/dp/0321547748) - Excellent book for the software engineer trying to understand the way computers work at the transistor level.
 * [Tiny Lisp Computer](http://www.technoblogy.com/show?1INT=) - Runs on an AVR cpu with a tiny OLED screen
+* [WepSim](https://wepsim.github.io) - Microprogramming simulator
 
 ### Assembly Language
 
@@ -151,6 +153,7 @@ look at.
 
 ## Similar Projects
 
+* [CollapseOS](https://collapseos.org) - Collapse OS is a Forth operating system and a collection of tools and documentation with a single purpose: preserve the ability to program microcontrollers through civilizational collapse.
 * [Interim OS](http://interim.mntmn.com) and [Paper](http://dump.mntmn.com/interim-paper/) - Lisp OS written for the
   Raspberry Pi in a super bare metal fashion. Requires a custom
   keyboard since it doesn't have USB drivers! 

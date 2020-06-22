@@ -3,8 +3,9 @@ layout: default
 title: Escape the Local Maxima
 ---
 
-The current *state of the art* in computing with our superscalar-pipelined, speculatively-executed, multi-level cached, multi-core cpus using closed-source BIOS running operating systems built upon layers and layers of ancient buggy code written in ancient programmer-hostle languages with its model based on physical desk and its fetish-like desire to be general purpose while focusing on the the performance of arithmetic rather than human interaction is a local maximum. Indeed, many local maxima. Let us work together to break free of these and invent the future of computing.
+The current *state of the art* in computing with our superscalar-pipelined, speculatively-executed, multi-level cached, multi-core cpus using closed-source **BIOS** running operating systems built upon layers and layers of ancient buggy code written in ancient programmer-hostle languages with its model based on physical desk and its fetish-like desire to be general purpose while focusing on the the performance of arithmetic rather than human interaction is a local maximum. Indeed, many local maxima. Let us work together to break free of these and invent the future of computing.
 
+* [One-pager](one-pager)
 * [A Manifesto](day_two_manifesto)
 * [Study Guide](study)
 * [Tools](tools)
@@ -50,9 +51,9 @@ Important systems, such as cryptography and data integrity, should be formally v
 
 ### Programming Language Inspiration
 
-* APL
+* **APL**
 * Forth
-* REBOL/RED
+* **REBOL/RED**
 * Smalltalk
 * Hypercard
 
