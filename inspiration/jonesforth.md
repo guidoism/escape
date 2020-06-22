@@ -280,7 +280,7 @@ written JMP *(%eax).  And after doing the jump, the situation looks like:
 To make this work, each subroutine is followed by the two instructions 'LODSL;
 JMP *(%eax)' which literally make the jump to the next subroutine.
 
-        And that brings us to our first piece of actual code!  Well, it's a macro.
+And that brings us to our first piece of actual code!  Well, it's a macro.
 */
 
 /* NEXT macro. */
