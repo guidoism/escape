@@ -288,10 +288,10 @@ JMP *(%eax)' which literally make the jump to the next subroutine.
 And that brings us to our first piece of actual code!  Well, it's a macro.
 
     /* NEXT macro. */
-        .macro NEXT
-        lodsl
-        jmp *(%eax)
-        .endm
+    .macro NEXT
+    lodsl
+    jmp *(%eax)
+    .endm
 
 The macro is called NEXT.  That's a FORTH-ism.  It expands to those two instructions.
 
@@ -306,7 +306,7 @@ to act as a kind of instruction pointer, pointing to the next function in the li
 
 I'll just give you a hint of what is to come by saying that a FORTH definition such as:
 
-        : QUADRUPLE DOUBLE DOUBLE ;
+    : QUADRUPLE DOUBLE DOUBLE ;
 
 actually compiles (almost, not precisely but we'll see why in a moment) to a list of
 function addresses for DOUBLE, DOUBLE and a special function called EXIT to finish off.
@@ -321,11 +321,7 @@ It turns out that direct threaded code is interesting but only if you want to ju
 a list of functions written in assembly language.  So QUADRUPLE would work only if DOUBLE
 was an assembly language function.  In the direct threaded code, QUADRUPLE would look like:
 
-                +------------------+
-                | addr of DOUBLE  --------------------> (assembly code to do the double)
-                +------------------+                    NEXT
-        %esi -> | addr of DOUBLE   |
-                +------------------+
+<svg height="96" width="616" xmlns="http://www.w3.org/2000/svg"><style>circle,line,path,polygon{stroke:#000;stroke-width:2;stroke-opacity:1;fill-opacity:1;stroke-linecap:round;stroke-linejoin:miter}text{fill:#000;font-family:monospace;font-size:14px}.bg_filled,.nofill{fill:#fff}.end_marked_arrow{marker-end:url(#arrow)}</style><defs><marker id="arrow" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 0v4l4-2-4-2z"/></marker><marker id="diamond" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 2l2-2 2 2-2 2-2-2z"/></marker><marker id="circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle cx="4" cy="4" r="2"/></marker><marker id="open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="2"/></marker><marker id="big_open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="3"/></marker></defs><path class="backdrop" fill="#fff" stroke-width="2" stroke-linecap="round" d="M0 0h616v96H0z"/><text x="146" y="28">addr</text><text x="186" y="28">of</text><text x="210" y="28">DOUBLE</text><path class="solid end_marked_arrow" d="M272 24h56"/><text x="146" y="60">addr</text><text x="186" y="60">of</text><text x="210" y="60">DOUBLE</text><path class="nofill" d="M344 16a16 16 0 000 16"/><text x="354" y="28">assembly</text><text x="426" y="28">code</text><text x="418" y="44">NEXT</text><text x="466" y="28">to</text><text x="490" y="28">do</text><text x="514" y="28">the</text><text x="546" y="28">double</text><path class="nofill" d="M600 16a16 16 0 010 16"/><text x="66" y="60">%esi</text><path class="solid end_marked_arrow" d="M104 56h16"/><path class="solid" d="M132 8h152M132 8v64M284 8v64M132 40h152M132 72h152"/></svg>
 
 We can add an extra indirection to allow us to run both words written in assembly language
 (primitives written for speed) and words written in FORTH themselves as lists of addresses.
