@@ -1,3 +1,8 @@
+---
+layout: code
+title: Jones Forth
+---
+
 ## Jones Forth
 ### A sometimes minimal FORTH compiler and tutorial for Linux / i386 systems
 
