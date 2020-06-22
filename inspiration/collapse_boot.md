@@ -4,7 +4,7 @@ Initialization sequence
 On boot, we jump to the "main" routine in B289 which does
 very few things.
 
-1. Set SP to PS_ADDR and IX to RS_ADDR
+1. Set `SP` to `PS_ADDR` and `IX` to `RS_ADDR`
 2. Sets HERE to RAMEND (RAMSTART+0x80).
 3. Sets CURRENT to value of LATEST field in stable ABI.
 4. Look for the word "BOOT" and calls it.
