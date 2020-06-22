@@ -178,6 +178,148 @@ which is just a linked list of dictionary entries.
         │                        │ FLAGS    │                   │
         └──── 4 bytes ───────────┴─ byte ───┴─ n bytes  ─ ─ ─ ─ └─────────── ─ ─ ─ ─
 
+<svg height="96" width="680" xmlns="http://www.w3.org/2000/svg">
+    <style>line, path, circle,rect,polygon {
+                          stroke: black;
+                          stroke-width: 2;
+                          stroke-opacity: 1;
+                          fill-opacity: 1;
+                          stroke-linecap: round;
+                          stroke-linejoin: miter;
+                        }
+
+                    text {
+                        fill: black;
+                        }
+                        rect.backdrop{
+                            stroke: none;
+                            fill: white;
+                        }
+                        .broken{
+                            stroke-dasharray: 8;
+                        }
+                        .filled{
+                            fill: black;
+                        }
+                        .bg_filled{
+                            fill: white;
+                        }
+                        .nofill{
+                            fill: white;
+                        }
+
+                        text {
+                         font-family: monospace;
+                         font-size: 14px;
+                        }
+
+                        .end_marked_arrow{
+                            marker-end: url(#arrow);
+                         }
+                        .start_marked_arrow{
+                            marker-start: url(#arrow);
+                         }
+
+                        .end_marked_diamond{
+                            marker-end: url(#diamond);
+                         }
+                        .start_marked_diamond{
+                            marker-start: url(#diamond);
+                         }
+
+                        .end_marked_circle{
+                            marker-end: url(#circle);
+                         }
+                        .start_marked_circle{
+                            marker-start: url(#circle);
+                         }
+
+                        .end_marked_open_circle{
+                            marker-end: url(#open_circle);
+                         }
+                        .start_marked_open_circle{
+                            marker-start: url(#open_circle);
+                         }
+
+                        .end_marked_big_open_circle{
+                            marker-end: url(#big_open_circle);
+                         }
+                        .start_marked_big_open_circle{
+                            marker-start: url(#big_open_circle);
+                         }
+
+                         
+                        </style>
+    <defs>
+        <marker id="arrow" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8">
+            <polygon points="0,0 0,4 4,2 0,0"></polygon>
+        </marker>
+        <marker id="diamond" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8">
+            <polygon points="0,2 2,0 4,2 2,4 0,2"></polygon>
+        </marker>
+        <marker id="circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8">
+            <circle class="filled" cx="4" cy="4" r="2"></circle>
+        </marker>
+        <marker id="open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8">
+            <circle class="bg_filled" cx="4" cy="4" r="2"></circle>
+        </marker>
+        <marker id="big_open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8">
+            <circle class="bg_filled" cx="4" cy="4" r="3"></circle>
+        </marker>
+    </defs>
+    <rect class="backdrop" height="96" width="680" x="0" y="0"></rect>
+    <polygon class="filled " points="72,4 64,8 72,12"></polygon>
+    <line class="solid " x1="72" x2="96" y1="8" y2="8"></line>
+    <text class="" x="106" y="12">DICTIONARY</text>
+    <text class="" x="194" y="12">ENTRY</text>
+    <path class="nofill " d="M 248,0 A 16,16 0,0,0 248,16"></path>
+    <text class="" x="258" y="12">HEADER</text>
+    <path class="nofill " d="M 312,0 A 16,16 0,0,1 312,16"></path>
+    <line class="solid end_marked_arrow " x1="328" x2="512" y1="8" y2="8"></line>
+    <line class="solid " x1="448" x2="456" y1="24" y2="24"></line>
+    <line class="solid " x1="464" x2="472" y1="24" y2="24"></line>
+    <line class="solid " x1="480" x2="488" y1="24" y2="24"></line>
+    <line class="solid " x1="496" x2="504" y1="24" y2="24"></line>
+    <text class="" x="82" y="44">LINK</text>
+    <text class="" x="122" y="44">POINTER</text>
+    <text class="" x="282" y="44">LENGTH</text>
+    <line class="solid " x1="344" x2="336" y1="32" y2="48"></line>
+    <text class="" x="370" y="44">NAME</text>
+    <text class="" x="530" y="44">DEFINITION</text>
+    <text class="" x="282" y="60">FLAGS</text>
+    <text class="" x="290" y="76">byte</text>
+    <line class="solid " x1="616" x2="624" y1="24" y2="24"></line>
+    <line class="solid " x1="632" x2="640" y1="24" y2="24"></line>
+    <line class="solid " x1="648" x2="656" y1="24" y2="24"></line>
+    <line class="solid " x1="664" x2="672" y1="24" y2="24"></line>
+    <text class="" x="114" y="76">4</text>
+    <text class="" x="130" y="76">bytes</text>
+    <text class="" x="378" y="76">n</text>
+    <text class="" x="394" y="76">bytes</text>
+    <line class="solid " x1="448" x2="456" y1="72" y2="72"></line>
+    <line class="solid " x1="464" x2="472" y1="72" y2="72"></line>
+    <line class="solid " x1="480" x2="488" y1="72" y2="72"></line>
+    <line class="solid " x1="496" x2="504" y1="72" y2="72"></line>
+    <line class="solid " x1="616" x2="624" y1="72" y2="72"></line>
+    <line class="solid " x1="632" x2="640" y1="72" y2="72"></line>
+    <line class="solid " x1="648" x2="656" y1="72" y2="72"></line>
+    <line class="solid " x1="664" x2="672" y1="72" y2="72"></line>
+    <g>
+        <line class="solid" x1="68" x2="440" y1="24" y2="24"></line>
+        <line class="solid" x1="68" x2="68" y1="24" y2="72"></line>
+        <line class="solid" x1="268" x2="268" y1="24" y2="72"></line>
+        <line class="solid" x1="356" x2="356" y1="24" y2="72"></line>
+        <line class="solid" x1="68" x2="104" y1="72" y2="72"></line>
+        <line class="solid" x1="176" x2="280" y1="72" y2="72"></line>
+        <line class="solid" x1="328" x2="368" y1="72" y2="72"></line>
+    </g>
+    <g>
+        <line class="solid" x1="516" x2="608" y1="24" y2="24"></line>
+        <line class="solid" x1="516" x2="516" y1="24" y2="72"></line>
+        <line class="solid" x1="516" x2="608" y1="72" y2="72"></line>
+    </g>
+</svg>
+
 I'll come to the definition of the word later.  For now just look at the header.  The first
 4 bytes are the link pointer.  This points back to the previous word in the dictionary, or, for
 the first word in the dictionary it is just a NULL pointer.  Then comes a length/flags byte.
