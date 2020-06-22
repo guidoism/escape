@@ -1,5 +1,8 @@
-A sometimes minimal FORTH compiler and tutorial for Linux / i386 systems
+## Jones Forth
+### A sometimes minimal FORTH compiler and tutorial for Linux / i386 systems
+
 By Richard W.M. Jones <rich@annexia.org> http://annexia.org/forth
+
 This is PUBLIC DOMAIN (see public domain release statement below).
 
 ## INTRODUCTION
@@ -160,31 +163,31 @@ Now the tutorial starts in earnest.
 
 ## THE DICTIONARY
 
-	In FORTH as you will know, functions are called "words", and just as in other languages they
-	have a name and a definition.  Here are two FORTH words:
+In FORTH as you will know, functions are called "words", and just as in other languages they
+have a name and a definition.  Here are two FORTH words:
 
-	: DOUBLE DUP + ;		\ name is "DOUBLE", definition is "DUP +"
-	: QUADRUPLE DOUBLE DOUBLE ;	\ name is "QUADRUPLE", definition is "DOUBLE DOUBLE"
+    : DOUBLE DUP + ;		\ name is "DOUBLE", definition is "DUP +"
+    : QUADRUPLE DOUBLE DOUBLE ;	\ name is "QUADRUPLE", definition is "DOUBLE DOUBLE"
 
-	Words, both built-in ones and ones which the programmer defines later, are stored in a dictionary
-	which is just a linked list of dictionary entries.
+Words, both built-in ones and ones which the programmer defines later, are stored in a dictionary
+which is just a linked list of dictionary entries.
 
-	<--- DICTIONARY ENTRY (HEADER) ----------------------->
-	+------------------------|--------|---------- - - - - +----------- - - - -
-	| LINK POINTER           | LENGTH/| NAME	      | DEFINITION
-	|			 | FLAGS  |     	      |
-	+--- (4 bytes) ----------|- byte -|- n bytes  - - - - +----------- - - - -
+        <─── DICTIONARY ENTRY ( HEADER ) ───────────────────────>
+        ┌────────────────────────┬──────────┬────────── ─ ─ ─ ─ ┌─────────── ─ ─ ─ ─
+        │ LINK POINTER           │ LENGTH / │ NAME              │ DEFINITION
+        │                        │ FLAGS    │                   │
+        └──── 4 bytes ───────────┴─ byte ───┴─ n bytes  ─ ─ ─ ─ └─────────── ─ ─ ─ ─
 
-	I'll come to the definition of the word later.  For now just look at the header.  The first
-	4 bytes are the link pointer.  This points back to the previous word in the dictionary, or, for
-	the first word in the dictionary it is just a NULL pointer.  Then comes a length/flags byte.
-	The length of the word can be up to 31 characters (5 bits used) and the top three bits are used
-	for various flags which I'll come to later.  This is followed by the name itself, and in this
-	implementation the name is rounded up to a multiple of 4 bytes by padding it with zero bytes.
-	That's just to ensure that the definition starts on a 32 bit boundary.
+I'll come to the definition of the word later.  For now just look at the header.  The first
+4 bytes are the link pointer.  This points back to the previous word in the dictionary, or, for
+the first word in the dictionary it is just a NULL pointer.  Then comes a length/flags byte.
+The length of the word can be up to 31 characters (5 bits used) and the top three bits are used
+for various flags which I'll come to later.  This is followed by the name itself, and in this
+implementation the name is rounded up to a multiple of 4 bytes by padding it with zero bytes.
+That's just to ensure that the definition starts on a 32 bit boundary.
 
-	A FORTH variable called LATEST contains a pointer to the most recently defined word, in
-	other words, the head of this linked list.
+A FORTH variable called LATEST contains a pointer to the most recently defined word, in
+other words, the head of this linked list.
 
 	DOUBLE and QUADRUPLE might look like this:
 
