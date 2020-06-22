@@ -413,10 +413,10 @@ anything.  It resets some internal state and starts reading and interpreting com
 (The reason it is called QUIT is because you can call QUIT from your own FORTH code
 to "quit" your program and go back to interpreting).
 
-/* Assembler entry point. */
+    /* Assembler entry point. */
         .text
         .globl _start
-_start:
+    _start:
         cld
         mov %esp,var_S0         // Save the initial data stack pointer in FORTH variable S0.
         mov $return_stack_top,%ebp // Initialise the return stack.
@@ -424,32 +424,23 @@ _start:
 
         mov $cold_start,%esi    // Initialise interpreter.
         NEXT                    // Run interpreter!
-
+    
         .section .rodata
-cold_start:                     // High-level code without a codeword.
+    cold_start:                     // High-level code without a codeword.
         .int QUIT
 
-/*
-        BUILT-IN WORDS ----------------------------------------------------------------------
+## BUILT-IN WORDS
 
-        Remember our dictionary entries (headers)?  Let's bring those together with the codeword
-        and data words to see how : DOUBLE DUP + ; really looks in memory.
+Remember our dictionary entries (headers)?  Let's bring those together with the codeword
+and data words to see how : DOUBLE DUP + ; really looks in memory.
 
-          pointer to previous word
-           ^
-           |
-        +--|------|---|---|---|---|---|---|---|---|------------|------------|------------|------------+
-        | LINK    | 6 | D | O | U | B | L | E | 0 | DOCOL      | DUP        | +          | EXIT       |
-        +---------|---|---|---|---|---|---|---|---|------------|--|---------|------------|------------+
-           ^       len                         pad  codeword      |
-           |                                                      V
-          LINK in next word                             points to codeword of DUP
+<svg height="160" width="832" xmlns="http://www.w3.org/2000/svg"><style>circle,line,polygon{stroke:#000;stroke-width:2;stroke-opacity:1;fill-opacity:1;stroke-linecap:round;stroke-linejoin:miter}.filled,text{fill:#000}.bg_filled{fill:#fff}text{font-family:monospace;font-size:14px}</style><defs><marker id="arrow" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 0v4l4-2-4-2z"/></marker><marker id="diamond" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 2l2-2 2 2-2 2-2-2z"/></marker><marker id="circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="filled" cx="4" cy="4" r="2"/></marker><marker id="open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="2"/></marker><marker id="big_open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="3"/></marker></defs><path class="backdrop" fill="#fff" stroke-width="2" stroke-linecap="round" d="M0 0h832v160H0z"/><text x="82" y="12">pointer</text><path class="filled" d="M88 28l4-12 4 12z"/><path class="solid" d="M92 32v32"/><text x="82" y="76">LINK</text><text x="162" y="76">6</text><text x="194" y="76">D</text><text x="226" y="76">O</text><text x="258" y="76">U</text><text x="290" y="76">B</text><text x="322" y="76">L</text><text x="354" y="76">E</text><text x="386" y="76">0</text><text x="418" y="76">DOCOL</text><text x="522" y="76">DUP</text><text x="626" y="76">+</text><text x="730" y="76">EXIT</text><path class="solid" marker-end="url(#arrow)" d="M532 80v48"/><path class="filled" d="M88 108l4-12 4 12z"/><text x="154" y="108">len</text><text x="378" y="108">pad</text><text x="418" y="108">codeword</text><path class="solid" d="M92 112v16"/><text x="82" y="140">LINK</text><text x="530" y="140">codeword</text><text x="146" y="12">to</text><text x="170" y="12">previous</text><text x="242" y="12">word</text><text x="122" y="140">in</text><text x="146" y="140">next</text><text x="186" y="140">word</text><text x="450" y="140">points</text><text x="506" y="140">to</text><text x="602" y="140">of</text><text x="626" y="140">DUP</text><path class="solid" d="M68 56h752M68 56v32M148 56v32M180 56v32M212 56v32M244 56v32M276 56v32M308 56v32M340 56v32M372 56v32M404 56v32M508 56v32M612 56v32M716 56v32M820 56v32M68 88h752"/></svg>
         
-        Initially we can't just write ": DOUBLE DUP + ;" (ie. that literal string) here because we
-        don't yet have anything to read the string, break it up at spaces, parse each word, etc. etc.
-        So instead we will have to define built-in words using the GNU assembler data constructors
-        (like .int, .byte, .string, .ascii and so on -- look them up in the gas info page if you are
-        unsure of them).
+Initially we can't just write ": DOUBLE DUP + ;" (ie. that literal string) here because we
+don't yet have anything to read the string, break it up at spaces, parse each word, etc. etc.
+So instead we will have to define built-in words using the GNU assembler data constructors
+(like .int, .byte, .string, .ascii and so on -- look them up in the gas info page if you are
+unsure of them).
 
         The long way would be:
 
