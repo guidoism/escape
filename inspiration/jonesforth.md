@@ -309,8 +309,8 @@ Java bytecode used to be interpreted (ie. slowly).  This interpreter just sets u
 machine registers so that the word can then execute at full speed using the indirect
 threaded model above.
 
-One of the things that needs to happen when `QUADRUPLE` calls `DOUBLE` is that we save the old
-%esi ("instruction pointer") and create a new one pointing to the first word in `DOUBLE`.
+One of the things that needs to happen when `QUADRUPLE` calls `DOUBLE` is that we save the `old
+%esi` ("instruction pointer") and create a new one pointing to the first word in `DOUBLE`.
 Because we will need to restore the old %esi at the end of `DOUBLE` (this is, after all, like
 a function call), we will need a stack to store these "return addresses" (old values of %esi).
 
@@ -624,7 +624,7 @@ Lots of comparison operations like =, <, >, etc..
 ANS Forth says that the comparison words should return all (binary) 1's for
 `TRUE` and all 0's for `FALSE`.  However this is a bit of a strange convention
 so this Forth breaks it and returns the more normal (for C programmers ...)
-1 meaning TRUE and 0 meaning `FALSE`.
+1 meaning `TRUE` and 0 meaning `FALSE`.
 
         defcode "=",1,,EQU      // top two words are equal?
         pop %eax
@@ -1003,37 +1003,26 @@ as an opaque block of code that does what it says.
 Let's discuss input first.
 
 The Forth word `KEY` reads the next byte from stdin (and pushes it on the parameter stack).
-So if KEY is called and someone hits the space key, then the number 32 (ASCII code of space)
+So if `KEY` is called and someone hits the space key, then the number 32 (**ASCII** code of space)
 is pushed on the stack.
 
 In Forth there is no distinction between reading code and reading input.  We might be reading
 and compiling code, we might be reading words to execute, we might be asking for the user
-to type their name -- ultimately it all comes in through KEY.
+to type their name -- ultimately it all comes in through `KEY`.
 
 The implementation of `KEY` uses an input buffer of a certain size (defined at the end of this
 file).  It calls the Linux read(2) system call to fill this buffer and tracks its position
 in the buffer using a couple of variables, and if it runs out of input buffer then it refills
 it automatically.  The other thing that `KEY` does is if it detects that stdin has closed, it
 exits the program, which is why when you hit ^D the Forth system cleanly exits.
-GUIDO
-     buffer                           bufftop
-        |                                |
-        V                                V
-        +-------------------------------|--------------------------------------+
-        | INPUT READ FROM STDIN ....... | unused part of the buffer            |
-        +-------------------------------|--------------------------------------+
-                          ^
-                          |
-                       currkey (next character to read)
 
-        <---------------------- BUFFER_SIZE (4096 bytes) ---------------------->
-*/
+<svg height="192" width="656" xmlns="http://www.w3.org/2000/svg"><style>circle,line,path,polygon{stroke:#000;stroke-width:2;stroke-opacity:1;fill-opacity:1;stroke-linecap:round;stroke-linejoin:miter}.filled,text{fill:#000}.bg_filled,.nofill{fill:#fff}text{font-family:monospace;font-size:14px}.end_marked_arrow{marker-end:url(#arrow)}</style><defs><marker id="arrow" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 0v4l4-2-4-2z"/></marker><marker id="diamond" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 2l2-2 2 2-2 2-2-2z"/></marker><marker id="circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="filled" cx="4" cy="4" r="2"/></marker><marker id="open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="2"/></marker><marker id="big_open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="3"/></marker></defs><path class="backdrop" fill="#fff" stroke-width="2" stroke-linecap="round" d="M0 0h656v192H0z"/><text x="50" y="12">buffer</text><text x="314" y="12">bufftop</text><path class="solid end_marked_arrow" d="M76 16v32M340 16v32"/><text x="82" y="76">INPUT</text><text x="130" y="76">READ</text><text x="170" y="76">FROM</text><text x="210" y="76">STDIN</text><text x="258" y="76">.......</text><text x="338" y="76">unused</text><text x="394" y="76">part</text><text x="434" y="76">of</text><text x="458" y="76">the</text><text x="490" y="76">buffer</text><path class="filled" d="M208 108l4-12 4 12z"/><path class="solid" d="M212 112v16"/><text x="186" y="140">currkey</text><path class="nofill" d="M256 128a16 16 0 000 16"/><text x="258" y="140">next</text><text x="298" y="140">character</text><text x="378" y="140">to</text><text x="402" y="140">read</text><path class="nofill" d="M440 128a16 16 0 010 16"/><path class="filled" d="M72 164l-8 4 8 4z"/><path class="solid" d="M72 168h176"/><text x="258" y="172">BUFFER</text><path class="solid" d="M304 176h8"/><text x="314" y="172">SIZE</text><path class="nofill" d="M360 160a16 16 0 000 16"/><text x="362" y="172">4096</text><text x="402" y="172">bytes</text><path class="nofill" d="M448 160a16 16 0 010 16"/><path class="solid end_marked_arrow" d="M464 168h184"/><path class="solid" d="M68 56h568M68 56v32M324 56v32M636 56v32M68 88h568"/></svg>
 
         defcode "KEY",3,,KEY
         call _KEY
         push %eax               // push return value on stack
         NEXT
-_KEY:
+    _KEY:
         mov (currkey),%ebx
         cmp (bufftop),%ebx
         jge 1f                  // exhausted the input buffer?
@@ -1043,7 +1032,7 @@ _KEY:
         mov %ebx,(currkey)      // increment currkey
         ret
 
-1:      // Out of input; use read(2) to fetch more input from stdin.
+    1:  // Out of input; use read(2) to fetch more input from stdin.
         xor %ebx,%ebx           // 1st param: stdin
         mov $buffer,%ecx        // 2nd param: buffer
         mov %ecx,currkey
@@ -1056,29 +1045,27 @@ _KEY:
         mov %ecx,bufftop
         jmp _KEY
 
-2:      // Error or end of input: exit the program.
+    2:  // Error or end of input: exit the program.
         xor %ebx,%ebx
         mov $__NR_exit,%eax     // syscall: exit
         int $0x80
 
         .data
         .align 4
-currkey:
+    currkey:
         .int buffer             // Current place in input buffer (next character to read).
-bufftop:
+    bufftop:
         .int buffer             // Last valid data in input buffer + 1.
 
-/*
-        By contrast, output is much simpler.  The Forth word `EMIT` writes out a single byte to stdout.
-        This implementation just uses the write system call.  No attempt is made to buffer output, but
-        it would be a good exercise to add it.
-*/
+By contrast, output is much simpler.  The Forth word `EMIT` writes out a single byte to stdout.
+This implementation just uses the write system call.  No attempt is made to buffer output, but
+it would be a good exercise to add it.
 
         defcode "EMIT",4,,EMIT
         pop %eax
         call _EMIT
         NEXT
-_EMIT:
+    _EMIT:
         mov $1,%ebx             // 1st param: stdout
 
         // write needs the address of the byte to write
@@ -1092,37 +1079,36 @@ _EMIT:
         ret
 
         .data                   // NB: easier to fit in the .data section
-emit_scratch:
+    emit_scratch:
         .space 1                // scratch used by EMIT
 
-/*
-        Back to input, `WORD` is a Forth word which reads the next full word of input.
 
-        What it does in detail is that it first skips any blanks (spaces, tabs, newlines and so on).
-        Then it calls `KEY` to read characters into an internal buffer until it hits a blank.  Then it
-        calculates the length of the word it read and returns the address and the length as
-        two words on the stack (with the length at the top of stack).
+Back to input, `WORD` is a Forth word which reads the next full word of input.
 
-        Notice that `WORD` has a single internal buffer which it overwrites each time (rather like
-        a static C string).  Also notice that `WORD's` internal buffer is just 32 bytes long and
-        there is NO checking for overflow.  31 bytes happens to be the maximum length of a
-        Forth word that we support, and that is what `WORD` is used for: to read Forth words when
-        we are compiling and executing code.  The returned strings are not NUL-terminated.
+What it does in detail is that it first skips any blanks (spaces, tabs, newlines and so on).
+Then it calls `KEY` to read characters into an internal buffer until it hits a blank.  Then it
+calculates the length of the word it read and returns the address and the length as
+two words on the stack (with the length at the top of stack).
 
-        Start address+length is the normal way to represent strings in Forth (not ending in an
-        ASCII NUL character as in C), and so Forth strings can contain any character including NULs
-        and can be any length.
+Notice that `WORD` has a single internal buffer which it overwrites each time (rather like
+a static C string).  Also notice that `WORD's` internal buffer is just 32 bytes long and
+there is NO checking for overflow.  31 bytes happens to be the maximum length of a
+Forth word that we support, and that is what `WORD` is used for: to read Forth words when
+we are compiling and executing code.  The returned strings are not NUL-terminated.
 
-        `WORD` is not suitable for just reading strings (eg. user input) because of all the above
-        peculiarities and limitations.
+Start address+length is the normal way to represent strings in Forth (not ending in an
+ASCII NUL character as in C), and so Forth strings can contain any character including NULs
+and can be any length.
 
-        Note that when executing, you'll see:
-        `WORD FOO`
-        which puts "`FOO`" and length 3 on the stack, but when compiling:
-        `: BAR WORD FOO ;`
-        is an error (or at least it doesn't do what you might expect).  Later we'll talk about compiling
-        and immediate mode, and you'll understand why.
-*/
+`WORD` is not suitable for just reading strings (eg. user input) because of all the above
+peculiarities and limitations.
+
+Note that when executing, you'll see:
+`WORD FOO`
+which puts "`FOO`" and length 3 on the stack, but when compiling:
+`: BAR WORD FOO ;`
+is an error (or at least it doesn't do what you might expect).  Later we'll talk about compiling
+and immediate mode, and you'll understand why.
 
         defcode "WORD",4,,WORD
         call _WORD
@@ -1130,9 +1116,9 @@ emit_scratch:
         push %ecx               // push length
         NEXT
 
-_WORD:
+    _WORD:
         /* Search for first non-blank character.  Also skip \ comments. */
-1:
+    1:
         call _KEY               // get next key, returned in %eax
         cmpb $'\\',%al          // start of a comment?
         je 3f                   // if so, skip the comment
@@ -1141,7 +1127,7 @@ _WORD:
 
         /* Search for the end of the word, storing chars as we go. */
         mov $word_buffer,%edi   // pointer to return buffer
-2:
+    2:
         stosb                   // add character to return buffer
         call _KEY               // get next key, returned in %al
         cmpb $' ',%al           // is blank?
@@ -1154,7 +1140,7 @@ _WORD:
         ret
 
         /* Code to skip \ comments to end of the current line. */
-3:
+    3:
         call _KEY
         cmpb $'\n',%al          // end of line yet?
         jne 3b
@@ -1163,25 +1149,24 @@ _WORD:
         .data                   // NB: easier to fit in the .data section
         // A static buffer where WORD returns.  Subsequent calls
         // overwrite this buffer.  Maximum word length is 32 chars.
-word_buffer:
+    word_buffer:
         .space 32
 
-/*
-        As well as reading in words we'll need to read in numbers and for that we are using a function
-        called `NUMBER`.  This parses a numeric string such as one returned by WORD and pushes the
-        number on the parameter stack.
+As well as reading in words we'll need to read in numbers and for that we are using a function
+called `NUMBER`.  This parses a numeric string such as one returned by WORD and pushes the
+number on the parameter stack.
 
-        The function uses the variable `BASE` as the base (radix) for conversion, so for example if
-        `BASE` is 2 then we expect a binary number.  Normally `BASE` is 10.
+The function uses the variable `BASE` as the base (radix) for conversion, so for example if
+`BASE` is 2 then we expect a binary number.  Normally `BASE` is 10.
 
-        If the word starts with a '-' character then the returned value is negative.
+If the word starts with a '-' character then the returned value is negative.
 
-        If the string can't be parsed as a number (or contains characters outside the current `BASE`)
-        then we need to return an error indication.  So `NUMBER` actually returns two items on the stack.
-        At the top of stack we return the number of unconverted characters (ie. if 0 then all characters
-        were converted, so there is no error).  Second from top of stack is the parsed number or a
-        partial value if there was an error.
-*/
+If the string can't be parsed as a number (or contains characters outside the current `BASE`)
+then we need to return an error indication.  So `NUMBER` actually returns two items on the stack.
+At the top of stack we return the number of unconverted characters (ie. if 0 then all characters
+were converted, so there is no error).  Second from top of stack is the parsed number or a
+partial value if there was an error.
+
         defcode "NUMBER",6,,NUMBER
         pop %ecx                // length of string
         pop %edi                // start address of string
@@ -1190,7 +1175,7 @@ word_buffer:
         push %ecx               // number of unparsed characters (0 = no error)
         NEXT
 
-_NUMBER:
+    _NUMBER:
         xor %eax,%eax
         xor %ebx,%ebx
 
@@ -1214,12 +1199,12 @@ _NUMBER:
         ret
 
         // Loop reading digits.
-1:      imull %edx,%eax         // %eax *= BASE
+    1:  imull %edx,%eax         // %eax *= BASE
         movb (%edi),%bl         // %bl = next character in string
         inc %edi
 
         // Convert 0-9, A-Z to a number 0-35.
-2:      subb $'0',%bl           // < '0'?
+    2:  subb $'0',%bl           // < '0'?
         jb 4f
         cmp $10,%bl             // <= '9'?
         jb 3f
@@ -1227,7 +1212,7 @@ _NUMBER:
         jb 4f
         addb $10,%bl
 
-3:      cmp %dl,%bl             // >= BASE?
+    3:  cmp %dl,%bl             // >= BASE?
         jge 4f
 
         // OK, so add it to %eax and loop.
@@ -1236,36 +1221,28 @@ _NUMBER:
         jnz 1b
 
         // Negate the result if first character was '-' (saved on the stack).
-4:      pop %ebx
+    4:  pop %ebx
         test %ebx,%ebx
         jz 5f
         neg %eax
 
-5:      ret
+    5:  ret
 
-/*
-        DICTIONARY LOOK UPS ----------------------------------------------------------------------
+DICTIONARY LOOK UPS ----------------------------------------------------------------------
 
-        We're building up to our prelude on how Forth code is compiled, but first we need yet more infrastructure.
+We're building up to our prelude on how Forth code is compiled, but first we need yet more infrastructure.
 
-        The Forth word `FIND` takes a string (a word as parsed by `WORD` -- see above) and looks it up in the
-        dictionary.  What it actually returns is the address of the dictionary header, if it finds it,
-        or 0 if it didn't.
+The Forth word `FIND` takes a string (a word as parsed by `WORD` -- see above) and looks it up in the
+dictionary.  What it actually returns is the address of the dictionary header, if it finds it,
+or 0 if it didn't.
 
-        So if `DOUBLE` is defined in the dictionary, then `WORD DOUBLE FIND` returns the following pointer:
+So if `DOUBLE` is defined in the dictionary, then `WORD DOUBLE FIND` returns the following pointer:
 
-    pointer to this
-        |
-        |
-        V
-        +---------|---|---|---|---|---|---|---|---|------------|------------|------------|------------+
-        | LINK    | 6 | D | O | U | B | L | E | 0 | DOCOL      | DUP        | +          | EXIT       |
-        +---------|---|---|---|---|---|---|---|---|------------|------------|------------|------------+
+<svg height="128" width="832" xmlns="http://www.w3.org/2000/svg"><style>circle,line,polygon{stroke:#000;stroke-width:2;stroke-opacity:1;fill-opacity:1;stroke-linecap:round;stroke-linejoin:miter}text{fill:#000;font-family:monospace;font-size:14px}.bg_filled{fill:#fff}</style><defs><marker id="arrow" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 0v4l4-2-4-2z"/></marker><marker id="diamond" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 2l2-2 2 2-2 2-2-2z"/></marker><marker id="circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle cx="4" cy="4" r="2"/></marker><marker id="open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="2"/></marker><marker id="big_open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="3"/></marker></defs><path class="backdrop" fill="#fff" stroke-width="2" stroke-linecap="round" d="M0 0h832v128H0z"/><text x="34" y="12">pointer</text><path class="solid" marker-end="url(#arrow)" d="M76 16v48"/><text x="82" y="92">LINK</text><text x="162" y="92">6</text><text x="194" y="92">D</text><text x="226" y="92">O</text><text x="258" y="92">U</text><text x="290" y="92">B</text><text x="322" y="92">L</text><text x="354" y="92">E</text><text x="386" y="92">0</text><text x="418" y="92">DOCOL</text><text x="522" y="92">DUP</text><text x="626" y="92">+</text><text x="730" y="92">EXIT</text><text x="98" y="12">to</text><text x="122" y="12">this</text><path class="solid" d="M68 72h752M68 72v32M148 72v32M180 72v32M212 72v32M244 72v32M276 72v32M308 72v32M340 72v32M372 72v32M404 72v32M508 72v32M612 72v32M716 72v32M820 72v32M68 104h752"/></svg>
 
-        See also `>CFA` and `>DFA`.
+See also `>CFA` and `>DFA`.
 
-        `FIND` doesn't find dictionary entries which are flagged as `HIDDEN`.  See below for why.
-*/
+`FIND` doesn't find dictionary entries which are flagged as `HIDDEN`.  See below for why.
 
         defcode "FIND",4,,FIND
         pop %ecx                // %ecx = length
@@ -1274,12 +1251,12 @@ _NUMBER:
         push %eax               // %eax = address of dictionary entry (or NULL)
         NEXT
 
-_FIND:
+    _FIND:
         push %esi               // Save %esi so we can use it in string comparison.
 
         // Now we start searching backwards through the dictionary for this word.
         mov var_LATEST,%edx     // LATEST points to name header of the latest word in the dictionary
-1:      test %edx,%edx          // NULL pointer?  (end of the linked list)
+    1:  test %edx,%edx          // NULL pointer?  (end of the linked list)
         je 4f
 
         // Compare the length expected and the length of the word.
@@ -1305,51 +1282,42 @@ _FIND:
         mov %edx,%eax
         ret
 
-2:      mov (%edx),%edx         // Move back through the link field to the previous word
+    2:  mov (%edx),%edx         // Move back through the link field to the previous word
         jmp 1b                  // .. and loop.
 
-4:      // Not found.
+    4:  // Not found.
         pop %esi
         xor %eax,%eax           // Return zero to indicate not found.
         ret
 
-/*
-        `FIND` returns the dictionary pointer, but when compiling we need the codeword pointer (recall
-        that Forth definitions are compiled into lists of codeword pointers).  The standard Forth
-        word `>CFA` turns a dictionary pointer into a codeword pointer.
+`FIND` returns the dictionary pointer, but when compiling we need the codeword pointer (recall
+that Forth definitions are compiled into lists of codeword pointers).  The standard Forth
+word `>CFA` turns a dictionary pointer into a codeword pointer.
 
-        The example below shows the result of:
+The example below shows the result of:
 
-                `WORD DOUBLE FIND >CFA`
+        `WORD DOUBLE FIND >CFA`
 
-        FIND returns a pointer to this
-        |                               >CFA converts it to a pointer to this
-        |                                          |
-        V                                          V
-        +---------|---|---|---|---|---|---|---|---|------------|------------|------------|------------+
-        | LINK    | 6 | D | O | U | B | L | E | 0 | DOCOL      | DUP        | +          | EXIT       |
-        +---------|---|---|---|---|---|---|---|---|------------|------------|------------|------------+
-                                                   codeword
+<svg height="144" width="768" xmlns="http://www.w3.org/2000/svg"><style>circle,line,polygon{stroke:#000;stroke-width:2;stroke-opacity:1;fill-opacity:1;stroke-linecap:round;stroke-linejoin:miter}text{fill:#000;font-family:monospace;font-size:14px}.bg_filled{fill:#fff}.end_marked_arrow{marker-end:url(#arrow)}</style><defs><marker id="arrow" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 0v4l4-2-4-2z"/></marker><marker id="diamond" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 2l2-2 2 2-2 2-2-2z"/></marker><marker id="circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle cx="4" cy="4" r="2"/></marker><marker id="open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="2"/></marker><marker id="big_open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="3"/></marker></defs><path class="backdrop" fill="#fff" stroke-width="2" stroke-linecap="round" d="M0 0h768v144H0z"/><text x="2" y="12">FIND</text><path class="solid end_marked_arrow" d="M12 16v48"/><text x="306" y="28">converts</text><path class="solid end_marked_arrow" d="M348 32v32"/><text x="18" y="92">LINK</text><text x="98" y="92">6</text><text x="130" y="92">D</text><text x="162" y="92">O</text><text x="194" y="92">U</text><text x="226" y="92">B</text><text x="258" y="92">L</text><text x="290" y="92">E</text><text x="322" y="92">0</text><text x="354" y="92">DOCOL</text><text x="458" y="92">DUP</text><text x="562" y="92">+</text><text x="666" y="92">EXIT</text><text x="346" y="124">codeword</text><text x="42" y="12">returns</text><text x="106" y="12">a</text><text x="122" y="12">pointer</text><text x="186" y="12">to</text><text x="210" y="12">this</text><text x="266" y="28">&gt;CFA</text><text x="378" y="28">it</text><text x="402" y="28">to</text><text x="426" y="28">a</text><text x="442" y="28">pointer</text><text x="506" y="28">to</text><text x="530" y="28">this</text><path class="solid" d="M4 72h752M4 72v32M84 72v32M116 72v32M148 72v32M180 72v32M212 72v32M244 72v32M276 72v32M308 72v32M340 72v32M444 72v32M548 72v32M652 72v32M756 72v32M4 104h752"/></svg>
 
-        Notes:
+Notes:
 
-        Because names vary in length, this isn't just a simple increment.
+Because names vary in length, this isn't just a simple increment.
 
-        In this Forth you cannot easily turn a codeword pointer back into a dictionary entry pointer, but
-        that is not true in most Forth implementations where they store a back pointer in the definition
-        (with an obvious memory/complexity cost).  The reason they do this is that it is useful to be
-        able to go backwards (codeword -> dictionary entry) in order to decompile Forth definitions
-        quickly.
+In this Forth you cannot easily turn a codeword pointer back into a dictionary entry pointer, but
+that is not true in most Forth implementations where they store a back pointer in the definition
+(with an obvious memory/complexity cost).  The reason they do this is that it is useful to be
+able to go backwards (codeword -> dictionary entry) in order to decompile Forth definitions
+quickly.
 
-        What does `CFA` stand for?  My best guess is "Code Field Address".
-*/
+What does `CFA` stand for?  My best guess is "Code Field Address".
 
         defcode ">CFA",4,,TCFA
         pop %edi
         call _TCFA
         push %edi
         NEXT
-_TCFA:
+    _TCFA:
         xor %eax,%eax
         add $4,%edi             // Skip link pointer.
         movb (%edi),%al         // Load flags+len into %al.
@@ -1360,94 +1328,68 @@ _TCFA:
         andl $~3,%edi
         ret
 
-/*
-        Related to `>CFA` is `>DFA` which takes a dictionary entry address as returned by `FIND` and
-        returns a pointer to the first data field.
+Related to `>CFA` is `>DFA` which takes a dictionary entry address as returned by `FIND` and
+returns a pointer to the first data field.
 
-        FIND returns a pointer to this
-        |                               >CFA converts it to a pointer to this
-        |                                          |
-        |                                          |    >DFA converts it to a pointer to this
-        |                                          |             |
-        V                                          V             V
-        +---------|---|---|---|---|---|---|---|---|------------|------------|------------|------------+
-        | LINK    | 6 | D | O | U | B | L | E | 0 | DOCOL      | DUP        | +          | EXIT       |
-        +---------|---|---|---|---|---|---|---|---|------------|------------|------------|------------+
-                                                   codeword
+<svg height="176" width="768" xmlns="http://www.w3.org/2000/svg"><style>circle,line,polygon{stroke:#000;stroke-width:2;stroke-opacity:1;fill-opacity:1;stroke-linecap:round;stroke-linejoin:miter}text{fill:#000;font-family:monospace;font-size:14px}.bg_filled{fill:#fff}.end_marked_arrow{marker-end:url(#arrow)}</style><defs><marker id="arrow" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 0v4l4-2-4-2z"/></marker><marker id="diamond" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 2l2-2 2 2-2 2-2-2z"/></marker><marker id="circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle cx="4" cy="4" r="2"/></marker><marker id="open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="2"/></marker><marker id="big_open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="3"/></marker></defs><path class="backdrop" fill="#fff" stroke-width="2" stroke-linecap="round" d="M0 0h768v176H0z"/><text x="10" y="12">FIND</text><path class="solid end_marked_arrow" d="M12 16v80"/><text x="306" y="28">converts</text><path class="solid end_marked_arrow" d="M356 32v64"/><text x="434" y="60">converts</text><path class="solid end_marked_arrow" d="M468 64v32"/><text x="18" y="124">LINK</text><text x="98" y="124">6</text><text x="130" y="124">D</text><text x="162" y="124">O</text><text x="194" y="124">U</text><text x="226" y="124">B</text><text x="258" y="124">L</text><text x="290" y="124">E</text><text x="322" y="124">0</text><text x="354" y="124">DOCOL</text><text x="458" y="124">DUP</text><text x="562" y="124">+</text><text x="666" y="124">EXIT</text><text x="346" y="156">codeword</text><text x="50" y="12">returns</text><text x="114" y="12">a</text><text x="130" y="12">pointer</text><text x="194" y="12">to</text><text x="218" y="12">this</text><text x="266" y="28">&gt;CFA</text><text x="378" y="28">it</text><text x="402" y="28">to</text><text x="426" y="28">a</text><text x="442" y="28">pointer</text><text x="506" y="28">to</text><text x="530" y="28">this</text><text x="394" y="60">&gt;DFA</text><text x="506" y="60">it</text><text x="530" y="60">to</text><text x="554" y="60">a</text><text x="570" y="60">pointer</text><text x="634" y="60">to</text><text x="658" y="60">this</text><path class="solid" d="M4 104h752M4 104v32M84 104v32M116 104v32M148 104v32M180 104v32M212 104v32M244 104v32M276 104v32M308 104v32M340 104v32M444 104v32M548 104v32M652 104v32M756 104v32M4 136h752"/></svg>
 
-        (Note to those following the source of FIG-Forth / ciforth: My `>DFA` definition is
-        different from theirs, because they have an extra indirection).
+(Note to those following the source of FIG-Forth / ciforth: My `>DFA` definition is
+different from theirs, because they have an extra indirection).
 
-        You can see that `>DFA` is easily defined in Forth just by adding 4 to the result of `>CFA`.
-*/
+You can see that `>DFA` is easily defined in Forth just by adding 4 to the result of `>CFA`.
 
         defword ">DFA",4,,TDFA
         .int TCFA               // >CFA         (get code field address)
         .int INCR4              // 4+           (add 4 to it to get to next word)
         .int EXIT               // EXIT         (return from Forth word)
 
-/*
-        COMPILING ----------------------------------------------------------------------
+## COMPILING
 
-        Now we'll talk about how Forth compiles words.  Recall that a word definition looks like this:
+Now we'll talk about how Forth compiles words.  Recall that a word definition looks like this:
 
-                `: DOUBLE DUP + ;`
+        `: DOUBLE DUP + ;`
 
-        and we have to turn this into:
+and we have to turn this into:
 
-          pointer to previous word
-           ^
-           |
-        +--|------|---|---|---|---|---|---|---|---|------------|------------|------------|------------+
-        | LINK    | 6 | D | O | U | B | L | E | 0 | DOCOL      | DUP        | +          | EXIT       |
-        +---------|---|---|---|---|---|---|---|---|------------|--|---------|------------|------------+
-           ^       len                         pad  codeword      |
-           |                                                      V
-          LATEST points here                            points to codeword of DUP
+<svg height="160" width="768" xmlns="http://www.w3.org/2000/svg"><style>circle,line,polygon{stroke:#000;stroke-width:2;stroke-opacity:1;fill-opacity:1;stroke-linecap:round;stroke-linejoin:miter}.filled,text{fill:#000}.bg_filled{fill:#fff}text{font-family:monospace;font-size:14px}</style><defs><marker id="arrow" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 0v4l4-2-4-2z"/></marker><marker id="diamond" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 2l2-2 2 2-2 2-2-2z"/></marker><marker id="circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="filled" cx="4" cy="4" r="2"/></marker><marker id="open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="2"/></marker><marker id="big_open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="3"/></marker></defs><path class="backdrop" fill="#fff" stroke-width="2" stroke-linecap="round" d="M0 0h768v160H0z"/><text x="18" y="12">pointer</text><path class="filled" d="M24 28l4-12 4 12z"/><text x="18" y="76">LINK</text><text x="98" y="76">6</text><text x="130" y="76">D</text><text x="162" y="76">O</text><text x="194" y="76">U</text><text x="226" y="76">B</text><text x="258" y="76">L</text><text x="290" y="76">E</text><text x="322" y="76">0</text><text x="354" y="76">DOCOL</text><text x="458" y="76">DUP</text><text x="562" y="76">+</text><text x="666" y="76">EXIT</text><path class="solid" marker-end="url(#arrow)" d="M468 88v40"/><path class="filled" d="M24 108l4-12 4 12z"/><text x="90" y="108">len</text><text x="314" y="108">pad</text><text x="354" y="108">codeword</text><path class="solid" d="M28 112v16"/><text x="18" y="140">LATEST</text><text x="466" y="140">codeword</text><text x="82" y="12">to</text><text x="106" y="12">previous</text><text x="178" y="12">word</text><text x="74" y="140">points</text><text x="130" y="140">here</text><text x="386" y="140">points</text><text x="442" y="140">to</text><text x="538" y="140">of</text><text x="562" y="140">DUP</text><path class="solid" d="M28 32v24M4 56h752M4 56v32M84 56v32M116 56v32M148 56v32M180 56v32M212 56v32M244 56v32M276 56v32M308 56v32M340 56v32M444 56v32M548 56v32M652 56v32M756 56v32M4 88h752"/></svg>
 
-        There are several problems to solve.  Where to put the new word?  How do we read words?  How
-        do we define the words `:` (COLON) and `;` (SEMICOLON)?
+There are several problems to solve.  Where to put the new word?  How do we read words?  How
+do we define the words `:` (COLON) and `;` (SEMICOLON)?
 
-        Forth solves this rather elegantly and as you might expect in a very low-level way which
-        allows you to change how the compiler works on your own code.
+Forth solves this rather elegantly and as you might expect in a very low-level way which
+allows you to change how the compiler works on your own code.
 
-        Forth has an `INTERPRET` function (a true interpreter this time, not `DOCOL`) which runs in a
-        loop, reading words (using `WORD`), looking them up (using `FIND`), turning them into codeword
-        pointers (using `>CFA`) and deciding what to do with them.
+Forth has an `INTERPRET` function (a true interpreter this time, not `DOCOL`) which runs in a
+loop, reading words (using `WORD`), looking them up (using `FIND`), turning them into codeword
+pointers (using `>CFA`) and deciding what to do with them.
 
-        What it does depends on the mode of the interpreter (in variable `STATE`).
+What it does depends on the mode of the interpreter (in variable `STATE`).
 
-        When `STATE` is zero, the interpreter just runs each word as it looks them up.  This is known as
-        immediate mode.
+When `STATE` is zero, the interpreter just runs each word as it looks them up.  This is known as
+immediate mode.
 
-        The interesting stuff happens when `STATE` is non-zero -- compiling mode.  In this mode the
-        interpreter appends the codeword pointer to user memory (the `HERE` variable points to the next
-        free byte of user memory -- see DATA SEGMENT section below).
+The interesting stuff happens when `STATE` is non-zero -- compiling mode.  In this mode the
+interpreter appends the codeword pointer to user memory (the `HERE` variable points to the next
+free byte of user memory -- see DATA SEGMENT section below).
 
-        So you may be able to see how we could define `:` (COLON).  The general plan is:
+So you may be able to see how we could define `:` (COLON).  The general plan is:
 
-        (1) Use `WORD` to read the name of the function being defined.
+(1) Use `WORD` to read the name of the function being defined.
 
-        (2) Construct the dictionary entry -- just the header part -- in user memory:
+(2) Construct the dictionary entry -- just the header part -- in user memory:
 
-    pointer to previous word (from LATEST)                      +-- Afterwards, HERE points here, where
-           ^                                                    |   the interpreter will start appending
-           |                                                    V   codewords.
-        +--|------|---|---|---|---|---|---|---|---|------------+
-        | LINK    | 6 | D | O | U | B | L | E | 0 | DOCOL      |
-        +---------|---|---|---|---|---|---|---|---|------------+
-                   len                         pad  codeword
+<svg height="128" width="808" xmlns="http://www.w3.org/2000/svg"><style>circle,line,path,polygon{stroke:#000;stroke-width:2;stroke-opacity:1;fill-opacity:1;stroke-linecap:round;stroke-linejoin:miter}.filled,text{fill:#000}.bg_filled,.nofill{fill:#fff}text{font-family:monospace;font-size:14px}</style><defs><marker id="arrow" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 0v4l4-2-4-2z"/></marker><marker id="diamond" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 2l2-2 2 2-2 2-2-2z"/></marker><marker id="circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="filled" cx="4" cy="4" r="2"/></marker><marker id="open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="2"/></marker><marker id="big_open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="3"/></marker></defs><path class="backdrop" fill="#fff" stroke-width="2" stroke-linecap="round" d="M0 0h808v128H0z"/><text x="2" y="12">pointer</text><text x="66" y="12">to</text><path class="solid" d="M492 8h20"/><text x="522" y="12">Afterwards,</text><text x="618" y="12">HERE</text><text x="658" y="12">points</text><text x="714" y="12">here,</text><text x="762" y="12">where</text><path class="filled" d="M56 28l4-12 4 12z"/><path class="solid" marker-end="url(#arrow)" d="M484 16v32"/><text x="514" y="28">the</text><text x="546" y="28">interpreter</text><text x="642" y="28">will</text><text x="682" y="28">start</text><text x="730" y="28">appending</text><text x="514" y="44">codewords.</text><text x="50" y="76">LINK</text><text x="130" y="76">6</text><text x="162" y="76">D</text><text x="194" y="76">O</text><text x="226" y="76">U</text><text x="258" y="76">B</text><text x="290" y="76">L</text><text x="322" y="76">E</text><text x="354" y="76">0</text><text x="386" y="76">DOCOL</text><text x="122" y="108">len</text><text x="346" y="108">pad</text><text x="386" y="108">codeword</text><text x="90" y="12">previous</text><text x="162" y="12">word</text><path class="nofill" d="M208 0a16 16 0 000 16"/><text x="210" y="12">from</text><text x="250" y="12">LATEST</text><path class="nofill" d="M304 0a16 16 0 010 16"/><path class="solid" d="M60 32v24M36 56h440M36 56v32M116 56v32M148 56v32M180 56v32M212 56v32M244 56v32M276 56v32M308 56v32M340 56v32M372 56v32M476 56v32M36 88h440"/></svg>
 
-        (3) Set `LATEST` to point to the newly defined word, ...
+(3) Set `LATEST` to point to the newly defined word, ...
 
-        (4) .. and most importantly leave `HERE` pointing just after the new codeword.  This is where
-            the interpreter will append codewords.
+(4) .. and most importantly leave `HERE` pointing just after the new codeword.  This is where
+    the interpreter will append codewords.
 
-        (5) Set `STATE` to 1.  This goes into compile mode so the interpreter starts appending codewords to
-            our partially-formed header.
+(5) Set `STATE` to 1.  This goes into compile mode so the interpreter starts appending codewords to
+    our partially-formed header.
 
-        After : has run, our input is here:
-
+After : has run, our input is here:
+GUIDO
         : DOUBLE DUP + ;
                  ^
                  |
