@@ -518,11 +518,9 @@ As with defword above, don't worry about the complicated details of the macro.
     code_\label :                   // assembler code follows
         .endm
 
-/*
-        Now some easy FORTH primitives.  These are written in assembly for speed.  If you understand
-        i386 assembly language then it is worth reading these.  However if you don't understand assembly
-        you can skip the details.
-*/
+Now some easy FORTH primitives.  These are written in assembly for speed.  If you understand
+i386 assembly language then it is worth reading these.  However if you don't understand assembly
+you can skip the details.
 
         defcode "DROP",4,,DROP
         pop %eax                // drop top of stack
@@ -591,7 +589,7 @@ As with defword above, don't worry about the complicated details of the macro.
         test %eax,%eax
         jz 1f
         push %eax
-1:      NEXT
+    1:  NEXT
 
         defcode "1+",2,,INCR
         incl (%esp)             // increment top of stack
@@ -626,11 +624,9 @@ As with defword above, don't worry about the complicated details of the macro.
         push %eax               // ignore overflow
         NEXT
 
-/*
-        In this FORTH, only /MOD is primitive.  Later we will define the / and MOD words in
-        terms of the primitive /MOD.  The design of the i386 assembly instruction idiv which
-        leaves both quotient and remainder makes this the obvious choice.
-*/
+In this FORTH, only /MOD is primitive.  Later we will define the / and MOD words in
+terms of the primitive /MOD.  The design of the i386 assembly instruction idiv which
+leaves both quotient and remainder makes this the obvious choice.
 
         defcode "/MOD",4,,DIVMOD
         xor %edx,%edx
@@ -641,14 +637,12 @@ As with defword above, don't worry about the complicated details of the macro.
         push %eax               // push quotient
         NEXT
 
-/*
-        Lots of comparison operations like =, <, >, etc..
+Lots of comparison operations like =, <, >, etc..
 
-        ANS FORTH says that the comparison words should return all (binary) 1's for
-        TRUE and all 0's for FALSE.  However this is a bit of a strange convention
-        so this FORTH breaks it and returns the more normal (for C programmers ...)
-        1 meaning TRUE and 0 meaning FALSE.
-*/
+ANS FORTH says that the comparison words should return all (binary) 1's for
+TRUE and all 0's for FALSE.  However this is a bit of a strange convention
+so this FORTH breaks it and returns the more normal (for C programmers ...)
+1 meaning TRUE and 0 meaning FALSE.
 
         defcode "=",1,,EQU      // top two words are equal?
         pop %eax
@@ -771,54 +765,27 @@ As with defword above, don't worry about the complicated details of the macro.
         notl (%esp)
         NEXT
 
-/*
-        RETURNING FROM FORTH WORDS ----------------------------------------------------------------------
+## RETURNING FROM FORTH WORDS
 
-        Time to talk about what happens when we EXIT a function.  In this diagram QUADRUPLE has called
-        DOUBLE, and DOUBLE is about to exit (look at where %esi is pointing):
+Time to talk about what happens when we EXIT a function.  In this diagram QUADRUPLE has called
+DOUBLE, and DOUBLE is about to exit (look at where %esi is pointing):
 
-                QUADRUPLE
-                +------------------+
-                | codeword         |
-                +------------------+               DOUBLE
-                | addr of DOUBLE  ---------------> +------------------+
-                +------------------+               | codeword         |
-                | addr of DOUBLE   |               +------------------+
-                +------------------+               | addr of DUP      |
-                | addr of EXIT     |               +------------------+
-                +------------------+               | addr of +        |
-                                                   +------------------+
-                                           %esi -> | addr of EXIT     |
-                                                   +------------------+
+<svg height="224" width="448" xmlns="http://www.w3.org/2000/svg"><style>circle,line,polygon{stroke:#000;stroke-width:2;stroke-opacity:1;fill-opacity:1;stroke-linecap:round;stroke-linejoin:miter}text{fill:#000;font-family:monospace;font-size:14px}.bg_filled{fill:#fff}.end_marked_arrow{marker-end:url(#arrow)}</style><defs><marker id="arrow" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 0v4l4-2-4-2z"/></marker><marker id="diamond" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 2l2-2 2 2-2 2-2-2z"/></marker><marker id="circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle cx="4" cy="4" r="2"/></marker><marker id="open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="2"/></marker><marker id="big_open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="3"/></marker></defs><path class="backdrop" fill="#fff" stroke-width="2" stroke-linecap="round" d="M0 0h448v224H0z"/><text x="2" y="12">QUADRUPLE</text><text x="18" y="44">codeword</text><text x="18" y="76">addr</text><text x="58" y="76">of</text><text x="82" y="76">DOUBLE</text><path class="solid end_marked_arrow" d="M144 72h128"/><text x="18" y="108">addr</text><text x="58" y="108">of</text><text x="82" y="108">DOUBLE</text><text x="18" y="140">addr</text><text x="58" y="140">of</text><text x="82" y="140">EXIT</text><text x="282" y="60">DOUBLE</text><text x="298" y="92">codeword</text><text x="298" y="124">addr</text><text x="338" y="124">of</text><text x="362" y="124">DUP</text><text x="298" y="156">addr</text><text x="338" y="156">of</text><text x="362" y="156">+</text><text x="298" y="188">addr</text><text x="338" y="188">of</text><text x="362" y="188">EXIT</text><text x="218" y="188">%esi</text><path class="solid end_marked_arrow" d="M256 184h16"/><path class="solid" d="M4 24h152M4 24v128M156 24v128M4 56h152M4 88h152M4 120h152M4 152h152"/><g><path class="solid" d="M284 72h152M284 72v128M436 72v128M284 104h152M284 136h152M284 168h152M284 200h152"/></g></svg>
 
-        What happens when the + function does NEXT?  Well, the following code is executed.
-*/
+What happens when the + function does NEXT?  Well, the following code is executed.
 
         defcode "EXIT",4,,EXIT
         POPRSP %esi             // pop return stack into %esi
         NEXT
 
-/*
-        EXIT gets the old %esi which we saved from before on the return stack, and puts it in %esi.
-        So after this (but just before NEXT) we get:
+EXIT gets the old %esi which we saved from before on the return stack, and puts it in %esi.
+So after this (but just before NEXT) we get:
 
-                QUADRUPLE
-                +------------------+
-                | codeword         |
-                +------------------+               DOUBLE
-                | addr of DOUBLE  ---------------> +------------------+
-                +------------------+               | codeword         |
-        %esi -> | addr of DOUBLE   |               +------------------+
-                +------------------+               | addr of DUP      |
-                | addr of EXIT     |               +------------------+
-                +------------------+               | addr of +        |
-                                                   +------------------+
-                                                   | addr of EXIT     |
-                                                   +------------------+
+<svg height="224" width="512" xmlns="http://www.w3.org/2000/svg"><style>circle,line,polygon{stroke:#000;stroke-width:2;stroke-opacity:1;fill-opacity:1;stroke-linecap:round;stroke-linejoin:miter}text{fill:#000;font-family:monospace;font-size:14px}.bg_filled{fill:#fff}.end_marked_arrow{marker-end:url(#arrow)}</style><defs><marker id="arrow" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 0v4l4-2-4-2z"/></marker><marker id="diamond" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 2l2-2 2 2-2 2-2-2z"/></marker><marker id="circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle cx="4" cy="4" r="2"/></marker><marker id="open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="2"/></marker><marker id="big_open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="3"/></marker></defs><path class="backdrop" fill="#fff" stroke-width="2" stroke-linecap="round" d="M0 0h512v224H0z"/><text x="66" y="12">QUADRUPLE</text><text x="82" y="44">codeword</text><text x="82" y="76">addr</text><text x="122" y="76">of</text><text x="146" y="76">DOUBLE</text><path class="solid end_marked_arrow" d="M208 72h128"/><text x="82" y="108">addr</text><text x="122" y="108">of</text><text x="146" y="108">DOUBLE</text><text x="82" y="140">addr</text><text x="122" y="140">of</text><text x="146" y="140">EXIT</text><text x="346" y="60">DOUBLE</text><text x="362" y="92">codeword</text><text x="362" y="124">addr</text><text x="402" y="124">of</text><text x="426" y="124">DUP</text><text x="362" y="156">addr</text><text x="402" y="156">of</text><text x="426" y="156">+</text><text x="362" y="188">addr</text><text x="402" y="188">of</text><text x="426" y="188">EXIT</text><text x="2" y="108">%esi</text><path class="solid end_marked_arrow" d="M40 104h16"/><path class="solid" d="M68 24h152M68 24v128M220 24v128M68 56h152M68 88h152M68 120h152M68 152h152"/><g><path class="solid" d="M348 72h152M348 72v128M500 72v128M348 104h152M348 136h152M348 168h152M348 200h152"/></g></svg>
 
-        And NEXT just completes the job by, well, in this case just by calling DOUBLE again :-)
+And NEXT just completes the job by, well, in this case just by calling DOUBLE again :-)
 
-        LITERALS ----------------------------------------------------------------------
+## LITERALS
 
         The final point I "glossed over" before was how to deal with functions that do anything
         apart from calling other functions.  For example, suppose that DOUBLE was defined like this:
