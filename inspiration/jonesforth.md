@@ -319,13 +319,13 @@ stack for parameters, and a return stack which is a bit more mysterious.  But ou
 stack is just the stack I talked about in the previous paragraph, used to save %esi when
 calling from a FORTH word into another FORTH word.
 
-In this FORTH, we are using the normal stack pointer (%esp) for the parameter stack.
-We will use the i386's "other" stack pointer (%ebp, usually called the "frame pointer")
+In this FORTH, we are using the normal stack pointer (`%esp`) for the parameter stack.
+We will use the i386's "other" stack pointer (`%ebp`, usually called the "frame pointer")
 for our return stack.
 
 I've got two macros which just wrap up the details of using %ebp for the return stack.
-You use them as for example "`PUSHRSP %eax`" (push %eax on the return stack) or "`POPRSP %ebx`"
-(pop top of return stack into %ebx).
+You use them as for example "`PUSHRSP %eax`" (push `%eax` on the return stack) or "`POPRSP %ebx`"
+(pop top of return stack into `%ebx`).
 
     /* Macros to deal with the return stack. */
     .macro PUSHRSP reg
@@ -343,11 +343,11 @@ And with that we can now talk about the interpreter.
 In FORTH the interpreter function is often called `DOCOL` (I think it means "`DO COLON`" because
 all FORTH definitions start with a colon, as in `: DOUBLE DUP + ;`
 
-The "interpreter" (it's not really "interpreting") just needs to push the old %esi on the
+The "interpreter" (it's not really "interpreting") just needs to push the old `%esi` on the
 stack and set %esi to the first word in the definition.  Remember that we jumped to the
-function using `JMP *(%eax)`?  Well a consequence of that is that conveniently %eax contains
+function using `JMP *(%eax)`?  Well a consequence of that is that conveniently `%eax` contains
 the address of this codeword, so just by adding 4 to it we get the address of the first
-data word.  Finally after setting up %esi, it just does `NEXT` which causes that first word
+data word.  Finally after setting up `%esi`, it just does `NEXT` which causes that first word
 to run.
 
     /* DOCOL - the interpreter! */
@@ -359,27 +359,27 @@ to run.
         movl %eax,%esi          // %esi point to first data word
         NEXT
 
-Just to make this absolutely clear, let's see how DOCOL works when jumping from QUADRUPLE
-into DOUBLE:
+Just to make this absolutely clear, let's see how `DOCOL` works when jumping from `QUADRUPLE`
+into `DOUBLE`:
 
 <svg height="176" width="512" xmlns="http://www.w3.org/2000/svg"><style>circle,line,polygon{stroke:#000;stroke-width:2;stroke-opacity:1;fill-opacity:1;stroke-linecap:round;stroke-linejoin:miter}text{fill:#000;font-family:monospace;font-size:14px}.bg_filled{fill:#fff}.end_marked_arrow{marker-end:url(#arrow)}</style><defs><marker id="arrow" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 0v4l4-2-4-2z"/></marker><marker id="diamond" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 2l2-2 2 2-2 2-2-2z"/></marker><marker id="circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle cx="4" cy="4" r="2"/></marker><marker id="open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="2"/></marker><marker id="big_open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="3"/></marker></defs><path class="backdrop" fill="#fff" stroke-width="2" stroke-linecap="round" d="M0 0h512v176H0z"/><text x="66" y="12">QUADRUPLE:</text><text x="82" y="44">codeword</text><text x="82" y="76">addr</text><text x="122" y="76">of</text><text x="146" y="76">DOUBLE</text><path class="solid end_marked_arrow" d="M208 72h128"/><text x="282" y="92">%eax</text><path class="solid end_marked_arrow" d="M320 88h16"/><text x="82" y="108">addr</text><text x="122" y="108">of</text><text x="146" y="108">DOUBLE</text><text x="82" y="140">addr</text><text x="122" y="140">of</text><text x="146" y="140">EXIT</text><text x="346" y="60">DOUBLE:</text><text x="362" y="92">addr</text><text x="402" y="92">of</text><text x="426" y="92">DOCOL</text><text x="362" y="124">addr</text><text x="402" y="124">of</text><text x="426" y="124">DUP</text><text x="362" y="156">etc.</text><text x="2" y="108">%esi</text><path class="solid end_marked_arrow" d="M40 104h16"/><path class="solid" d="M68 24h152M68 24v128M220 24v128M68 56h152M68 88h152M68 120h152M68 152h152"/><g><path class="solid" d="M348 72h152M348 72v88M500 72v88M348 104h152M348 136h152"/></g></svg>
 
-First, the call to DOUBLE calls DOCOL (the codeword of DOUBLE).  DOCOL does this:  It
-pushes the old %esi on the return stack.  %eax points to the codeword of DOUBLE, so we
+First, the call to `DOUBLE` calls `DOCOL` (the codeword of `DOUBLE`).  `DOCOL` does this:  It
+pushes the old `%esi` on the return stack. `%eax` points to the codeword of `DOUBLE`, so we
 just add 4 on to it to get our new %esi:
 
 <svg height="176" width="576" xmlns="http://www.w3.org/2000/svg"><style>circle,line,polygon{stroke:#000;stroke-width:2;stroke-opacity:1;fill-opacity:1;stroke-linecap:round;stroke-linejoin:miter}text{fill:#000;font-family:monospace;font-size:14px}.bg_filled{fill:#fff}.end_marked_arrow{marker-end:url(#arrow)}</style><defs><marker id="arrow" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 0v4l4-2-4-2z"/></marker><marker id="diamond" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 2l2-2 2 2-2 2-2-2z"/></marker><marker id="circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle cx="4" cy="4" r="2"/></marker><marker id="open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="2"/></marker><marker id="big_open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="3"/></marker></defs><path class="backdrop" fill="#fff" stroke-width="2" stroke-linecap="round" d="M0 0h576v176H0z"/><text x="130" y="12">QUADRUPLE:</text><text x="146" y="44">codeword</text><text x="146" y="76">addr</text><text x="186" y="76">of</text><text x="210" y="76">DOUBLE</text><path class="solid end_marked_arrow" d="M272 72h128"/><text x="346" y="92">%eax</text><path class="solid end_marked_arrow" d="M384 88h16"/><text x="146" y="108">addr</text><text x="186" y="108">of</text><text x="210" y="108">DOUBLE</text><text x="346" y="108">+</text><text x="362" y="108">4</text><path class="solid" d="M376 102h8M376 106h8"/><text x="346" y="124">%esi</text><path class="solid end_marked_arrow" d="M384 120h16"/><text x="146" y="140">addr</text><text x="186" y="140">of</text><text x="210" y="140">EXIT</text><text x="410" y="60">DOUBLE:</text><text x="426" y="92">addr</text><text x="466" y="92">of</text><text x="490" y="92">DOCOL</text><text x="426" y="124">addr</text><text x="466" y="124">of</text><text x="490" y="124">DUP</text><text x="426" y="156">etc.</text><text x="2" y="92">top</text><text x="34" y="92">of</text><text x="58" y="92">return</text><text x="2" y="108">stack</text><text x="50" y="108">points</text><path class="solid end_marked_arrow" d="M104 104h16"/><path class="solid" d="M132 24h152M132 24v128M284 24v128M132 56h152M132 88h152M132 120h152M132 152h152"/><g><path class="solid" d="M412 72h152M412 72v88M564 72v88M412 104h152M412 136h152"/></g></svg>
 
-Then we do NEXT, and because of the magic of threaded code that increments %esi again
-and calls DUP.
+Then we do `NEXT`, and because of the magic of threaded code that increments `%esi` again
+and calls `DUP`.
 
 Well, it seems to work.
 
-One minor point here.  Because DOCOL is the first bit of assembly actually to be defined
+One minor point here.  Because `DOCOL` is the first bit of assembly actually to be defined
 in this file (the others were just macros), and because I usually compile this code with the
-text segment starting at address 0, DOCOL has address 0.  So if you are disassembling the
+text segment starting at address 0, `DOCOL` has address 0.  So if you are disassembling the
 code and see a word with a codeword of 0, you will immediately know that the word is
-written in FORTH (it's not an assembler primitive) and so uses DOCOL as the interpreter.
+written in FORTH (it's not an assembler primitive) and so uses `DOCOL` as the interpreter.
 
 ## STARTING UP
 
@@ -390,9 +390,9 @@ assembly language primitives).
 
 This is what the set up code does.  Does a tiny bit of house-keeping, sets up the
 separate return stack (NB: Linux gives us the ordinary parameter stack already), then
-immediately jumps to a FORTH word called QUIT.  Despite its name, QUIT doesn't quit
+immediately jumps to a FORTH word called `QUIT`.  Despite its name, `QUIT` doesn't quit
 anything.  It resets some internal state and starts reading and interpreting commands.
-(The reason it is called QUIT is because you can call QUIT from your own FORTH code
+(The reason it is called `QUIT` is because you can call `QUIT` from your own FORTH code
 to "quit" your program and go back to interpreting).
 
     /* Assembler entry point. */
@@ -414,11 +414,11 @@ to "quit" your program and go back to interpreting).
 ## BUILT-IN WORDS
 
 Remember our dictionary entries (headers)?  Let's bring those together with the codeword
-and data words to see how : DOUBLE DUP + ; really looks in memory.
+and data words to see how `: DOUBLE DUP + ;` really looks in memory.
 
 <svg height="160" width="832" xmlns="http://www.w3.org/2000/svg"><style>circle,line,polygon{stroke:#000;stroke-width:2;stroke-opacity:1;fill-opacity:1;stroke-linecap:round;stroke-linejoin:miter}.filled,text{fill:#000}.bg_filled{fill:#fff}text{font-family:monospace;font-size:14px}</style><defs><marker id="arrow" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 0v4l4-2-4-2z"/></marker><marker id="diamond" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 2l2-2 2 2-2 2-2-2z"/></marker><marker id="circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="filled" cx="4" cy="4" r="2"/></marker><marker id="open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="2"/></marker><marker id="big_open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="3"/></marker></defs><path class="backdrop" fill="#fff" stroke-width="2" stroke-linecap="round" d="M0 0h832v160H0z"/><text x="82" y="12">pointer</text><path class="filled" d="M88 28l4-12 4 12z"/><path class="solid" d="M92 32v32"/><text x="82" y="76">LINK</text><text x="162" y="76">6</text><text x="194" y="76">D</text><text x="226" y="76">O</text><text x="258" y="76">U</text><text x="290" y="76">B</text><text x="322" y="76">L</text><text x="354" y="76">E</text><text x="386" y="76">0</text><text x="418" y="76">DOCOL</text><text x="522" y="76">DUP</text><text x="626" y="76">+</text><text x="730" y="76">EXIT</text><path class="solid" marker-end="url(#arrow)" d="M532 80v48"/><path class="filled" d="M88 108l4-12 4 12z"/><text x="154" y="108">len</text><text x="378" y="108">pad</text><text x="418" y="108">codeword</text><path class="solid" d="M92 112v16"/><text x="82" y="140">LINK</text><text x="530" y="140">codeword</text><text x="146" y="12">to</text><text x="170" y="12">previous</text><text x="242" y="12">word</text><text x="122" y="140">in</text><text x="146" y="140">next</text><text x="186" y="140">word</text><text x="450" y="140">points</text><text x="506" y="140">to</text><text x="602" y="140">of</text><text x="626" y="140">DUP</text><path class="solid" d="M68 56h752M68 56v32M148 56v32M180 56v32M212 56v32M244 56v32M276 56v32M308 56v32M340 56v32M372 56v32M404 56v32M508 56v32M612 56v32M716 56v32M820 56v32M68 88h752"/></svg>
         
-Initially we can't just write ": DOUBLE DUP + ;" (ie. that literal string) here because we
+Initially we can't just write "`: DOUBLE DUP + ;`" (ie. that literal string) here because we
 don't yet have anything to read the string, break it up at spaces, parse each word, etc. etc.
 So instead we will have to define built-in words using the GNU assembler data constructors
 (like .int, .byte, .string, .ascii and so on -- look them up in the gas info page if you are
@@ -474,7 +474,7 @@ of these to start with because, well, everything has to start in assembly before
 enough "infrastructure" to be able to start writing FORTH words, but also I want to define
 some common FORTH words in assembly language for speed, even though I could write them in FORTH.
 
-This is what DUP looks like in memory:
+This is what `DUP` looks like in memory:
 
 <svg height="160" width="672" xmlns="http://www.w3.org/2000/svg"><style>circle,line,polygon,rect{stroke:#000;stroke-width:2;stroke-opacity:1;fill-opacity:1;stroke-linecap:round;stroke-linejoin:miter}.filled,text{fill:#000}.bg_filled{fill:#fff}text{font-family:monospace;font-size:14px}</style><defs><marker id="arrow" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 0v4l4-2-4-2z"/></marker><marker id="diamond" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 2l2-2 2 2-2 2-2-2z"/></marker><marker id="circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="filled" cx="4" cy="4" r="2"/></marker><marker id="open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="2"/></marker><marker id="big_open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="3"/></marker></defs><path class="backdrop" fill="#fff" d="M0 0h672v160H0z"/><rect class="solid" height="32" rx="0" width="312" x="4" y="56" fill="#fff"/><text x="18" y="76">LINK</text><text x="98" y="76">3</text><text x="130" y="76">D</text><text x="162" y="76">U</text><text x="194" y="76">P</text><text x="226" y="76">code</text><path class="solid" d="M256 80h8"/><text x="266" y="76">DUP</text><text x="18" y="12">pointer</text><path class="filled" d="M24 28l4-12 4 12z"/><path class="solid" d="M28 32v32M84 48v48M116 48v48M148 48v48M180 48v48M212 48v48"/><path class="solid" marker-end="url(#arrow)" d="M296 72h176"/><path class="filled" d="M24 108l4-12 4 12z"/><text x="90" y="108">len</text><text x="226" y="108">codeword</text><path class="solid" d="M28 112v16"/><text x="18" y="140">LINK</text><text x="82" y="12">to</text><text x="106" y="12">previous</text><text x="178" y="12">word</text><text x="482" y="76">points</text><text x="538" y="76">to</text><text x="562" y="76">the</text><text x="594" y="76">assembly</text><text x="482" y="92">code</text><text x="522" y="92">used</text><text x="562" y="92">to</text><text x="586" y="92">write</text><text x="634" y="92">DUP,</text><text x="482" y="108">which</text><text x="530" y="108">ends</text><text x="570" y="108">with</text><text x="610" y="108">NEXT.</text><text x="58" y="140">in</text><text x="82" y="140">next</text><text x="122" y="140">word</text></svg>
 
@@ -606,8 +606,8 @@ you can skip the details.
         push %eax               // ignore overflow
         NEXT
 
-In this FORTH, only /MOD is primitive.  Later we will define the / and MOD words in
-terms of the primitive /MOD.  The design of the i386 assembly instruction idiv which
+In this FORTH, only `/MOD` is primitive.  Later we will define the `/` and `MOD` words in
+terms of the primitive `/MOD`.  The design of the i386 assembly instruction idiv which
 leaves both quotient and remainder makes this the obvious choice.
 
         defcode "/MOD",4,,DIVMOD
@@ -622,9 +622,9 @@ leaves both quotient and remainder makes this the obvious choice.
 Lots of comparison operations like =, <, >, etc..
 
 ANS FORTH says that the comparison words should return all (binary) 1's for
-TRUE and all 0's for FALSE.  However this is a bit of a strange convention
+`TRUE` and all 0's for `FALSE`.  However this is a bit of a strange convention
 so this FORTH breaks it and returns the more normal (for C programmers ...)
-1 meaning TRUE and 0 meaning FALSE.
+1 meaning TRUE and 0 meaning `FALSE`.
 
         defcode "=",1,,EQU      // top two words are equal?
         pop %eax
@@ -749,8 +749,8 @@ so this FORTH breaks it and returns the more normal (for C programmers ...)
 
 ## RETURNING FROM FORTH WORDS
 
-Time to talk about what happens when we EXIT a function.  In this diagram QUADRUPLE has called
-DOUBLE, and DOUBLE is about to exit (look at where %esi is pointing):
+Time to talk about what happens when we `EXIT` a function.  In this diagram `QUADRUPLE` has called
+`DOUBLE`, and `DOUBLE` is about to exit (look at where `%esi` is pointing):
 
 <svg height="224" width="448" xmlns="http://www.w3.org/2000/svg"><style>circle,line,polygon{stroke:#000;stroke-width:2;stroke-opacity:1;fill-opacity:1;stroke-linecap:round;stroke-linejoin:miter}text{fill:#000;font-family:monospace;font-size:14px}.bg_filled{fill:#fff}.end_marked_arrow{marker-end:url(#arrow)}</style><defs><marker id="arrow" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 0v4l4-2-4-2z"/></marker><marker id="diamond" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 2l2-2 2 2-2 2-2-2z"/></marker><marker id="circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle cx="4" cy="4" r="2"/></marker><marker id="open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="2"/></marker><marker id="big_open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="3"/></marker></defs><path class="backdrop" fill="#fff" stroke-width="2" stroke-linecap="round" d="M0 0h448v224H0z"/><text x="2" y="12">QUADRUPLE</text><text x="18" y="44">codeword</text><text x="18" y="76">addr</text><text x="58" y="76">of</text><text x="82" y="76">DOUBLE</text><path class="solid end_marked_arrow" d="M144 72h128"/><text x="18" y="108">addr</text><text x="58" y="108">of</text><text x="82" y="108">DOUBLE</text><text x="18" y="140">addr</text><text x="58" y="140">of</text><text x="82" y="140">EXIT</text><text x="282" y="60">DOUBLE</text><text x="298" y="92">codeword</text><text x="298" y="124">addr</text><text x="338" y="124">of</text><text x="362" y="124">DUP</text><text x="298" y="156">addr</text><text x="338" y="156">of</text><text x="362" y="156">+</text><text x="298" y="188">addr</text><text x="338" y="188">of</text><text x="362" y="188">EXIT</text><text x="218" y="188">%esi</text><path class="solid end_marked_arrow" d="M256 184h16"/><path class="solid" d="M4 24h152M4 24v128M156 24v128M4 56h152M4 88h152M4 120h152M4 152h152"/><g><path class="solid" d="M284 72h152M284 72v128M436 72v128M284 104h152M284 136h152M284 168h152M284 200h152"/></g></svg>
 
