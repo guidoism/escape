@@ -125,7 +125,7 @@ follow this tutorial).
 However if you do want to read the assembly code here are a few notes about gas (the GNU assembler):
 
 (1) Register names are prefixed with '%', so %eax is the 32 bit i386 accumulator.  The registers
-    available on i386 are: %eax, %ebx, %ecx, %edx, %esi, %edi, %ebp and %esp, and most of them
+    available on i386 are: `%eax`, `%ebx`, `%ecx`, `%edx`, `%esi`, `%edi`, `%ebp` and `%esp`, and most of them
     have special purposes.
 
 (2) Add, mov, etc. take arguments in the form SRC,DEST.  So mov %eax,%ecx moves %eax -> %ecx
