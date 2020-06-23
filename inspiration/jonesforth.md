@@ -324,7 +324,7 @@ We will use the i386's "other" stack pointer (%ebp, usually called the "frame po
 for our return stack.
 
 I've got two macros which just wrap up the details of using %ebp for the return stack.
-You use them as for example "PUSHRSP %eax" (push %eax on the return stack) or "`POPRSP %ebx`"
+You use them as for example "`PUSHRSP %eax`" (push %eax on the return stack) or "`POPRSP %ebx`"
 (pop top of return stack into %ebx).
 
     /* Macros to deal with the return stack. */
