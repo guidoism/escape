@@ -220,7 +220,7 @@ i386 machine code.
           CALL c                        E8 2C 00 00 00
           ; ignore the return from the function for now
 
-"E8" is the x86 machine code to "CALL" a function.  In the first 20 years of computing
+"E8" is the x86 machine code to "`CALL`" a function.  In the first 20 years of computing
 memory was hideously expensive and we might have worried about the wasted space being used
 by the repeated "E8" bytes.  We can save 20% in code size (and therefore, in expensive memory)
 by compressing this into just:
@@ -242,30 +242,30 @@ interpreter which takes each set of bytes and calls it.
 
 On an i386 machine it turns out that we can write this interpreter rather easily, in just
 two assembly instructions which turn into just 3 bytes of machine code.  Let's store the
-pointer to the next word to execute in the %esi register:
+pointer to the next word to execute in the `%esi` register:
 
                 08 00 00 00     <- We're executing this one now.  %esi is the _next_ one to execute.
         %esi -> 1C 00 00 00
                 2C 00 00 00
 
-The all-important i386 instruction is called LODSL (or in Intel manuals, LODSW).
+The all-important i386 instruction is called `LODSL` (or in Intel manuals, `LODSW`).
 It does two things. Firstly it reads the memory at %esi into the accumulator
-(%eax). Secondly it increments %esi by 4 bytes. So after LODSL, the situation
+(`%eax`). Secondly it increments %esi by 4 bytes. So after `LODSL`, the situation
 now looks like this:
 
                 08 00 00 00     <- We're still executing this one
                 1C 00 00 00     <- %eax now contains this address (0x0000001C)
         %esi -> 2C 00 00 00
 
-Now we just need to jump to the address in %eax.  This is again just a single x86 instruction
-written JMP *(%eax).  And after doing the jump, the situation looks like:
+Now we just need to jump to the address in `%eax`.  This is again just a single x86 instruction
+written `JMP *(%eax)`.  And after doing the jump, the situation looks like:
 
                 08 00 00 00
                 1C 00 00 00     <- Now we're executing this subroutine.
         %esi -> 2C 00 00 00
 
-To make this work, each subroutine is followed by the two instructions `LODSL;
-JMP *(%eax)` which literally make the jump to the next subroutine.
+To make this work, each subroutine is followed by the two instructions `LODSL; JMP *(%eax)`
+which literally make the jump to the next subroutine.
 
 And that brings us to our first piece of actual code!  Well, it's a macro.
 
@@ -1248,11 +1248,11 @@ _NUMBER:
 
         We're building up to our prelude on how FORTH code is compiled, but first we need yet more infrastructure.
 
-        The FORTH word FIND takes a string (a word as parsed by WORD -- see above) and looks it up in the
+        The FORTH word `FIND` takes a string (a word as parsed by `WORD` -- see above) and looks it up in the
         dictionary.  What it actually returns is the address of the dictionary header, if it finds it,
         or 0 if it didn't.
 
-        So if DOUBLE is defined in the dictionary, then WORD DOUBLE FIND returns the following pointer:
+        So if `DOUBLE` is defined in the dictionary, then `WORD DOUBLE FIND` returns the following pointer:
 
     pointer to this
         |
@@ -1262,9 +1262,9 @@ _NUMBER:
         | LINK    | 6 | D | O | U | B | L | E | 0 | DOCOL      | DUP        | +          | EXIT       |
         +---------|---|---|---|---|---|---|---|---|------------|------------|------------|------------+
 
-        See also >CFA and >DFA.
+        See also `>CFA` and `>DFA`.
 
-        FIND doesn't find dictionary entries which are flagged as HIDDEN.  See below for why.
+        `FIND` doesn't find dictionary entries which are flagged as `HIDDEN`.  See below for why.
 */
 
         defcode "FIND",4,,FIND
@@ -1314,13 +1314,13 @@ _FIND:
         ret
 
 /*
-        FIND returns the dictionary pointer, but when compiling we need the codeword pointer (recall
+        `FIND` returns the dictionary pointer, but when compiling we need the codeword pointer (recall
         that FORTH definitions are compiled into lists of codeword pointers).  The standard FORTH
-        word >CFA turns a dictionary pointer into a codeword pointer.
+        word `>CFA` turns a dictionary pointer into a codeword pointer.
 
         The example below shows the result of:
 
-                WORD DOUBLE FIND >CFA
+                `WORD DOUBLE FIND >CFA`
 
         FIND returns a pointer to this
         |                               >CFA converts it to a pointer to this
@@ -1341,7 +1341,7 @@ _FIND:
         able to go backwards (codeword -> dictionary entry) in order to decompile FORTH definitions
         quickly.
 
-        What does CFA stand for?  My best guess is "Code Field Address".
+        What does `CFA` stand for?  My best guess is "Code Field Address".
 */
 
         defcode ">CFA",4,,TCFA
@@ -1361,7 +1361,7 @@ _TCFA:
         ret
 
 /*
-        Related to >CFA is >DFA which takes a dictionary entry address as returned by FIND and
+        Related to `>CFA` is `>DFA` which takes a dictionary entry address as returned by `FIND` and
         returns a pointer to the first data field.
 
         FIND returns a pointer to this
@@ -1375,10 +1375,10 @@ _TCFA:
         +---------|---|---|---|---|---|---|---|---|------------|------------|------------|------------+
                                                    codeword
 
-        (Note to those following the source of FIG-FORTH / ciforth: My >DFA definition is
+        (Note to those following the source of FIG-FORTH / ciforth: My `>DFA` definition is
         different from theirs, because they have an extra indirection).
 
-        You can see that >DFA is easily defined in FORTH just by adding 4 to the result of >CFA.
+        You can see that `>DFA` is easily defined in FORTH just by adding 4 to the result of `>CFA`.
 */
 
         defword ">DFA",4,,TDFA
@@ -1391,7 +1391,7 @@ _TCFA:
 
         Now we'll talk about how FORTH compiles words.  Recall that a word definition looks like this:
 
-                : DOUBLE DUP + ;
+                `: DOUBLE DUP + ;`
 
         and we have to turn this into:
 
@@ -1406,27 +1406,27 @@ _TCFA:
           LATEST points here                            points to codeword of DUP
 
         There are several problems to solve.  Where to put the new word?  How do we read words?  How
-        do we define the words : (COLON) and ; (SEMICOLON)?
+        do we define the words `:` (COLON) and `;` (SEMICOLON)?
 
         FORTH solves this rather elegantly and as you might expect in a very low-level way which
         allows you to change how the compiler works on your own code.
 
-        FORTH has an INTERPRET function (a true interpreter this time, not DOCOL) which runs in a
-        loop, reading words (using WORD), looking them up (using FIND), turning them into codeword
-        pointers (using >CFA) and deciding what to do with them.
+        FORTH has an `INTERPRET` function (a true interpreter this time, not `DOCOL`) which runs in a
+        loop, reading words (using `WORD`), looking them up (using `FIND`), turning them into codeword
+        pointers (using `>CFA`) and deciding what to do with them.
 
-        What it does depends on the mode of the interpreter (in variable STATE).
+        What it does depends on the mode of the interpreter (in variable `STATE`).
 
-        When STATE is zero, the interpreter just runs each word as it looks them up.  This is known as
+        When `STATE` is zero, the interpreter just runs each word as it looks them up.  This is known as
         immediate mode.
 
-        The interesting stuff happens when STATE is non-zero -- compiling mode.  In this mode the
-        interpreter appends the codeword pointer to user memory (the HERE variable points to the next
+        The interesting stuff happens when `STATE` is non-zero -- compiling mode.  In this mode the
+        interpreter appends the codeword pointer to user memory (the `HERE` variable points to the next
         free byte of user memory -- see DATA SEGMENT section below).
 
-        So you may be able to see how we could define : (COLON).  The general plan is:
+        So you may be able to see how we could define `:` (COLON).  The general plan is:
 
-        (1) Use WORD to read the name of the function being defined.
+        (1) Use `WORD` to read the name of the function being defined.
 
         (2) Construct the dictionary entry -- just the header part -- in user memory:
 
@@ -1438,12 +1438,12 @@ _TCFA:
         +---------|---|---|---|---|---|---|---|---|------------+
                    len                         pad  codeword
 
-        (3) Set LATEST to point to the newly defined word, ...
+        (3) Set `LATEST` to point to the newly defined word, ...
 
-        (4) .. and most importantly leave HERE pointing just after the new codeword.  This is where
+        (4) .. and most importantly leave `HERE` pointing just after the new codeword.  This is where
             the interpreter will append codewords.
 
-        (5) Set STATE to 1.  This goes into compile mode so the interpreter starts appending codewords to
+        (5) Set `STATE` to 1.  This goes into compile mode so the interpreter starts appending codewords to
             our partially-formed header.
 
         After : has run, our input is here:
@@ -1475,18 +1475,18 @@ _TCFA:
                    len                         pad  codeword
 
         The issue is what happens next.  Obviously what we _don't_ want to happen is that we
-        read ";" and compile it and go on compiling everything afterwards.
+        read "`;`" and compile it and go on compiling everything afterwards.
 
         At this point, FORTH uses a trick.  Remember the length byte in the dictionary definition
         isn't just a plain length byte, but can also contain flags.  One flag is called the
-        IMMEDIATE flag (F_IMMED in this code).  If a word in the dictionary is flagged as
-        IMMEDIATE then the interpreter runs it immediately _even if it's in compile mode_.
+        `IMMEDIATE` flag (F_IMMED in this code).  If a word in the dictionary is flagged as
+        `IMMEDIATE` then the interpreter runs it immediately _even if it's in compile mode_.
 
-        This is how the word ; (SEMICOLON) works -- as a word flagged in the dictionary as IMMEDIATE.
+        This is how the word `;` (SEMICOLON) works -- as a word flagged in the dictionary as `IMMEDIATE`.
 
-        And all it does is append the codeword for EXIT on to the current definition and switch
-        back to immediate mode (set STATE back to 0).  Shortly we'll see the actual definition
-        of ; and we'll see that it's really a very simple definition, declared IMMEDIATE.
+        And all it does is append the codeword for `EXIT` on to the current definition and switch
+        back to immediate mode (set `STATE` back to 0).  Shortly we'll see the actual definition
+        of ; and we'll see that it's really a very simple definition, declared `IMMEDIATE`.
 
         After the interpreter reads ; and executes it 'immediately', we get this:
 
@@ -1496,21 +1496,21 @@ _TCFA:
                    len                         pad  codeword                                           ^
                                                                                                        |
                                                                                                       HERE
-        STATE is set to 0.
+        `STATE` is set to 0.
 
         And that's it, job done, our new definition is compiled, and we're back in immediate mode
-        just reading and executing words, perhaps including a call to test our new word DOUBLE.
+        just reading and executing words, perhaps including a call to test our new word `DOUBLE`.
 
         The only last wrinkle in this is that while our word was being compiled, it was in a
-        half-finished state.  We certainly wouldn't want DOUBLE to be called somehow during
+        half-finished state.  We certainly wouldn't want `DOUBLE` to be called somehow during
         this time.  There are several ways to stop this from happening, but in FORTH what we
-        do is flag the word with the HIDDEN flag (F_HIDDEN in this code) just while it is
-        being compiled.  This prevents FIND from finding it, and thus in theory stops any
+        do is flag the word with the `HIDDEN` flag (`F_HIDDEN` in this code) just while it is
+        being compiled.  This prevents `FIND` from finding it, and thus in theory stops any
         chance of it being called.
 
-        The above explains how compiling, : (COLON) and ; (SEMICOLON) works and in a moment I'm
-        going to define them.  The : (COLON) function can be made a little bit more general by writing
-        it in two parts.  The first part, called CREATE, makes just the header:
+        The above explains how compiling, `:` (COLON) and `;` (SEMICOLON) works and in a moment I'm
+        going to define them.  The `:` (COLON) function can be made a little bit more general by writing
+        it in two parts.  The first part, called `CREATE`, makes just the header:
 
                                                    +-- Afterwards, HERE points here.
                                                    |
@@ -1520,8 +1520,8 @@ _TCFA:
         +---------|---|---|---|---|---|---|---|---+
                    len                         pad
 
-        and the second part, the actual definition of : (COLON), calls CREATE and appends the
-        DOCOL codeword, so leaving:
+        and the second part, the actual definition of `:` (COLON), calls `CREATE` and appends the
+        `DOCOL` codeword, so leaving:
 
                                                                 +-- Afterwards, HERE points here.
                                                                 |
@@ -1531,7 +1531,7 @@ _TCFA:
         +---------|---|---|---|---|---|---|---|---|------------+
                    len                         pad  codeword
 
-        CREATE is a standard FORTH word and the advantage of this split is that we can reuse it to
+        `CREATE` is a standard FORTH word and the advantage of this split is that we can reuse it to
         create other types of words (not just ones which contain code, but words which contain variables,
         constants and other data).
 */
@@ -1564,11 +1564,11 @@ _TCFA:
         NEXT
 
 /*
-        Because I want to define : (COLON) in FORTH, not assembler, we need a few more FORTH words
+        Because I want to define `:` (COLON) in FORTH, not assembler, we need a few more FORTH words
         to use.
 
-        The first is , (COMMA) which is a standard FORTH word which appends a 32 bit integer to the user
-        memory pointed to by HERE, and adds 4 to HERE.  So the action of , (COMMA) is:
+        The first is `,` (COMMA) which is a standard FORTH word which appends a 32 bit integer to the user
+        memory pointed to by `HERE`, and adds 4 to `HERE`.  So the action of `,` (COMMA) is:
 
                                                         previous value of HERE
                                                                  |
@@ -1582,7 +1582,7 @@ _TCFA:
 
         and <data> is whatever 32 bit integer was at the top of the stack.
 
-        , (COMMA) is quite a fundamental operation when compiling.  It is used to append codewords
+        `,` (COMMA) is quite a fundamental operation when compiling.  It is used to append codewords
         to the current word that is being compiled.
 */
 
@@ -1597,13 +1597,13 @@ _COMMA:
         ret
 
 /*
-        Our definitions of : (COLON) and ; (SEMICOLON) will need to switch to and from compile mode.
+        Our definitions of `:` (COLON) and `;` (SEMICOLON) will need to switch to and from compile mode.
 
-        Immediate mode vs. compile mode is stored in the global variable STATE, and by updating this
+        Immediate mode vs. compile mode is stored in the global variable `STATE`, and by updating this
         variable we can switch between the two modes.
 
         For various reasons which may become apparent later, FORTH defines two standard words called
-        [ and ] (LBRAC and RBRAC) which switch between modes:
+        `[` and `]` (`LBRAC` and `RBRAC`) which switch between modes:
 
         Word    Assembler       Action          Effect
         [       LBRAC           STATE := 0      Switch to immediate mode.
