@@ -754,41 +754,41 @@ Time to talk about what happens when we `EXIT` a function.  In this diagram `QUA
 
 <svg height="224" width="448" xmlns="http://www.w3.org/2000/svg"><style>circle,line,polygon{stroke:#000;stroke-width:2;stroke-opacity:1;fill-opacity:1;stroke-linecap:round;stroke-linejoin:miter}text{fill:#000;font-family:monospace;font-size:14px}.bg_filled{fill:#fff}.end_marked_arrow{marker-end:url(#arrow)}</style><defs><marker id="arrow" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 0v4l4-2-4-2z"/></marker><marker id="diamond" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 2l2-2 2 2-2 2-2-2z"/></marker><marker id="circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle cx="4" cy="4" r="2"/></marker><marker id="open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="2"/></marker><marker id="big_open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="3"/></marker></defs><path class="backdrop" fill="#fff" stroke-width="2" stroke-linecap="round" d="M0 0h448v224H0z"/><text x="2" y="12">QUADRUPLE</text><text x="18" y="44">codeword</text><text x="18" y="76">addr</text><text x="58" y="76">of</text><text x="82" y="76">DOUBLE</text><path class="solid end_marked_arrow" d="M144 72h128"/><text x="18" y="108">addr</text><text x="58" y="108">of</text><text x="82" y="108">DOUBLE</text><text x="18" y="140">addr</text><text x="58" y="140">of</text><text x="82" y="140">EXIT</text><text x="282" y="60">DOUBLE</text><text x="298" y="92">codeword</text><text x="298" y="124">addr</text><text x="338" y="124">of</text><text x="362" y="124">DUP</text><text x="298" y="156">addr</text><text x="338" y="156">of</text><text x="362" y="156">+</text><text x="298" y="188">addr</text><text x="338" y="188">of</text><text x="362" y="188">EXIT</text><text x="218" y="188">%esi</text><path class="solid end_marked_arrow" d="M256 184h16"/><path class="solid" d="M4 24h152M4 24v128M156 24v128M4 56h152M4 88h152M4 120h152M4 152h152"/><g><path class="solid" d="M284 72h152M284 72v128M436 72v128M284 104h152M284 136h152M284 168h152M284 200h152"/></g></svg>
 
-What happens when the + function does NEXT?  Well, the following code is executed.
+What happens when the `+` function does `NEXT`?  Well, the following code is executed.
 
         defcode "EXIT",4,,EXIT
         POPRSP %esi             // pop return stack into %esi
         NEXT
 
-EXIT gets the old %esi which we saved from before on the return stack, and puts it in %esi.
-So after this (but just before NEXT) we get:
+`EXIT` gets the old `%esi` which we saved from before on the return stack, and puts it in `%esi`.
+So after this (but just before `NEXT`) we get:
 
 <svg height="224" width="512" xmlns="http://www.w3.org/2000/svg"><style>circle,line,polygon{stroke:#000;stroke-width:2;stroke-opacity:1;fill-opacity:1;stroke-linecap:round;stroke-linejoin:miter}text{fill:#000;font-family:monospace;font-size:14px}.bg_filled{fill:#fff}.end_marked_arrow{marker-end:url(#arrow)}</style><defs><marker id="arrow" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 0v4l4-2-4-2z"/></marker><marker id="diamond" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 2l2-2 2 2-2 2-2-2z"/></marker><marker id="circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle cx="4" cy="4" r="2"/></marker><marker id="open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="2"/></marker><marker id="big_open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="3"/></marker></defs><path class="backdrop" fill="#fff" stroke-width="2" stroke-linecap="round" d="M0 0h512v224H0z"/><text x="66" y="12">QUADRUPLE</text><text x="82" y="44">codeword</text><text x="82" y="76">addr</text><text x="122" y="76">of</text><text x="146" y="76">DOUBLE</text><path class="solid end_marked_arrow" d="M208 72h128"/><text x="82" y="108">addr</text><text x="122" y="108">of</text><text x="146" y="108">DOUBLE</text><text x="82" y="140">addr</text><text x="122" y="140">of</text><text x="146" y="140">EXIT</text><text x="346" y="60">DOUBLE</text><text x="362" y="92">codeword</text><text x="362" y="124">addr</text><text x="402" y="124">of</text><text x="426" y="124">DUP</text><text x="362" y="156">addr</text><text x="402" y="156">of</text><text x="426" y="156">+</text><text x="362" y="188">addr</text><text x="402" y="188">of</text><text x="426" y="188">EXIT</text><text x="2" y="108">%esi</text><path class="solid end_marked_arrow" d="M40 104h16"/><path class="solid" d="M68 24h152M68 24v128M220 24v128M68 56h152M68 88h152M68 120h152M68 152h152"/><g><path class="solid" d="M348 72h152M348 72v128M500 72v128M348 104h152M348 136h152M348 168h152M348 200h152"/></g></svg>
 
-And NEXT just completes the job by, well, in this case just by calling DOUBLE again :-)
+And `NEXT` just completes the job by, well, in this case just by calling `DOUBLE` again :-)
 
 ## LITERALS
 
 The final point I "glossed over" before was how to deal with functions that do anything
-apart from calling other functions.  For example, suppose that DOUBLE was defined like this:
+apart from calling other functions.  For example, suppose that `DOUBLE` was defined like this:
 
         : DOUBLE 2 * ;
 
-It does the same thing, but how do we compile it since it contains the literal 2?  One way
-would be to have a function called "2" (which you'd have to write in assembler), but you'd need
+It does the same thing, but how do we compile it since it contains the literal `2`?  One way
+would be to have a function called "`2`" (which you'd have to write in assembler), but you'd need
 a function for every single literal that you wanted to use.
 
-FORTH solves this by compiling the function using a special word called LIT:
+FORTH solves this by compiling the function using a special word called `LIT`:
 
 <svg height="64" width="632" xmlns="http://www.w3.org/2000/svg"><style>circle,line,path,polygon{stroke:#000;stroke-width:2;stroke-opacity:1;fill-opacity:1;stroke-linecap:round;stroke-linejoin:miter}text{fill:#000;font-family:monospace;font-size:14px}.bg_filled,.nofill{fill:#fff}</style><defs><marker id="arrow" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 0v4l4-2-4-2z"/></marker><marker id="diamond" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 2l2-2 2 2-2 2-2-2z"/></marker><marker id="circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle cx="4" cy="4" r="2"/></marker><marker id="open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="2"/></marker><marker id="big_open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="3"/></marker></defs><path class="backdrop" fill="#fff" stroke-width="2" stroke-linecap="round" d="M0 0h632v64H0z"/><path class="nofill" d="M88 16a16 16 0 000 16"/><text x="90" y="28">usual</text><text x="138" y="28">header</text><text x="194" y="28">of</text><text x="218" y="28">DOUBLE</text><path class="nofill" d="M272 16a16 16 0 010 16"/><text x="314" y="28">DOCOL</text><text x="378" y="28">LIT</text><text x="442" y="28">2</text><text x="506" y="28">✱</text><text x="570" y="28">EXIT</text><path class="solid" d="M68 8h552M68 8v32M300 8v32M364 8v32M428 8v32M492 8v32M556 8v32M620 8v32M68 40h552"/></svg>
 
-LIT is executed in the normal way, but what it does next is definitely not normal.  It
-looks at %esi (which now points to the number 2), grabs it, pushes it on the stack, then
-manipulates %esi in order to skip the number as if it had never been there.
+`LIT` is executed in the normal way, but what it does next is definitely not normal.  It
+looks at `%esi` (which now points to the number 2), grabs it, pushes it on the stack, then
+manipulates `%esi` in order to skip the number as if it had never been there.
 
 What's neat is that the whole grab/manipulate can be done using a single byte single
-i386 instruction, our old friend LODSL.  Rather than me drawing more ASCII-art diagrams,
-see if you can find out how LIT works:
+i386 instruction, our old friend `LODSL`.  Rather than me drawing more ASCII-art diagrams,
+see if you can find out how `LIT` works:
 
         defcode "LIT",3,,LIT
         // %esi points to the next command, but in this case it points to the next
@@ -828,8 +828,8 @@ the primitive words for doing it.
         subl %eax,(%ebx)        // add it
         NEXT
 
-! and @ (STORE and FETCH) store 32-bit words.  It's also useful to be able to read and write bytes
-so we also define standard words C@ and C!.
+`!` and `@` (`STORE` and `FETCH`) store 32-bit words.  It's also useful to be able to read and write bytes
+so we also define standard words `C@` and `C!`.
 
 Byte-oriented operations only work on architectures which permit them (i386 is one of those).
 
@@ -869,10 +869,10 @@ Byte-oriented operations only work on architectures which permit them (i386 is o
 ## BUILT-IN VARIABLES
 
 These are some built-in variables and related standard FORTH words.  Of these, the only one that we
-have discussed so far was LATEST, which points to the last (most recently defined) word in the
-FORTH dictionary.  LATEST is also a FORTH word which pushes the address of LATEST (the variable)
-on to the stack, so you can read or write it using @ and ! operators.  For example, to print
-the current value of LATEST (and this can apply to any FORTH variable) you would do:
+have discussed so far was `LATEST`, which points to the last (most recently defined) word in the
+FORTH dictionary.  `LATEST` is also a FORTH word which pushes the address of `LATEST` (the variable)
+on to the stack, so you can read or write it using `@` and `!` operators.  For example, to print
+the current value of `LATEST` (and this can apply to any FORTH variable) you would do:
 
         LATEST @ . CR
 
@@ -891,11 +891,11 @@ defcode above.  (In fact the defvar macro uses defcode to do the dictionary head
 
 The built-in variables are:
 
-* STATE           Is the interpreter executing code (0) or compiling a word (non-zero)?
-* LATEST          Points to the latest (most recently defined) word in the dictionary.
-* HERE            Points to the next free byte of memory.  When compiling, compiled words go here.
-* S0              Stores the address of the top of the parameter stack.
-* BASE            The current base for printing and reading numbers.
+* `STATE`           Is the interpreter executing code (0) or compiling a word (non-zero)?
+* `LATEST`          Points to the latest (most recently defined) word in the dictionary.
+* `HERE`            Points to the next free byte of memory.  When compiling, compiled words go here.
+* `S0`              Stores the address of the top of the parameter stack.
+* `BASE`            The current base for printing and reading numbers.
 
         defvar "STATE",5,,STATE
         defvar "HERE",4,,HERE
@@ -910,13 +910,13 @@ constant value on the stack.
 
 The built-in constants are:
 
-* VERSION         Is the current version of this FORTH.
-* R0              The address of the top of the return stack.
-* DOCOL           Pointer to DOCOL.
-* F_IMMED         The IMMEDIATE flag's actual value.
-* F_HIDDEN        The HIDDEN flag's actual value.
-* F_LENMASK       The length mask in the flags/len byte.
-* SYS_*           and the numeric codes of various Linux syscalls (from <asm/unistd.h>)
+* `VERSION`         Is the current version of this FORTH.
+* `R0`              The address of the top of the return stack.
+* `DOCOL`           Pointer to `DOCOL`.
+* `F_IMMED`         The `IMMEDIATE` flag's actual value.
+* `F_HIDDEN`        The `HIDDEN` flag's actual value.
+* `F_LENMASK`       The length mask in the flags/len byte.
+* `SYS_*`           and the numeric codes of various Linux syscalls (from <asm/unistd.h>)
 
     //#include <asm-i386/unistd.h>  // you might need this instead
     #include <asm/unistd.h>
@@ -953,7 +953,7 @@ The built-in constants are:
 
 ## RETURN STACK
 
-These words allow you to access the return stack.  Recall that the register %ebp always points to
+These words allow you to access the return stack.  Recall that the register `%ebp` always points to
 the top of the return stack.
 
         defcode ">R",2,,TOR
@@ -1002,7 +1002,7 @@ as an opaque block of code that does what it says.
 
 Let's discuss input first.
 
-The FORTH word KEY reads the next byte from stdin (and pushes it on the parameter stack).
+The FORTH word `KEY` reads the next byte from stdin (and pushes it on the parameter stack).
 So if KEY is called and someone hits the space key, then the number 32 (ASCII code of space)
 is pushed on the stack.
 
@@ -1010,10 +1010,10 @@ In FORTH there is no distinction between reading code and reading input.  We mig
 and compiling code, we might be reading words to execute, we might be asking for the user
 to type their name -- ultimately it all comes in through KEY.
 
-The implementation of KEY uses an input buffer of a certain size (defined at the end of this
+The implementation of `KEY` uses an input buffer of a certain size (defined at the end of this
 file).  It calls the Linux read(2) system call to fill this buffer and tracks its position
 in the buffer using a couple of variables, and if it runs out of input buffer then it refills
-it automatically.  The other thing that KEY does is if it detects that stdin has closed, it
+it automatically.  The other thing that `KEY` does is if it detects that stdin has closed, it
 exits the program, which is why when you hit ^D the FORTH system cleanly exits.
 GUIDO
      buffer                           bufftop
