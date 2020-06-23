@@ -291,7 +291,7 @@ I'll just give you a hint of what is to come by saying that a FORTH definition s
     : QUADRUPLE DOUBLE DOUBLE ;
 
 actually compiles (almost, not precisely but we'll see why in a moment) to a list of
-function addresses for DOUBLE, DOUBLE and a special function called EXIT to finish off.
+function addresses for `DOUBLE`, `DOUBLE` and a special function called `EXIT` to finish off.
 
 At this point, REALLY EAGLE-EYED ASSEMBLY EXPERTS are saying "JONES, YOU'VE MADE A MISTAKE!".
 
