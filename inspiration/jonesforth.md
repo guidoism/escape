@@ -1069,7 +1069,7 @@ bufftop:
         .int buffer             // Last valid data in input buffer + 1.
 
 /*
-        By contrast, output is much simpler.  The FORTH word EMIT writes out a single byte to stdout.
+        By contrast, output is much simpler.  The FORTH word `EMIT` writes out a single byte to stdout.
         This implementation just uses the write system call.  No attempt is made to buffer output, but
         it would be a good exercise to add it.
 */
@@ -1096,30 +1096,30 @@ emit_scratch:
         .space 1                // scratch used by EMIT
 
 /*
-        Back to input, WORD is a FORTH word which reads the next full word of input.
+        Back to input, `WORD` is a FORTH word which reads the next full word of input.
 
         What it does in detail is that it first skips any blanks (spaces, tabs, newlines and so on).
-        Then it calls KEY to read characters into an internal buffer until it hits a blank.  Then it
+        Then it calls `KEY` to read characters into an internal buffer until it hits a blank.  Then it
         calculates the length of the word it read and returns the address and the length as
         two words on the stack (with the length at the top of stack).
 
-        Notice that WORD has a single internal buffer which it overwrites each time (rather like
-        a static C string).  Also notice that WORD's internal buffer is just 32 bytes long and
+        Notice that `WORD` has a single internal buffer which it overwrites each time (rather like
+        a static C string).  Also notice that `WORD's` internal buffer is just 32 bytes long and
         there is NO checking for overflow.  31 bytes happens to be the maximum length of a
-        FORTH word that we support, and that is what WORD is used for: to read FORTH words when
+        FORTH word that we support, and that is what `WORD` is used for: to read FORTH words when
         we are compiling and executing code.  The returned strings are not NUL-terminated.
 
         Start address+length is the normal way to represent strings in FORTH (not ending in an
         ASCII NUL character as in C), and so FORTH strings can contain any character including NULs
         and can be any length.
 
-        WORD is not suitable for just reading strings (eg. user input) because of all the above
+        `WORD` is not suitable for just reading strings (eg. user input) because of all the above
         peculiarities and limitations.
 
         Note that when executing, you'll see:
-        WORD FOO
-        which puts "FOO" and length 3 on the stack, but when compiling:
-        : BAR WORD FOO ;
+        `WORD FOO`
+        which puts "`FOO`" and length 3 on the stack, but when compiling:
+        `: BAR WORD FOO ;`
         is an error (or at least it doesn't do what you might expect).  Later we'll talk about compiling
         and immediate mode, and you'll understand why.
 */
@@ -1168,16 +1168,16 @@ word_buffer:
 
 /*
         As well as reading in words we'll need to read in numbers and for that we are using a function
-        called NUMBER.  This parses a numeric string such as one returned by WORD and pushes the
+        called `NUMBER`.  This parses a numeric string such as one returned by WORD and pushes the
         number on the parameter stack.
 
-        The function uses the variable BASE as the base (radix) for conversion, so for example if
-        BASE is 2 then we expect a binary number.  Normally BASE is 10.
+        The function uses the variable `BASE` as the base (radix) for conversion, so for example if
+        `BASE` is 2 then we expect a binary number.  Normally `BASE` is 10.
 
         If the word starts with a '-' character then the returned value is negative.
 
-        If the string can't be parsed as a number (or contains characters outside the current BASE)
-        then we need to return an error indication.  So NUMBER actually returns two items on the stack.
+        If the string can't be parsed as a number (or contains characters outside the current `BASE`)
+        then we need to return an error indication.  So `NUMBER` actually returns two items on the stack.
         At the top of stack we return the number of unconverted characters (ie. if 0 then all characters
         were converted, so there is no error).  Second from top of stack is the parsed number or a
         partial value if there was an error.
