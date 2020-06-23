@@ -3,8 +3,7 @@ layout: code
 title: Jones Forth
 ---
 
-## Jones Forth
-### A sometimes minimal FORTH compiler and tutorial for Linux / i386 systems
+A sometimes minimal FORTH compiler and tutorial for Linux / i386 systems
 
 By Richard W.M. Jones <rich@annexia.org> http://annexia.org/forth
 
@@ -93,23 +92,6 @@ I, the copyright holder of this work, hereby release it into the public domain. 
 
 In case this is not legally possible, I grant any entity the right to use this work for any purpose,
 without any conditions, unless such conditions are required by law.
-
-## SETTING UP
-
-Let's get a few housekeeping things out of the way.  Firstly because I need to draw lots of
-ASCII-art diagrams to explain concepts, the best way to look at this is using a window which
-uses a fixed width font and is at least this wide:
-
- <------------------------------------------------------------------------------------------------------------------------>
-
-Secondly make sure TABS are set to 8 characters.  The following should be a vertical
-line.  If not, sort out your tabs.
-
-                |
-                |
-                |
-
-Thirdly I assume that your screen is at least 50 characters high.
 
 ## ASSEMBLING
 
@@ -282,8 +264,8 @@ written JMP *(%eax).  And after doing the jump, the situation looks like:
                 1C 00 00 00     <- Now we're executing this subroutine.
         %esi -> 2C 00 00 00
 
-To make this work, each subroutine is followed by the two instructions 'LODSL;
-JMP *(%eax)' which literally make the jump to the next subroutine.
+To make this work, each subroutine is followed by the two instructions `LODSL;
+JMP *(%eax)` which literally make the jump to the next subroutine.
 
 And that brings us to our first piece of actual code!  Well, it's a macro.
 
@@ -293,7 +275,7 @@ And that brings us to our first piece of actual code!  Well, it's a macro.
     jmp *(%eax)
     .endm
 
-The macro is called NEXT.  That's a FORTH-ism.  It expands to those two instructions.
+The macro is called `NEXT`.  That's a FORTH-ism.  It expands to those two instructions.
 
 Every FORTH primitive that we write has to be ended by NEXT.  Think of it kind of like
 a return.
@@ -1033,7 +1015,7 @@ file).  It calls the Linux read(2) system call to fill this buffer and tracks it
 in the buffer using a couple of variables, and if it runs out of input buffer then it refills
 it automatically.  The other thing that KEY does is if it detects that stdin has closed, it
 exits the program, which is why when you hit ^D the FORTH system cleanly exits.
-
+GUIDO
      buffer                           bufftop
         |                                |
         V                                V
