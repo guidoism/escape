@@ -787,29 +787,26 @@ And NEXT just completes the job by, well, in this case just by calling DOUBLE ag
 
 ## LITERALS
 
-        The final point I "glossed over" before was how to deal with functions that do anything
-        apart from calling other functions.  For example, suppose that DOUBLE was defined like this:
+The final point I "glossed over" before was how to deal with functions that do anything
+apart from calling other functions.  For example, suppose that DOUBLE was defined like this:
 
         : DOUBLE 2 * ;
 
-        It does the same thing, but how do we compile it since it contains the literal 2?  One way
-        would be to have a function called "2" (which you'd have to write in assembler), but you'd need
-        a function for every single literal that you wanted to use.
+It does the same thing, but how do we compile it since it contains the literal 2?  One way
+would be to have a function called "2" (which you'd have to write in assembler), but you'd need
+a function for every single literal that you wanted to use.
 
-        FORTH solves this by compiling the function using a special word called LIT:
+FORTH solves this by compiling the function using a special word called LIT:
 
-        +---------------------------|-------|-------|-------|-------|-------+
-        | (usual header of DOUBLE)  | DOCOL | LIT   | 2     | *     | EXIT  |
-        +---------------------------|-------|-------|-------|-------|-------+
+<svg height="64" width="632" xmlns="http://www.w3.org/2000/svg"><style>circle,line,path,polygon{stroke:#000;stroke-width:2;stroke-opacity:1;fill-opacity:1;stroke-linecap:round;stroke-linejoin:miter}text{fill:#000;font-family:monospace;font-size:14px}.bg_filled,.nofill{fill:#fff}</style><defs><marker id="arrow" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 0v4l4-2-4-2z"/></marker><marker id="diamond" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 2l2-2 2 2-2 2-2-2z"/></marker><marker id="circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle cx="4" cy="4" r="2"/></marker><marker id="open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="2"/></marker><marker id="big_open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="3"/></marker></defs><path class="backdrop" fill="#fff" stroke-width="2" stroke-linecap="round" d="M0 0h632v64H0z"/><path class="nofill" d="M88 16a16 16 0 000 16"/><text x="90" y="28">usual</text><text x="138" y="28">header</text><text x="194" y="28">of</text><text x="218" y="28">DOUBLE</text><path class="nofill" d="M272 16a16 16 0 010 16"/><text x="314" y="28">DOCOL</text><text x="378" y="28">LIT</text><text x="442" y="28">2</text><text x="506" y="28">✱</text><text x="570" y="28">EXIT</text><path class="solid" d="M68 8h552M68 8v32M300 8v32M364 8v32M428 8v32M492 8v32M556 8v32M620 8v32M68 40h552"/></svg>
 
-        LIT is executed in the normal way, but what it does next is definitely not normal.  It
-        looks at %esi (which now points to the number 2), grabs it, pushes it on the stack, then
-        manipulates %esi in order to skip the number as if it had never been there.
+LIT is executed in the normal way, but what it does next is definitely not normal.  It
+looks at %esi (which now points to the number 2), grabs it, pushes it on the stack, then
+manipulates %esi in order to skip the number as if it had never been there.
 
-        What's neat is that the whole grab/manipulate can be done using a single byte single
-        i386 instruction, our old friend LODSL.  Rather than me drawing more ASCII-art diagrams,
-        see if you can find out how LIT works:
-*/
+What's neat is that the whole grab/manipulate can be done using a single byte single
+i386 instruction, our old friend LODSL.  Rather than me drawing more ASCII-art diagrams,
+see if you can find out how LIT works:
 
         defcode "LIT",3,,LIT
         // %esi points to the next command, but in this case it points to the next
@@ -819,13 +816,11 @@ And NEXT just completes the job by, well, in this case just by calling DOUBLE ag
         push %eax               // push the literal number on to stack
         NEXT
 
-/*
-        MEMORY ----------------------------------------------------------------------
+## MEMORY
 
-        As important point about FORTH is that it gives you direct access to the lowest levels
-        of the machine.  Manipulating memory directly is done frequently in FORTH, and these are
-        the primitive words for doing it.
-*/
+As important point about FORTH is that it gives you direct access to the lowest levels
+of the machine.  Manipulating memory directly is done frequently in FORTH, and these are
+the primitive words for doing it.
 
         defcode "!",1,,STORE
         pop %ebx                // address to store at
@@ -851,12 +846,10 @@ And NEXT just completes the job by, well, in this case just by calling DOUBLE ag
         subl %eax,(%ebx)        // add it
         NEXT
 
-/*
-        ! and @ (STORE and FETCH) store 32-bit words.  It's also useful to be able to read and write bytes
-        so we also define standard words C@ and C!.
+! and @ (STORE and FETCH) store 32-bit words.  It's also useful to be able to read and write bytes
+so we also define standard words C@ and C!.
 
-        Byte-oriented operations only work on architectures which permit them (i386 is one of those).
- */
+Byte-oriented operations only work on architectures which permit them (i386 is one of those).
 
         defcode "C!",2,,STOREBYTE
         pop %ebx                // address to store at
@@ -871,7 +864,7 @@ And NEXT just completes the job by, well, in this case just by calling DOUBLE ag
         push %eax               // push value onto stack
         NEXT
 
-/* C@C! is a useful byte copy primitive. */
+        /* C@C! is a useful byte copy primitive. */
         defcode "C@C!",4,,CCOPY
         movl 4(%esp),%ebx       // source address
         movb (%ebx),%al         // get source character
@@ -881,7 +874,7 @@ And NEXT just completes the job by, well, in this case just by calling DOUBLE ag
         incl 4(%esp)            // increment source address
         NEXT
 
-/* and CMOVE is a block copy operation. */
+        /* and CMOVE is a block copy operation. */
         defcode "CMOVE",5,,CMOVE
         mov %esi,%edx           // preserve %esi
         pop %ecx                // length
@@ -891,20 +884,18 @@ And NEXT just completes the job by, well, in this case just by calling DOUBLE ag
         mov %edx,%esi           // restore %esi
         NEXT
 
-/*
-        BUILT-IN VARIABLES ----------------------------------------------------------------------
+## BUILT-IN VARIABLES
 
-        These are some built-in variables and related standard FORTH words.  Of these, the only one that we
-        have discussed so far was LATEST, which points to the last (most recently defined) word in the
-        FORTH dictionary.  LATEST is also a FORTH word which pushes the address of LATEST (the variable)
-        on to the stack, so you can read or write it using @ and ! operators.  For example, to print
-        the current value of LATEST (and this can apply to any FORTH variable) you would do:
+These are some built-in variables and related standard FORTH words.  Of these, the only one that we
+have discussed so far was LATEST, which points to the last (most recently defined) word in the
+FORTH dictionary.  LATEST is also a FORTH word which pushes the address of LATEST (the variable)
+on to the stack, so you can read or write it using @ and ! operators.  For example, to print
+the current value of LATEST (and this can apply to any FORTH variable) you would do:
 
         LATEST @ . CR
 
-        To make defining variables shorter, I'm using a macro called defvar, similar to defword and
-        defcode above.  (In fact the defvar macro uses defcode to do the dictionary header).
-*/
+To make defining variables shorter, I'm using a macro called defvar, similar to defword and
+defcode above.  (In fact the defvar macro uses defcode to do the dictionary header).
 
         .macro defvar name, namelen, flags=0, label, initial=0
         defcode \name,\namelen,\flags,\label
@@ -912,46 +903,41 @@ And NEXT just completes the job by, well, in this case just by calling DOUBLE ag
         NEXT
         .data
         .align 4
-var_\name :
+    var_\name :
         .int \initial
         .endm
 
-/*
-        The built-in variables are:
+The built-in variables are:
 
-        STATE           Is the interpreter executing code (0) or compiling a word (non-zero)?
-        LATEST          Points to the latest (most recently defined) word in the dictionary.
-        HERE            Points to the next free byte of memory.  When compiling, compiled words go here.
-        S0              Stores the address of the top of the parameter stack.
-        BASE            The current base for printing and reading numbers.
+* STATE           Is the interpreter executing code (0) or compiling a word (non-zero)?
+* LATEST          Points to the latest (most recently defined) word in the dictionary.
+* HERE            Points to the next free byte of memory.  When compiling, compiled words go here.
+* S0              Stores the address of the top of the parameter stack.
+* BASE            The current base for printing and reading numbers.
 
-*/
         defvar "STATE",5,,STATE
         defvar "HERE",4,,HERE
         defvar "LATEST",6,,LATEST,name_SYSCALL0 // SYSCALL0 must be last in built-in dictionary
         defvar "S0",2,,SZ
         defvar "BASE",4,,BASE,10
 
-/*
-        BUILT-IN CONSTANTS ----------------------------------------------------------------------
+## BUILT-IN CONSTANTS
 
-        It's also useful to expose a few constants to FORTH.  When the word is executed it pushes a
-        constant value on the stack.
+It's also useful to expose a few constants to FORTH.  When the word is executed it pushes a
+constant value on the stack.
 
-        The built-in constants are:
+The built-in constants are:
 
-        VERSION         Is the current version of this FORTH.
-        R0              The address of the top of the return stack.
-        DOCOL           Pointer to DOCOL.
-        F_IMMED         The IMMEDIATE flag's actual value.
-        F_HIDDEN        The HIDDEN flag's actual value.
-        F_LENMASK       The length mask in the flags/len byte.
+* VERSION         Is the current version of this FORTH.
+* R0              The address of the top of the return stack.
+* DOCOL           Pointer to DOCOL.
+* F_IMMED         The IMMEDIATE flag's actual value.
+* F_HIDDEN        The HIDDEN flag's actual value.
+* F_LENMASK       The length mask in the flags/len byte.
+* SYS_*           and the numeric codes of various Linux syscalls (from <asm/unistd.h>)
 
-        SYS_*           and the numeric codes of various Linux syscalls (from <asm/unistd.h>)
-*/
-
-//#include <asm-i386/unistd.h>  // you might need this instead
-#include <asm/unistd.h>
+    //#include <asm-i386/unistd.h>  // you might need this instead
+    #include <asm/unistd.h>
 
         .macro defconst name, namelen, flags=0, label, value
         defcode \name,\namelen,\flags,\label
@@ -983,12 +969,10 @@ var_\name :
         defconst "O_APPEND",8,,__O_APPEND,02000
         defconst "O_NONBLOCK",10,,__O_NONBLOCK,04000
 
-/*
-        RETURN STACK ----------------------------------------------------------------------
+## RETURN STACK
 
-        These words allow you to access the return stack.  Recall that the register %ebp always points to
-        the top of the return stack.
-*/
+These words allow you to access the return stack.  Recall that the register %ebp always points to
+the top of the return stack.
 
         defcode ">R",2,,TOR
         pop %eax                // pop parameter stack into %eax
@@ -1012,12 +996,10 @@ var_\name :
         addl $4,%ebp            // pop return stack and throw away
         NEXT
 
-/*
-        PARAMETER (DATA) STACK ----------------------------------------------------------------------
+## PARAMETER (DATA) STACK
 
-        These functions allow you to manipulate the parameter stack.  Recall that Linux sets up the parameter
-        stack for us, and it is accessed through %esp.
-*/
+These functions allow you to manipulate the parameter stack.  Recall that Linux sets up the parameter
+stack for us, and it is accessed through %esp.
 
         defcode "DSP@",4,,DSPFETCH
         mov %esp,%eax
@@ -1028,30 +1010,29 @@ var_\name :
         pop %esp
         NEXT
 
-/*
-        INPUT AND OUTPUT ----------------------------------------------------------------------
+# INPUT AND OUTPUT
 
-        These are our first really meaty/complicated FORTH primitives.  I have chosen to write them in
-        assembler, but surprisingly in "real" FORTH implementations these are often written in terms
-        of more fundamental FORTH primitives.  I chose to avoid that because I think that just obscures
-        the implementation.  After all, you may not understand assembler but you can just think of it
-        as an opaque block of code that does what it says.
+These are our first really meaty/complicated FORTH primitives.  I have chosen to write them in
+assembler, but surprisingly in "real" FORTH implementations these are often written in terms
+of more fundamental FORTH primitives.  I chose to avoid that because I think that just obscures
+the implementation.  After all, you may not understand assembler but you can just think of it
+as an opaque block of code that does what it says.
 
-        Let's discuss input first.
+Let's discuss input first.
 
-        The FORTH word KEY reads the next byte from stdin (and pushes it on the parameter stack).
-        So if KEY is called and someone hits the space key, then the number 32 (ASCII code of space)
-        is pushed on the stack.
+The FORTH word KEY reads the next byte from stdin (and pushes it on the parameter stack).
+So if KEY is called and someone hits the space key, then the number 32 (ASCII code of space)
+is pushed on the stack.
 
-        In FORTH there is no distinction between reading code and reading input.  We might be reading
-        and compiling code, we might be reading words to execute, we might be asking for the user
-        to type their name -- ultimately it all comes in through KEY.
+In FORTH there is no distinction between reading code and reading input.  We might be reading
+and compiling code, we might be reading words to execute, we might be asking for the user
+to type their name -- ultimately it all comes in through KEY.
 
-        The implementation of KEY uses an input buffer of a certain size (defined at the end of this
-        file).  It calls the Linux read(2) system call to fill this buffer and tracks its position
-        in the buffer using a couple of variables, and if it runs out of input buffer then it refills
-        it automatically.  The other thing that KEY does is if it detects that stdin has closed, it
-        exits the program, which is why when you hit ^D the FORTH system cleanly exits.
+The implementation of KEY uses an input buffer of a certain size (defined at the end of this
+file).  It calls the Linux read(2) system call to fill this buffer and tracks its position
+in the buffer using a couple of variables, and if it runs out of input buffer then it refills
+it automatically.  The other thing that KEY does is if it detects that stdin has closed, it
+exits the program, which is why when you hit ^D the FORTH system cleanly exits.
 
      buffer                           bufftop
         |                                |
