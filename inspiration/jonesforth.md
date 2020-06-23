@@ -442,29 +442,28 @@ So instead we will have to define built-in words using the GNU assembler data co
 (like .int, .byte, .string, .ascii and so on -- look them up in the gas info page if you are
 unsure of them).
 
-        The long way would be:
+The long way would be:
 
-        .int <link to previous word>
-        .byte 6                 // len
-        .ascii "DOUBLE"         // string
-        .byte 0                 // padding
-DOUBLE: .int DOCOL              // codeword
-        .int DUP                // pointer to codeword of DUP
-        .int PLUS               // pointer to codeword of +
-        .int EXIT               // pointer to codeword of EXIT
+            .int <link to previous word>
+            .byte 6                 // len
+            .ascii "DOUBLE"         // string
+            .byte 0                 // padding
+    DOUBLE: .int DOCOL              // codeword
+            .int DUP                // pointer to codeword of DUP
+            .int PLUS               // pointer to codeword of +
+            .int EXIT               // pointer to codeword of EXIT
 
-        That's going to get quite tedious rather quickly, so here I define an assembler macro
-        so that I can just write:
+That's going to get quite tedious rather quickly, so here I define an assembler macro
+so that I can just write:
 
         defword "DOUBLE",6,,DOUBLE
         .int DUP,PLUS,EXIT
 
-        and I'll get exactly the same effect.
+and I'll get exactly the same effect.
 
-        Don't worry too much about the exact implementation details of this macro - it's complicated!
-*/
+Don't worry too much about the exact implementation details of this macro - it's complicated!
 
-/* Flags - these are discussed later. */
+        /* Flags - these are discussed later. */
         .set F_IMMED,0x80
         .set F_HIDDEN,0x20
         .set F_LENMASK,0x1f     // length mask
@@ -476,57 +475,47 @@ DOUBLE: .int DOCOL              // codeword
         .section .rodata
         .align 4
         .globl name_\label
-name_\label :
+    name_\label :
         .int link               // link
         .set link,name_\label
         .byte \flags+\namelen   // flags + length byte
         .ascii "\name"          // the name
         .align 4                // padding to next 4 byte boundary
         .globl \label
-\label :
+    \label :
         .int DOCOL              // codeword - the interpreter
         // list of word pointers follow
         .endm
 
-/*
-        Similarly I want a way to write words written in assembly language.  There will quite a few
-        of these to start with because, well, everything has to start in assembly before there's
-        enough "infrastructure" to be able to start writing FORTH words, but also I want to define
-        some common FORTH words in assembly language for speed, even though I could write them in FORTH.
+Similarly I want a way to write words written in assembly language.  There will quite a few
+of these to start with because, well, everything has to start in assembly before there's
+enough "infrastructure" to be able to start writing FORTH words, but also I want to define
+some common FORTH words in assembly language for speed, even though I could write them in FORTH.
 
-        This is what DUP looks like in memory:
+This is what DUP looks like in memory:
 
-          pointer to previous word
-           ^
-           |
-        +--|------|---|---|---|---|------------+
-        | LINK    | 3 | D | U | P | code_DUP ---------------------> points to the assembly
-        +---------|---|---|---|---|------------+                    code used to write DUP,
-           ^       len              codeword                        which ends with NEXT.
-           |
-          LINK in next word
+<svg height="160" width="672" xmlns="http://www.w3.org/2000/svg"><style>circle,line,polygon,rect{stroke:#000;stroke-width:2;stroke-opacity:1;fill-opacity:1;stroke-linecap:round;stroke-linejoin:miter}.filled,text{fill:#000}.bg_filled{fill:#fff}text{font-family:monospace;font-size:14px}</style><defs><marker id="arrow" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 0v4l4-2-4-2z"/></marker><marker id="diamond" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 2l2-2 2 2-2 2-2-2z"/></marker><marker id="circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="filled" cx="4" cy="4" r="2"/></marker><marker id="open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="2"/></marker><marker id="big_open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="3"/></marker></defs><path class="backdrop" fill="#fff" d="M0 0h672v160H0z"/><rect class="solid" height="32" rx="0" width="312" x="4" y="56" fill="#fff"/><text x="18" y="76">LINK</text><text x="98" y="76">3</text><text x="130" y="76">D</text><text x="162" y="76">U</text><text x="194" y="76">P</text><text x="226" y="76">code</text><path class="solid" d="M256 80h8"/><text x="266" y="76">DUP</text><text x="18" y="12">pointer</text><path class="filled" d="M24 28l4-12 4 12z"/><path class="solid" d="M28 32v32M84 48v48M116 48v48M148 48v48M180 48v48M212 48v48"/><path class="solid" marker-end="url(#arrow)" d="M296 72h176"/><path class="filled" d="M24 108l4-12 4 12z"/><text x="90" y="108">len</text><text x="226" y="108">codeword</text><path class="solid" d="M28 112v16"/><text x="18" y="140">LINK</text><text x="82" y="12">to</text><text x="106" y="12">previous</text><text x="178" y="12">word</text><text x="482" y="76">points</text><text x="538" y="76">to</text><text x="562" y="76">the</text><text x="594" y="76">assembly</text><text x="482" y="92">code</text><text x="522" y="92">used</text><text x="562" y="92">to</text><text x="586" y="92">write</text><text x="634" y="92">DUP,</text><text x="482" y="108">which</text><text x="530" y="108">ends</text><text x="570" y="108">with</text><text x="610" y="108">NEXT.</text><text x="58" y="140">in</text><text x="82" y="140">next</text><text x="122" y="140">word</text></svg>
 
-        Again, for brevity in writing the header I'm going to write an assembler macro called defcode.
-        As with defword above, don't worry about the complicated details of the macro.
-*/
+Again, for brevity in writing the header I'm going to write an assembler macro called defcode.
+As with defword above, don't worry about the complicated details of the macro.
 
         .macro defcode name, namelen, flags=0, label
         .section .rodata
         .align 4
         .globl name_\label
-name_\label :
+    name_\label :
         .int link               // link
         .set link,name_\label
         .byte \flags+\namelen   // flags + length byte
         .ascii "\name"          // the name
         .align 4                // padding to next 4 byte boundary
         .globl \label
-\label :
+    \label :
         .int code_\label        // codeword
         .text
         //.align 4
         .globl code_\label
-code_\label :                   // assembler code follows
+    code_\label :                   // assembler code follows
         .endm
 
 /*
