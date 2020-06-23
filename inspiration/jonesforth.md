@@ -340,14 +340,14 @@ You use them as for example "`PUSHRSP %eax`" (push %eax on the return stack) or 
 
 And with that we can now talk about the interpreter.
 
-In FORTH the interpreter function is often called DOCOL (I think it means "DO COLON" because
-all FORTH definitions start with a colon, as in : DOUBLE DUP + ;
+In FORTH the interpreter function is often called `DOCOL` (I think it means "`DO COLON`" because
+all FORTH definitions start with a colon, as in `: DOUBLE DUP + ;`
 
 The "interpreter" (it's not really "interpreting") just needs to push the old %esi on the
 stack and set %esi to the first word in the definition.  Remember that we jumped to the
-function using JMP *(%eax)?  Well a consequence of that is that conveniently %eax contains
+function using `JMP *(%eax)`?  Well a consequence of that is that conveniently %eax contains
 the address of this codeword, so just by adding 4 to it we get the address of the first
-data word.  Finally after setting up %esi, it just does NEXT which causes that first word
+data word.  Finally after setting up %esi, it just does `NEXT` which causes that first word
 to run.
 
     /* DOCOL - the interpreter! */
