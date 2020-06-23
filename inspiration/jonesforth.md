@@ -277,7 +277,7 @@ And that brings us to our first piece of actual code!  Well, it's a macro.
 
 The macro is called `NEXT`.  That's a FORTH-ism.  It expands to those two instructions.
 
-Every FORTH primitive that we write has to be ended by NEXT.  Think of it kind of like
+Every FORTH primitive that we write has to be ended by `NEXT`.  Think of it kind of like
 a return.
 
 The above describes what is known as direct threaded code.
@@ -295,7 +295,7 @@ function addresses for DOUBLE, DOUBLE and a special function called EXIT to fini
 
 At this point, REALLY EAGLE-EYED ASSEMBLY EXPERTS are saying "JONES, YOU'VE MADE A MISTAKE!".
 
-I lied about JMP *(%eax).
+I lied about `JMP *(%eax)`.
 
 ## THE INTERPRETER AND RETURN STACK
 
@@ -309,9 +309,9 @@ Java bytecode used to be interpreted (ie. slowly).  This interpreter just sets u
 machine registers so that the word can then execute at full speed using the indirect
 threaded model above.
 
-One of the things that needs to happen when QUADRUPLE calls DOUBLE is that we save the old
-%esi ("instruction pointer") and create a new one pointing to the first word in DOUBLE.
-Because we will need to restore the old %esi at the end of DOUBLE (this is, after all, like
+One of the things that needs to happen when `QUADRUPLE` calls `DOUBLE` is that we save the old
+%esi ("instruction pointer") and create a new one pointing to the first word in `DOUBLE`.
+Because we will need to restore the old %esi at the end of `DOUBLE` (this is, after all, like
 a function call), we will need a stack to store these "return addresses" (old values of %esi).
 
 As you will have seen in the background documentation, FORTH has two stacks, an ordinary
@@ -324,7 +324,7 @@ We will use the i386's "other" stack pointer (%ebp, usually called the "frame po
 for our return stack.
 
 I've got two macros which just wrap up the details of using %ebp for the return stack.
-You use them as for example "PUSHRSP %eax" (push %eax on the return stack) or "POPRSP %ebx"
+You use them as for example "PUSHRSP %eax" (push %eax on the return stack) or "`POPRSP %ebx`"
 (pop top of return stack into %ebx).
 
     /* Macros to deal with the return stack. */
