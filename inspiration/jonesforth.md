@@ -3,7 +3,7 @@ layout: code
 title: Jones Forth
 ---
 
-A sometimes minimal FORTH compiler and tutorial for Linux / i386 systems
+A sometimes minimal Forth compiler and tutorial for Linux / i386 systems
 
 By Richard W.M. Jones <rich@annexia.org> http://annexia.org/forth
 
@@ -11,53 +11,53 @@ This is PUBLIC DOMAIN (see public domain release statement below).
 
 ## INTRODUCTION
 
-FORTH is one of those alien languages which most working programmers regard in the same
+Forth is one of those alien languages which most working programmers regard in the same
 way as Haskell, LISP, and so on.  Something so strange that they'd rather any thoughts
 of it just go away so they can get on with writing this paying code.  But that's wrong
 and if you care at all about programming then you should at least understand all these
 languages, even if you will never use them.
 
 LISP is the ultimate high-level language, and features from LISP are being added every
-decade to the more common languages.  But FORTH is in some ways the ultimate in low level
+decade to the more common languages.  But Forth is in some ways the ultimate in low level
 programming.  Out of the box it lacks features like dynamic memory management and even
 strings.  In fact, at its primitive level it lacks even basic concepts like IF-statements
 and loops.
 
-Why then would you want to learn FORTH?  There are several very good reasons.  First
-and foremost, FORTH is minimal.  You really can write a complete FORTH in, say, 2000
-lines of code.  I don't just mean a FORTH program, I mean a complete FORTH operating
-system, environment and language.  You could boot such a FORTH on a bare PC and it would
-come up with a prompt where you could start doing useful work.  The FORTH you have here
+Why then would you want to learn Forth?  There are several very good reasons.  First
+and foremost, Forth is minimal.  You really can write a complete Forth in, say, 2000
+lines of code.  I don't just mean a Forth program, I mean a complete Forth operating
+system, environment and language.  You could boot such a Forth on a bare PC and it would
+come up with a prompt where you could start doing useful work.  The Forth you have here
 isn't minimal and uses a Linux process as its 'base PC' (both for the purposes of making
 it a good tutorial). It's possible to completely understand the system.  Who can say they
 completely understand how Linux works, or gcc?
 
-Secondly FORTH has a peculiar bootstrapping property.  By that I mean that after writing
+Secondly Forth has a peculiar bootstrapping property.  By that I mean that after writing
 a little bit of assembly to talk to the hardware and implement a few primitives, all the
-rest of the language and compiler is written in FORTH itself.  Remember I said before
-that FORTH lacked IF-statements and loops?  Well of course it doesn't really because
+rest of the language and compiler is written in Forth itself.  Remember I said before
+that Forth lacked IF-statements and loops?  Well of course it doesn't really because
 such a lanuage would be useless, but my point was rather that IF-statements and loops are
-written in FORTH itself.
+written in Forth itself.
 
 Now of course this is common in other languages as well, and in those languages we call
 them 'libraries'.  For example in C, 'printf' is a library function written in C.  But
-in FORTH this goes way beyond mere libraries.  Can you imagine writing C's 'if' in C?
-And that brings me to my third reason: If you can write 'if' in FORTH, then why restrict
+in Forth this goes way beyond mere libraries.  Can you imagine writing C's 'if' in C?
+And that brings me to my third reason: If you can write 'if' in Forth, then why restrict
 yourself to the usual if/while/for/switch constructs?  You want a construct that iterates
 over every other element in a list of numbers?  You can add it to the language.  What
 about an operator which pulls in variables directly from a configuration file and makes
-them available as FORTH variables?  Or how about adding Makefile-like dependencies to
-the language?  No problem in FORTH.  How about modifying the FORTH compiler to allow
+them available as Forth variables?  Or how about adding Makefile-like dependencies to
+the language?  No problem in Forth.  How about modifying the Forth compiler to allow
 complex inlining strategies -- simple.  This concept isn't common in programming languages,
 but it has a name (in fact two names): "macros" (by which I mean LISP-style macros, not
 the lame C preprocessor) and "domain specific languages" (DSLs).
 
-This tutorial isn't about learning FORTH as the language.  I'll point you to some references
-you should read if you're not familiar with using FORTH.  This tutorial is about how to
-write FORTH.  In fact, until you understand how FORTH is written, you'll have only a very
+This tutorial isn't about learning Forth as the language.  I'll point you to some references
+you should read if you're not familiar with using Forth.  This tutorial is about how to
+write Forth.  In fact, until you understand how Forth is written, you'll have only a very
 superficial understanding of how to use it.
 
-So if you're not familiar with FORTH or want to refresh your memory here are some online
+So if you're not familiar with Forth or want to refresh your memory here are some online
 references to read:
 
 http://en.wikipedia.org/wiki/Forth_%28programming_language%29
@@ -68,21 +68,21 @@ http://wiki.laptop.org/go/Forth_Lessons
 
 http://www.albany.net/~hello/simple.htm
 
-Here is another "Why FORTH?" essay: http://www.jwdt.com/~paysan/why-forth.html
+Here is another "Why Forth?" essay: http://www.jwdt.com/~paysan/why-forth.html
 
-Discussion and criticism of this FORTH here: http://lambda-the-ultimate.org/node/2452
+Discussion and criticism of this Forth here: http://lambda-the-ultimate.org/node/2452
 
 ## ACKNOWLEDGEMENTS
 
-This code draws heavily on the design of LINA FORTH (http://home.hccnet.nl/a.w.m.van.der.horst/lina.html)
+This code draws heavily on the design of LINA Forth (http://home.hccnet.nl/a.w.m.van.der.horst/lina.html)
 by Albert van der Horst.  Any similarities in the code are probably not accidental.
 
-Some parts of this FORTH are also based on this IOCCC entry from 1992:
+Some parts of this Forth are also based on this IOCCC entry from 1992:
 http://ftp.funet.fi/pub/doc/IOCCC/1992/buzzard.2.design.
 I was very proud when Sean Barrett, the original author of the IOCCC entry, commented in the LtU thread
-http://lambda-the-ultimate.org/node/2452#comment-36818 about this FORTH.
+http://lambda-the-ultimate.org/node/2452#comment-36818 about this Forth.
 
-And finally I'd like to acknowledge the (possibly forgotten?) authors of ARTIC FORTH because their
+And finally I'd like to acknowledge the (possibly forgotten?) authors of ARTIC Forth because their
 original program which I still have on original cassette tape kept nagging away at me all these years.
 http://en.wikipedia.org/wiki/Artic_Software
 
@@ -95,7 +95,7 @@ without any conditions, unless such conditions are required by law.
 
 ## ASSEMBLING
 
-If you want to actually run this FORTH, rather than just read it, you will need Linux on an
+If you want to actually run this Forth, rather than just read it, you will need Linux on an
 i386.  Linux because instead of programming directly to the hardware on a bare PC which I
 could have done, I went for a simpler tutorial by assuming that the 'hardware' is a Linux
 process with a few basic system calls (read, write and exit and that's about all).  i386
@@ -109,11 +109,11 @@ assemble and run the code (save this file as 'jonesforth.S') are:
     gcc -m32 -nostdlib -static -Wl,-Ttext,0 -Wl,--build-id=none -o jonesforth jonesforth.S
     cat jonesforth.f - | ./jonesforth
 
-If you want to run your own FORTH programs you can do:
+If you want to run your own Forth programs you can do:
 
     cat jonesforth.f myprog.f | ./jonesforth
 
-If you want to load your own FORTH code and then continue reading user commands, you can do:
+If you want to load your own Forth code and then continue reading user commands, you can do:
 
     cat jonesforth.f myfunctions.f - | ./jonesforth
 
@@ -150,8 +150,8 @@ Now the tutorial starts in earnest.
 
 ## THE DICTIONARY
 
-In FORTH as you will know, functions are called "words", and just as in other languages they
-have a name and a definition.  Here are two FORTH words:
+In Forth as you will know, functions are called "words", and just as in other languages they
+have a name and a definition.  Here are two Forth words:
 
     : DOUBLE DUP + ;            \ name is "DOUBLE", definition is "DUP +"
     : QUADRUPLE DOUBLE DOUBLE ; \ name is "QUADRUPLE", definition is "DOUBLE DOUBLE"
@@ -169,7 +169,7 @@ for various flags which I'll come to later.  This is followed by the name itself
 implementation the name is rounded up to a multiple of 4 bytes by padding it with zero bytes.
 That's just to ensure that the definition starts on a 32 bit boundary.
 
-A FORTH variable called LATEST contains a pointer to the most recently defined word, in
+A Forth variable called LATEST contains a pointer to the most recently defined word, in
 other words, the head of this linked list.
 
 DOUBLE and QUADRUPLE might look like this:
@@ -185,17 +185,17 @@ assembly code later on.
 
 One interesting consequence of using a linked list is that you can redefine words, and
 a newer definition of a word overrides an older one.  This is an important concept in
-FORTH because it means that any word (even "built-in" or "standard" words) can be
+Forth because it means that any word (even "built-in" or "standard" words) can be
 overridden with a new definition, either to enhance it, to make it faster or even to
-disable it.  However because of the way that FORTH words get compiled, which you'll
+disable it.  However because of the way that Forth words get compiled, which you'll
 understand below, words defined using the old definition of a word continue to use
 the old definition.  Only words defined after the new definition use the new definition.
 
 ## DIRECT THREADED CODE
 
-Now we'll get to the really crucial bit in understanding FORTH, so go and get a cup of tea
+Now we'll get to the really crucial bit in understanding Forth, so go and get a cup of tea
 or coffee and settle down.  It's fair to say that if you don't understand this section, then you
-won't "get" how FORTH works, and that would be a failure on my part for not explaining it well.
+won't "get" how Forth works, and that would be a failure on my part for not explaining it well.
 So if after reading this section a few times you don't understand it, please email me
 (rich@annexia.org).
 
@@ -229,9 +229,9 @@ by compressing this into just:
         1C 00 00 00             the CALL prefix.
         2C 00 00 00
 
-On a 16-bit machine like the ones which originally ran FORTH the savings are even greater - 33%.
+On a 16-bit machine like the ones which originally ran Forth the savings are even greater - 33%.
 
-[Historical note: If the execution model that FORTH uses looks strange from the following
+[Historical note: If the execution model that Forth uses looks strange from the following
 paragraphs, then it was motivated entirely by the need to save memory on early computers.
 This code compression isn't so important now when our machines have more memory in their L1
 caches than those early computers had in total, but the execution model still has some
@@ -275,9 +275,9 @@ And that brings us to our first piece of actual code!  Well, it's a macro.
     jmp *(%eax)
     .endm
 
-The macro is called `NEXT`.  That's a FORTH-ism.  It expands to those two instructions.
+The macro is called `NEXT`.  That's a Forth-ism.  It expands to those two instructions.
 
-Every FORTH primitive that we write has to be ended by `NEXT`.  Think of it kind of like
+Every Forth primitive that we write has to be ended by `NEXT`.  Think of it kind of like
 a return.
 
 The above describes what is known as direct threaded code.
@@ -286,7 +286,7 @@ To sum up: We compress our function calls down to a list of addresses and use a 
 magical macro to act as a "jump to next function in the list".  We also use one register (%esi)
 to act as a kind of instruction pointer, pointing to the next function in the list.
 
-I'll just give you a hint of what is to come by saying that a FORTH definition such as:
+I'll just give you a hint of what is to come by saying that a Forth definition such as:
 
     : QUADRUPLE DOUBLE DOUBLE ;
 
@@ -302,7 +302,7 @@ I lied about `JMP *(%eax)`.
 Going at these in no particular order, let's talk about issues (3) and (2), the interpreter
 and the return stack.
 
-Words which are defined in FORTH need a codeword which points to a little bit of code to
+Words which are defined in Forth need a codeword which points to a little bit of code to
 give them a "helping hand" in life.  They don't need much, but they do need what is known
 as an "interpreter", although it doesn't really "interpret" in the same way that, say,
 Java bytecode used to be interpreted (ie. slowly).  This interpreter just sets up a few
@@ -314,12 +314,12 @@ One of the things that needs to happen when `QUADRUPLE` calls `DOUBLE` is that w
 Because we will need to restore the old %esi at the end of `DOUBLE` (this is, after all, like
 a function call), we will need a stack to store these "return addresses" (old values of %esi).
 
-As you will have seen in the background documentation, FORTH has two stacks, an ordinary
+As you will have seen in the background documentation, Forth has two stacks, an ordinary
 stack for parameters, and a return stack which is a bit more mysterious.  But our return
 stack is just the stack I talked about in the previous paragraph, used to save %esi when
-calling from a FORTH word into another FORTH word.
+calling from a Forth word into another Forth word.
 
-In this FORTH, we are using the normal stack pointer (`%esp`) for the parameter stack.
+In this Forth, we are using the normal stack pointer (`%esp`) for the parameter stack.
 We will use the i386's "other" stack pointer (`%ebp`, usually called the "frame pointer")
 for our return stack.
 
@@ -340,8 +340,8 @@ You use them as for example "`PUSHRSP %eax`" (push `%eax` on the return stack) o
 
 And with that we can now talk about the interpreter.
 
-In FORTH the interpreter function is often called `DOCOL` (I think it means "`DO COLON`" because
-all FORTH definitions start with a colon, as in `: DOUBLE DUP + ;`
+In Forth the interpreter function is often called `DOCOL` (I think it means "`DO COLON`" because
+all Forth definitions start with a colon, as in `: DOUBLE DUP + ;`
 
 The "interpreter" (it's not really "interpreting") just needs to push the old `%esi` on the
 stack and set %esi to the first word in the definition.  Remember that we jumped to the
@@ -379,20 +379,20 @@ One minor point here.  Because `DOCOL` is the first bit of assembly actually to 
 in this file (the others were just macros), and because I usually compile this code with the
 text segment starting at address 0, `DOCOL` has address 0.  So if you are disassembling the
 code and see a word with a codeword of 0, you will immediately know that the word is
-written in FORTH (it's not an assembler primitive) and so uses `DOCOL` as the interpreter.
+written in Forth (it's not an assembler primitive) and so uses `DOCOL` as the interpreter.
 
 ## STARTING UP
 
 Now let's get down to nuts and bolts.  When we start the program we need to set up
-a few things like the return stack.  But as soon as we can, we want to jump into FORTH
-code (albeit much of the "early" FORTH code will still need to be written as
+a few things like the return stack.  But as soon as we can, we want to jump into Forth
+code (albeit much of the "early" Forth code will still need to be written as
 assembly language primitives).
 
 This is what the set up code does.  Does a tiny bit of house-keeping, sets up the
 separate return stack (NB: Linux gives us the ordinary parameter stack already), then
-immediately jumps to a FORTH word called `QUIT`.  Despite its name, `QUIT` doesn't quit
+immediately jumps to a Forth word called `QUIT`.  Despite its name, `QUIT` doesn't quit
 anything.  It resets some internal state and starts reading and interpreting commands.
-(The reason it is called `QUIT` is because you can call `QUIT` from your own FORTH code
+(The reason it is called `QUIT` is because you can call `QUIT` from your own Forth code
 to "quit" your program and go back to interpreting).
 
     /* Assembler entry point. */
@@ -400,7 +400,7 @@ to "quit" your program and go back to interpreting).
         .globl _start
     _start:
         cld
-        mov %esp,var_S0         // Save the initial data stack pointer in FORTH variable S0.
+        mov %esp,var_S0         // Save the initial data stack pointer in Forth variable S0.
         mov $return_stack_top,%ebp // Initialise the return stack.
         call set_up_data_segment
 
@@ -471,8 +471,8 @@ Don't worry too much about the exact implementation details of this macro - it's
 
 Similarly I want a way to write words written in assembly language.  There will quite a few
 of these to start with because, well, everything has to start in assembly before there's
-enough "infrastructure" to be able to start writing FORTH words, but also I want to define
-some common FORTH words in assembly language for speed, even though I could write them in FORTH.
+enough "infrastructure" to be able to start writing Forth words, but also I want to define
+some common Forth words in assembly language for speed, even though I could write them in Forth.
 
 This is what `DUP` looks like in memory:
 
@@ -500,7 +500,7 @@ As with defword above, don't worry about the complicated details of the macro.
     code_\label :                   // assembler code follows
         .endm
 
-Now some easy FORTH primitives.  These are written in assembly for speed.  If you understand
+Now some easy Forth primitives.  These are written in assembly for speed.  If you understand
 i386 assembly language then it is worth reading these.  However if you don't understand assembly
 you can skip the details.
 
@@ -606,7 +606,7 @@ you can skip the details.
         push %eax               // ignore overflow
         NEXT
 
-In this FORTH, only `/MOD` is primitive.  Later we will define the `/` and `MOD` words in
+In this Forth, only `/MOD` is primitive.  Later we will define the `/` and `MOD` words in
 terms of the primitive `/MOD`.  The design of the i386 assembly instruction idiv which
 leaves both quotient and remainder makes this the obvious choice.
 
@@ -621,9 +621,9 @@ leaves both quotient and remainder makes this the obvious choice.
 
 Lots of comparison operations like =, <, >, etc..
 
-ANS FORTH says that the comparison words should return all (binary) 1's for
+ANS Forth says that the comparison words should return all (binary) 1's for
 `TRUE` and all 0's for `FALSE`.  However this is a bit of a strange convention
-so this FORTH breaks it and returns the more normal (for C programmers ...)
+so this Forth breaks it and returns the more normal (for C programmers ...)
 1 meaning TRUE and 0 meaning `FALSE`.
 
         defcode "=",1,,EQU      // top two words are equal?
@@ -743,11 +743,11 @@ so this FORTH breaks it and returns the more normal (for C programmers ...)
         xorl %eax,(%esp)
         NEXT
 
-        defcode "INVERT",6,,INVERT // this is the FORTH bitwise "NOT" function (cf. NEGATE and NOT)
+        defcode "INVERT",6,,INVERT // this is the Forth bitwise "NOT" function (cf. NEGATE and NOT)
         notl (%esp)
         NEXT
 
-## RETURNING FROM FORTH WORDS
+## RETURNING FROM Forth WORDS
 
 Time to talk about what happens when we `EXIT` a function.  In this diagram `QUADRUPLE` has called
 `DOUBLE`, and `DOUBLE` is about to exit (look at where `%esi` is pointing):
@@ -778,7 +778,7 @@ It does the same thing, but how do we compile it since it contains the literal `
 would be to have a function called "`2`" (which you'd have to write in assembler), but you'd need
 a function for every single literal that you wanted to use.
 
-FORTH solves this by compiling the function using a special word called `LIT`:
+Forth solves this by compiling the function using a special word called `LIT`:
 
 <svg height="64" width="632" xmlns="http://www.w3.org/2000/svg"><style>circle,line,path,polygon{stroke:#000;stroke-width:2;stroke-opacity:1;fill-opacity:1;stroke-linecap:round;stroke-linejoin:miter}text{fill:#000;font-family:monospace;font-size:14px}.bg_filled,.nofill{fill:#fff}</style><defs><marker id="arrow" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 0v4l4-2-4-2z"/></marker><marker id="diamond" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 2l2-2 2 2-2 2-2-2z"/></marker><marker id="circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle cx="4" cy="4" r="2"/></marker><marker id="open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="2"/></marker><marker id="big_open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="3"/></marker></defs><path class="backdrop" fill="#fff" stroke-width="2" stroke-linecap="round" d="M0 0h632v64H0z"/><path class="nofill" d="M88 16a16 16 0 000 16"/><text x="90" y="28">usual</text><text x="138" y="28">header</text><text x="194" y="28">of</text><text x="218" y="28">DOUBLE</text><path class="nofill" d="M272 16a16 16 0 010 16"/><text x="314" y="28">DOCOL</text><text x="378" y="28">LIT</text><text x="442" y="28">2</text><text x="506" y="28">✱</text><text x="570" y="28">EXIT</text><path class="solid" d="M68 8h552M68 8v32M300 8v32M364 8v32M428 8v32M492 8v32M556 8v32M620 8v32M68 40h552"/></svg>
 
@@ -800,8 +800,8 @@ see if you can find out how `LIT` works:
 
 ## MEMORY
 
-As important point about FORTH is that it gives you direct access to the lowest levels
-of the machine.  Manipulating memory directly is done frequently in FORTH, and these are
+As important point about Forth is that it gives you direct access to the lowest levels
+of the machine.  Manipulating memory directly is done frequently in Forth, and these are
 the primitive words for doing it.
 
         defcode "!",1,,STORE
@@ -868,11 +868,11 @@ Byte-oriented operations only work on architectures which permit them (i386 is o
 
 ## BUILT-IN VARIABLES
 
-These are some built-in variables and related standard FORTH words.  Of these, the only one that we
+These are some built-in variables and related standard Forth words.  Of these, the only one that we
 have discussed so far was `LATEST`, which points to the last (most recently defined) word in the
-FORTH dictionary.  `LATEST` is also a FORTH word which pushes the address of `LATEST` (the variable)
+Forth dictionary.  `LATEST` is also a Forth word which pushes the address of `LATEST` (the variable)
 on to the stack, so you can read or write it using `@` and `!` operators.  For example, to print
-the current value of `LATEST` (and this can apply to any FORTH variable) you would do:
+the current value of `LATEST` (and this can apply to any Forth variable) you would do:
 
         LATEST @ . CR
 
@@ -905,12 +905,12 @@ The built-in variables are:
 
 ## BUILT-IN CONSTANTS
 
-It's also useful to expose a few constants to FORTH.  When the word is executed it pushes a
+It's also useful to expose a few constants to Forth.  When the word is executed it pushes a
 constant value on the stack.
 
 The built-in constants are:
 
-* `VERSION`         Is the current version of this FORTH.
+* `VERSION`         Is the current version of this Forth.
 * `R0`              The address of the top of the return stack.
 * `DOCOL`           Pointer to `DOCOL`.
 * `F_IMMED`         The `IMMEDIATE` flag's actual value.
@@ -994,19 +994,19 @@ stack for us, and it is accessed through %esp.
 
 # INPUT AND OUTPUT
 
-These are our first really meaty/complicated FORTH primitives.  I have chosen to write them in
-assembler, but surprisingly in "real" FORTH implementations these are often written in terms
-of more fundamental FORTH primitives.  I chose to avoid that because I think that just obscures
+These are our first really meaty/complicated Forth primitives.  I have chosen to write them in
+assembler, but surprisingly in "real" Forth implementations these are often written in terms
+of more fundamental Forth primitives.  I chose to avoid that because I think that just obscures
 the implementation.  After all, you may not understand assembler but you can just think of it
 as an opaque block of code that does what it says.
 
 Let's discuss input first.
 
-The FORTH word `KEY` reads the next byte from stdin (and pushes it on the parameter stack).
+The Forth word `KEY` reads the next byte from stdin (and pushes it on the parameter stack).
 So if KEY is called and someone hits the space key, then the number 32 (ASCII code of space)
 is pushed on the stack.
 
-In FORTH there is no distinction between reading code and reading input.  We might be reading
+In Forth there is no distinction between reading code and reading input.  We might be reading
 and compiling code, we might be reading words to execute, we might be asking for the user
 to type their name -- ultimately it all comes in through KEY.
 
@@ -1014,7 +1014,7 @@ The implementation of `KEY` uses an input buffer of a certain size (defined at t
 file).  It calls the Linux read(2) system call to fill this buffer and tracks its position
 in the buffer using a couple of variables, and if it runs out of input buffer then it refills
 it automatically.  The other thing that `KEY` does is if it detects that stdin has closed, it
-exits the program, which is why when you hit ^D the FORTH system cleanly exits.
+exits the program, which is why when you hit ^D the Forth system cleanly exits.
 GUIDO
      buffer                           bufftop
         |                                |
@@ -1069,7 +1069,7 @@ bufftop:
         .int buffer             // Last valid data in input buffer + 1.
 
 /*
-        By contrast, output is much simpler.  The FORTH word `EMIT` writes out a single byte to stdout.
+        By contrast, output is much simpler.  The Forth word `EMIT` writes out a single byte to stdout.
         This implementation just uses the write system call.  No attempt is made to buffer output, but
         it would be a good exercise to add it.
 */
@@ -1096,7 +1096,7 @@ emit_scratch:
         .space 1                // scratch used by EMIT
 
 /*
-        Back to input, `WORD` is a FORTH word which reads the next full word of input.
+        Back to input, `WORD` is a Forth word which reads the next full word of input.
 
         What it does in detail is that it first skips any blanks (spaces, tabs, newlines and so on).
         Then it calls `KEY` to read characters into an internal buffer until it hits a blank.  Then it
@@ -1106,11 +1106,11 @@ emit_scratch:
         Notice that `WORD` has a single internal buffer which it overwrites each time (rather like
         a static C string).  Also notice that `WORD's` internal buffer is just 32 bytes long and
         there is NO checking for overflow.  31 bytes happens to be the maximum length of a
-        FORTH word that we support, and that is what `WORD` is used for: to read FORTH words when
+        Forth word that we support, and that is what `WORD` is used for: to read Forth words when
         we are compiling and executing code.  The returned strings are not NUL-terminated.
 
-        Start address+length is the normal way to represent strings in FORTH (not ending in an
-        ASCII NUL character as in C), and so FORTH strings can contain any character including NULs
+        Start address+length is the normal way to represent strings in Forth (not ending in an
+        ASCII NUL character as in C), and so Forth strings can contain any character including NULs
         and can be any length.
 
         `WORD` is not suitable for just reading strings (eg. user input) because of all the above
@@ -1246,9 +1246,9 @@ _NUMBER:
 /*
         DICTIONARY LOOK UPS ----------------------------------------------------------------------
 
-        We're building up to our prelude on how FORTH code is compiled, but first we need yet more infrastructure.
+        We're building up to our prelude on how Forth code is compiled, but first we need yet more infrastructure.
 
-        The FORTH word `FIND` takes a string (a word as parsed by `WORD` -- see above) and looks it up in the
+        The Forth word `FIND` takes a string (a word as parsed by `WORD` -- see above) and looks it up in the
         dictionary.  What it actually returns is the address of the dictionary header, if it finds it,
         or 0 if it didn't.
 
@@ -1315,7 +1315,7 @@ _FIND:
 
 /*
         `FIND` returns the dictionary pointer, but when compiling we need the codeword pointer (recall
-        that FORTH definitions are compiled into lists of codeword pointers).  The standard FORTH
+        that Forth definitions are compiled into lists of codeword pointers).  The standard Forth
         word `>CFA` turns a dictionary pointer into a codeword pointer.
 
         The example below shows the result of:
@@ -1335,10 +1335,10 @@ _FIND:
 
         Because names vary in length, this isn't just a simple increment.
 
-        In this FORTH you cannot easily turn a codeword pointer back into a dictionary entry pointer, but
-        that is not true in most FORTH implementations where they store a back pointer in the definition
+        In this Forth you cannot easily turn a codeword pointer back into a dictionary entry pointer, but
+        that is not true in most Forth implementations where they store a back pointer in the definition
         (with an obvious memory/complexity cost).  The reason they do this is that it is useful to be
-        able to go backwards (codeword -> dictionary entry) in order to decompile FORTH definitions
+        able to go backwards (codeword -> dictionary entry) in order to decompile Forth definitions
         quickly.
 
         What does `CFA` stand for?  My best guess is "Code Field Address".
@@ -1375,21 +1375,21 @@ _TCFA:
         +---------|---|---|---|---|---|---|---|---|------------|------------|------------|------------+
                                                    codeword
 
-        (Note to those following the source of FIG-FORTH / ciforth: My `>DFA` definition is
+        (Note to those following the source of FIG-Forth / ciforth: My `>DFA` definition is
         different from theirs, because they have an extra indirection).
 
-        You can see that `>DFA` is easily defined in FORTH just by adding 4 to the result of `>CFA`.
+        You can see that `>DFA` is easily defined in Forth just by adding 4 to the result of `>CFA`.
 */
 
         defword ">DFA",4,,TDFA
         .int TCFA               // >CFA         (get code field address)
         .int INCR4              // 4+           (add 4 to it to get to next word)
-        .int EXIT               // EXIT         (return from FORTH word)
+        .int EXIT               // EXIT         (return from Forth word)
 
 /*
         COMPILING ----------------------------------------------------------------------
 
-        Now we'll talk about how FORTH compiles words.  Recall that a word definition looks like this:
+        Now we'll talk about how Forth compiles words.  Recall that a word definition looks like this:
 
                 `: DOUBLE DUP + ;`
 
@@ -1408,10 +1408,10 @@ _TCFA:
         There are several problems to solve.  Where to put the new word?  How do we read words?  How
         do we define the words `:` (COLON) and `;` (SEMICOLON)?
 
-        FORTH solves this rather elegantly and as you might expect in a very low-level way which
+        Forth solves this rather elegantly and as you might expect in a very low-level way which
         allows you to change how the compiler works on your own code.
 
-        FORTH has an `INTERPRET` function (a true interpreter this time, not `DOCOL`) which runs in a
+        Forth has an `INTERPRET` function (a true interpreter this time, not `DOCOL`) which runs in a
         loop, reading words (using `WORD`), looking them up (using `FIND`), turning them into codeword
         pointers (using `>CFA`) and deciding what to do with them.
 
@@ -1477,7 +1477,7 @@ _TCFA:
         The issue is what happens next.  Obviously what we _don't_ want to happen is that we
         read "`;`" and compile it and go on compiling everything afterwards.
 
-        At this point, FORTH uses a trick.  Remember the length byte in the dictionary definition
+        At this point, Forth uses a trick.  Remember the length byte in the dictionary definition
         isn't just a plain length byte, but can also contain flags.  One flag is called the
         `IMMEDIATE` flag (F_IMMED in this code).  If a word in the dictionary is flagged as
         `IMMEDIATE` then the interpreter runs it immediately _even if it's in compile mode_.
@@ -1503,7 +1503,7 @@ _TCFA:
 
         The only last wrinkle in this is that while our word was being compiled, it was in a
         half-finished state.  We certainly wouldn't want `DOUBLE` to be called somehow during
-        this time.  There are several ways to stop this from happening, but in FORTH what we
+        this time.  There are several ways to stop this from happening, but in Forth what we
         do is flag the word with the `HIDDEN` flag (`F_HIDDEN` in this code) just while it is
         being compiled.  This prevents `FIND` from finding it, and thus in theory stops any
         chance of it being called.
@@ -1531,7 +1531,7 @@ _TCFA:
         +---------|---|---|---|---|---|---|---|---|------------+
                    len                         pad  codeword
 
-        `CREATE` is a standard FORTH word and the advantage of this split is that we can reuse it to
+        `CREATE` is a standard Forth word and the advantage of this split is that we can reuse it to
         create other types of words (not just ones which contain code, but words which contain variables,
         constants and other data).
 */
@@ -1564,10 +1564,10 @@ _TCFA:
         NEXT
 
 /*
-        Because I want to define `:` (COLON) in FORTH, not assembler, we need a few more FORTH words
+        Because I want to define `:` (COLON) in Forth, not assembler, we need a few more Forth words
         to use.
 
-        The first is `,` (COMMA) which is a standard FORTH word which appends a 32 bit integer to the user
+        The first is `,` (COMMA) which is a standard Forth word which appends a 32 bit integer to the user
         memory pointed to by `HERE`, and adds 4 to `HERE`.  So the action of `,` (COMMA) is:
 
                                                         previous value of HERE
@@ -1602,7 +1602,7 @@ _COMMA:
         Immediate mode vs. compile mode is stored in the global variable `STATE`, and by updating this
         variable we can switch between the two modes.
 
-        For various reasons which may become apparent later, FORTH defines two standard words called
+        For various reasons which may become apparent later, Forth defines two standard words called
         `[` and `]` (`LBRAC` and `RBRAC`) which switch between modes:
 
         Word    Assembler       Action          Effect
@@ -1650,11 +1650,11 @@ _COMMA:
 /*
         EXTENDING THE COMPILER ----------------------------------------------------------------------
 
-        Words flagged with IMMEDIATE (F_IMMED) aren't just for the FORTH compiler to use.  You can define
-        your own IMMEDIATE words too, and this is a crucial aspect when extending basic FORTH, because
+        Words flagged with IMMEDIATE (F_IMMED) aren't just for the Forth compiler to use.  You can define
+        your own IMMEDIATE words too, and this is a crucial aspect when extending basic Forth, because
         it allows you in effect to extend the compiler itself.  Does gcc let you do that?
 
-        Standard FORTH words like IF, WHILE, ." and so on are all written as extensions to the basic
+        Standard Forth words like IF, WHILE, ." and so on are all written as extensions to the basic
         compiler, and are all IMMEDIATE words.
 
         The IMMEDIATE word toggles the F_IMMED (IMMEDIATE flag) on the most recently defined word,
@@ -1666,7 +1666,7 @@ _COMMA:
                 ...definition...
         ;
 
-        but some FORTH programmers write this instead:
+        but some Forth programmers write this instead:
 
         : MYIMMEDWORD
                 ...definition...
@@ -1716,7 +1716,7 @@ _COMMA:
         .int EXIT               // Return.
 
 /*
-        ' (TICK) is a standard FORTH word which returns the codeword pointer of the next word.
+        ' (TICK) is a standard Forth word which returns the codeword pointer of the next word.
 
         The common usage is:
 
@@ -1773,8 +1773,8 @@ _COMMA:
 
         0BRANCH is the same except the branch happens conditionally.
 
-        Now standard FORTH words such as IF, THEN, ELSE, WHILE, REPEAT, etc. can be implemented entirely
-        in FORTH.  They are IMMEDIATE words which append various combinations of BRANCH or 0BRANCH
+        Now standard Forth words such as IF, THEN, ELSE, WHILE, REPEAT, etc. can be implemented entirely
+        in Forth.  They are IMMEDIATE words which append various combinations of BRANCH or 0BRANCH
         into the word currently being compiled.
 
         As an example, code written like this:
@@ -1804,7 +1804,7 @@ _COMMA:
         LITERAL STRINGS ----------------------------------------------------------------------
 
         LITSTRING is a primitive used to implement the ." and S" operators (which are written in
-        FORTH).  See the definition of those operators later.
+        Forth).  See the definition of those operators later.
 
         TELL just prints a string.  It's more efficient to define this in assembly because we
         can make it a single Linux syscall.
@@ -1830,13 +1830,13 @@ _COMMA:
 /*
         QUIT AND INTERPRET ----------------------------------------------------------------------
 
-        QUIT is the first FORTH function called, almost immediately after the FORTH system "boots".
+        QUIT is the first Forth function called, almost immediately after the Forth system "boots".
         As explained before, QUIT doesn't "quit" anything.  It does some initialisation (in particular
         it clears the return stack) and it calls INTERPRET in a loop to interpret commands.  The
-        reason it is called QUIT is because you can call it from your own FORTH words in order to
+        reason it is called QUIT is because you can call it from your own Forth words in order to
         "quit" your program and start again at the user prompt.
 
-        INTERPRET is the FORTH interpreter ("toploop", "toplevel" or "REPL" might be a more accurate
+        INTERPRET is the Forth interpreter ("toploop", "toplevel" or "REPL" might be a more accurate
         description -- see: http://en.wikipedia.org/wiki/REPL).
 */
 
@@ -1847,7 +1847,7 @@ _COMMA:
         .int BRANCH,-8          // and loop (indefinitely)
 
 /*
-        This interpreter is pretty simple, but remember that in FORTH you can always override
+        This interpreter is pretty simple, but remember that in Forth you can always override
         it later with a more powerful one!
  */
         defcode "INTERPRET",9,,INTERPRET
@@ -1949,13 +1949,13 @@ interpret_is_lit:
         CHAR A puts 65 on the stack.
 
         EXECUTE is used to run execution tokens.  See the discussion of execution tokens in the
-        FORTH code for more details.
+        Forth code for more details.
 
         SYSCALL0, SYSCALL1, SYSCALL2, SYSCALL3 make a standard Linux system call.  (See <asm/unistd.h>
         for a list of system call numbers).  As their name suggests these forms take between 0 and 3
         syscall parameters, plus the system call number.
 
-        In this FORTH, SYSCALL0 must be the last word in the built-in (assembler) dictionary because we
+        In this Forth, SYSCALL0 must be the last word in the built-in (assembler) dictionary because we
         initialise the LATEST variable to point to it.  This means that if you want to extend the assembler
         part, you must put new words before SYSCALL0, or else change how LATEST is initialised.
 */
@@ -2007,12 +2007,12 @@ interpret_is_lit:
 
         Here we set up the Linux data segment, used for user definitions and variously known as just
         the 'data segment', 'user memory' or 'user definitions area'.  It is an area of memory which
-        grows upwards and stores both newly-defined FORTH words and global variables of various
+        grows upwards and stores both newly-defined Forth words and global variables of various
         sorts.
 
         It is completely analogous to the C heap, except there is no generalised 'malloc' and 'free'
-        (but as with everything in FORTH, writing such functions would just be a Simple Matter
-        Of Programming).  Instead in normal use the data segment just grows upwards as new FORTH
+        (but as with everything in Forth, writing such functions would just be a Simple Matter
+        Of Programming).  Instead in normal use the data segment just grows upwards as new Forth
         words are defined/appended to it.
 
         There are various "features" of the GNU toolchain which make setting up the data segment
@@ -2047,7 +2047,7 @@ set_up_data_segment:
         .set BUFFER_SIZE,4096
 
         .bss
-/* FORTH return stack. */
+/* Forth return stack. */
         .align 4096
 return_stack:
         .space RETURN_STACK_SIZE
@@ -2059,10 +2059,10 @@ buffer:
         .space BUFFER_SIZE
 
 /*
-        START OF FORTH CODE ----------------------------------------------------------------------
+        START OF Forth CODE ----------------------------------------------------------------------
 
-        We've now reached the stage where the FORTH system is running and self-hosting.  All further
-        words can be written as FORTH itself, including words like IF, THEN, .", etc which in most
+        We've now reached the stage where the Forth system is running and self-hosting.  All further
+        words can be written as Forth itself, including words like IF, THEN, .", etc which in most
         languages would be considered rather fundamental.
 
         I used to append this here in the assembly file, but I got sick of fighting against gas's
@@ -2076,7 +2076,7 @@ buffer:
 /* END OF jonesforth.S */
 
 \ -*- text -*-
-\       A sometimes minimal FORTH compiler and tutorial for Linux / i386 systems. -*- asm -*-
+\       A sometimes minimal Forth compiler and tutorial for Linux / i386 systems. -*- asm -*-
 \       By Richard W.M. Jones <rich@annexia.org> http://annexia.org/forth
 \       This is PUBLIC DOMAIN (see public domain release statement below).
 \       $Id: jonesforth.f,v 1.18 2009-09-11 08:32:33 rich Exp $
@@ -2107,19 +2107,19 @@ buffer:
 \
 \       Thirdly I assume that your screen is at least 50 characters high.
 \
-\       START OF FORTH CODE ----------------------------------------------------------------------
+\       START OF Forth CODE ----------------------------------------------------------------------
 \
-\       We've now reached the stage where the FORTH system is running and self-hosting.  All further
-\       words can be written as FORTH itself, including words like IF, THEN, .", etc which in most
+\       We've now reached the stage where the Forth system is running and self-hosting.  All further
+\       words can be written as Forth itself, including words like IF, THEN, .", etc which in most
 \       languages would be considered rather fundamental.
 \
 \       Some notes about the code:
 \
-\       I use indenting to show structure.  The amount of whitespace has no meaning to FORTH however
+\       I use indenting to show structure.  The amount of whitespace has no meaning to Forth however
 \       except that you must use at least one whitespace character between words, and words themselves
 \       cannot contain whitespace.
 \
-\       FORTH is case-sensitive.  Use capslock!
+\       Forth is case-sensitive.  Use capslock!
 
 \ The primitive word /MOD (DIVMOD) leaves both the quotient and the remainder on the stack.  (On
 \ i386, the idivl instruction gives both anyway).  Now we can define the / and MOD in terms of /MOD
@@ -2129,7 +2129,7 @@ buffer:
 
 \ Define some character constants
 : '\n' 10 ;
-: BL   32 ; \ BL (BLank) is a standard FORTH word for space.
+: BL   32 ; \ BL (BLank) is a standard Forth word for space.
 
 \ CR prints a carriage return
 : CR '\n' EMIT ;
@@ -2152,7 +2152,7 @@ buffer:
         ;
 
 \ Now we can use [ and ] to insert literals which are calculated at compile time.  (Recall that
-\ [ and ] are the FORTH words which switch into and out of immediate mode.)
+\ [ and ] are the Forth words which switch into and out of immediate mode.)
 \ Within definitions, use [ ... ] LITERAL anywhere that '...' is a constant expression which you
 \ would rather only compute once (at compile time, rather than calculating it each time your word runs).
 : ':'
@@ -2196,7 +2196,7 @@ buffer:
 \
 \ So far we have defined only very simple definitions.  Before we can go further, we really need to
 \ make some control structures, like IF ... THEN and loops.  Luckily we can define arbitrary control
-\ structures directly in FORTH.
+\ structures directly in Forth.
 \
 \ Please note that the control structures as I have defined them here will only work inside compiled
 \ words.  If you try to type in expressions using IF, etc. in immediate mode, then they won't work.
@@ -2292,7 +2292,7 @@ buffer:
 
 \       COMMENTS ----------------------------------------------------------------------
 \
-\ FORTH allows ( ... ) as comments within function definitions.  This works by having an IMMEDIATE
+\ Forth allows ( ... ) as comments within function definitions.  This works by having an IMMEDIATE
 \ word called ( which just drops input characters until it hits the corresponding ).
 : ( IMMEDIATE
         1               \ allowed nested parens by keeping track of depth
@@ -2315,7 +2315,7 @@ buffer:
 
         STACK NOTATION ----------------------------------------------------------------------
 
-        In FORTH style we can also use ( ... -- ... ) to show the effects that a word has on the
+        In Forth style we can also use ( ... -- ... ) to show the effects that a word has on the
         parameter stack.  For example:
 
         ( n -- )        means that the word consumes an integer (n) from the parameter stack.
@@ -2352,9 +2352,9 @@ buffer:
 (
         PRINTING NUMBERS ----------------------------------------------------------------------
 
-        The standard FORTH word . (DOT) is very important.  It takes the number at the top
+        The standard Forth word . (DOT) is very important.  It takes the number at the top
         of the stack and prints it out.  However first I'm going to implement some lower-level
-        FORTH words:
+        Forth words:
 
         U.R     ( u width -- )  which prints an unsigned number, padded to a certain width
         U.      ( u -- )        which prints an unsigned number
@@ -2397,7 +2397,7 @@ buffer:
 ;
 
 (
-        FORTH word .S prints the contents of the stack.  It doesn't alter the stack.
+        Forth word .S prints the contents of the stack.  It doesn't alter the stack.
         Very useful for debugging.
 )
 : .S            ( -- )
@@ -2516,9 +2516,9 @@ buffer:
 (
         STRINGS ----------------------------------------------------------------------
 
-        S" string" is used in FORTH to define strings.  It leaves the address of the string and
+        S" string" is used in Forth to define strings.  It leaves the address of the string and
         its length on the stack, (length at the top of stack).  The space following S" is the normal
-        space between FORTH words and is not a part of the string.
+        space between Forth words and is not a part of the string.
 
         This is tricky to define because it has to do different things depending on whether
         we are compiling or in immediate mode.  (Thus the word is marked IMMEDIATE so it can
@@ -2573,7 +2573,7 @@ buffer:
 ;
 
 (
-        ." is the print string operator in FORTH.  Example: ." Something to print"
+        ." is the print string operator in Forth.  Example: ." Something to print"
         The space after the operator is the ordinary space required between words and is not
         a part of what is printed.
 
@@ -2609,7 +2609,7 @@ buffer:
 (
         CONSTANTS AND VARIABLES ----------------------------------------------------------------------
 
-        In FORTH, global constants and variables are defined like this:
+        In Forth, global constants and variables are defined like this:
 
         10 CONSTANT TEN         when TEN is executed, it leaves the integer 10 on the stack
         VARIABLE VAR            when VAR is executed, it leaves the address of VAR on the stack
@@ -2701,7 +2701,7 @@ buffer:
 ;
 
 (
-        Second, CELLS.  In FORTH the phrase 'n CELLS ALLOT' means allocate n integers of whatever size
+        Second, CELLS.  In Forth the phrase 'n CELLS ALLOT' means allocate n integers of whatever size
         is the natural size for integers on this machine architecture.  On this 32 bit machine therefore
         CELLS just multiplies the top of stack by 4.
 )
@@ -2737,7 +2737,7 @@ buffer:
         performance penalty at runtime.
 
         A naive implementation of 'TO' would be quite slow, involving a dictionary search each time.
-        But because this is FORTH we have complete control of the compiler so we can compile TO more
+        But because this is Forth we have complete control of the compiler so we can compile TO more
         efficiently, turning:
                 TO VAL
         into:
@@ -2768,7 +2768,7 @@ buffer:
 
         In other words, this is a kind of self-modifying code.
 
-        (Note to the people who want to modify this FORTH to add inlining: values defined this
+        (Note to the people who want to modify this Forth to add inlining: values defined this
         way cannot be inlined).
 )
 : VALUE         ( n -- )
@@ -2870,7 +2870,7 @@ buffer:
 (
         FORGET ----------------------------------------------------------------------
 
-        So far we have only allocated words and memory.  FORTH provides a rather primitive method
+        So far we have only allocated words and memory.  Forth provides a rather primitive method
         to deallocate.
 
         'FORGET word' deletes the definition of 'word' from the dictionary and everything defined
@@ -2958,9 +2958,9 @@ buffer:
 (
         CASE ----------------------------------------------------------------------
 
-        CASE...ENDCASE is how we do switch statements in FORTH.  There is no generally
+        CASE...ENDCASE is how we do switch statements in Forth.  There is no generally
         agreed syntax for this, so I've gone for the syntax mandated by the ISO standard
-        FORTH (ANS-FORTH).
+        Forth (ANS-Forth).
 
                 ( some value on the stack )
                 CASE
@@ -2992,9 +2992,9 @@ buffer:
                         ." Sorry, I didn't understand key <" DUP EMIT ." >, try again." CR
                 ENDCASE
 
-        (In some versions of FORTH, more advanced tests are supported, such as ranges, etc.
-        Other versions of FORTH need you to write OTHERWISE to indicate the default case.
-        As I said above, this FORTH tries to follow the ANS FORTH standard).
+        (In some versions of Forth, more advanced tests are supported, such as ranges, etc.
+        Other versions of Forth need you to write OTHERWISE to indicate the default case.
+        As I said above, this Forth tries to follow the ANS Forth standard).
 
         The implementation of CASE...ENDCASE is somewhat non-trivial.  I'm following the
         implementations from here:
@@ -3056,9 +3056,9 @@ buffer:
         dictionary definition.  (In truth, it works with any pointer into a word, not just
         the codeword pointer, and this is needed to do stack traces).
 
-        In this FORTH this is not so easy.  In fact we have to search through the dictionary
+        In this Forth this is not so easy.  In fact we have to search through the dictionary
         because we don't have a convenient back-pointer (as is often the case in other versions
-        of FORTH).  Because of this search, CFA> should not be used when performance is critical,
+        of Forth).  Because of this search, CFA> should not be used when performance is critical,
         so it is only used for debugging tools such as the decompiler and printing stack
         traces.
 
@@ -3081,7 +3081,7 @@ buffer:
 ;
 
 (
-        SEE decompiles a FORTH word.
+        SEE decompiles a Forth word.
 
         We search for the dictionary entry of the word, then search again for the next
         word (effectively, the end of the compiled word).  This results in two pointers:
@@ -3186,7 +3186,7 @@ buffer:
 (
         EXECUTION TOKENS ----------------------------------------------------------------------
 
-        Standard FORTH defines a concept called an 'execution token' (or 'xt') which is very
+        Standard Forth defines a concept called an 'execution token' (or 'xt') which is very
         similar to a function pointer in C.  We map the execution token to a codeword address.
 
                         execution token of DOUBLE is the address of this codeword
@@ -3240,7 +3240,7 @@ buffer:
                 ANON EXECUTE
 
         Another use of :NONAME is to create an array of functions which can be called quickly
-        (think: fast switch statement).  This example is adapted from the ANS FORTH standard:
+        (think: fast switch statement).  This example is adapted from the ANS Forth standard:
 
                 10 CELLS ALLOT CONSTANT CMD-TABLE
                 : SET-CMD CELLS CMD-TABLE + ! ;
@@ -3269,7 +3269,7 @@ buffer:
 (
         EXCEPTIONS ----------------------------------------------------------------------
 
-        Amazingly enough, exceptions can be implemented directly in FORTH, in fact rather easily.
+        Amazingly enough, exceptions can be implemented directly in Forth, in fact rather easily.
 
         The general usage is as follows:
 
@@ -3302,7 +3302,7 @@ buffer:
 
         Exception numbers are non-zero integers.  By convention the positive numbers can be used
         for app-specific exceptions and the negative numbers have certain meanings defined in
-        the ANS FORTH standard.  (For example, -1 is the exception thrown by ABORT).
+        the ANS Forth standard.  (For example, -1 is the exception thrown by ABORT).
 
         0 THROW does nothing.  This is the stack signature of THROW:
 
@@ -3354,7 +3354,7 @@ buffer:
         returns (thus "returning" from the original CATCH).
 
         One thing to take from this is that exceptions are a relatively lightweight mechanism
-        in FORTH.
+        in Forth.
 )
 
 : EXCEPTION-MARKER
@@ -3443,23 +3443,23 @@ buffer:
 (
         C STRINGS ----------------------------------------------------------------------
 
-        FORTH strings are represented by a start address and length kept on the stack or in memory.
+        Forth strings are represented by a start address and length kept on the stack or in memory.
 
-        Most FORTHs don't handle C strings, but we need them in order to access the process arguments
+        Most Forths don't handle C strings, but we need them in order to access the process arguments
         and environment left on the stack by the Linux kernel, and to make some system calls.
 
-        Operation       Input           Output          FORTH word      Notes
+        Operation       Input           Output          Forth word      Notes
         ----------------------------------------------------------------------
 
-        Create FORTH string             addr len        S" ..."
+        Create Forth string             addr len        S" ..."
 
         Create C string                 c-addr          Z" ..."
 
-        C -> FORTH      c-addr          addr len        DUP STRLEN
+        C -> Forth      c-addr          addr len        DUP STRLEN
 
-        FORTH -> C      addr len        c-addr          CSTRING         Allocated in a temporary buffer, so
+        Forth -> C      addr len        c-addr          CSTRING         Allocated in a temporary buffer, so
                                                                         should be consumed / copied immediately.
-                                                                        FORTH string should not contain NULs.
+                                                                        Forth string should not contain NULs.
 
         For example, DUP STRLEN TELL prints a C string.
 )
@@ -3535,7 +3535,7 @@ buffer:
 
         Linux makes the process arguments and environment available to us on the stack.
 
-        The top of stack pointer is saved by the early assembler code when we start up in the FORTH
+        The top of stack pointer is saved by the early assembler code when we start up in the Forth
         variable S0, and starting at this pointer we can read out the command line arguments and the
         environment.
 
@@ -3564,7 +3564,7 @@ buffer:
 : ARGV ( n -- str u )
         1+ CELLS S0 @ + ( get the address of argv[n] entry )
         @               ( get the address of the string )
-        DUP STRLEN      ( and get its length / turn it into a FORTH string )
+        DUP STRLEN      ( and get its length / turn it into a Forth string )
 ;
 
 (
@@ -3618,7 +3618,7 @@ buffer:
         reason is that Linux can't extend the data segment by less than a single page
         (4096 bytes or 1024 cells).
 
-        This FORTH doesn't automatically increase the size of the data segment "on demand"
+        This Forth doesn't automatically increase the size of the data segment "on demand"
         (ie. when , (COMMA), ALLOT, CREATE, and so on are used).  Instead the programmer
         needs to be aware of how much space a large allocation will take, check UNUSED, and
         call MORECORE if necessary.  A simple programming exercise is to change the
@@ -3634,10 +3634,10 @@ buffer:
 ;
 
 (
-        Standard FORTH provides some simple file access primitives which we model on
+        Standard Forth provides some simple file access primitives which we model on
         top of Linux syscalls.
 
-        The main complication is converting FORTH strings (address & length) into C
+        The main complication is converting Forth strings (address & length) into C
         strings for the Linux kernel.
 
         Notice there is no buffering in this implementation.
@@ -3704,7 +3704,7 @@ buffer:
 (
         ASSEMBLER CODE ----------------------------------------------------------------------
 
-        This is just the outline of a simple assembler, allowing you to write FORTH primitives
+        This is just the outline of a simple assembler, allowing you to write Forth primitives
         in assembly language.
 
         Assembly primitives begin ': NAME' in the normal way, but are ended with ;CODE.  ;CODE
@@ -3774,7 +3774,7 @@ DECIMAL
         will build an efficient assembler word 2DROP which contains the inline assembly code
         for DROP followed by DROP (eg. two 'pop %eax' instructions in this case).
 
-        Another example.  Consider this ordinary FORTH definition:
+        Another example.  Consider this ordinary Forth definition:
 
                 : C@++ ( addr -- addr+1 byte ) DUP 1+ SWAP C@ ;
 
@@ -3793,14 +3793,14 @@ DECIMAL
         (1) You must be currently defining an assembler word (ie. : ... ;CODE).
 
         (2) The word that you are inlining must be known to be an assembler word.  If you try
-        to inline a FORTH word, you'll get an error message.
+        to inline a Forth word, you'll get an error message.
 
         (3) The assembler primitive must be position-independent code and must end with a
         single NEXT macro.
 
-        Exercises for the reader: (a) Generalise INLINE so that it can inline FORTH words when
-        building FORTH words. (b) Further generalise INLINE so that it does something sensible
-        when you try to inline FORTH into assembler and vice versa.
+        Exercises for the reader: (a) Generalise INLINE so that it can inline Forth words when
+        building Forth words. (b) Further generalise INLINE so that it does something sensible
+        when you try to inline Forth into assembler and vice versa.
 
         The implementation of INLINE is pretty simple.  We find the word in the dictionary,
         check it's an assembler word, then copy it into the current definition, byte by byte,
@@ -3831,8 +3831,8 @@ DECIMAL
         WORD FIND               ( find the word in the dictionary )
         >CFA                    ( codeword )
 
-        DUP @ DOCOL = IF        ( check codeword <> DOCOL (ie. not a FORTH word) )
-                ." Cannot INLINE FORTH words" CR ABORT
+        DUP @ DOCOL = IF        ( check codeword <> DOCOL (ie. not a Forth word) )
+                ." Cannot INLINE Forth words" CR ABORT
         THEN
 
         (INLINE)
@@ -3843,7 +3843,7 @@ HIDE =NEXT
 (
         NOTES ----------------------------------------------------------------------
 
-        DOES> isn't possible to implement with this FORTH because we don't have a separate
+        DOES> isn't possible to implement with this Forth because we don't have a separate
         data pointer.
 )
 
@@ -3855,7 +3855,7 @@ HIDE =NEXT
 
 : WELCOME
         S" TEST-MODE" FIND NOT IF
-                ." JONESFORTH VERSION " VERSION . CR
+                ." JONESForth VERSION " VERSION . CR
                 UNUSED . ." CELLS REMAINING" CR
                 ." OK "
         THEN
@@ -3872,22 +3872,22 @@ was an assembly language function.  In the direct threaded code, QUADRUPLE would
 <svg height="96" width="544" xmlns="http://www.w3.org/2000/svg"><style>circle,line,path,polygon{stroke:#000;stroke-width:2;stroke-opacity:1;fill-opacity:1;stroke-linecap:round;stroke-linejoin:miter}text{fill:#000;font-family:monospace;font-size:14px}.bg_filled,.nofill{fill:#fff}.end_marked_arrow{marker-end:url(#arrow)}</style><defs><marker id="arrow" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 0v4l4-2-4-2z"/></marker><marker id="diamond" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 2l2-2 2 2-2 2-2-2z"/></marker><marker id="circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle cx="4" cy="4" r="2"/></marker><marker id="open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="2"/></marker><marker id="big_open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="3"/></marker></defs><path class="backdrop" fill="#fff" stroke-width="2" stroke-linecap="round" d="M0 0h544v96H0z"/><text x="82" y="28">addr</text><text x="122" y="28">of</text><text x="146" y="28">DOUBLE</text><path class="solid end_marked_arrow" d="M208 24h48"/><text x="82" y="60">addr</text><text x="122" y="60">of</text><text x="146" y="60">DOUBLE</text><path class="nofill" d="M272 16a16 16 0 000 16"/><text x="282" y="28">assembly</text><text x="314" y="44">NEXT</text><text x="354" y="28">code</text><text x="394" y="28">to</text><text x="418" y="28">do</text><text x="442" y="28">the</text><text x="474" y="28">double</text><path class="nofill" d="M528 16a16 16 0 010 16"/><text x="2" y="60">%esi</text><path class="solid end_marked_arrow" d="M40 56h16"/><path class="solid" d="M68 8h152M68 8v64M220 8v64M68 40h152M68 72h152"/></svg>
 
 We can add an extra indirection to allow us to run both words written in assembly language
-(primitives written for speed) and words written in FORTH themselves as lists of addresses.
+(primitives written for speed) and words written in Forth themselves as lists of addresses.
 
 The extra indirection is the reason for the brackets in JMP *(%eax).
 
-Let's have a look at how QUADRUPLE and DOUBLE really look in FORTH:
+Let's have a look at how QUADRUPLE and DOUBLE really look in Forth:
 
 <svg height="448" width="736" xmlns="http://www.w3.org/2000/svg"><style>circle,line,polygon{stroke:#000;stroke-width:2;stroke-opacity:1;fill-opacity:1;stroke-linecap:round;stroke-linejoin:miter}.filled,text{fill:#000}.bg_filled{fill:#fff}text{font-family:monospace;font-size:14px}.end_marked_arrow{marker-end:url(#arrow)}</style><defs><marker id="arrow" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 0v4l4-2-4-2z"/></marker><marker id="diamond" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 2l2-2 2 2-2 2-2-2z"/></marker><marker id="circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="filled" cx="4" cy="4" r="2"/></marker><marker id="open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="2"/></marker><marker id="big_open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="3"/></marker></defs><path class="backdrop" fill="#fff" stroke-width="2" stroke-linecap="round" d="M0 0h736v448H0z"/><text x="2" y="12">:</text><text x="18" y="12">QUADRUPLE</text><text x="98" y="12">DOUBLE</text><text x="154" y="12">DOUBLE</text><text x="210" y="12">;</text><text x="18" y="60">codeword</text><text x="18" y="92">addr</text><text x="58" y="92">of</text><text x="82" y="92">DOUBLE</text><path class="solid end_marked_arrow" d="M144 88h128"/><text x="18" y="124">addr</text><text x="58" y="124">of</text><text x="82" y="124">DOUBLE</text><text x="18" y="156">addr</text><text x="58" y="156">of</text><text x="82" y="156">EXIT</text><text x="282" y="60">:</text><text x="298" y="60">DOUBLE</text><text x="354" y="60">DUP</text><text x="386" y="60">+</text><text x="402" y="60">;</text><text x="298" y="108">codeword</text><text x="298" y="140">addr</text><text x="338" y="140">of</text><text x="362" y="140">DUP</text><path class="solid end_marked_arrow" d="M408 136h120"/><text x="298" y="172">addr</text><text x="338" y="172">of</text><text x="362" y="172">+</text><text x="298" y="204">addr</text><text x="338" y="204">of</text><text x="362" y="204">EXIT</text><path class="solid end_marked_arrow" d="M476 296h52"/><text x="554" y="156">codeword</text><text x="554" y="188">assembly</text><text x="626" y="188">to</text><path class="filled" d="M680 180l-8 4 8 4z"/><text x="554" y="204">implement</text><text x="634" y="204">DUP</text><text x="586" y="220">..</text><text x="586" y="236">..</text><text x="554" y="252">NEXT</text><text x="218" y="172">%esi</text><path class="solid end_marked_arrow" d="M256 168h16"/><text x="554" y="316">codeword</text><text x="554" y="348">assembly</text><text x="626" y="348">to</text><path class="filled" d="M672 340l-8 4 8 4z"/><text x="554" y="364">implement</text><text x="634" y="364">+</text><text x="586" y="380">..</text><text x="586" y="396">..</text><text x="554" y="412">NEXT</text><path class="solid" d="M4 40h152M4 40v128M156 40v128M4 72h152M4 104h152M4 136h152M4 168h152"/><g><path class="solid" d="M284 88h152M284 88v128M436 88v128M284 120h152M284 152h152M284 184h152M284 216h152"/></g><g><path class="solid" d="M408 168h68M476 168v128"/></g><g><path class="solid" d="M540 136h152M540 136v128M692 136v128M540 168h152M540 264h152"/></g><g><path class="solid" d="M664 152h60M724 152v32M680 184h44"/></g><g><path class="solid" d="M540 296h152M540 296v128M692 296v128M540 328h152M540 424h152"/></g><g><path class="solid" d="M664 312h60M724 312v32M672 344h52"/></g></svg>
 
 This is the part where you may need an extra cup of tea/coffee/favourite caffeinated
 beverage.  What has changed is that I've added an extra pointer to the beginning of
-the definitions.  In FORTH this is sometimes called the "codeword".  The codeword is
+the definitions.  In Forth this is sometimes called the "codeword".  The codeword is
 a pointer to the interpreter to run the function.  For primitives written in
 assembly language, the "interpreter" just points to the actual assembly code itself.
 They don't need interpreting, they just run.
 
-In words written in FORTH (like QUADRUPLE and DOUBLE), the codeword points to an interpreter
+In words written in Forth (like QUADRUPLE and DOUBLE), the codeword points to an interpreter
 function.
 
 I'll show you the interpreter function shortly, but let's recall our indirect
@@ -3915,6 +3915,6 @@ I've glossed over four things.  I wonder if you can guess without reading on wha
 My list of four things are: (1) What does "EXIT" do?  (2) which is related to (1) is how do
 you call into a function, ie. how does %esi start off pointing at part of QUADRUPLE, but
 then point at part of DOUBLE.  (3) What goes in the codeword for the words which are written
-in FORTH?  (4) How do you compile a function which does anything except call other functions
+in Forth?  (4) How do you compile a function which does anything except call other functions
 ie. a function which contains a number like : DOUBLE 2 * ; ?
 
