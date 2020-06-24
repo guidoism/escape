@@ -1228,7 +1228,7 @@ partial value if there was an error.
 
     5:  ret
 
-DICTIONARY LOOK UPS ----------------------------------------------------------------------
+## DICTIONARY LOOK UPS
 
 We're building up to our prelude on how Forth code is compiled, but first we need yet more infrastructure.
 
