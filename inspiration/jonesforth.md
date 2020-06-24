@@ -1389,93 +1389,71 @@ So you may be able to see how we could define `:` (COLON).  The general plan is:
     our partially-formed header.
 
 After : has run, our input is here:
-GUIDO
-        : DOUBLE DUP + ;
-                 ^
-                 |
-                Next byte returned by KEY will be the 'D' character of DUP
 
-        so the interpreter (now it's in compile mode, so I guess it's really the compiler) reads "DUP",
-        looks it up in the dictionary, gets its codeword pointer, and appends it:
+<svg height="80" width="536" xmlns="http://www.w3.org/2000/svg"><style>circle,polygon{stroke:#000;stroke-width:2;stroke-opacity:1;fill-opacity:1;stroke-linecap:round;stroke-linejoin:miter}.filled,text{fill:#000}.bg_filled{fill:#fff}text{font-family:monospace;font-size:14px}</style><defs><marker id="arrow" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 0v4l4-2-4-2z"/></marker><marker id="diamond" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 2l2-2 2 2-2 2-2-2z"/></marker><marker id="circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="filled" cx="4" cy="4" r="2"/></marker><marker id="open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="2"/></marker><marker id="big_open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="3"/></marker></defs><path class="backdrop" fill="#fff" stroke-width="2" stroke-linecap="round" d="M0 0h536v80H0z"/><text x="2" y="12">:</text><text x="18" y="12">DOUBLE</text><text x="74" y="12">DUP</text><path class="filled" d="M72 28l4-12 4 12z"/><path class="solid" stroke="#000" stroke-width="2" stroke-linecap="round" d="M76 32v16"/><text x="66" y="60">Next</text><text x="106" y="12">+</text><text x="122" y="12">;</text><text x="106" y="60">byte</text><text x="146" y="60">returned</text><text x="218" y="60">by</text><text x="242" y="60">KEY</text><text x="274" y="60">will</text><text x="314" y="60">be</text><text x="338" y="60">the</text><text x="370" y="60">&apos;D&apos;</text><text x="402" y="60">character</text><text x="482" y="60">of</text><text x="506" y="60">DUP</text></svg>
 
-                                                                             +-- HERE updated to point here.
-                                                                             |
-                                                                             V
-        +---------|---|---|---|---|---|---|---|---|------------|------------+
-        | LINK    | 6 | D | O | U | B | L | E | 0 | DOCOL      | DUP        |
-        +---------|---|---|---|---|---|---|---|---|------------|------------+
-                   len                         pad  codeword
+so the interpreter (now it's in compile mode, so I guess it's really the compiler) reads "DUP",
+looks it up in the dictionary, gets its codeword pointer, and appends it:
 
-        Next we read +, get the codeword pointer, and append it:
+<svg height="128" width="808" xmlns="http://www.w3.org/2000/svg"><style>circle,line,polygon{stroke:#000;stroke-width:2;stroke-opacity:1;fill-opacity:1;stroke-linecap:round;stroke-linejoin:miter}text{fill:#000;font-family:monospace;font-size:14px}.bg_filled{fill:#fff}</style><defs><marker id="arrow" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 0v4l4-2-4-2z"/></marker><marker id="diamond" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 2l2-2 2 2-2 2-2-2z"/></marker><marker id="circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle cx="4" cy="4" r="2"/></marker><marker id="open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="2"/></marker><marker id="big_open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="3"/></marker></defs><path class="backdrop" fill="#fff" stroke-width="2" stroke-linecap="round" d="M0 0h808v128H0z"/><path class="solid" d="M556 8h20"/><path class="solid" marker-end="url(#arrow)" d="M556 8v40"/><text x="18" y="76">LINK</text><text x="98" y="76">6</text><text x="130" y="76">D</text><text x="162" y="76">O</text><text x="194" y="76">U</text><text x="226" y="76">B</text><text x="258" y="76">L</text><text x="290" y="76">E</text><text x="322" y="76">0</text><text x="354" y="76">DOCOL</text><text x="458" y="76">DUP</text><text x="90" y="108">len</text><text x="314" y="108">pad</text><text x="354" y="108">codeword</text><text x="586" y="12">HERE</text><text x="626" y="12">updated</text><text x="690" y="12">to</text><text x="714" y="12">point</text><text x="762" y="12">here.</text><path class="solid" d="M4 56h544M4 56v32M84 56v32M116 56v32M148 56v32M180 56v32M212 56v32M244 56v32M276 56v32M308 56v32M340 56v32M444 56v32M548 56v32M4 88h544"/></svg>
+Next we read +, get the codeword pointer, and append it:
 
-                                                                                          +-- HERE updated to point here.
-                                                                                          |
-                                                                                          V
-        +---------|---|---|---|---|---|---|---|---|------------|------------|------------+
-        | LINK    | 6 | D | O | U | B | L | E | 0 | DOCOL      | DUP        | +          |
-        +---------|---|---|---|---|---|---|---|---|------------|------------|------------+
-                   len                         pad  codeword
+The issue is what happens next.  Obviously what we _don't_ want to happen is that we
+read "`;`" and compile it and go on compiling everything afterwards.
 
-        The issue is what happens next.  Obviously what we _don't_ want to happen is that we
-        read "`;`" and compile it and go on compiling everything afterwards.
+At this point, Forth uses a trick.  Remember the length byte in the dictionary definition
+isn't just a plain length byte, but can also contain flags.  One flag is called the
+`IMMEDIATE` flag (F_IMMED in this code).  If a word in the dictionary is flagged as
+`IMMEDIATE` then the interpreter runs it immediately _even if it's in compile mode_.
 
-        At this point, Forth uses a trick.  Remember the length byte in the dictionary definition
-        isn't just a plain length byte, but can also contain flags.  One flag is called the
-        `IMMEDIATE` flag (F_IMMED in this code).  If a word in the dictionary is flagged as
-        `IMMEDIATE` then the interpreter runs it immediately _even if it's in compile mode_.
+This is how the word `;` (SEMICOLON) works -- as a word flagged in the dictionary as `IMMEDIATE`.
 
-        This is how the word `;` (SEMICOLON) works -- as a word flagged in the dictionary as `IMMEDIATE`.
+And all it does is append the codeword for `EXIT` on to the current definition and switch
+back to immediate mode (set `STATE` back to 0).  Shortly we'll see the actual definition
+of ; and we'll see that it's really a very simple definition, declared `IMMEDIATE`.
 
-        And all it does is append the codeword for `EXIT` on to the current definition and switch
-        back to immediate mode (set `STATE` back to 0).  Shortly we'll see the actual definition
-        of ; and we'll see that it's really a very simple definition, declared `IMMEDIATE`.
+After the interpreter reads ; and executes it 'immediately', we get this:
 
-        After the interpreter reads ; and executes it 'immediately', we get this:
+<svg height="112" width="792" xmlns="http://www.w3.org/2000/svg"><style>circle,line,polygon{stroke:#000;stroke-width:2;stroke-opacity:1;fill-opacity:1;stroke-linecap:round;stroke-linejoin:miter}.filled,text{fill:#000}.bg_filled{fill:#fff}text{font-family:monospace;font-size:14px}</style><defs><marker id="arrow" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 0v4l4-2-4-2z"/></marker><marker id="diamond" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 2l2-2 2 2-2 2-2-2z"/></marker><marker id="circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="filled" cx="4" cy="4" r="2"/></marker><marker id="open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="2"/></marker><marker id="big_open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="3"/></marker></defs><path class="backdrop" fill="#fff" stroke-width="2" stroke-linecap="round" d="M0 0h792v112H0z"/><text x="18" y="28">LINK</text><text x="98" y="28">6</text><text x="130" y="28">D</text><text x="162" y="28">O</text><text x="194" y="28">U</text><text x="226" y="28">B</text><text x="258" y="28">L</text><text x="290" y="28">E</text><text x="322" y="28">0</text><text x="354" y="28">DOCOL</text><text x="458" y="28">DUP</text><text x="562" y="28">+</text><text x="666" y="28">EXIT</text><text x="90" y="60">len</text><text x="314" y="60">pad</text><text x="354" y="60">codeword</text><path class="filled" d="M760 60l4-12 4 12z"/><path class="solid" d="M764 64v16"/><text x="754" y="92">HERE</text><path class="solid" d="M4 8h752M4 8v32M84 8v32M116 8v32M148 8v32M180 8v32M212 8v32M244 8v32M276 8v32M308 8v32M340 8v32M444 8v32M548 8v32M652 8v32M756 8v32M4 40h752"/></svg>
 
-        +---------|---|---|---|---|---|---|---|---|------------|------------|------------|------------+
-        | LINK    | 6 | D | O | U | B | L | E | 0 | DOCOL      | DUP        | +          | EXIT       |
-        +---------|---|---|---|---|---|---|---|---|------------|------------|------------|------------+
-                   len                         pad  codeword                                           ^
-                                                                                                       |
-                                                                                                      HERE
-        `STATE` is set to 0.
+`STATE` is set to 0.
 
-        And that's it, job done, our new definition is compiled, and we're back in immediate mode
-        just reading and executing words, perhaps including a call to test our new word `DOUBLE`.
+And that's it, job done, our new definition is compiled, and we're back in immediate mode
+just reading and executing words, perhaps including a call to test our new word `DOUBLE`.
 
-        The only last wrinkle in this is that while our word was being compiled, it was in a
-        half-finished state.  We certainly wouldn't want `DOUBLE` to be called somehow during
-        this time.  There are several ways to stop this from happening, but in Forth what we
-        do is flag the word with the `HIDDEN` flag (`F_HIDDEN` in this code) just while it is
-        being compiled.  This prevents `FIND` from finding it, and thus in theory stops any
-        chance of it being called.
+The only last wrinkle in this is that while our word was being compiled, it was in a
+half-finished state.  We certainly wouldn't want `DOUBLE` to be called somehow during
+this time.  There are several ways to stop this from happening, but in Forth what we
+do is flag the word with the `HIDDEN` flag (`F_HIDDEN` in this code) just while it is
+being compiled.  This prevents `FIND` from finding it, and thus in theory stops any
+chance of it being called.
 
-        The above explains how compiling, `:` (COLON) and `;` (SEMICOLON) works and in a moment I'm
-        going to define them.  The `:` (COLON) function can be made a little bit more general by writing
-        it in two parts.  The first part, called `CREATE`, makes just the header:
+The above explains how compiling, `:` (COLON) and `;` (SEMICOLON) works and in a moment I'm
+going to define them.  The `:` (COLON) function can be made a little bit more general by writing
+it in two parts.  The first part, called `CREATE`, makes just the header:
 
-                                                   +-- Afterwards, HERE points here.
-                                                   |
-                                                   V
-        +---------|---|---|---|---|---|---|---|---+
-        | LINK    | 6 | D | O | U | B | L | E | 0 |
-        +---------|---|---|---|---|---|---|---|---+
-                   len                         pad
+                                           +-- Afterwards, HERE points here.
+                                           |
+                                           V
++---------|---|---|---|---|---|---|---|---+
+| LINK    | 6 | D | O | U | B | L | E | 0 |
++---------|---|---|---|---|---|---|---|---+
+           len                         pad
 
-        and the second part, the actual definition of `:` (COLON), calls `CREATE` and appends the
-        `DOCOL` codeword, so leaving:
+and the second part, the actual definition of `:` (COLON), calls `CREATE` and appends the
+`DOCOL` codeword, so leaving:
 
-                                                                +-- Afterwards, HERE points here.
-                                                                |
-                                                                V
-        +---------|---|---|---|---|---|---|---|---|------------+
-        | LINK    | 6 | D | O | U | B | L | E | 0 | DOCOL      |
-        +---------|---|---|---|---|---|---|---|---|------------+
-                   len                         pad  codeword
+                                                        +-- Afterwards, HERE points here.
+                                                        |
+                                                        V
++---------|---|---|---|---|---|---|---|---|------------+
+| LINK    | 6 | D | O | U | B | L | E | 0 | DOCOL      |
++---------|---|---|---|---|---|---|---|---|------------+
+           len                         pad  codeword
 
-        `CREATE` is a standard Forth word and the advantage of this split is that we can reuse it to
-        create other types of words (not just ones which contain code, but words which contain variables,
-        constants and other data).
+`CREATE` is a standard Forth word and the advantage of this split is that we can reuse it to
+create other types of words (not just ones which contain code, but words which contain variables,
+constants and other data).
 */
 
         defcode "CREATE",6,,CREATE
