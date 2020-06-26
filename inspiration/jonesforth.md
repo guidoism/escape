@@ -9,6 +9,9 @@ By Richard W.M. Jones <rich@annexia.org> http://annexia.org/forth
 
 This is PUBLIC DOMAIN (see public domain release statement below).
 
+Used [SVG Bob](https://ivanceras.github.io/svgbob-editor/) to make the illustrations
+from the original **ASCII** art.
+
 ## INTRODUCTION
 
 Forth is one of those alien languages which most working programmers regard in the same
@@ -1432,24 +1435,12 @@ The above explains how compiling, `:` (COLON) and `;` (SEMICOLON) works and in a
 going to define them.  The `:` (COLON) function can be made a little bit more general by writing
 it in two parts.  The first part, called `CREATE`, makes just the header:
 
-                                           +-- Afterwards, HERE points here.
-                                           |
-                                           V
-+---------|---|---|---|---|---|---|---|---+
-| LINK    | 6 | D | O | U | B | L | E | 0 |
-+---------|---|---|---|---|---|---|---|---+
-           len                         pad
+<svg height="128" width="616" xmlns="http://www.w3.org/2000/svg"><style>circle,line,polygon{stroke:#000;stroke-width:2;stroke-opacity:1;fill-opacity:1;stroke-linecap:round;stroke-linejoin:miter}text{fill:#000;font-family:monospace;font-size:14px}.bg_filled{fill:#fff}</style><defs><marker id="arrow" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 0v4l4-2-4-2z"/></marker><marker id="diamond" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 2l2-2 2 2-2 2-2-2z"/></marker><marker id="circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle cx="4" cy="4" r="2"/></marker><marker id="open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="2"/></marker><marker id="big_open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="3"/></marker></defs><path class="backdrop" fill="#fff" stroke-width="2" stroke-linecap="round" d="M0 0h616v128H0z"/><path class="solid" d="M348 8h20"/><path class="solid" marker-end="url(#arrow)" d="M348 8v40"/><text x="18" y="76">LINK</text><text x="98" y="76">6</text><text x="130" y="76">D</text><text x="162" y="76">O</text><text x="194" y="76">U</text><text x="226" y="76">B</text><text x="258" y="76">L</text><text x="290" y="76">E</text><text x="322" y="76">0</text><text x="90" y="108">len</text><text x="314" y="108">pad</text><text x="378" y="12">Afterwards,</text><text x="474" y="12">HERE</text><text x="514" y="12">points</text><text x="570" y="12">here.</text><path class="solid" d="M4 56h336M4 56v32M84 56v32M116 56v32M148 56v32M180 56v32M212 56v32M244 56v32M276 56v32M308 56v32M340 56v32M4 88h336"/></svg>
 
 and the second part, the actual definition of `:` (COLON), calls `CREATE` and appends the
 `DOCOL` codeword, so leaving:
 
-                                                        +-- Afterwards, HERE points here.
-                                                        |
-                                                        V
-+---------|---|---|---|---|---|---|---|---|------------+
-| LINK    | 6 | D | O | U | B | L | E | 0 | DOCOL      |
-+---------|---|---|---|---|---|---|---|---|------------+
-           len                         pad  codeword
+<svg height="128" width="720" xmlns="http://www.w3.org/2000/svg"><style>circle,line,polygon{stroke:#000;stroke-width:2;stroke-opacity:1;fill-opacity:1;stroke-linecap:round;stroke-linejoin:miter}text{fill:#000;font-family:monospace;font-size:14px}.bg_filled{fill:#fff}</style><defs><marker id="arrow" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 0v4l4-2-4-2z"/></marker><marker id="diamond" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 2l2-2 2 2-2 2-2-2z"/></marker><marker id="circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle cx="4" cy="4" r="2"/></marker><marker id="open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="2"/></marker><marker id="big_open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="3"/></marker></defs><path class="backdrop" fill="#fff" stroke-width="2" stroke-linecap="round" d="M0 0h720v128H0z"/><path class="solid" d="M452 8h20"/><path class="solid" marker-end="url(#arrow)" d="M452 8v40"/><text x="18" y="76">LINK</text><text x="98" y="76">6</text><text x="130" y="76">D</text><text x="162" y="76">O</text><text x="194" y="76">U</text><text x="226" y="76">B</text><text x="258" y="76">L</text><text x="290" y="76">E</text><text x="322" y="76">0</text><text x="354" y="76">DOCOL</text><text x="90" y="108">len</text><text x="314" y="108">pad</text><text x="354" y="108">codeword</text><text x="482" y="12">Afterwards,</text><text x="578" y="12">HERE</text><text x="618" y="12">points</text><text x="674" y="12">here.</text><path class="solid" d="M4 56h440M4 56v32M84 56v32M116 56v32M148 56v32M180 56v32M212 56v32M244 56v32M276 56v32M308 56v32M340 56v32M444 56v32M4 88h440"/></svg>
 
 `CREATE` is a standard Forth word and the advantage of this split is that we can reuse it to
 create other types of words (not just ones which contain code, but words which contain variables,
