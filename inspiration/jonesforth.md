@@ -1890,7 +1890,7 @@ part, you must put new words before SYSCALL0, or else change how LATEST is initi
         push %eax               // Result (negative for -errno)
         NEXT
 
-DATA SEGMENT ----------------------------------------------------------------------
+## DATA SEGMENT
 
 Here we set up the Linux data segment, used for user definitions and variously known as just
 the 'data segment', 'user memory' or 'user definitions area'.  It is an area of memory which
