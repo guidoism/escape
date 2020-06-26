@@ -1445,7 +1445,6 @@ and the second part, the actual definition of `:` (COLON), calls `CREATE` and ap
 `CREATE` is a standard Forth word and the advantage of this split is that we can reuse it to
 create other types of words (not just ones which contain code, but words which contain variables,
 constants and other data).
-*/
 
         defcode "CREATE",6,,CREATE
 
@@ -1474,29 +1473,27 @@ constants and other data).
         movl %edi,var_HERE
         NEXT
 
-/*
-        Because I want to define `:` (COLON) in Forth, not assembler, we need a few more Forth words
-        to use.
+Because I want to define `:` (COLON) in Forth, not assembler, we need a few more Forth words
+to use.
 
-        The first is `,` (COMMA) which is a standard Forth word which appends a 32 bit integer to the user
-        memory pointed to by `HERE`, and adds 4 to `HERE`.  So the action of `,` (COMMA) is:
+The first is `,` (COMMA) which is a standard Forth word which appends a 32 bit integer to the user
+memory pointed to by `HERE`, and adds 4 to `HERE`.  So the action of `,` (COMMA) is:
 
-                                                        previous value of HERE
-                                                                 |
-                                                                 V
-        +---------|---|---|---|---|---|---|---|---|-- - - - - --|------------+
-        | LINK    | 6 | D | O | U | B | L | E | 0 |             |  <data>    |
-        +---------|---|---|---|---|---|---|---|---|-- - - - - --|------------+
-                   len                         pad                            ^
-                                                                              |
-                                                                        new value of HERE
+                                                 previous value of HERE
+                                                         |
+                                                         V
+ +---------|---|---|---|---|---|---|---|---|-- - - - - --|------------+
+ | LINK    | 6 | D | O | U | B | L | E | 0 |             |  <data>    |
+ +---------|---|---|---|---|---|---|---|---|-- - - - - --|------------+
+            len                         pad                            ^
+                                                                       |
+                                                                 new value of HERE
 
-        and <data> is whatever 32 bit integer was at the top of the stack.
+and <data> is whatever 32 bit integer was at the top of the stack.
 
-        `,` (COMMA) is quite a fundamental operation when compiling.  It is used to append codewords
-        to the current word that is being compiled.
-*/
-
+`,` (COMMA) is quite a fundamental operation when compiling.  It is used to append codewords
+to the current word that is being compiled.
+        
         defcode ",",1,,COMMA
         pop %eax                // Code pointer to store.
         call _COMMA
@@ -1507,24 +1504,22 @@ _COMMA:
         movl %edi,var_HERE      // Update HERE (incremented)
         ret
 
-/*
-        Our definitions of `:` (COLON) and `;` (SEMICOLON) will need to switch to and from compile mode.
+Our definitions of `:` (COLON) and `;` (SEMICOLON) will need to switch to and from compile mode.
 
-        Immediate mode vs. compile mode is stored in the global variable `STATE`, and by updating this
-        variable we can switch between the two modes.
+Immediate mode vs. compile mode is stored in the global variable `STATE`, and by updating this
+variable we can switch between the two modes.
 
-        For various reasons which may become apparent later, Forth defines two standard words called
-        `[` and `]` (`LBRAC` and `RBRAC`) which switch between modes:
+For various reasons which may become apparent later, Forth defines two standard words called
+`[` and `]` (`LBRAC` and `RBRAC`) which switch between modes:
 
-        Word    Assembler       Action          Effect
-        [       LBRAC           STATE := 0      Switch to immediate mode.
-        ]       RBRAC           STATE := 1      Switch to compile mode.
+Word    Assembler       Action          Effect
+[       LBRAC           STATE := 0      Switch to immediate mode.
+]       RBRAC           STATE := 1      Switch to compile mode.
 
-        [ (LBRAC) is an IMMEDIATE word.  The reason is as follows: If we are in compile mode and the
-        interpreter saw [ then it would compile it rather than running it.  We would never be able to
-        switch back to immediate mode!  So we flag the word as IMMEDIATE so that even in compile mode
-        the word runs immediately, switching us back to immediate mode.
-*/
+[ (LBRAC) is an IMMEDIATE word.  The reason is as follows: If we are in compile mode and the
+interpreter saw [ then it would compile it rather than running it.  We would never be able to
+switch back to immediate mode!  So we flag the word as IMMEDIATE so that even in compile mode
+the word runs immediately, switching us back to immediate mode.
 
         defcode "[",1,F_IMMED,LBRAC
         xor %eax,%eax
@@ -1535,10 +1530,8 @@ _COMMA:
         movl $1,var_STATE       // Set STATE to 1.
         NEXT
 
-/*
-        Now we can define : (COLON) using CREATE.  It just calls CREATE, appends DOCOL (the codeword), sets
-        the word HIDDEN and goes into compile mode.
-*/
+Now we can define : (COLON) using CREATE.  It just calls CREATE, appends DOCOL (the codeword), sets
+the word HIDDEN and goes into compile mode.
 
         defword ":",1,,COLON
         .int WORD               // Get the name of the new word
@@ -1548,9 +1541,7 @@ _COMMA:
         .int RBRAC              // Go into compile mode.
         .int EXIT               // Return from the function.
 
-/*
-        ; (SEMICOLON) is also elegantly simple.  Notice the F_IMMED flag.
-*/
+; (SEMICOLON) is also elegantly simple.  Notice the F_IMMED flag.
 
         defword ";",1,F_IMMED,SEMICOLON
         .int LIT, EXIT, COMMA   // Append EXIT (so the word will return).
@@ -1558,33 +1549,31 @@ _COMMA:
         .int LBRAC              // Go back to IMMEDIATE mode.
         .int EXIT               // Return from the function.
 
-/*
-        EXTENDING THE COMPILER ----------------------------------------------------------------------
+## EXTENDING THE COMPILER
 
-        Words flagged with IMMEDIATE (F_IMMED) aren't just for the Forth compiler to use.  You can define
-        your own IMMEDIATE words too, and this is a crucial aspect when extending basic Forth, because
-        it allows you in effect to extend the compiler itself.  Does gcc let you do that?
+Words flagged with IMMEDIATE (F_IMMED) aren't just for the Forth compiler to use.  You can define
+your own IMMEDIATE words too, and this is a crucial aspect when extending basic Forth, because
+it allows you in effect to extend the compiler itself.  Does gcc let you do that?
 
-        Standard Forth words like IF, WHILE, ." and so on are all written as extensions to the basic
-        compiler, and are all IMMEDIATE words.
+Standard Forth words like IF, WHILE, ." and so on are all written as extensions to the basic
+compiler, and are all IMMEDIATE words.
 
-        The IMMEDIATE word toggles the F_IMMED (IMMEDIATE flag) on the most recently defined word,
-        or on the current word if you call it in the middle of a definition.
+The IMMEDIATE word toggles the F_IMMED (IMMEDIATE flag) on the most recently defined word,
+or on the current word if you call it in the middle of a definition.
 
-        Typical usage is:
+Typical usage is:
 
-        : MYIMMEDWORD IMMEDIATE
-                ...definition...
-        ;
+: MYIMMEDWORD IMMEDIATE
+        ...definition...
+;
 
-        but some Forth programmers write this instead:
+but some Forth programmers write this instead:
 
-        : MYIMMEDWORD
-                ...definition...
-        ; IMMEDIATE
+: MYIMMEDWORD
+        ...definition...
+; IMMEDIATE
 
-        The two usages are equivalent, to a first approximation.
-*/
+The two usages are equivalent, to a first approximation.
 
         defcode "IMMEDIATE",9,F_IMMED,IMMEDIATE
         movl var_LATEST,%edi    // LATEST word.
@@ -1592,27 +1581,25 @@ _COMMA:
         xorb $F_IMMED,(%edi)    // Toggle the IMMED bit.
         NEXT
 
-/*
-        'addr HIDDEN' toggles the hidden flag (F_HIDDEN) of the word defined at addr.  To hide the
-        most recently defined word (used above in : and ; definitions) you would do:
+'addr HIDDEN' toggles the hidden flag (F_HIDDEN) of the word defined at addr.  To hide the
+most recently defined word (used above in : and ; definitions) you would do:
 
-                LATEST @ HIDDEN
+        LATEST @ HIDDEN
 
-        'HIDE word' toggles the flag on a named 'word'.
+'HIDE word' toggles the flag on a named 'word'.
 
-        Setting this flag stops the word from being found by FIND, and so can be used to make 'private'
-        words.  For example, to break up a large word into smaller parts you might do:
+Setting this flag stops the word from being found by FIND, and so can be used to make 'private'
+words.  For example, to break up a large word into smaller parts you might do:
 
-                : SUB1 ... subword ... ;
-                : SUB2 ... subword ... ;
-                : SUB3 ... subword ... ;
-                : MAIN ... defined in terms of SUB1, SUB2, SUB3 ... ;
-                HIDE SUB1
-                HIDE SUB2
-                HIDE SUB3
+        : SUB1 ... subword ... ;
+        : SUB2 ... subword ... ;
+        : SUB3 ... subword ... ;
+        : MAIN ... defined in terms of SUB1, SUB2, SUB3 ... ;
+        HIDE SUB1
+        HIDE SUB2
+        HIDE SUB3
 
-        After this, only MAIN is 'exported' or seen by the rest of the program.
-*/
+After this, only MAIN is 'exported' or seen by the rest of the program.
 
         defcode "HIDDEN",6,,HIDDEN
         pop %edi                // Dictionary entry.
@@ -1626,79 +1613,76 @@ _COMMA:
         .int HIDDEN             // Set F_HIDDEN flag.
         .int EXIT               // Return.
 
-/*
-        ' (TICK) is a standard Forth word which returns the codeword pointer of the next word.
+' (TICK) is a standard Forth word which returns the codeword pointer of the next word.
 
-        The common usage is:
+The common usage is:
 
-        ' FOO ,
+' FOO ,
 
-        which appends the codeword of FOO to the current word we are defining (this only works in compiled code).
+which appends the codeword of FOO to the current word we are defining (this only works in compiled code).
 
-        You tend to use ' in IMMEDIATE words.  For example an alternate (and rather useless) way to define
-        a literal 2 might be:
+You tend to use ' in IMMEDIATE words.  For example an alternate (and rather useless) way to define
+a literal 2 might be:
 
-        : LIT2 IMMEDIATE
-                ' LIT ,         \ Appends LIT to the currently-being-defined word
-                2 ,             \ Appends the number 2 to the currently-being-defined word
-        ;
+: LIT2 IMMEDIATE
+        ' LIT ,         \ Appends LIT to the currently-being-defined word
+        2 ,             \ Appends the number 2 to the currently-being-defined word
+;
 
-        So you could do:
+So you could do:
 
-        : DOUBLE LIT2 * ;
+: DOUBLE LIT2 * ;
 
-        (If you don't understand how LIT2 works, then you should review the material about compiling words
-        and immediate mode).
+(If you don't understand how LIT2 works, then you should review the material about compiling words
+and immediate mode).
 
-        This definition of ' uses a cheat which I copied from buzzard92.  As a result it only works in
-        compiled code.  It is possible to write a version of ' based on WORD, FIND, >CFA which works in
-        immediate mode too.
-*/
+This definition of ' uses a cheat which I copied from buzzard92.  As a result it only works in
+compiled code.  It is possible to write a version of ' based on WORD, FIND, >CFA which works in
+immediate mode too.
+
         defcode "'",1,,TICK
         lodsl                   // Get the address of the next word and skip it.
         pushl %eax              // Push it on the stack.
         NEXT
 
-/*
-        BRANCHING ----------------------------------------------------------------------
+## BRANCHING
 
-        It turns out that all you need in order to define looping constructs, IF-statements, etc.
-        are two primitives.
+It turns out that all you need in order to define looping constructs, IF-statements, etc.
+are two primitives.
 
-        BRANCH is an unconditional branch. 0BRANCH is a conditional branch (it only branches if the
-        top of stack is zero).
+BRANCH is an unconditional branch. 0BRANCH is a conditional branch (it only branches if the
+top of stack is zero).
 
-        The diagram below shows how BRANCH works in some imaginary compiled word.  When BRANCH executes,
-        %esi starts by pointing to the offset field (compare to LIT above):
+The diagram below shows how BRANCH works in some imaginary compiled word.  When BRANCH executes,
+%esi starts by pointing to the offset field (compare to LIT above):
 
-        +---------------------|-------|---- - - ---|------------|------------|---- - - - ----|------------+
-        | (Dictionary header) | DOCOL |            | BRANCH     | offset     | (skipped)     | word       |
-        +---------------------|-------|---- - - ---|------------|-----|------|---- - - - ----|------------+
-                                                                   ^  |                       ^
-                                                                   |  |                       |
-                                                                   |  +-----------------------+
-                                                                  %esi added to offset
++---------------------|-------|---- - - ---|------------|------------|---- - - - ----|------------+
+| (Dictionary header) | DOCOL |            | BRANCH     | offset     | (skipped)     | word       |
++---------------------|-------|---- - - ---|------------|-----|------|---- - - - ----|------------+
+                                                           ^  |                       ^
+                                                           |  |                       |
+                                                           |  +-----------------------+
+                                                          %esi added to offset
 
-        The offset is added to %esi to make the new %esi, and the result is that when NEXT runs, execution
-        continues at the branch target.  Negative offsets work as expected.
+The offset is added to %esi to make the new %esi, and the result is that when NEXT runs, execution
+continues at the branch target.  Negative offsets work as expected.
 
-        0BRANCH is the same except the branch happens conditionally.
+0BRANCH is the same except the branch happens conditionally.
 
-        Now standard Forth words such as IF, THEN, ELSE, WHILE, REPEAT, etc. can be implemented entirely
-        in Forth.  They are IMMEDIATE words which append various combinations of BRANCH or 0BRANCH
-        into the word currently being compiled.
+Now standard Forth words such as IF, THEN, ELSE, WHILE, REPEAT, etc. can be implemented entirely
+in Forth.  They are IMMEDIATE words which append various combinations of BRANCH or 0BRANCH
+into the word currently being compiled.
 
-        As an example, code written like this:
+As an example, code written like this:
 
-                condition-code IF true-part THEN rest-code
+        condition-code IF true-part THEN rest-code
 
-        compiles to:
+compiles to:
 
-                condition-code 0BRANCH OFFSET true-part rest-code
-                                          |             ^
-                                          |             |
-                                          +-------------+
-*/
+        condition-code 0BRANCH OFFSET true-part rest-code
+                                  |             ^
+                                  |             |
+                                  +-------------+
 
         defcode "BRANCH",6,,BRANCH
         add (%esi),%esi         // add the offset to the instruction pointer
@@ -1711,15 +1695,13 @@ _COMMA:
         lodsl                   // otherwise we need to skip the offset
         NEXT
 
-/*
-        LITERAL STRINGS ----------------------------------------------------------------------
+## LITERAL STRINGS
 
-        LITSTRING is a primitive used to implement the ." and S" operators (which are written in
-        Forth).  See the definition of those operators later.
+LITSTRING is a primitive used to implement the ." and S" operators (which are written in
+Forth).  See the definition of those operators later.
 
-        TELL just prints a string.  It's more efficient to define this in assembly because we
-        can make it a single Linux syscall.
-*/
+TELL just prints a string.  It's more efficient to define this in assembly because we
+can make it a single Linux syscall.
 
         defcode "LITSTRING",9,,LITSTRING
         lodsl                   // get the length of the string
@@ -1738,18 +1720,16 @@ _COMMA:
         int $0x80
         NEXT
 
-/*
-        QUIT AND INTERPRET ----------------------------------------------------------------------
+## QUIT AND INTERPRET
 
-        QUIT is the first Forth function called, almost immediately after the Forth system "boots".
-        As explained before, QUIT doesn't "quit" anything.  It does some initialisation (in particular
-        it clears the return stack) and it calls INTERPRET in a loop to interpret commands.  The
-        reason it is called QUIT is because you can call it from your own Forth words in order to
-        "quit" your program and start again at the user prompt.
+QUIT is the first Forth function called, almost immediately after the Forth system "boots".
+As explained before, QUIT doesn't "quit" anything.  It does some initialisation (in particular
+it clears the return stack) and it calls INTERPRET in a loop to interpret commands.  The
+reason it is called QUIT is because you can call it from your own Forth words in order to
+"quit" your program and start again at the user prompt.
 
-        INTERPRET is the Forth interpreter ("toploop", "toplevel" or "REPL" might be a more accurate
-        description -- see: http://en.wikipedia.org/wiki/REPL).
-*/
+INTERPRET is the Forth interpreter ("toploop", "toplevel" or "REPL" might be a more accurate
+description -- see: http://en.wikipedia.org/wiki/REPL).
 
         // QUIT must not return (ie. must not call EXIT).
         defword "QUIT",4,,QUIT
@@ -1757,10 +1737,9 @@ _COMMA:
         .int INTERPRET          // interpret the next word
         .int BRANCH,-8          // and loop (indefinitely)
 
-/*
-        This interpreter is pretty simple, but remember that in Forth you can always override
-        it later with a more powerful one!
- */
+This interpreter is pretty simple, but remember that in Forth you can always override
+it later with a more powerful one!
+
         defcode "INTERPRET",9,,INTERPRET
         call _WORD              // Returns %ecx = length, %edi = pointer to word.
 
@@ -1783,7 +1762,7 @@ _COMMA:
 
         jmp 2f
 
-1:      // Not in the dictionary (not a word) so assume it's a literal number.
+    1:      // Not in the dictionary (not a word) so assume it's a literal number.
         incl interpret_is_lit
         call _NUMBER            // Returns the parsed number in %eax, %ecx > 0 if error
         test %ecx,%ecx
@@ -1791,7 +1770,7 @@ _COMMA:
         mov %eax,%ebx
         mov $LIT,%eax           // The word is LIT
 
-2:      // Are we compiling or executing?
+    2:      // Are we compiling or executing?
         movl var_STATE,%edx
         test %edx,%edx
         jz 4f                   // Jump if executing.
@@ -1803,9 +1782,9 @@ _COMMA:
         jz 3f
         mov %ebx,%eax           // Yes, so LIT is followed by a number.
         call _COMMA
-3:      NEXT
+    3:      NEXT
 
-4:      // Executing - run it!
+    4:      // Executing - run it!
         mov interpret_is_lit,%ecx // Literal?
         test %ecx,%ecx          // Literal?
         jnz 5f
@@ -1814,11 +1793,11 @@ _COMMA:
         // eventually call NEXT which will reenter the loop in QUIT.
         jmp *(%eax)
 
-5:      // Executing a literal, which means push it on the stack.
+    5:      // Executing a literal, which means push it on the stack.
         push %ebx
         NEXT
 
-6:      // Parse error (not a known word or a number in the current BASE).
+    6:      // Parse error (not a known word or a number in the current BASE).
         // Print an error message followed by up to 40 characters of context.
         mov $2,%ebx             // 1st param: stderr
         mov $errmsg,%ecx        // 2nd param: error message
@@ -1832,7 +1811,7 @@ _COMMA:
         cmp $40,%edx            // if > 40, then print only 40 characters
         jle 7f
         mov $40,%edx
-7:      sub %edx,%ecx           // %ecx = start of area to print, %edx = length
+    7:      sub %edx,%ecx           // %ecx = start of area to print, %edx = length
         mov $__NR_write,%eax    // write syscall
         int $0x80
 
@@ -1844,32 +1823,30 @@ _COMMA:
         NEXT
 
         .section .rodata
-errmsg: .ascii "PARSE ERROR: "
-errmsgend:
-errmsgnl: .ascii "\n"
+    errmsg: .ascii "PARSE ERROR: "
+    errmsgend:
+    errmsgnl: .ascii "\n"
 
         .data                   // NB: easier to fit in the .data section
         .align 4
-interpret_is_lit:
+    interpret_is_lit:
         .int 0                  // Flag used to record if reading a literal
 
-/*
-        ODDS AND ENDS ----------------------------------------------------------------------
+## ODDS AND ENDS
 
-        CHAR puts the ASCII code of the first character of the following word on the stack.  For example
-        CHAR A puts 65 on the stack.
+CHAR puts the ASCII code of the first character of the following word on the stack.  For example
+CHAR A puts 65 on the stack.
 
-        EXECUTE is used to run execution tokens.  See the discussion of execution tokens in the
-        Forth code for more details.
+EXECUTE is used to run execution tokens.  See the discussion of execution tokens in the
+Forth code for more details.
 
-        SYSCALL0, SYSCALL1, SYSCALL2, SYSCALL3 make a standard Linux system call.  (See <asm/unistd.h>
-        for a list of system call numbers).  As their name suggests these forms take between 0 and 3
-        syscall parameters, plus the system call number.
+SYSCALL0, SYSCALL1, SYSCALL2, SYSCALL3 make a standard Linux system call.  (See <asm/unistd.h>
+for a list of system call numbers).  As their name suggests these forms take between 0 and 3
+syscall parameters, plus the system call number.
 
-        In this Forth, SYSCALL0 must be the last word in the built-in (assembler) dictionary because we
-        initialise the LATEST variable to point to it.  This means that if you want to extend the assembler
-        part, you must put new words before SYSCALL0, or else change how LATEST is initialised.
-*/
+In this Forth, SYSCALL0 must be the last word in the built-in (assembler) dictionary because we
+initialise the LATEST variable to point to it.  This means that if you want to extend the assembler
+part, you must put new words before SYSCALL0, or else change how LATEST is initialised.
 
         defcode "CHAR",4,,CHAR
         call _WORD              // Returns %ecx = length, %edi = pointer to word.
@@ -1913,33 +1890,31 @@ interpret_is_lit:
         push %eax               // Result (negative for -errno)
         NEXT
 
-/*
-        DATA SEGMENT ----------------------------------------------------------------------
+DATA SEGMENT ----------------------------------------------------------------------
 
-        Here we set up the Linux data segment, used for user definitions and variously known as just
-        the 'data segment', 'user memory' or 'user definitions area'.  It is an area of memory which
-        grows upwards and stores both newly-defined Forth words and global variables of various
-        sorts.
+Here we set up the Linux data segment, used for user definitions and variously known as just
+the 'data segment', 'user memory' or 'user definitions area'.  It is an area of memory which
+grows upwards and stores both newly-defined Forth words and global variables of various
+sorts.
 
-        It is completely analogous to the C heap, except there is no generalised 'malloc' and 'free'
-        (but as with everything in Forth, writing such functions would just be a Simple Matter
-        Of Programming).  Instead in normal use the data segment just grows upwards as new Forth
-        words are defined/appended to it.
+It is completely analogous to the C heap, except there is no generalised 'malloc' and 'free'
+(but as with everything in Forth, writing such functions would just be a Simple Matter
+Of Programming).  Instead in normal use the data segment just grows upwards as new Forth
+words are defined/appended to it.
 
-        There are various "features" of the GNU toolchain which make setting up the data segment
-        more complicated than it really needs to be.  One is the GNU linker which inserts a random
-        "build ID" segment.  Another is Address Space Randomization which means we can't tell
-        where the kernel will choose to place the data segment (or the stack for that matter).
+There are various "features" of the GNU toolchain which make setting up the data segment
+more complicated than it really needs to be.  One is the GNU linker which inserts a random
+"build ID" segment.  Another is Address Space Randomization which means we can't tell
+where the kernel will choose to place the data segment (or the stack for that matter).
 
-        Therefore writing this set_up_data_segment assembler routine is a little more complicated
-        than it really needs to be.  We ask the Linux kernel where it thinks the data segment starts
-        using the brk(2) system call, then ask it to reserve some initial space (also using brk(2)).
+Therefore writing this set_up_data_segment assembler routine is a little more complicated
+than it really needs to be.  We ask the Linux kernel where it thinks the data segment starts
+using the brk(2) system call, then ask it to reserve some initial space (also using brk(2)).
 
-        You don't need to worry about this code.
-*/
+You don't need to worry about this code.
         .text
         .set INITIAL_DATA_SEGMENT_SIZE,65536
-set_up_data_segment:
+    set_up_data_segment:
         xor %ebx,%ebx           // Call brk(0)
         movl $__NR_brk,%eax
         int $0x80
@@ -1950,39 +1925,36 @@ set_up_data_segment:
         int $0x80
         ret
 
-/*
-        We allocate static buffers for the return static and input buffer (used when
-        reading in files and text that the user types in).
-*/
+We allocate static buffers for the return static and input buffer (used when
+reading in files and text that the user types in).
+
         .set RETURN_STACK_SIZE,8192
         .set BUFFER_SIZE,4096
 
         .bss
-/* Forth return stack. */
+    /* Forth return stack. */
         .align 4096
-return_stack:
+    return_stack:
         .space RETURN_STACK_SIZE
-return_stack_top:               // Initial top of return stack.
+    return_stack_top:               // Initial top of return stack.
 
-/* This is used as a temporary input buffer when reading from files or the terminal. */
+    /* This is used as a temporary input buffer when reading from files or the terminal. */
         .align 4096
-buffer:
+    buffer:
         .space BUFFER_SIZE
 
-/*
-        START OF Forth CODE ----------------------------------------------------------------------
+## START OF Forth CODE
 
-        We've now reached the stage where the Forth system is running and self-hosting.  All further
-        words can be written as Forth itself, including words like IF, THEN, .", etc which in most
-        languages would be considered rather fundamental.
+We've now reached the stage where the Forth system is running and self-hosting.  All further
+words can be written as Forth itself, including words like IF, THEN, .", etc which in most
+languages would be considered rather fundamental.
 
-        I used to append this here in the assembly file, but I got sick of fighting against gas's
-        crack-smoking (lack of) multiline string syntax.  So now that is in a separate file called
-        jonesforth.f
+I used to append this here in the assembly file, but I got sick of fighting against gas's
+crack-smoking (lack of) multiline string syntax.  So now that is in a separate file called
+jonesforth.f
 
-        If you don't already have that file, download it from http://annexia.org/forth in order
-        to continue the tutorial.
-*/
+If you don't already have that file, download it from http://annexia.org/forth in order
+to continue the tutorial.
 
 /* END OF jonesforth.S */
 
