@@ -367,10 +367,10 @@ Java bytecode used to be interpreted (ie. slowly).  This interpreter just sets u
 machine registers so that the word can then execute at full speed using the indirect
 threaded model above.
 
-One of the things that needs to happen when `QUADRUPLE` calls `DOUBLE` is that we save the `old
-%esi` ("instruction pointer") and create a new one pointing to the first word in `DOUBLE`.
-Because we will need to restore the old %esi at the end of `DOUBLE` (this is, after all, like
-a function call), we will need a stack to store these "return addresses" (old values of %esi).
+One of the things that needs to happen when `QUADRUPLE` calls `DOUBLE` is that we save the old
+`%esi` ("instruction pointer") and create a new one pointing to the first word in `DOUBLE`.
+Because we will need to restore the old `%esi` at the end of `DOUBLE` (this is, after all, like
+a function call), we will need a stack to store these "return addresses" (old values of `%esi`).
 
 As you will have seen in the background documentation, Forth has two stacks, an ordinary
 stack for parameters, and a return stack which is a bit more mysterious.  But our return
@@ -424,7 +424,7 @@ into `DOUBLE`:
 
 First, the call to `DOUBLE` calls `DOCOL` (the codeword of `DOUBLE`).  `DOCOL` does this:  It
 pushes the old `%esi` on the return stack. `%eax` points to the codeword of `DOUBLE`, so we
-just add 4 on to it to get our new %esi:
+just add 4 on to it to get our new `%esi`:
 
 <svg height="176" width="576" xmlns="http://www.w3.org/2000/svg"><style>circle,line,polygon{stroke:#000;stroke-width:2;stroke-opacity:1;fill-opacity:1;stroke-linecap:round;stroke-linejoin:miter}text{fill:#000;font-family:monospace;font-size:14px}.bg_filled{fill:#fff}.end_marked_arrow{marker-end:url(#arrow)}</style><defs><marker id="arrow" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 0v4l4-2-4-2z"/></marker><marker id="diamond" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="2" viewBox="-2 -2 8 8"><path d="M0 2l2-2 2 2-2 2-2-2z"/></marker><marker id="circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle cx="4" cy="4" r="2"/></marker><marker id="open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="2"/></marker><marker id="big_open_circle" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="4" refY="4" viewBox="0 0 8 8"><circle class="bg_filled" cx="4" cy="4" r="3"/></marker></defs><path class="backdrop" fill="#fff" stroke-width="2" stroke-linecap="round" d="M0 0h576v176H0z"/><text x="130" y="12">QUADRUPLE:</text><text x="146" y="44">codeword</text><text x="146" y="76">addr</text><text x="186" y="76">of</text><text x="210" y="76">DOUBLE</text><path class="solid end_marked_arrow" d="M272 72h128"/><text x="346" y="92">%eax</text><path class="solid end_marked_arrow" d="M384 88h16"/><text x="146" y="108">addr</text><text x="186" y="108">of</text><text x="210" y="108">DOUBLE</text><text x="346" y="108">+</text><text x="362" y="108">4</text><path class="solid" d="M376 102h8M376 106h8"/><text x="346" y="124">%esi</text><path class="solid end_marked_arrow" d="M384 120h16"/><text x="146" y="140">addr</text><text x="186" y="140">of</text><text x="210" y="140">EXIT</text><text x="410" y="60">DOUBLE:</text><text x="426" y="92">addr</text><text x="466" y="92">of</text><text x="490" y="92">DOCOL</text><text x="426" y="124">addr</text><text x="466" y="124">of</text><text x="490" y="124">DUP</text><text x="426" y="156">etc.</text><text x="2" y="92">top</text><text x="34" y="92">of</text><text x="58" y="92">return</text><text x="2" y="108">stack</text><text x="50" y="108">points</text><path class="solid end_marked_arrow" d="M104 104h16"/><path class="solid" d="M132 24h152M132 24v128M284 24v128M132 56h152M132 88h152M132 120h152M132 152h152"/><g><path class="solid" d="M412 72h152M412 72v88M564 72v88M412 104h152M412 136h152"/></g></svg>
 
