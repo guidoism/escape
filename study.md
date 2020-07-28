@@ -33,6 +33,10 @@ look at.
   Found it because they talk about using intersecting strings as
   notation and I was looking around at a better notation for stack
   manipulations in Forth.
+  
+## Operating Systems
+
+* [The operating system: should there be one?](https://www.cs.kent.ac.uk/people/staff/srk21/research/papers/kell13operating.pdf). - Stephen Kell (2013) - "The Lurking Smalltalk", Smalltalk vs Unix/Plan 9, "An operating system is a collection of things that don't fit into a language. There shouldn't be one", Unix's programmability exists but it very fragmented, there is an bias against lots of small files, Smalltalk itself doesn't have a solution to fragmentation, it's solution is "Don't fragment, use Smalltalk for everything", "The Grand Narrative"
 
 ## Programming Languages
 
