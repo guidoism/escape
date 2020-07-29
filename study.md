@@ -88,6 +88,7 @@ look at.
 * [Notation and Design](https://rjlipton.wordpress.com/2010/11/30/notation-and-thinking/)
 * [John's Lambda Calculus and Combinatory Logic Playground](https://tromp.github.io/cl/cl.html)
 * [JonesForth ARM64 using APL character set](https://github.com/narenratan/jonesforth_arm64_apl)
+* [Design Principles Behind Smalltalk](https://www.cs.virginia.edu/~evans/cs655/readings/smalltalk.html) - Dan Ingalls (1981)
 
 ## Graphic Design
 
