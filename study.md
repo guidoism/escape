@@ -180,3 +180,4 @@ look at.
 - [Chuck Moore’s Creations](https://blogs.msdn.microsoft.com/ashleyf/2013/09/21/chuck-moores-creations/) and a [talk by chuck more](https://www.infoq.com/presentations/power-144-chip)
 - [terra lang](http://terralang.org/index.html) - Terra is a low-level system programming language that is embedded in and meta-programmed by the Lua programming language
 - [Stepanov's Notes on Programming](http://stepanovpapers.com/notes.pdf) and a bunch of other stuff at [his website](http://stepanovpapers.com)
+- [Floooh's Blog](https://floooh.github.io/archive/) - Game dev with good insights
