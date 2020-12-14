@@ -167,7 +167,8 @@ look at.
 * [Future of Programming Slack](https://futureprogramming.slack.com/)
 * [Ideal OS](https://joshondesign.com/2017/08/18/idealos_essay) - Not a project but a very good essay on what an OS
   should be.
-* [Bootstrappable](http://bootstrappable.org) - Build a full gcc/linux system from a tiny amount of bootstraping code that can be entered in with a hex editor. They maintain a [wiki](https://bootstrapping.miraheze.org/wiki/Main_Page) of their ideas and progress. 
+* [Bootstrappable](http://bootstrappable.org) - Build a full gcc/linux system from a tiny amount of bootstraping code that can be entered in with a hex editor. They maintain a [wiki](https://bootstrapping.miraheze.org/wiki/Main_Page) of their ideas and progress.
+* [BubbleOS](https://gitlab.com/kragen/bubbleos) - Very very similar to what I am doing. Also has lots of [notes](https://guidoism.github.io/dercuano/html/) [(>2019)](https://gitlab.com/kragen/derctuo) that are related to my project including the [book part](https://guidoism.github.io/dercuano/html/notes/book-in-itself.html).
 
 ## shrug
 * robin milner relational semantics
