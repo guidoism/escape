@@ -110,8 +110,13 @@ seems like the perfect candidate for a Literate Programming treatment.
 Second, the top-down approach doesn't work for me. I can't concentrate
 on the UI code if I don't know how the kernel works. Third, I feel
 like something is missing. The pieces don't connect in my head and it
-makes me wonder why. It's a little hand-wavy for me. Wirth is *complete*
-but not *precise*. Donald Knuth on the other hand is *perfectionist in
-his precision* but not *complete*. 
+makes me wonder why. It's a little hand-wavy for me. Wirth is
+*complete* but not *precise*. Donald Knuth on the other hand is
+*perfectionist in his precision* but not *complete*. **MMIX** would be
+an amazing architecture on which to run Oberon. There is so much
+defined for analysing performance and understand what is really
+happening inside the computer. He has a massive archive of heavily
+studied algorithms written in **MMIXAL** that could be taken advantage
+of. 
 
 I'm calling my project Knuth × Wirth.
