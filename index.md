@@ -58,16 +58,16 @@ Important systems, such as cryptography and data integrity, should be formally v
     
 #### Attempts to reinvent the whole computing stack   
 
-* [[https://en.wikipedia.org/wiki/GNU_Project][GNU]] (Stallman) - The OG. Goals were to rewrite Unix from scratch and make sure that any improvements could never be hidden from the community. A very very very successful project.
-* [[https://en.wikipedia.org/wiki/Oberon_(operating_system)][Oberon]] (Wirth) - Inspired by the (too expensive) Xerox Alto. Goal was efficiency and understandability. All code in a single book.
-* [[https://en.wikipedia.org/wiki/Canon_Cat][Canon Cat]] (Raskin) - 
-* [[http://www.vpri.org/pdf/tr2012001_steps.pdf][STEPS]] (Kay) - Goal was a whole computing stack in fewer than 20k lines of code using domain specific languages.
+* [GNU](https://en.wikipedia.org/wiki/GNU_Project) (Stallman) - The OG. Goals were to rewrite Unix from scratch and make sure that any improvements could never be hidden from the community. A very very very successful project.
+* [Oberon](https://en.wikipedia.org/wiki/Oberon_(operating_system)) (Wirth) - Inspired by the (too expensive) Xerox Alto. Goal was efficiency and understandability. All code in a single book.
+* [Canon Cat](https://en.wikipedia.org/wiki/Canon_Cat) (Raskin) - 
+* [STEPS](http://www.vpri.org/pdf/tr2012001_steps.pdf) (Kay) - Goal was a whole computing stack in fewer than 20k lines of code using domain specific languages.
 * Mu (Agaram) - [pull from Section 1.1 of his paper]
     
 #### Attempts to bootstrap a compiler from nothing
 
-* [[https://github.com/certik/bcompiler][bcompiler]] - Start with hex, end up with a tiny compiler for a toy programming language somewhat reminiscent of C and Forth.
-* [[https://github.com/oriansj/stage0][State0]] for GNU - Reproducible builds and verifiable base for defeating the trusting trust attack.
+* [bcompiler](https://github.com/certik/bcompiler) - Start with hex, end up with a tiny compiler for a toy programming language somewhat reminiscent of C and Forth.
+* [Stage0](https://github.com/oriansj/stage0 for GNU) - Reproducible builds and verifiable base for defeating the trusting trust attack.
 * StoneKnifeForth - 
 * SubX for Mu - 
 * META-II - 
