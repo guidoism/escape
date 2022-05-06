@@ -49,6 +49,29 @@ Important systems, such as cryptography and data integrity, should be formally v
 * [*Category Theory for Programmers*](https://github.com/hmemcpy/milewski-ctfp-pdf) -- Book about programming in a more formal way -- Haskell used for examples.
 * [*Microprocessor Architectures: From VLIW to TTA*](https://www.wiley.com/en-us/Microprocessor+Architectures%3A+From+VLIW+to+TTA-p-9780471971573) -- Henk Corporaal's book about transport triggered architectures, where the only **cpu** instruction is move and you specify which function unit data moves to next instead of the higher-level instruction. Somewhat in between **fpga** and standard **cpu**s.
 
+### A work-in-progress breakdown of overlapping projects
+
+#### Attempts to change the way we read and understand programs
+
+* [[https://github.com/akkartik/mu][Mu]] - Source files are numbered in the order that they are used to build upon what came before -- Therefore there is a clear direction for comprehensibility with no circular dependencies.
+* [[https://github.com/rui314/chibicc][ChibiCC]] - Git commits are made to be read from start to finish to understand how the compiler was incrementally built. Each commit means something and he changed github history to not have meaningless bug fix commits.
+    
+#### Attempts to reinvent the whole computing stack   
+
+* [[https://en.wikipedia.org/wiki/GNU_Project][GNU]] (Stallman) - The OG. Goals were to rewrite Unix from scratch and make sure that any improvements could never be hidden from the community. A very very very successful project.
+* [[https://en.wikipedia.org/wiki/Oberon_(operating_system)][Oberon]] (Wirth) - Inspired by the (too expensive) Xerox Alto. Goal was efficiency and understandability. All code in a single book.
+* [[https://en.wikipedia.org/wiki/Canon_Cat][Canon Cat]] (Raskin) - 
+* [[http://www.vpri.org/pdf/tr2012001_steps.pdf][STEPS]] (Kay) - Goal was a whole computing stack in fewer than 20k lines of code using domain specific languages.
+* Mu (Agaram) - [pull from Section 1.1 of his paper]
+    
+#### Attempts to bootstrap a compiler from nothing
+
+* [[https://github.com/certik/bcompiler][bcompiler]] - Start with hex, end up with a tiny compiler for a toy programming language somewhat reminiscent of C and Forth.
+* [[https://github.com/oriansj/stage0][State0]] for GNU - Reproducible builds and verifiable base for defeating the trusting trust attack.
+* StoneKnifeForth - 
+* SubX for Mu - 
+* META-II - 
+
 ### Programming Language Inspiration
 
 * **APL**
