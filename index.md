@@ -67,7 +67,7 @@ Important systems, such as cryptography and data integrity, should be formally v
 #### Attempts to bootstrap a compiler from nothing
 
 * [bcompiler](https://github.com/certik/bcompiler) - Start with hex, end up with a tiny compiler for a toy programming language somewhat reminiscent of C and Forth.
-* [Stage0](https://github.com/oriansj/stage0 for GNU) - Reproducible builds and verifiable base for defeating the trusting trust attack.
+* [Stage0](https://github.com/oriansj/stage0) for GNU - Reproducible builds and verifiable base for defeating the trusting trust attack.
 * StoneKnifeForth - 
 * SubX for Mu - 
 * META-II - 
