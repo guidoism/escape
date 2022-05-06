@@ -53,6 +53,7 @@ Important systems, such as cryptography and data integrity, should be formally v
 
 #### Attempts to change the way we read and understand programs
 
+* [Literate Programming](https://en.wikipedia.org/wiki/Literate_programming) - Should be able to read a program like a novel in bed.
 * [Mu](https://github.com/akkartik/mu) - Source files are numbered in the order that they are used to build upon what came before -- Therefore there is a clear direction for comprehensibility with no circular dependencies.
 * [ChibiCC](https://github.com/rui314/chibicc) - Git commits are made to be read from start to finish to understand how the compiler was incrementally built. Each commit means something and he changed github history to not have meaningless bug fix commits.
     
