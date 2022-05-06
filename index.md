@@ -49,7 +49,7 @@ Important systems, such as cryptography and data integrity, should be formally v
 * [*Category Theory for Programmers*](https://github.com/hmemcpy/milewski-ctfp-pdf) -- Book about programming in a more formal way -- Haskell used for examples.
 * [*Microprocessor Architectures: From VLIW to TTA*](https://www.wiley.com/en-us/Microprocessor+Architectures%3A+From+VLIW+to+TTA-p-9780471971573) -- Henk Corporaal's book about transport triggered architectures, where the only **cpu** instruction is move and you specify which function unit data moves to next instead of the higher-level instruction. Somewhat in between **fpga** and standard **cpu**s.
 
-### A work-in-progress breakdown of overlapping projects
+### A (work-in-progress) breakdown of overlapping projects
 
 #### Attempts to change the way we read and understand programs
 
