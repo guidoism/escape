@@ -94,4 +94,6 @@ Important systems, such as cryptography and data integrity, should be formally v
 * Offload the work of scrolling a page of text onto a dedicated processor -- Nothing the main processors is doing should ever make scrolling janky.
 * Data should be specified using relational algebra for the whole system.
 
+### Guido's Current Project Status
 
+XXX
