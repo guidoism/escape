@@ -63,15 +63,15 @@ Important systems, such as cryptography and data integrity, should be formally v
 * [Oberon](https://en.wikipedia.org/wiki/Oberon_(operating_system)) (Wirth) - Inspired by the (too expensive) Xerox Alto. Goal was efficiency and understandability. All code in a single book.
 * [Canon Cat](https://en.wikipedia.org/wiki/Canon_Cat) (Raskin) - 
 * [STEPS](http://www.vpri.org/pdf/tr2012001_steps.pdf) (Kay) - Goal was a whole computing stack in fewer than 20k lines of code using domain specific languages.
-* Mu (Agaram) - [pull from Section 1.1 of his paper]
+* [Mu](https://github.com/akkartik/mu) (Agaram) - (TODO: pull from Section 1.1 of his paper)
     
 #### Attempts to bootstrap a compiler from nothing
 
 * [bcompiler](https://github.com/certik/bcompiler) - Start with hex, end up with a tiny compiler for a toy programming language somewhat reminiscent of C and Forth.
 * [Stage0](https://github.com/oriansj/stage0) for GNU - Reproducible builds and verifiable base for defeating the trusting trust attack.
-* [StoneKnifeForth](https://github.com/kragen/stoneknifeforth) - Start with hex just like bcompiler. Awesome name!
-* SubX for Mu - 
-* META-II - 
+* [StoneKnifeForth](https://github.com/kragen/stoneknifeforth) (Kragen) - Start with hex just like bcompiler. Awesome name!
+* SubX for Mu (Agaram) - 
+* [META-II](https://en.wikipedia.org/wiki/META_II) (Schorre) - Start with a dead-simple VM, output is interspersed with parse info.
 
 ### Programming Language Inspiration
 
