@@ -390,6 +390,7 @@ You use them as for example "`PUSHRSP %eax`" (push `%eax` on the return stack) o
     lea -4(%ebp),%ebp       // push reg on to return stack
     movl \reg,(%ebp)
     .endm
+    // PUSHRSP(reg): ebp = ebp + 4; *ebp = *reg
     
     .macro POPRSP reg
     mov (%ebp),\reg         // pop top of return stack to reg

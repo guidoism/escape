@@ -33,6 +33,10 @@ look at.
   Found it because they talk about using intersecting strings as
   notation and I was looking around at a better notation for stack
   manipulations in Forth.
+  
+## Operating Systems
+
+* [The operating system: should there be one?](https://www.cs.kent.ac.uk/people/staff/srk21/research/papers/kell13operating.pdf). - Stephen Kell (2013) - "The Lurking Smalltalk", Smalltalk vs Unix/Plan 9, "An operating system is a collection of things that don't fit into a language. There shouldn't be one", Unix's programmability exists but it very fragmented, there is an bias against lots of small files, Smalltalk itself doesn't have a solution to fragmentation, it's solution is "Don't fragment, use Smalltalk for everything", "The Grand Narrative"
 
 ## Programming Languages
 
@@ -84,6 +88,7 @@ look at.
 * [Notation and Design](https://rjlipton.wordpress.com/2010/11/30/notation-and-thinking/)
 * [John's Lambda Calculus and Combinatory Logic Playground](https://tromp.github.io/cl/cl.html)
 * [JonesForth ARM64 using APL character set](https://github.com/narenratan/jonesforth_arm64_apl)
+* [Design Principles Behind Smalltalk](https://www.cs.virginia.edu/~evans/cs655/readings/smalltalk.html) - Dan Ingalls (1981)
 
 ## Graphic Design
 
@@ -162,7 +167,12 @@ look at.
 * [Future of Programming Slack](https://futureprogramming.slack.com/)
 * [Ideal OS](https://joshondesign.com/2017/08/18/idealos_essay) - Not a project but a very good essay on what an OS
   should be.
-* [Bootstrappable](http://bootstrappable.org) - Build a full gcc/linux system from a tiny amount of bootstraping code that can be entered in with a hex editor. They maintain a [wiki](https://bootstrapping.miraheze.org/wiki/Main_Page) of their ideas and progress. 
+* [Bootstrappable](http://bootstrappable.org) - Build a full gcc/linux system from a tiny amount of bootstraping code that can be entered in with a hex editor. They maintain a [wiki](https://bootstrapping.miraheze.org/wiki/Main_Page) of their ideas and progress.
+* [BubbleOS](https://gitlab.com/kragen/bubbleos) - Very very similar to what I am doing. Also has lots of [notes](https://guidoism.github.io/dercuano/html/) [(>2019)](https://gitlab.com/kragen/derctuo) that are related to my project including the [book part](https://guidoism.github.io/dercuano/html/notes/book-in-itself.html).
+
+## History
+
+* [History of C and why it's garbage](https://pastebin.com/UAQaWuWG)
 
 ## shrug
 * robin milner relational semantics
@@ -174,3 +184,4 @@ look at.
 - [Chuck Moore’s Creations](https://blogs.msdn.microsoft.com/ashleyf/2013/09/21/chuck-moores-creations/) and a [talk by chuck more](https://www.infoq.com/presentations/power-144-chip)
 - [terra lang](http://terralang.org/index.html) - Terra is a low-level system programming language that is embedded in and meta-programmed by the Lua programming language
 - [Stepanov's Notes on Programming](http://stepanovpapers.com/notes.pdf) and a bunch of other stuff at [his website](http://stepanovpapers.com)
+- [Floooh's Blog](https://floooh.github.io/archive/) - Game dev with good insights
