@@ -112,6 +112,6 @@ on the UI code if I don't know how the kernel works. Third, I feel
 like something is missing. The pieces don't connect in my head and it
 makes me wonder why. It's a little hand-wavy for me. Wirth is *complete*
 but not *precise*. Donald Knuth on the other hand is *perfectionist in
-his precision* but not *complete*.
+his precision* but not *complete*. 
 
 I'm calling my project Knuth × Wirth.
