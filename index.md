@@ -96,4 +96,22 @@ Important systems, such as cryptography and data integrity, should be formally v
 
 ### Guido's Current Project Status
 
-XXX
+I've decided to slice off and focus on a more tractable, more
+constrained part of the problem for now. Instead of redesigning a cpu
+and programming language and computer, I'm going to concentrate on
+improving the pedagogy of some of the best existing ideas.
+
+Motivation/Problems-to-solve: I *love* Project Oberon. I think that
+Niklaus Wirth is a genius and it's a tragedy that his work has been
+slept on by the current generation of programmers (myself included).
+But there's something about his presentation that doesn't work for me.
+For one, there's *way* too much seperation between prose and code. It
+seems like the perfect candidate for a Literate Programming treatment.
+Second, the top-down approach doesn't work for me. I can't concentrate
+on the UI code if I don't know how the kernel works. Third, I feel
+like something is missing. The pieces don't connect in my head and it
+makes me wonder why. It's a little hand-wavy for me. Wirth is *complete*
+but not *precise*. Donald Knuth on the other hand is *perfectionist in
+his precision* but not *complete*.
+
+I'm calling my project Knuth × Wirth.
