@@ -117,6 +117,8 @@ an amazing architecture on which to run Oberon. There is so much
 defined for analysing performance and understand what is really
 happening inside the computer. He has a massive archive of heavily
 studied algorithms written in **MMIXAL** that could be taken advantage
-of. 
+of. TeX would be amazing to presentation of the literate program form
+of Project Oberon and it would be amazing to use as the foundation
+of the text layout within the OS, along with MetaPost.
 
 I'm calling my project Knuth × Wirth.
