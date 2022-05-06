@@ -70,7 +70,7 @@ Important systems, such as cryptography and data integrity, should be formally v
 * [bcompiler](https://github.com/certik/bcompiler) - Start with hex, end up with a tiny compiler for a toy programming language somewhat reminiscent of C and Forth.
 * [Stage0](https://github.com/oriansj/stage0) for GNU - Reproducible builds and verifiable base for defeating the trusting trust attack.
 * [StoneKnifeForth](https://github.com/kragen/stoneknifeforth) (Kragen) - Start with hex just like bcompiler. Awesome name!
-* SubX for Mu (Agaram) - 
+* [SubX for Mu](https://github.com/akkartik/mu) (Agaram) - Hex (with annotations) is the language!
 * [META-II](https://en.wikipedia.org/wiki/META_II) (Schorre) - Start with a dead-simple VM, output is interspersed with parse info.
 
 ### Programming Language Inspiration
