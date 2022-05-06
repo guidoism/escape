@@ -61,7 +61,7 @@ Important systems, such as cryptography and data integrity, should be formally v
 
 * [GNU](https://en.wikipedia.org/wiki/GNU_Project) (Stallman) - The OG. Goals were to rewrite Unix from scratch and make sure that any improvements could never be hidden from the community. A very very very successful project.
 * [Oberon](https://en.wikipedia.org/wiki/Oberon_(operating_system)) (Wirth) - Inspired by the (too expensive) Xerox Alto. Goal was efficiency and understandability. All code in a single book.
-* [Canon Cat](https://en.wikipedia.org/wiki/Canon_Cat) (Raskin) - 
+* [Canon Cat](https://en.wikipedia.org/wiki/Canon_Cat) (Raskin) - Attempt at a real "people's computer"
 * [STEPS](http://www.vpri.org/pdf/tr2012001_steps.pdf) (Kay) - Goal was a whole computing stack in fewer than 20k lines of code using domain specific languages.
 * [Mu](https://github.com/akkartik/mu) (Agaram) - (TODO: pull from Section 1.1 of his paper)
     
