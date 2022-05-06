@@ -69,7 +69,7 @@ Important systems, such as cryptography and data integrity, should be formally v
 
 * [bcompiler](https://github.com/certik/bcompiler) - Start with hex, end up with a tiny compiler for a toy programming language somewhat reminiscent of C and Forth.
 * [Stage0](https://github.com/oriansj/stage0) for GNU - Reproducible builds and verifiable base for defeating the trusting trust attack.
-* StoneKnifeForth - 
+* [StoneKnifeForth](https://github.com/kragen/stoneknifeforth) - Start with hex just like bcompiler. Awesome name!
 * SubX for Mu - 
 * META-II - 
 
