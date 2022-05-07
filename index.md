@@ -130,9 +130,18 @@ self-hosting Parsing Expression Grammar.
 I'm calling my project **Knuth × Wirth**.
 
 It will be in the form of a book—readable in bed—along with
-running code. The book will be formateed with either **WEB**,
+running code. The book will be formated with either **WEB**,
 **CWEB**, or Org Mode, probably the latter. I really want to strive
 for understandability.
+
+The intent, the whole reason for the existance of this project, is to
+provide a single comprehensive description of a modern-ish computer
+from the **CPU** (an instance of a **MMIX** pipelined simulator),
+through the bootstrapping, compiler, operating system, to basic
+applications for study by new students to computer science and
+existing software engineers. We can use this as a resource to
+understand the computers we are currently using or as a base in
+which to study new computer architectures or ways of programming.
 
 The stack will look as follows:
 
