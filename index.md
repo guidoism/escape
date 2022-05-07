@@ -146,42 +146,16 @@ Used https://asciiflow.com/ to make drawing
 and https://ivanceras.github.io/svgbob-editor/ to convert to SVG
 
 -->
-
-
 <svg xmlns="http://www.w3.org/2000/svg" width="648" height="208"><style>line, path, circle, rect, polygon{stroke:black;stroke-width:2;stroke-opacity:1;fill-opacity:1;stroke-linecap:round;stroke-linejoin:miter;}text{font-family:Iosevka Fixed, monospace;font-size:14px;}rect.backdrop{stroke:none;fill:white;}.broken{stroke-dasharray:8;}.filled{fill:black;}.bg_filled{fill:white;}.nofill{fill:white;}.end_marked_arrow{marker-end:url(#arrow);}.start_marked_arrow{marker-start:url(#arrow);}.end_marked_diamond{marker-end:url(#diamond);}.start_marked_diamond{marker-start:url(#diamond);}.end_marked_circle{marker-end:url(#circle);}.start_marked_circle{marker-start:url(#circle);}.end_marked_open_circle{marker-end:url(#open_circle);}.start_marked_open_circle{marker-start:url(#open_circle);}.end_marked_big_open_circle{marker-end:url(#big_open_circle);}.start_marked_big_open_circle{marker-start:url(#big_open_circle);}<!--separator--></style><defs><marker id="arrow" viewBox="-2 -2 8 8" refX="4" refY="2" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><polygon points="0,0 0,4 4,2 0,0"></polygon></marker><marker id="diamond" viewBox="-2 -2 8 8" refX="4" refY="2" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><polygon points="0,2 2,0 4,2 2,4 0,2"></polygon></marker><marker id="circle" viewBox="0 0 8 8" refX="4" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><circle cx="4" cy="4" r="2" class="filled"></circle></marker><marker id="open_circle" viewBox="0 0 8 8" refX="4" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><circle cx="4" cy="4" r="2" class="bg_filled"></circle></marker><marker id="big_open_circle" viewBox="0 0 8 8" refX="4" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><circle cx="4" cy="4" r="3" class="bg_filled"></circle></marker></defs><rect class="backdrop" x="0" y="0" width="648" height="208"></rect><text x="10" y="44" >New</text><text x="42" y="44" >UI</text><text x="66" y="44" >using</text><text x="114" y="44" >TeX</text><text x="146" y="44" >and</text><text x="178" y="44" >MetaPost</text><text x="10" y="76" >Oberon</text><text x="66" y="76" >System</text><text x="122" y="76" >written</text><text x="186" y="76" >in</text><text x="210" y="76" >Oberon</text><text x="298" y="76" >Enough</text><text x="354" y="76" >of</text><text x="378" y="76" >a</text><text x="394" y="76" >C</text><text x="410" y="76" >compiler</text><text x="482" y="76" >to</text><text x="506" y="76" >compile</text><text x="570" y="76" >MMIXWare</text><text x="10" y="108" >Oberon</text><text x="66" y="108" >Compiler</text><text x="138" y="108" >written</text><text x="202" y="108" >with</text><text x="242" y="108" >PEG</text><text x="10" y="140" >Self</text><text x="50" y="140" >hosting</text><text x="114" y="140" >PEG</text><text x="146" y="140" >written</text><text x="210" y="140" >in</text><text x="234" y="140" >MMIXAL</text><text x="10" y="172" >MMIX</text><text x="50" y="172" >Simulator</text><g><line x1="4" y1="24" x2="284" y2="24" class="solid"></line><line x1="4" y1="24" x2="4" y2="184" class="solid"></line><line x1="284" y1="24" x2="284" y2="88" class="solid"></line><line x1="4" y1="56" x2="636" y2="56" class="solid"></line><line x1="636" y1="56" x2="636" y2="88" class="solid"></line><line x1="4" y1="88" x2="636" y2="88" class="solid"></line><line x1="388" y1="88" x2="388" y2="184" class="solid"></line><line x1="620" y1="88" x2="620" y2="168" class="solid"></line><line x1="4" y1="120" x2="388" y2="120" class="solid"></line><line x1="4" y1="152" x2="388" y2="152" class="solid"></line><line x1="4" y1="184" x2="388" y2="184" class="solid"></line><polygon points="400,164 392,168 400,172" class="filled"></polygon><line x1="400" y1="168" x2="620" y2="168" class="solid"></line></g></svg>
 
 My plan is as follows:
 
-1. Bang my head against the wall until I truly understand how **PEG**s
-work. Kragen's [**PEG** Bootstrap](https://github.com/kragen/peg-bootstrap/blob/master/peg.md)
-so far has been the best teacher. I think that [I finally grok
-it](https://github.com/guidoism/peg-bootstrap/blob/master/guido/understanding/peg.org)
-enough to contiune forth with it.
-
-2. Write a self-hosting **PEG** in **MMIXAL**. The **MMIX**
-instruction set is simple enough that I should be able to also
-generate runnable object code directly without the need for a seperate
-assembler. I *might* add a small StoneKnifeForth layer in the
-bootstrap layer, but only if it's really needed.
-
-3. Produce a tiny bootstrapable core in hex that could conceivably
-hand entered with switches into a computer.
-
-4. Moving back up the stack, rewrite the Oberon compiler as a PEG. I
-have a lot of this finished already. It was difficult because the
-ambiguity of the published grammar didn't align well with the
-hand-written recusive descent parser written in Oberon itself.
-
+1. Bang my head against the wall until I truly understand how **PEG**s work. Kragen's [**PEG** Bootstrap](https://github.com/kragen/peg-bootstrap/blob/master/peg.md) so far has been the best teacher. I think that [I finally grok it](https://github.com/guidoism/peg-bootstrap/blob/master/guido/understanding/peg.org) enough to contiune forth with it.
+2. Write a self-hosting **PEG** in **MMIXAL**. The **MMIX** instruction set is simple enough that I should be able to also generate runnable object code directly without the need for a seperate assembler. I *might* add a small StoneKnifeForth layer in the bootstrap layer, but only if it's really needed.
+3. Produce a tiny bootstrapable core in hex that could conceivably hand entered with switches into a computer.
+4. Moving back up the stack, rewrite the Oberon compiler as a PEG. I have a lot of this finished already. It was difficult because the ambiguity of the published grammar didn't align well with the hand-written recusive descent parser written in Oberon itself.
 5. Get the Oberon system as a whole running on the **MMIX** simulator.
-
-6. Rewrite Project Oberon using techniques from *literate
-programming*, either by using **WEB** directly, or by creating
-something new, in Oberon, that fits in with a modern sensibility like
-Org Mode Babel.
-
-7. Write enough of a C compiler with the PEG and Oberon to be able to
-compile CWEB and MMIXWare.
-
-8. Publish it as a book, with the copyright set to Public Domain or
-one of the Creative Commons licenses.
+6. Rewrite Project Oberon using techniques from *literate programming*, either by using **WEB** directly, or by creating something new, in Oberon, that fits in with a modern sensibility like Org Mode Babel.
+7. Write enough of a C compiler with the PEG and Oberon to be able to compile CWEB and MMIXWare.
+8. Publish it as a book, with the copyright set to Public Domain or one of the Creative Commons licenses.
 
