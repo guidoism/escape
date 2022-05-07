@@ -140,8 +140,11 @@ from the **CPU** (an instance of a **MMIX** pipelined simulator),
 through the bootstrapping, compiler, operating system, to basic
 applications for study by new students to computer science and
 existing software engineers. We can use this as a resource to
-understand the computers we are currently using or as a base in
-which to study new computer architectures or ways of programming.
+understand the computers we are currently using or as a base in which
+to study new computer architectures or ways of programming.
+
+I want it to be an attempt at a realization of Knuth's *Literate Programming*
+goal. I want to make something that is read and studying like literature.
 
 The stack will look as follows:
 
