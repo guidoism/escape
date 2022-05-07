@@ -118,7 +118,17 @@ defined for analysing performance and understand what is really
 happening inside the computer. He has a massive archive of heavily
 studied algorithms written in **MMIXAL** that could be taken advantage
 of. TeX would be amazing to presentation of the literate program form
-of Project Oberon and it would be amazing to use as the foundation
-of the text layout within the OS, along with MetaPost.
+of Project Oberon and it would be amazing to use as the foundation of
+the text layout within the OS, along with MetaPost. Also, both Knuth
+and Wirth are still [slaying the dragons of the
+1960s](http://www.bayfronttechnologies.com/mc_tutorial.html) when it
+comes to parsing. Oberon should be re-written with a simple
+self-hosting Parsing Expression Grammar.
 
-I'm calling my project Knuth × Wirth.
+I'm calling my project **Knuth × Wirth**.
+
+My plan is as follows:
+
+1. Bang my head against the wall until I truly understand how PEGs
+work. Kragen's [PEG Bootstrap](https://github.com/kragen/peg-bootstrap/blob/master/peg.md)
+so far has been the best teacher. 
