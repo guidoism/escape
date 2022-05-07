@@ -129,8 +129,19 @@ I'm calling my project **Knuth × Wirth**.
 
 The stack will look as follows:
 
-
-
+`
+┌──────────────────────────────────┐
+│New UI using TeX and MetaPost     │
+├──────────────────────────────────┼───────────────────────────────────────────┐
+│Oberon System written in Oberon   │ Enough of a C compiler to compile MMIXWare│
+├──────────────────────────────────┴────────────┬────────────────────────────┬─┘
+│Oberon Compiler written with PEG               │                            │
+├───────────────────────────────────────────────┤                            │
+│Self hosting PEG written in MMIXAL             │                            │
+├───────────────────────────────────────────────┤                            │
+│MMIX Simulator                                 │◄───────────────────────────┘
+└───────────────────────────────────────────────┘
+`
 
 My plan is as follows:
 
