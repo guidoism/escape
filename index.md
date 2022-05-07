@@ -127,6 +127,11 @@ self-hosting Parsing Expression Grammar.
 
 I'm calling my project **Knuth × Wirth**.
 
+The stack will look as follows:
+
+
+
+
 My plan is as follows:
 
 1. Bang my head against the wall until I truly understand how **PEG**s
@@ -138,7 +143,8 @@ enough to contiune forth with it.
 2. Write a self-hosting **PEG** in **MMIXAL**. The **MMIX**
 instruction set is simple enough that I should be able to also
 generate runnable object code directly without the need for a seperate
-assembler.
+assembler. I *might* add a small StoneKnifeForth layer in the
+bootstrap layer, but only if it's really needed.
 
 3. Produce a tiny bootstrapable core in hex that could conceivably
 hand entered with switches into a computer.
@@ -155,6 +161,9 @@ programming*, either by using **WEB** directly, or by creating
 something new, in Oberon, that fits in with a modern sensibility like
 Org Mode Babel.
 
-7. Publish it as a book, with the copyright set to Public Domain or
+7. Write enough of a C compiler with the PEG and Oberon to be able to
+compile CWEB and MMIXWare.
+
+8. Publish it as a book, with the copyright set to Public Domain or
 one of the Creative Commons licenses.
 
