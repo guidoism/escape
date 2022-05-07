@@ -131,8 +131,30 @@ My plan is as follows:
 
 1. Bang my head against the wall until I truly understand how **PEG**s
 work. Kragen's [**PEG** Bootstrap](https://github.com/kragen/peg-bootstrap/blob/master/peg.md)
-so far has been the best teacher. I think that [I finally grok it](https://github.com/guidoism/peg-bootstrap/blob/master/guido/understanding/peg.org)
+so far has been the best teacher. I think that [I finally grok
+it](https://github.com/guidoism/peg-bootstrap/blob/master/guido/understanding/peg.org)
 enough to contiune forth with it.
-2. Write a self-hosting **PEG** in **MMIXAL**. The **MMIX** instruction set is simple enough
-that I should be able to also generate runnable object code directly without the need for
-a seperate assembler.
+
+2. Write a self-hosting **PEG** in **MMIXAL**. The **MMIX**
+instruction set is simple enough that I should be able to also
+generate runnable object code directly without the need for a seperate
+assembler.
+
+3. Produce a tiny bootstrapable core in hex that could conceivably
+hand entered with switches into a computer.
+
+4. Moving back up the stack, rewrite the Oberon compiler as a PEG. I
+have a lot of this finished already. It was difficult because the
+ambiguity of the published grammar didn't align well with the
+hand-written recusive descent parser written in Oberon itself.
+
+5. Get the Oberon system as a whole running on the **MMIX** simulator.
+
+6. Rewrite Project Oberon using techniques from *literate
+programming*, either by using **WEB** directly, or by creating
+something new, in Oberon, that fits in with a modern sensibility like
+Org Mode Babel.
+
+7. Publish it as a book, with the copyright set to Public Domain or
+one of the Creative Commons licenses.
+
