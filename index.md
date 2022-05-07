@@ -131,7 +131,8 @@ I'm calling my project **Knuth × Wirth**.
 
 It will be in the form of a book, readable in bed, and running
 code. The book will be formated with either **WEB**, **CWEB**, or Org
-Mode, probably the latter. 
+Mode, probably the latter. I really want to strive for
+understandability. 
 
 The stack will look as follows:
 
