@@ -129,7 +129,8 @@ I'm calling my project **Knuth × Wirth**.
 
 My plan is as follows:
 
-1. Bang my head against the wall until I truly understand how PEGs
-work. Kragen's [PEG Bootstrap](https://github.com/kragen/peg-bootstrap/blob/master/peg.md)
+1. Bang my head against the wall until I truly understand how **PEG**s
+work. Kragen's [**PEG** Bootstrap](https://github.com/kragen/peg-bootstrap/blob/master/peg.md)
 so far has been the best teacher. I think that [I finally grok it](https://github.com/guidoism/peg-bootstrap/blob/master/guido/understanding/peg.org)
-enough to contiune forth with it. 
+enough to contiune forth with it.
+2. Write a self-hosting **PEG** in **MMIXAL**
